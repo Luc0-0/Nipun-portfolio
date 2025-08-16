@@ -1,4 +1,4 @@
-# Nipun Shrestha - AI & Data Science Portfolio
+# Nipun Sujesh - AI & Data Science Portfolio
 
 A modern, interactive portfolio website showcasing my journey as an AI and Data Science student.
 
