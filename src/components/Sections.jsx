@@ -152,7 +152,7 @@ export default function Sections() {
                   {/* Enhanced action buttons with motion */}
                   <div className="flex flex-wrap gap-4 pt-4">
                     <button 
-                      onClick={() => window.open(`/${section.id}`, '_blank')}
+                      onClick={() => window.open(`/#/${section.id}`, '_blank')}
                       className="px-6 py-3 bg-white/10 border border-amber-400/20 rounded-lg hover:bg-amber-500/10 hover:border-amber-400/40 focus:outline-none focus:ring-2 focus:ring-amber-500 transition-all duration-300"
                     >
                       Know More
