@@ -3,7 +3,7 @@
 
 import React, { useState, useEffect } from 'react';
 
-export default function LiveGitHubActivity({ username = "nipunsujesh" }) {
+export default function LiveGitHubActivity({ username = "Luc0-0" }) {
   const [activity, setActivity] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
