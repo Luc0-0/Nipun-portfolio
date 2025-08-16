@@ -12,7 +12,9 @@ import SkillMeter from "./SkillMeter";
 import LiveGitHubActivity from "./LiveGitHubActivity";
 
 export default function Hero() {
-  const [showWelcome, setShowWelcome] = useState(true);
+  const [showWelcome, setShowWelcome] = useState(() => {
+    return !sessionStorage.getItem('welcomeShown');
+  });
   return (
     <section
       id="hero"
@@ -307,6 +309,7 @@ export default function Hero() {
               const overlay = document.querySelector(".fixed.inset-0");
               overlay.style.opacity = "0";
               overlay.style.transform = "scale(0.95)";
+              sessionStorage.setItem('welcomeShown', 'true');
               setTimeout(() => setShowWelcome(false), 500);
             }}
           >
