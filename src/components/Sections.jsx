@@ -160,7 +160,7 @@ export default function Sections() {
                     
                     {section.id === 'contact' ? (
                       <a
-                        href="mailto:contact@nipunsujesh.com"
+                        href="mailto:nipunsujesh28@gmail.com"
                         className="relative px-6 py-3 bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-semibold rounded-lg hover:from-cyan-400 hover:to-purple-500 hover:scale-105 hover:shadow-lg hover:shadow-cyan-400/25 focus:outline-none focus:ring-2 focus:ring-cyan-300 transition-all duration-300 overflow-hidden group/btn"
                         data-magnetic
                         data-ripple

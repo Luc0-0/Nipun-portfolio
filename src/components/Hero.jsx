@@ -286,7 +286,7 @@ export default function Hero() {
 
           {/* GitHub Activity */}
           <div className="bg-black/20 border border-amber-400/20 rounded-2xl p-8 backdrop-blur-sm">
-            <LiveGitHubActivity username="nipunsujesh" />
+            <LiveGitHubActivity username="Luc0-0" />
           </div>
         </div>
       </div>

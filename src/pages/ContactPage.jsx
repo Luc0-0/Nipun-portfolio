@@ -30,21 +30,21 @@ export default function ContactPage() {
                   <div className="w-12 h-12 rounded-full bg-gradient-to-br from-amber-500 to-amber-600 flex items-center justify-center text-xl">📧</div>
                   <div>
                     <h3 className="text-lg font-semibold text-white">Email</h3>
-                    <p className="text-amber-300">contact@nipunsujesh.com</p>
+                    <p className="text-amber-300">nipunsujesh28@gmail.com</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 rounded-full bg-gradient-to-br from-amber-500 to-amber-600 flex items-center justify-center text-xl">💼</div>
                   <div>
                     <h3 className="text-lg font-semibold text-white">LinkedIn</h3>
-                    <p className="text-amber-300">linkedin.com/in/nipunshrestha</p>
+                    <p className="text-amber-300">linkedin.com/in/nipun-sujesh</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-amber-500 to-amber-600 flex items-center justify-center text-xl">🐙</div>
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-amber-500 to-amber-600 flex items-center justify-center text-xl">�Instagram</div>
                   <div>
-                    <h3 className="text-lg font-semibold text-white">GitHub</h3>
-                    <p className="text-amber-300">github.com/nipunshrestha</p>
+                    <h3 className="text-lg font-semibold text-white">Instagram</h3>
+                    <p className="text-amber-300">@nipun0__0</p>
                   </div>
                 </div>
               </div>

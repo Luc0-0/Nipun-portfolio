@@ -108,7 +108,7 @@ export default function App() {
               Back to Top
             </button>
           </div>
-          <p className="text-sm text-gray-400">&copy; 2024 Nipun Shrestha. All rights reserved.</p>
+          <p className="text-sm text-gray-400">&copy; 2024 Nipun Sujesh. All rights reserved.</p>
         </div>
       </footer>
       
