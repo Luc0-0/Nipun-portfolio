@@ -17,10 +17,11 @@ import CustomCursor from './components/CustomCursor';
 import { disableDevTools, consoleWarning } from './utils/protection';
 
 export default function App() {
-  useEffect(() => {
-    disableDevTools();
-    consoleWarning();
-  }, []);
+  // Temporarily disabled protection to test Google Analytics
+  // useEffect(() => {
+  //   disableDevTools();
+  //   consoleWarning();
+  // }, []);
 
   const handlePlanetClick = (sectionId) => {
     console.log('Navigating to:', sectionId);
