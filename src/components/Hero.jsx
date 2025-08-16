@@ -13,7 +13,22 @@ import LiveGitHubActivity from "./LiveGitHubActivity";
 
 export default function Hero() {
   const [showWelcome, setShowWelcome] = useState(() => {
-    return !sessionStorage.getItem('welcomeShown');
+    if (typeof window === 'undefined') return false;
+    
+    const hasShown = sessionStorage.getItem('welcomeShown');
+    const timestamp = sessionStorage.getItem('welcomeTimestamp');
+    const isMobile = window.innerWidth < 768;
+    
+    // Check if 24 hours have passed
+    if (timestamp) {
+      const hoursPassed = (Date.now() - parseInt(timestamp)) / (1000 * 60 * 60);
+      if (hoursPassed < 24) return false;
+    }
+    
+    // On mobile, only show welcome on first visit to root path
+    if (isMobile && window.location.hash && window.location.hash !== '#/') return false;
+    
+    return !hasShown;
   });
   return (
     <section
@@ -310,6 +325,8 @@ export default function Hero() {
               overlay.style.opacity = "0";
               overlay.style.transform = "scale(0.95)";
               sessionStorage.setItem('welcomeShown', 'true');
+              // Also set a timestamp to prevent showing again for 24 hours
+              sessionStorage.setItem('welcomeTimestamp', Date.now().toString());
               setTimeout(() => setShowWelcome(false), 500);
             }}
           >
