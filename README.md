@@ -1,42 +1,47 @@
-# Nipun Sujesh - AI Developer Portfolio
+# Nipun Shrestha - AI & Data Science Portfolio
 
-A cinematic React portfolio showcasing AI development skills, projects, and interactive 3D solar system navigation.
+A modern, interactive portfolio website showcasing my journey as an AI and Data Science student.
 
-## Features
+## 🚀 Features
 
-- 🎬 Cinematic hero section with typewriter animations
-- 🌌 Interactive 3D solar system navigation
-- 🤖 AI/ML skills showcase with animated meters
-- 📊 Live GitHub activity integration
-- ⚡ Performance monitoring
-- 🎨 Advanced visual effects and animations
+- **Interactive 3D Solar System Navigation** - Unique planet-based navigation system
+- **Responsive Design** - Works seamlessly across all devices
+- **Modern UI/UX** - Clean, professional design with smooth animations
+- **Performance Optimized** - Fast loading with optimized assets
+- **Accessibility Friendly** - Reduced motion support and proper contrast
 
-## Tech Stack
+## 🛠️ Built With
 
-- React 18
-- Three.js / React Three Fiber
-- Tailwind CSS
-- Framer Motion
-- Custom animations and effects
+- **React 19** - Frontend framework
+- **Vite** - Build tool and development server
+- **Tailwind CSS** - Utility-first CSS framework
+- **Three.js** - 3D graphics and animations
+- **React Router** - Client-side routing
+- **Framer Motion** - Animation library
 
-## Quick Start
+## 📱 Sections
 
-```bash
-npm install
-npm start
-```
+- **About Me** - Academic background and journey
+- **Current Studies** - Final year coursework and research
+- **AI & ML Skills** - Technical expertise and certifications
+- **Academic Projects** - University assignments and personal projects
+- **Achievements** - Certifications and accomplishments
+- **Contact** - Get in touch for opportunities
 
-## Deployment
+## 🎓 About
 
-This project is optimized for deployment on:
-- Vercel (recommended)
-- Netlify
-- GitHub Pages
+Final year AI and Data Science student passionate about machine learning, deep learning, and data analytics. Currently building expertise in Python, statistical modeling, and AI algorithms through academic projects and industry certifications.
 
-## Live Demo
+## 📄 License
 
-[View Portfolio](your-deployed-url-here)
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🤝 Connect
+
+- **Email**: contact@nipunsujesh.com
+- **LinkedIn**: [linkedin.com/in/nipunshrestha](https://linkedin.com/in/nipunshrestha)
+- **GitHub**: [github.com/nipunshrestha](https://github.com/nipunshrestha)
 
 ---
 
-Built with ❤️ by Nipun Sujesh
+⭐ Star this repository if you found it helpful!

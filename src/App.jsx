@@ -6,13 +6,21 @@ import Hero from './components/Hero';
 import LightweightInteractiveBackground from './components/LightweightInteractiveBackground';
 import SolarSystem3D from './components/SolarSystem3D';
 import Sections from './components/Sections';
+import Achievements from './components/Achievements';
+import Navigation from './components/Navigation';
 import MagneticCursor from './components/MagneticCursor';
 import HolographicElements from './components/HolographicElements';
 import RippleEffect from './components/RippleEffect';
 import QuantumParticles from './components/QuantumParticles';
 import FloatingActionButton from './components/FloatingActionButton';
+import CustomCursor from './components/CustomCursor';
+import { disableDevTools, consoleWarning } from './utils/protection';
 
 export default function App() {
+  useEffect(() => {
+    disableDevTools();
+    consoleWarning();
+  }, []);
 
   const handlePlanetClick = (sectionId) => {
     console.log('Navigating to:', sectionId);
@@ -31,7 +39,11 @@ export default function App() {
 
   return (
     <div className="min-h-screen relative" style={{ background: 'linear-gradient(to bottom, #000011, #000033)' }}>
+      {/* Navigation */}
+      <Navigation />
+      
       {/* Enhanced interactive elements */}
+      <CustomCursor />
       <MagneticCursor />
       <HolographicElements />
       <RippleEffect />
@@ -67,6 +79,11 @@ export default function App() {
         <div className="relative">
           <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/5" />
           <Sections />
+        </div>
+        
+        {/* Achievements section */}
+        <div className="relative">
+          <Achievements />
         </div>
       </main>
       

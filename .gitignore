@@ -4,9 +4,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Production build
-build/
+# Build outputs
 dist/
+build/
 
 # Environment variables
 .env
@@ -15,13 +15,16 @@ dist/
 .env.test.local
 .env.production.local
 
-# IDE
+# IDE files
 .vscode/
 .idea/
+*.swp
+*.swo
 
-# OS
+# OS files
 .DS_Store
 Thumbs.db
 
 # Logs
+logs
 *.log
