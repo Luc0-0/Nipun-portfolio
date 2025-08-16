@@ -38,9 +38,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🤝 Connect
 
-- **Email**: contact@nipunsujesh.com
-- **LinkedIn**: [linkedin.com/in/nipunshrestha](https://linkedin.com/in/nipunshrestha)
-- **GitHub**: [github.com/nipunshrestha](https://github.com/nipunshrestha)
+- **Email**:@nipunsujesh28@gmail.com
+- **LinkedIn**: [linkedin.com/nipun-sujesh](https://linkedin.com/nipun-sujesh
+- **GitHub**: [github.com/Luc0-0](https://github.com/Luc0-0
 
 ---
 
