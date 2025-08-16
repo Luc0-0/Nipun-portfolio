@@ -11,80 +11,80 @@ const PLANETS = [
     id: "about",
     label: "About",
     distance: 25,
-    speed: 0.003,
-    color: "#f5c36b",
+    speed: 0.002,
+    colors: { core: "#8B4513", surface: "#CD853F", glow: "#DEB887" }, // Earth-like brown
     startAngle: 0,
   },
   {
     id: "ongoing",
     label: "Research",
     distance: 35,
-    speed: 0.003,
-    color: "#4a90e2",
+    speed: 0.002,
+    colors: { core: "#B22222", surface: "#DC143C", glow: "#F08080" }, // Mars-like red
     startAngle: 36,
   },
   {
     id: "ai-skills",
     label: "AI Skills",
     distance: 45,
-    speed: 0.003,
-    color: "#e74c3c",
+    speed: 0.002,
+    colors: { core: "#4169E1", surface: "#6495ED", glow: "#87CEEB" }, // Neptune-like blue
     startAngle: 72,
   },
   {
     id: "web-skills",
     label: "Web Dev",
     distance: 55,
-    speed: 0.003,
-    color: "#2ecc71",
+    speed: 0.002,
+    colors: { core: "#228B22", surface: "#32CD32", glow: "#90EE90" }, // Venus-like green
     startAngle: 108,
   },
   {
     id: "project1",
     label: "Project 1",
     distance: 65,
-    speed: 0.003,
-    color: "#9b59b6",
+    speed: 0.002,
+    colors: { core: "#8A2BE2", surface: "#9370DB", glow: "#DDA0DD" }, // Jupiter-like purple
     startAngle: 144,
   },
   {
     id: "project2",
     label: "Project 2",
     distance: 75,
-    speed: 0.003,
-    color: "#f39c12",
+    speed: 0.002,
+    colors: { core: "#FF8C00", surface: "#FFA500", glow: "#FFD700" }, // Saturn-like orange
     startAngle: 180,
   },
   {
     id: "project3",
     label: "Project 3",
     distance: 85,
-    speed: 0.003,
-    color: "#1abc9c",
+    speed: 0.002,
+    colors: { core: "#20B2AA", surface: "#48D1CC", glow: "#AFEEEE" }, // Uranus-like teal
     startAngle: 216,
   },
   {
     id: "miniprojects",
     label: "Mini Projects",
     distance: 95,
-    speed: 0.003,
-    color: "#e67e22",
+    speed: 0.002,
+    colors: { core: "#FF7F50", surface: "#FF6347", glow: "#FFA07A" }, // Mercury-like coral
     startAngle: 252,
   },
   {
     id: "services",
     label: "Services",
     distance: 105,
-    speed: 0.003,
-    color: "#34495e",
+    speed: 0.002,
+    colors: { core: "#2F4F4F", surface: "#708090", glow: "#B0C4DE" }, // Pluto-like gray
     startAngle: 288,
   },
   {
     id: "contact",
     label: "Contact",
     distance: 115,
-    speed: 0.003,
-    color: "#c0392b",
+    speed: 0.002,
+    colors: { core: "#800080", surface: "#9932CC", glow: "#DA70D6" }, // Exotic purple
     startAngle: 324,
   },
 ];
@@ -193,7 +193,7 @@ function Sun({ onClick, brightMode, setBrightMode }) {
       {/* Enhanced lighting toggle hint with motion */}
       {hovered && (
         <Html distanceFactor={3} position={[0, 12, 0]}>
-          <div className="text-sm text-white bg-gradient-to-r from-black/80 to-gray-800/80 px-4 py-2 rounded-full pointer-events-none animate-bounce border border-yellow-400/30">
+          <div className="text-sm text-white bg-gradient-to-r from-black/80 to-gray-800/80 px-4 py-2 rounded-full pointer-events-none border border-amber-400/30">
             <span className="animate-pulse">
               {brightMode ? "Solar Flare Mode" : "Click for Solar Power"}
             </span>
@@ -228,11 +228,7 @@ function Planet({ planet, onClick, onHover, brightMode }) {
     "#c0392b": { base: "#B22222", emissive: "#DC143C", atmosphere: "#F08080" }, // Fire brick
   };
 
-  const colors = planetColors[planet.color] || {
-    base: planet.color,
-    emissive: planet.color,
-    atmosphere: planet.color,
-  };
+  const colors = planet.colors;
 
   // Set initial rotation based on startAngle
   useEffect(() => {
@@ -279,31 +275,43 @@ function Planet({ planet, onClick, onHover, brightMode }) {
       >
         <sphereGeometry args={[baseSize, 64, 64]} />
         <meshStandardMaterial
-          color={colors.base}
-          roughness={0.8}
-          metalness={0.1}
-          emissive={colors.emissive}
-          emissiveIntensity={0.1}
+          color={colors.surface}
+          roughness={0.7}
+          metalness={0.2}
+          emissive={colors.core}
+          emissiveIntensity={0.15}
         />
+        
+        {/* Inner core gradient */}
+        <mesh scale={[0.6, 0.6, 0.6]}>
+          <sphereGeometry args={[baseSize, 32, 32]} />
+          <meshStandardMaterial
+            color={colors.core}
+            emissive={colors.core}
+            emissiveIntensity={0.3}
+            transparent
+            opacity={0.8}
+          />
+        </mesh>
 
         {/* Subtle planet atmosphere */}
-        <mesh ref={atmosphereRef} scale={[1.2, 1.2, 1.2]}>
+        <mesh ref={atmosphereRef} scale={[1.3, 1.3, 1.3]}>
           <sphereGeometry args={[baseSize, 32, 32]} />
           <meshBasicMaterial
-            color={colors.atmosphere}
+            color={colors.glow}
             transparent
-            opacity={0.08}
+            opacity={0.12}
             side={2}
           />
         </mesh>
 
-        {/* Enhanced ring system for outer planets */}
-        {planet.distance > 50 && (
+        {/* Rings for select planets */}
+        {["project1", "project2", "project3", "services"].includes(planet.id) && (
           <>
             <mesh rotation={[Math.PI / 2 + 0.2, 0, 0]}>
               <ringGeometry args={[baseSize * 1.5, baseSize * 2.2, 64]} />
               <meshBasicMaterial
-                color={colors.base}
+                color={colors.surface}
                 transparent
                 opacity={0.4}
                 side={2}
@@ -312,7 +320,7 @@ function Planet({ planet, onClick, onHover, brightMode }) {
             <mesh rotation={[Math.PI / 2 + 0.15, 0, 0]}>
               <ringGeometry args={[baseSize * 2.3, baseSize * 2.8, 32]} />
               <meshBasicMaterial
-                color={colors.atmosphere}
+                color={colors.glow}
                 transparent
                 opacity={0.2}
                 side={2}
@@ -323,15 +331,15 @@ function Planet({ planet, onClick, onHover, brightMode }) {
 
         <Html distanceFactor={2} position={[0, -(baseSize + 3), 0]}>
           <div
-            className={`text-xl font-bold pointer-events-none whitespace-nowrap shadow-md border px-5 py-3 rounded-xl transition-all duration-500 ${
+            className={`text-lg font-bold pointer-events-none whitespace-nowrap shadow-md border px-4 py-2 rounded-xl transition-all duration-300 ${
               brightMode
-                ? "text-gray-800 bg-gradient-to-r from-white/95 to-gray-100/95 border-gray-400"
-                : "text-white bg-gradient-to-r from-black/95 to-gray-900/95 border-white/50"
+                ? "text-gray-800 bg-gradient-to-r from-white/95 to-gray-100/95 border-amber-400"
+                : "text-white bg-gradient-to-r from-black/95 to-gray-900/95 border-amber-400/50"
             }`}
           >
             <span
               className={`font-extrabold ${hovered ? "animate-pulse" : ""}`}
-              style={{ color: colors.base }}
+              style={{ color: colors.surface }}
             >
               {planet.label}
             </span>
@@ -505,7 +513,7 @@ export default function SolarSystem3D({ onPlanetClick }) {
     <div className="w-full h-screen relative">
       <div className="absolute top-4 left-1/2 -translate-x-1/2 z-10 text-center">
         <h3 className="text-3xl font-bold mb-2">
-          <span className="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-amber-200 to-amber-400 bg-clip-text text-transparent">
             Solar System
           </span>
         </h3>
@@ -514,7 +522,7 @@ export default function SolarSystem3D({ onPlanetClick }) {
         </p>
         {hoveredPlanet && (
           <p className="text-lg mt-3 font-bold animate-pulse">
-            <span className="bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-amber-200 to-amber-400 bg-clip-text text-transparent">
               {hoveredPlanet}
             </span>
           </p>
@@ -530,14 +538,14 @@ export default function SolarSystem3D({ onPlanetClick }) {
       </div>
 
       <Canvas
-        camera={{ position: [0, 70, 110], fov: 85 }}
+        camera={{ position: [0, 50, 80], fov: 75 }}
         style={{ background: "linear-gradient(to bottom, #000011, #000033)" }}
       >
         <OrbitControls
           enablePan={false}
           enableZoom={true}
           enableRotate={true}
-          minDistance={60}
+          minDistance={40}
           maxDistance={200}
           target={[0, -5, 0]}
           autoRotate={false}

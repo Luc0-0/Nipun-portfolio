@@ -9,71 +9,71 @@ const SECTIONS = [
   { 
     id: 'about', 
     title: 'About Me', 
-    description: 'Passionate developer with expertise in modern web technologies and AI integration.',
-    skills: ['React', 'Node.js', 'Python', 'AI/ML'],
+    description: 'Final year AI and Data Science student passionate about machine learning, deep learning, and data analytics. Currently building expertise in Python, statistical modeling, and AI algorithms while working on academic projects and certifications.',
+    skills: ['Python', 'Machine Learning', 'Data Analysis', 'Statistics'],
     color: '#f5c36b'
   },
   { 
     id: 'ongoing', 
-    title: 'Ongoing Research', 
-    description: 'Currently exploring cutting-edge technologies and innovative solutions.',
-    skills: ['Research', 'Innovation', 'Prototyping'],
+    title: 'Current Studies', 
+    description: 'Pursuing final year coursework in Advanced Machine Learning, Deep Neural Networks, and Big Data Analytics. Working on thesis project involving natural language processing and exploring cutting-edge AI research papers.',
+    skills: ['Academic Research', 'Thesis Work', 'Literature Review'],
     color: '#4a90e2'
   },
   { 
     id: 'ai-skills', 
-    title: 'AI Skills', 
-    description: 'Advanced knowledge in artificial intelligence and machine learning frameworks.',
-    skills: ['TensorFlow', 'PyTorch', 'OpenAI', 'Computer Vision'],
+    title: 'AI & ML Skills', 
+    description: 'Learning machine learning fundamentals through coursework and online certifications. Hands-on experience with Python libraries like scikit-learn, pandas, and numpy. IBM AI certified with practical knowledge of supervised and unsupervised learning.',
+    skills: ['Python', 'Scikit-learn', 'Pandas', 'NumPy'],
     color: '#e74c3c'
   },
   { 
     id: 'web-skills', 
-    title: 'Web Development', 
-    description: 'Full-stack development with modern frameworks and best practices.',
-    skills: ['React', 'Next.js', 'TypeScript', 'Tailwind'],
+    title: 'Technical Skills', 
+    description: 'Self-taught web development skills acquired through personal projects and online learning. Familiar with Python for data science, basic web technologies, and database fundamentals. Eager to apply these skills in real-world scenarios.',
+    skills: ['Python', 'SQL', 'Data Visualization', 'Git'],
     color: '#2ecc71'
   },
   { 
     id: 'project1', 
-    title: 'Featured Project Alpha', 
-    description: 'A revolutionary web application that combines AI with intuitive user experience.',
-    skills: ['React', 'AI Integration', 'Real-time'],
+    title: 'Academic Project Alpha', 
+    description: 'University project focusing on sentiment analysis using natural language processing techniques. Implemented using Python and scikit-learn to analyze social media data and predict sentiment patterns.',
+    skills: ['NLP', 'Sentiment Analysis', 'Python'],
     color: '#9b59b6'
   },
   { 
     id: 'project2', 
-    title: 'Project Beta', 
-    description: 'Mobile-first application with advanced data visualization and analytics.',
-    skills: ['Mobile', 'Data Viz', 'Analytics'],
+    title: 'Data Analysis Project', 
+    description: 'Coursework project involving exploratory data analysis on a large dataset. Created visualizations and statistical insights using Python libraries to uncover meaningful patterns and trends.',
+    skills: ['Data Analysis', 'Visualization', 'Statistics'],
     color: '#f39c12'
   },
   { 
     id: 'project3', 
-    title: 'Project Gamma', 
-    description: 'Enterprise solution with scalable architecture and microservices.',
-    skills: ['Enterprise', 'Scalability', 'Microservices'],
+    title: 'Machine Learning Model', 
+    description: 'Academic assignment to build and evaluate a predictive model using supervised learning techniques. Implemented various algorithms and compared their performance on real-world datasets.',
+    skills: ['Supervised Learning', 'Model Evaluation', 'Python'],
     color: '#1abc9c'
   },
   { 
     id: 'miniprojects', 
-    title: 'Mini Projects', 
-    description: 'Collection of experimental projects and proof-of-concepts.',
-    skills: ['Experiments', 'POCs', 'Innovation'],
+    title: 'Learning Projects', 
+    description: 'Collection of small projects and exercises completed during coursework and self-study. Includes data cleaning scripts, basic ML implementations, and exploratory analysis notebooks.',
+    skills: ['Practice Projects', 'Learning', 'Experimentation'],
     color: '#e67e22'
   },
   { 
     id: 'services', 
-    title: 'Services', 
-    description: 'Professional development services and consulting offerings.',
-    skills: ['Consulting', 'Development', 'Strategy'],
+    title: 'Future Goals', 
+    description: 'Aspiring to work as a Data Scientist or ML Engineer after graduation. Interested in applying AI solutions to real-world problems and contributing to innovative projects in the field of artificial intelligence.',
+    skills: ['Career Goals', 'Learning Path', 'Growth Mindset'],
     color: '#34495e'
   },
   { 
     id: 'contact', 
-    title: 'Get In Touch', 
-    description: 'Ready to collaborate? Let\'s discuss your next project.',
-    skills: ['Collaboration', 'Communication', 'Partnership'],
+    title: 'Connect With Me', 
+    description: 'Open to internship opportunities, collaborative projects, and networking with professionals in AI and Data Science. Let\'s connect and discuss the exciting possibilities in artificial intelligence!',
+    skills: ['Networking', 'Opportunities', 'Collaboration'],
     color: '#c0392b'
   },
 ];
@@ -90,14 +90,14 @@ export default function Sections() {
           >
             {/* Enhanced Container with motion effects */}
             <TextReveal delay={idx * 100}>
-              <TiltCard className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:bg-gradient-to-br hover:from-white/10 hover:to-white/5 hover:border-cyan-400/40 transition-all duration-700 group-hover:shadow-2xl group-hover:shadow-cyan-400/20 group-hover:scale-[1.02] group-hover:-translate-y-2" intensity={5}>
+              <TiltCard className="relative bg-white/5 backdrop-blur-sm border border-amber-400/20 rounded-2xl p-8 hover:bg-white/10 hover:border-amber-400/40 transition-all duration-300 hover:shadow-2xl hover:shadow-amber-400/20" intensity={2}>
               
               {/* Enhanced section number with hover effects */}
               <div 
-                className="absolute -top-4 -left-4 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 cursor-pointer"
+                className="absolute -top-4 -left-4 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg group-hover:scale-110 transition-all duration-300"
                 style={{ 
-                  background: `linear-gradient(135deg, ${section.color}, ${section.color}80)`,
-                  boxShadow: `0 0 20px ${section.color}40`
+                  background: `linear-gradient(135deg, #f59e0b, #d97706)`,
+                  boxShadow: `0 0 20px #f59e0b40`
                 }}
                 title={`Section ${idx + 1}: ${section.title}`}
               >
@@ -105,31 +105,33 @@ export default function Sections() {
               </div>
               
               {/* Floating particles on hover */}
-              <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+              <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                 {[...Array(3)].map((_, i) => (
                   <div
                     key={i}
-                    className="absolute w-1 h-1 bg-cyan-400 rounded-full animate-float"
+                    className="absolute w-1 h-1 bg-amber-400 rounded-full animate-pulse"
                     style={{
                       left: `${20 + i * 30}%`,
                       top: `${10 + i * 20}%`,
-                      animationDelay: `${i * 0.5}s`,
-                      animationDuration: '3s'
+                      animationDelay: `${i * 0.3}s`,
+                      animationDuration: '2s'
                     }}
                   />
                 ))}
               </div>
               
+
+              
               <div className="grid lg:grid-cols-3 gap-8 items-center">
                 
                 {/* Content - Left side */}
                 <div className="lg:col-span-2 space-y-6">
-                  <header className="group-hover:translate-x-2 transition-transform duration-500">
-                    <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-100 to-gray-300 group-hover:from-cyan-200 group-hover:via-white group-hover:to-cyan-200 transition-all duration-700">
+                  <header>
+                    <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-white to-amber-100">
                       {section.title}
                     </h2>
                     
-                    <p className="text-lg text-gray-300 leading-relaxed group-hover:text-gray-200 transition-colors duration-500">
+                    <p className="text-lg text-gray-200 leading-relaxed">
                       {section.description}
                     </p>
                   </header>
@@ -139,10 +141,7 @@ export default function Sections() {
                     {section.skills.map((skill, skillIdx) => (
                       <span
                         key={skillIdx}
-                        className="px-3 py-1 text-sm bg-gradient-to-r from-cyan-500/10 to-purple-500/10 text-cyan-300 rounded-full border border-cyan-500/20 hover:from-cyan-500/20 hover:to-purple-500/20 hover:border-cyan-400/40 hover:scale-110 transition-all duration-300 cursor-pointer group-hover:animate-pulse"
-                        style={{
-                          animationDelay: `${skillIdx * 0.1}s`
-                        }}
+                        className="px-3 py-1 text-sm bg-amber-500/10 text-amber-200 rounded-full border border-amber-500/20 hover:bg-amber-500/20 hover:border-amber-400/40 transition-all duration-300"
                         title={`Expertise in ${skill}`}
                       >
                         {skill}
@@ -151,10 +150,12 @@ export default function Sections() {
                   </div>
 
                   {/* Enhanced action buttons with motion */}
-                  <div className="flex flex-wrap gap-4 pt-4 group-hover:translate-x-1 transition-transform duration-500">
-                    <button className="relative px-6 py-3 bg-white/10 border border-white/20 rounded-lg hover:bg-gradient-to-r hover:from-cyan-500/20 hover:to-purple-500/20 hover:border-cyan-400/40 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-all duration-300 overflow-hidden group/btn" data-magnetic data-ripple>
-                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-700" />
-                      <span className="relative">View Details</span>
+                  <div className="flex flex-wrap gap-4 pt-4">
+                    <button 
+                      onClick={() => window.open(`/${section.id}`, '_blank')}
+                      className="px-6 py-3 bg-white/10 border border-amber-400/20 rounded-lg hover:bg-amber-500/10 hover:border-amber-400/40 focus:outline-none focus:ring-2 focus:ring-amber-500 transition-all duration-300"
+                    >
+                      Know More
                     </button>
                     
                     {section.id === 'contact' ? (
@@ -181,38 +182,22 @@ export default function Sections() {
                   </div>
                 </div>
 
-                {/* Enhanced image placeholder with motion */}
-                <div className="lg:col-span-1 group-hover:translate-x-2 group-hover:-translate-y-1 transition-transform duration-700">
-                  <div className="relative rounded-xl overflow-hidden border border-white/20 bg-gradient-to-br from-white/5 to-transparent hover:border-cyan-400/40 transition-all duration-500 group-hover:scale-110 group-hover:rotate-1">
-                    <div className="aspect-[4/3] flex items-center justify-center" style={{ 
-                      background: `linear-gradient(135deg, ${section.color}20, ${section.color}10)` 
-                    }}>
-                      <div className="text-center group-hover:scale-110 transition-transform duration-500">
-                        <div 
-                          className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center text-2xl group-hover:animate-bounce"
-                          style={{ 
-                            background: `linear-gradient(135deg, ${section.color}, ${section.color}80)`,
-                            boxShadow: `0 0 20px ${section.color}40`
-                          }}
-                        >
+                {/* Enhanced image placeholder with subtle glow */}
+                <div className="lg:col-span-1 group-hover:translate-x-1 transition-transform duration-300">
+                  <div className="relative rounded-xl overflow-hidden border border-amber-400/20 bg-gradient-to-br from-amber-500/5 to-transparent hover:border-amber-400/40 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-amber-400/30">
+                    <div className="aspect-[4/3] flex items-center justify-center">
+                      <div className="text-center group-hover:scale-105 transition-transform duration-300">
+                        <div className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center text-2xl bg-gradient-to-br from-amber-500 to-amber-600 group-hover:shadow-lg group-hover:shadow-amber-400/50">
                           🎨
                         </div>
-                        <p className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
-                          dragon_{idx + 1}.jpg placeholder
+                        <p className="text-sm text-gray-300 group-hover:text-gray-200 transition-colors duration-300">
+                          Coming Soon
                         </p>
                       </div>
                     </div>
                     
-                    {/* Enhanced glow effect */}
-                    <div 
-                      className="absolute -inset-2 rounded-xl blur-lg opacity-0 group-hover:opacity-60 transition-all duration-700 -z-10"
-                      style={{ 
-                        background: `linear-gradient(135deg, ${section.color}60, cyan40)` 
-                      }}
-                    />
-                    
-                    {/* Shimmer effect */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
+                    {/* Subtle glow effect */}
+                    <div className="absolute -inset-2 rounded-xl blur-lg opacity-0 group-hover:opacity-30 transition-all duration-500 -z-10 bg-gradient-to-br from-amber-400/40 to-amber-600/20" />
                   </div>
                 </div>
                 

@@ -68,13 +68,13 @@ export default function Hero() {
         style={{ animationDelay: "1s", animationDuration: "2s" }}
       />
 
-      <div className="max-w-6xl mx-auto relative z-10 flex-1 flex items-center pt-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center pt-20">
+      <div className="max-w-6xl mx-auto relative z-10 flex-1 flex items-center py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left: Epic Text content */}
           <div className="text-center lg:text-left animate-fade-in">
             {/* Epic animated title with typewriter effect */}
-            <h1 className="text-5xl lg:text-6xl font-bold mb-8 relative group cursor-default">
-              <div className="text-transparent bg-clip-text bg-gradient-to-r from-white via-purple-100 via-cyan-100 to-blue-100 hover:from-purple-200 hover:via-cyan-200 hover:to-blue-200 transition-all duration-700 hover:scale-105">
+            <h1 className="text-6xl lg:text-7xl font-bold mb-8 relative group cursor-default">
+              <div className="text-transparent bg-clip-text bg-gradient-to-r from-white to-amber-100 hover:from-amber-100 hover:to-amber-200 transition-all duration-300 hover:scale-105">
                 <TypewriterText
                   texts={["Nipun Sujesh"]}
                   speed={30}
@@ -85,22 +85,21 @@ export default function Hero() {
                 />
               </div>
 
-              {/* Multi-layered glowing effects */}
-              <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cyan-400/60 via-purple-400/40 to-transparent animate-pulse group-hover:via-cyan-400/80 group-hover:via-purple-400/60 transition-all duration-500" />
-              <div className="absolute -bottom-1 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
+              {/* Simplified glowing effect */}
+              <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-transparent via-amber-400/60 to-transparent group-hover:via-amber-400/80 transition-all duration-300" />
 
               <div className="mt-8">
                 <div
-                  className="block text-xl lg:text-2xl text-transparent bg-clip-text bg-gradient-to-r from-gray-300 via-purple-200 via-cyan-200 to-gray-300 font-light tracking-[0.3em] animate-slide-up hover:tracking-[0.4em] transition-all duration-30"
+                  className="block text-2xl lg:text-3xl text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-amber-400 font-light tracking-[0.2em] animate-slide-up hover:tracking-[0.3em] transition-all duration-300"
                   style={{ animationDelay: "0.1s" }}
                   title="🎓 Learning the future"
                 >
                   <TypewriterText
                     texts={[
                       "AI STUDENT & DEVELOPER",
-                      "NEURAL NETWORK ARCHITECT",
+                      "CREATIVE CODER",
                       "DIGITAL INNOVATOR",
-                      "FUTURE BUILDER",
+                      "TECH ENTHUSIAST",
                     ]}
                     speed={20}
                     deleteSpeed={10}
@@ -112,9 +111,9 @@ export default function Hero() {
                   className="flex items-center mt-4 animate-slide-up group-hover:scale-105 transition-all duration-300"
                   style={{ animationDelay: "1.1s" }}
                 >
-                  <div className="w-32 h-px bg-gradient-to-r from-cyan-400/80 via-purple-400/60 to-transparent" />
-                  <div className="w-2 h-2 bg-gradient-to-r from-cyan-400 to-purple-400 rounded-full mx-2 animate-pulse" />
-                  <div className="w-16 h-px bg-gradient-to-r from-purple-400/80 to-transparent" />
+                  <div className="w-32 h-px bg-gradient-to-r from-amber-400/80 to-transparent" />
+                  <div className="w-2 h-2 bg-amber-400 rounded-full mx-2" />
+                  <div className="w-16 h-px bg-gradient-to-r from-amber-400/80 to-transparent" />
                 </div>
               </div>
             </h1>
@@ -125,7 +124,7 @@ export default function Hero() {
               style={{ animationDelay: "1.4s" }}
             >
               <div className="relative group">
-                <p className="text-lg text-gray-300 max-w-2xl leading-relaxed">
+                <p className="text-xl text-gray-100 max-w-2xl leading-relaxed">
                   Training neural networks and crafting
                   <span
                     className="text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-cyan-300 font-semibold bg-purple-400/10 px-2 py-1 rounded border border-purple-400/20 hover:border-cyan-400/40 transition-all duration-300 cursor-pointer"
@@ -170,16 +169,16 @@ export default function Hero() {
                 {/* Cinematic backdrop */}
                 <div className="absolute -inset-8 bg-gradient-to-br from-black/40 via-purple-900/20 to-cyan-900/20 rounded-3xl blur-2xl" />
                 <div className="absolute -inset-6 bg-gradient-to-r from-purple-500/10 via-cyan-500/15 to-indigo-500/10 rounded-3xl blur-xl opacity-60 group-hover:opacity-90 transition-all duration-1000" />
-                
+
                 {/* Cinematic frame */}
                 <div className="relative bg-black/30 backdrop-blur-sm border border-white/10 rounded-2xl p-8 overflow-hidden">
                   {/* Film grain overlay */}
                   <div className="absolute inset-0 opacity-20 bg-gradient-to-br from-transparent via-white/5 to-transparent" />
-                  
+
                   {/* Cinematic lighting strips */}
                   <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-cyan-400/30 via-transparent to-purple-400/30 opacity-40" />
                   <div className="absolute top-0 right-1/4 w-px h-full bg-gradient-to-b from-purple-400/30 via-transparent to-cyan-400/30 opacity-40" />
-                  
+
                   {/* Professional Profile Card */}
                   <div className="text-center relative z-10">
                     {/* Cinematic Profile Picture */}
@@ -187,21 +186,31 @@ export default function Hero() {
                       {/* Multiple shadow layers for depth */}
                       <div className="absolute inset-0 rounded-full bg-gradient-to-br from-purple-500/20 to-cyan-500/20 blur-xl scale-110" />
                       <div className="absolute inset-0 rounded-full bg-gradient-to-tl from-cyan-400/10 to-purple-400/10 blur-2xl scale-125" />
-                      
+
                       <img
                         src="/images/model.png"
                         alt="Nipun Sujesh"
                         className="relative w-full h-full object-cover rounded-full border-2 border-white/30 shadow-2xl group-hover:scale-105 transition-all duration-700 z-10"
                         style={{
-                          filter: "contrast(1.05) brightness(0.95) drop-shadow(0 0 30px rgba(168, 85, 247, 0.3))",
+                          filter:
+                            "contrast(1.05) brightness(0.95) drop-shadow(0 0 30px rgba(168, 85, 247, 0.3))",
                           objectPosition: "center 8%",
                         }}
                       />
-                      
+
                       {/* Cinematic orbital rings */}
-                      <div className="absolute inset-0 rounded-full border border-gradient-to-r from-purple-400/40 via-cyan-400/40 to-purple-400/40 animate-spin" style={{ animationDuration: "20s" }} />
-                      <div className="absolute inset-2 rounded-full border border-gradient-to-l from-cyan-400/20 via-purple-400/20 to-cyan-400/20 animate-spin" style={{ animationDuration: "15s", animationDirection: "reverse" }} />
-                      
+                      <div
+                        className="absolute inset-0 rounded-full border border-gradient-to-r from-purple-400/40 via-cyan-400/40 to-purple-400/40 animate-spin"
+                        style={{ animationDuration: "20s" }}
+                      />
+                      <div
+                        className="absolute inset-2 rounded-full border border-gradient-to-l from-cyan-400/20 via-purple-400/20 to-cyan-400/20 animate-spin"
+                        style={{
+                          animationDuration: "15s",
+                          animationDirection: "reverse",
+                        }}
+                      />
+
                       {/* Cinematic corner accents */}
                       <div className="absolute -top-2 -left-2 w-8 h-8 border-l-2 border-t-2 border-cyan-400/60 rounded-tl-lg" />
                       <div className="absolute -top-2 -right-2 w-8 h-8 border-r-2 border-t-2 border-purple-400/60 rounded-tr-lg" />
@@ -227,12 +236,12 @@ export default function Hero() {
       </div>
 
       {/* Skills and GitHub Section - Bottom of Hero */}
-      <div className="max-w-6xl mx-auto relative z-10 pb-20 pt-40">
+      <div className="max-w-6xl mx-auto relative z-10 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* AI Skills */}
-          <div className="bg-black/20 border border-white/10 rounded-2xl p-6 backdrop-blur-sm">
-            <h3 className="text-xl font-bold text-gray-300 mb-4 flex items-center gap-3">
-              <div className="w-3 h-3 bg-purple-400 rounded-full" />
+          <div className="bg-black/20 border border-amber-400/20 rounded-2xl p-8 backdrop-blur-sm">
+            <h3 className="text-2xl font-bold text-amber-100 mb-6 flex items-center gap-4">
+              <div className="w-4 h-4 bg-amber-400 rounded-full" />
               AI & ML Skills
             </h3>
             <div className="space-y-3">
@@ -253,9 +262,9 @@ export default function Hero() {
           </div>
 
           {/* Web Development Skills */}
-          <div className="bg-black/20 border border-white/10 rounded-2xl p-6 backdrop-blur-sm">
-            <h3 className="text-xl font-bold text-gray-300 mb-4 flex items-center gap-3">
-              <div className="w-3 h-3 bg-cyan-400 rounded-full" />
+          <div className="bg-black/20 border border-amber-400/20 rounded-2xl p-8 backdrop-blur-sm">
+            <h3 className="text-2xl font-bold text-amber-100 mb-6 flex items-center gap-4">
+              <div className="w-4 h-4 bg-amber-400 rounded-full" />
               Web Development
             </h3>
             <div className="space-y-3">
@@ -276,7 +285,7 @@ export default function Hero() {
           </div>
 
           {/* GitHub Activity */}
-          <div className="bg-black/20 border border-white/10 rounded-2xl p-6 backdrop-blur-sm">
+          <div className="bg-black/20 border border-amber-400/20 rounded-2xl p-8 backdrop-blur-sm">
             <LiveGitHubActivity username="nipunsujesh" />
           </div>
         </div>
