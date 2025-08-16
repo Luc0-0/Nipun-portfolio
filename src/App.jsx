@@ -15,6 +15,7 @@ import QuantumParticles from './components/QuantumParticles';
 import FloatingActionButton from './components/FloatingActionButton';
 import CustomCursor from './components/CustomCursor';
 import { disableDevTools, consoleWarning } from './utils/protection';
+import GoogleAnalytics from './components/GoogleAnalytics';
 
 export default function App() {
   // Temporarily disabled protection to test Google Analytics
@@ -40,6 +41,9 @@ export default function App() {
 
   return (
     <div className="min-h-screen relative" style={{ background: 'linear-gradient(to bottom, #000011, #000033)' }}>
+      {/* Google Analytics */}
+      <GoogleAnalytics />
+      
       {/* Navigation */}
       <Navigation />
       
