@@ -38,6 +38,7 @@ function MouseInteractiveStars() {
       saturation={0} 
       fade={true}
       speed={0.5}
+      color="#1a1a1a" // Much darker stars for light mode
     />
   );
 }
