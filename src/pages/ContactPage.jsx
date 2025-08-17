@@ -66,20 +66,20 @@ export default function ContactPage() {
           <TextReveal delay={400}>
             <TiltCard className="bg-white/5 backdrop-blur-sm border border-amber-400/20 rounded-2xl p-8">
               <h2 className="text-2xl font-bold text-white mb-6">Send Message</h2>
-              <form className="space-y-4" action="https://formspree.io/f/xdkdvgwq" method="POST">
+              <form className="space-y-4" action="https://formspree.io/f/xdkdvgwq" method="POST" target="_blank">
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">Name</label>
-                  <input type="text" name="name" className="w-full px-4 py-3 bg-white/10 border border-amber-400/20 rounded-lg focus:border-amber-400/40 focus:outline-none text-white" required />
+                  <input type="text" name="name" className="w-full px-4 py-3 bg-white/10 border border-amber-400/20 rounded-lg focus:border-amber-400/40 focus:outline-none text-white" required autocomplete="name" />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">Email</label>
-                  <input type="email" name="email" className="w-full px-4 py-3 bg-white/10 border border-amber-400/20 rounded-lg focus:border-amber-400/40 focus:outline-none text-white" required />
+                  <input type="email" name="email" className="w-full px-4 py-3 bg-white/10 border border-amber-400/20 rounded-lg focus:border-amber-400/40 focus:outline-none text-white" required autocomplete="email" />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">Message</label>
                   <textarea rows="4" name="message" className="w-full px-4 py-3 bg-white/10 border border-amber-400/20 rounded-lg focus:border-amber-400/40 focus:outline-none text-white resize-none" required></textarea>
                 </div>
-                <button type="submit" className="w-full px-6 py-3 bg-gradient-to-r from-amber-500 to-amber-600 text-white font-medium rounded-lg hover:from-amber-400 hover:to-amber-500 transition-all duration-300">
+                <button type="submit" className="w-full px-6 py-3 bg-gradient-to-r from-amber-500 to-amber-600 text-white font-medium rounded-lg hover:from-amber-400 hover:to-amber-500 transition-all duration-300 touch-manipulation">
                   Send Message
                 </button>
               </form>
