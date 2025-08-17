@@ -54,10 +54,10 @@ export default function Achievements() {
         {/* Section Header */}
         <TextReveal>
           <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-white to-amber-100">
+            <h2 className="text-4xl lg:text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-amber-100">
               Achievements & Certificates
             </h2>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
               Professional certifications and achievements that validate my expertise
             </p>
           </div>
@@ -67,10 +67,10 @@ export default function Achievements() {
         <div className="grid md:grid-cols-2 gap-8">
           {ACHIEVEMENTS.map((achievement, idx) => (
             <TextReveal key={achievement.id} delay={idx * 100}>
-              <TiltCard className="group relative bg-white/5 backdrop-blur-sm border border-amber-400/20 rounded-2xl p-8 hover:bg-white/10 hover:border-amber-400/40 transition-all duration-300 hover:shadow-2xl hover:shadow-amber-400/20" intensity={1.5}>
+              <TiltCard className="group relative bg-white/90 dark:bg-white/5 backdrop-blur-sm border border-gray-200 dark:border-amber-400/20 rounded-2xl p-8 hover:bg-gray-50 dark:hover:bg-white/10 hover:border-gray-300 dark:hover:border-amber-400/40 transition-all duration-300 hover:shadow-2xl hover:shadow-gray-800/30 shadow-lg shadow-gray-600/20 dark:hover:shadow-amber-400/20 dark:shadow-amber-400/20" intensity={1.5}>
                 
                 {/* Certificate Number Badge */}
-                <div className="absolute -top-4 -right-4 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg group-hover:scale-110 transition-all duration-300 bg-gradient-to-br from-amber-500 to-amber-600">
+                <div className="absolute -top-4 -right-4 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg group-hover:scale-110 transition-all duration-300 bg-gradient-to-br from-amber-800 to-amber-900">
                   <span className="group-hover:animate-pulse">{String(idx + 1).padStart(2, '0')}</span>
                 </div>
 
@@ -120,17 +120,17 @@ export default function Achievements() {
                   {/* Certificate Details */}
                   <div className="space-y-3">
                     <div>
-                      <h3 className="text-xl font-bold text-white mb-1 group-hover:text-amber-100 transition-colors duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-1 group-hover:text-gray-800 dark:group-hover:text-amber-100 transition-colors duration-300">
                         {achievement.title}
                       </h3>
-                      <div className="flex items-center gap-2 text-sm text-amber-300">
+                      <div className="flex items-center gap-2 text-sm text-amber-700 dark:text-amber-300">
                         <span>{achievement.issuer}</span>
                         <span>•</span>
                         <span>{achievement.date}</span>
                       </div>
                     </div>
 
-                    <p className="text-gray-300 text-sm leading-relaxed group-hover:text-gray-200 transition-colors duration-300">
+                    <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed group-hover:text-gray-600 dark:group-hover:text-gray-200 transition-colors duration-300">
                       {achievement.description}
                     </p>
 
@@ -139,7 +139,7 @@ export default function Achievements() {
                       {achievement.skills.map((skill, skillIdx) => (
                         <span
                           key={skillIdx}
-                          className="px-2 py-1 text-xs bg-amber-500/10 text-amber-200 rounded-full border border-amber-500/20 hover:bg-amber-500/20 hover:border-amber-400/40 transition-all duration-300"
+                          className="px-2 py-1 text-xs bg-amber-100 dark:bg-amber-500/10 text-amber-800 dark:text-amber-200 rounded-full border border-amber-300 dark:border-amber-500/20 hover:bg-amber-200 dark:hover:bg-amber-500/20 hover:border-amber-400 dark:hover:border-amber-400/40 transition-all duration-300"
                         >
                           {skill}
                         </span>
@@ -149,7 +149,7 @@ export default function Achievements() {
                     {/* Verify/View Button */}
                     <button 
                       onClick={() => achievement.certificateUrl && window.open(achievement.certificateUrl, '_blank')}
-                      className="text-sm px-4 py-2 bg-white/10 border border-amber-400/20 rounded-lg hover:bg-amber-500/10 hover:border-amber-400/40 focus:outline-none focus:ring-2 focus:ring-amber-500 transition-all duration-300"
+                      className="text-sm px-4 py-2 bg-gray-100 dark:bg-white/10 border border-gray-300 dark:border-amber-400/20 rounded-lg hover:bg-gray-200 dark:hover:bg-amber-500/10 hover:border-gray-400 dark:hover:border-amber-400/40 focus:outline-none focus:ring-2 focus:ring-amber-500 transition-all duration-300 text-gray-900 dark:text-white"
                       disabled={!achievement.certificateUrl}
                     >
                       {achievement.certificateUrl ? 'View Certificate' : 'Verify Certificate'}

@@ -91,7 +91,7 @@ export default function Hero() {
           <div className="text-center lg:text-left animate-fade-in">
             {/* Epic animated title with typewriter effect */}
             <h1 className="text-6xl lg:text-7xl font-bold mb-8 relative group cursor-default">
-              <div className="text-transparent bg-clip-text bg-gradient-to-r from-white to-amber-100 hover:from-amber-100 hover:to-amber-200 transition-all duration-300 hover:scale-105">
+              <div className="text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-amber-100 hover:from-gray-800 hover:to-gray-600 dark:hover:from-amber-100 dark:hover:to-amber-200 transition-all duration-300 hover:scale-105">
                 <TypewriterText
                   texts={["Nipun Sujesh"]}
                   speed={30}
@@ -107,7 +107,7 @@ export default function Hero() {
 
               <div className="mt-8">
                 <div
-                  className="block text-2xl lg:text-3xl text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-amber-400 font-light tracking-[0.2em] animate-slide-up hover:tracking-[0.3em] transition-all duration-300"
+                  className="block text-2xl lg:text-3xl text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-amber-800 dark:from-amber-200 dark:to-amber-400 font-light tracking-[0.2em] animate-slide-up hover:tracking-[0.3em] transition-all duration-300"
                   style={{ animationDelay: "0.1s" }}
                   title="🎓 Learning the future"
                 >
@@ -141,10 +141,10 @@ export default function Hero() {
               style={{ animationDelay: "1.4s" }}
             >
               <div className="relative group">
-                <p className="text-xl text-gray-100 max-w-2xl leading-relaxed">
+                <p className="text-xl text-gray-700 dark:text-gray-100 max-w-2xl leading-relaxed">
                   Training neural networks and crafting
                   <span
-                    className="text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-cyan-300 font-semibold bg-purple-400/10 px-2 py-1 rounded border border-purple-400/20 hover:border-cyan-400/40 transition-all duration-300 cursor-pointer"
+                    className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-cyan-600 dark:from-purple-300 dark:to-cyan-300 font-semibold bg-purple-400/10 px-2 py-1 rounded border border-purple-400/20 hover:border-cyan-400/40 transition-all duration-300 cursor-pointer"
                     title="🧠 Deep learning in progress..."
                   >
                     {" "}
@@ -197,10 +197,10 @@ export default function Hero() {
                 
                 {/* Floating name and title */}
                 <div className="text-center mt-8 group-hover:translate-y-2 transition-transform duration-500">
-                  <h3 className="text-3xl font-bold text-white mb-3 drop-shadow-lg group-hover:text-amber-100 transition-colors duration-300">
+                  <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-3 drop-shadow-lg group-hover:text-gray-800 dark:group-hover:text-amber-100 transition-colors duration-300">
                     Nipun Sujesh
                   </h3>
-                  <p className="text-amber-300 font-medium text-lg tracking-wide drop-shadow-md group-hover:text-amber-200 transition-colors duration-300">
+                  <p className="text-amber-700 dark:text-amber-300 font-medium text-lg tracking-wide drop-shadow-md group-hover:text-amber-600 dark:group-hover:text-amber-200 transition-colors duration-300">
                     AI Developer & Digital Craftsman
                   </p>
                 </div>
@@ -214,9 +214,9 @@ export default function Hero() {
       <div className="max-w-6xl mx-auto relative z-10 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* AI Skills */}
-          <div className="bg-black/20 border border-amber-400/20 rounded-2xl p-8 backdrop-blur-sm">
-            <h3 className="text-2xl font-bold text-amber-100 mb-6 flex items-center gap-4">
-              <div className="w-4 h-4 bg-amber-400 rounded-full" />
+          <div className="bg-white/80 dark:bg-black/20 border border-amber-400/40 dark:border-amber-400/20 rounded-2xl p-8 backdrop-blur-sm">
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-amber-100 mb-6 flex items-center gap-4">
+              <div className="w-4 h-4 bg-amber-500 dark:bg-amber-400 rounded-full" />
               AI & ML Skills
             </h3>
             <div className="space-y-3">
@@ -237,9 +237,9 @@ export default function Hero() {
           </div>
 
           {/* Web Development Skills */}
-          <div className="bg-black/20 border border-amber-400/20 rounded-2xl p-8 backdrop-blur-sm">
-            <h3 className="text-2xl font-bold text-amber-100 mb-6 flex items-center gap-4">
-              <div className="w-4 h-4 bg-amber-400 rounded-full" />
+          <div className="bg-white/80 dark:bg-black/20 border border-amber-400/40 dark:border-amber-400/20 rounded-2xl p-8 backdrop-blur-sm">
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-amber-100 mb-6 flex items-center gap-4">
+              <div className="w-4 h-4 bg-amber-500 dark:bg-amber-400 rounded-full" />
               Web Development
             </h3>
             <div className="space-y-3">
@@ -260,7 +260,7 @@ export default function Hero() {
           </div>
 
           {/* GitHub Activity */}
-          <div className="bg-black/20 border border-amber-400/20 rounded-2xl p-8 backdrop-blur-sm">
+          <div className="bg-white/80 dark:bg-black/20 border border-amber-400/40 dark:border-amber-400/20 rounded-2xl p-8 backdrop-blur-sm">
             <LiveGitHubActivity username="Luc0-0" />
           </div>
         </div>
