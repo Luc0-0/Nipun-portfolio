@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import { HashRouter, Routes, Route } from 'react-router-dom'
 import './index.css'
 import App from './App.jsx'
+import { ThemeProvider } from './contexts/ThemeContext'
 import AboutPage from './pages/AboutPage.jsx'
 import OngoingPage from './pages/OngoingPage.jsx'
 import AiSkillsPage from './pages/AiSkillsPage.jsx'
@@ -15,8 +16,9 @@ import BlogPostPage from './pages/BlogPostPage.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <HashRouter>
-      <Routes>
+    <ThemeProvider>
+      <HashRouter>
+        <Routes>
         <Route path="/" element={<App />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/ongoing" element={<OngoingPage />} />
@@ -30,7 +32,8 @@ createRoot(document.getElementById('root')).render(
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/blog/:id" element={<BlogPostPage />} />
-      </Routes>
-    </HashRouter>
+        </Routes>
+      </HashRouter>
+    </ThemeProvider>
   </StrictMode>,
 )

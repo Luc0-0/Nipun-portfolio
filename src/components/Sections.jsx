@@ -95,14 +95,14 @@ export default function Sections() {
           >
             {/* Enhanced Container with motion effects */}
             <TextReveal delay={idx * 100}>
-              <TiltCard className="relative bg-white/5 backdrop-blur-sm border border-amber-400/20 rounded-2xl p-8 hover:bg-white/10 hover:border-amber-400/40 transition-all duration-300 hover:shadow-2xl hover:shadow-amber-400/20" intensity={2}>
+              <TiltCard className="relative bg-white/90 dark:bg-white/5 backdrop-blur-sm border border-gray-200 dark:border-amber-400/20 rounded-2xl p-8 hover:bg-gray-50 dark:hover:bg-white/10 hover:border-gray-300 dark:hover:border-amber-400/40 transition-all duration-300 hover:shadow-2xl hover:shadow-gray-800/30 shadow-lg shadow-gray-600/20 dark:hover:shadow-amber-400/20 dark:shadow-amber-400/20" intensity={2}>
               
               {/* Enhanced section number with hover effects */}
               <div 
                 className="absolute -top-4 -left-4 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg group-hover:scale-110 transition-all duration-300"
                 style={{ 
-                  background: `linear-gradient(135deg, #f59e0b, #d97706)`,
-                  boxShadow: `0 0 20px #f59e0b40`
+                  background: `linear-gradient(135deg, #92400e, #78350f)`,
+                  boxShadow: `0 0 20px #92400e60`
                 }}
                 title={`Section ${idx + 1}: ${section.title}`}
               >
@@ -132,11 +132,11 @@ export default function Sections() {
                 {/* Content - Left side */}
                 <div className="lg:col-span-2 space-y-6">
                   <header>
-                    <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-white to-amber-100">
+                    <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-amber-100">
                       {section.title}
                     </h2>
                     
-                    <p className="text-lg text-gray-200 leading-relaxed">
+                    <p className="text-lg text-gray-700 dark:text-gray-200 leading-relaxed">
                       {section.description}
                     </p>
                   </header>
@@ -146,7 +146,7 @@ export default function Sections() {
                     {section.skills.map((skill, skillIdx) => (
                       <span
                         key={skillIdx}
-                        className="px-3 py-1 text-sm bg-amber-500/10 text-amber-200 rounded-full border border-amber-500/20 hover:bg-amber-500/20 hover:border-amber-400/40 transition-all duration-300"
+                        className="px-3 py-1 text-sm bg-amber-100 dark:bg-amber-500/10 text-amber-800 dark:text-amber-200 rounded-full border border-amber-300 dark:border-amber-500/20 hover:bg-amber-200 dark:hover:bg-amber-500/20 hover:border-amber-400 dark:hover:border-amber-400/40 transition-all duration-300"
                         title={`Expertise in ${skill}`}
                       >
                         {skill}
@@ -158,7 +158,7 @@ export default function Sections() {
                   <div className="flex flex-wrap gap-4 pt-4">
                     <button 
                       onClick={() => window.open(`/#/${section.id}`, '_blank')}
-                      className="px-6 py-3 bg-white/10 border border-amber-400/20 rounded-lg hover:bg-amber-500/10 hover:border-amber-400/40 focus:outline-none focus:ring-2 focus:ring-amber-500 transition-all duration-300"
+                      className="px-6 py-3 bg-gray-100 dark:bg-white/10 border border-gray-300 dark:border-amber-400/20 rounded-lg hover:bg-gray-200 dark:hover:bg-amber-500/10 hover:border-gray-400 dark:hover:border-amber-400/40 focus:outline-none focus:ring-2 focus:ring-amber-500 transition-all duration-300 text-gray-900 dark:text-white"
                     >
                       Know More
                     </button>
