@@ -176,77 +176,35 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right: Professional Profile Card */}
+          {/* Right: Floating Profile Image */}
           <div className="space-y-8">
             <div
               className="flex justify-center lg:justify-end lg:pr-16 animate-fade-in"
               style={{ animationDelay: "1.2s" }}
             >
-              <TiltCard className="relative group" intensity={4}>
-                {/* Cinematic backdrop */}
-                <div className="absolute -inset-8 bg-gradient-to-br from-black/40 via-purple-900/20 to-cyan-900/20 rounded-3xl blur-2xl" />
-                <div className="absolute -inset-6 bg-gradient-to-r from-purple-500/10 via-cyan-500/15 to-indigo-500/10 rounded-3xl blur-xl opacity-60 group-hover:opacity-90 transition-all duration-1000" />
-
-                {/* Cinematic frame */}
-                <div className="relative bg-black/30 backdrop-blur-sm border border-white/10 rounded-2xl p-8 overflow-hidden">
-                  {/* Film grain overlay */}
-                  <div className="absolute inset-0 opacity-20 bg-gradient-to-br from-transparent via-white/5 to-transparent" />
-
-                  {/* Cinematic lighting strips */}
-                  <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-cyan-400/30 via-transparent to-purple-400/30 opacity-40" />
-                  <div className="absolute top-0 right-1/4 w-px h-full bg-gradient-to-b from-purple-400/30 via-transparent to-cyan-400/30 opacity-40" />
-
-                  {/* Professional Profile Card */}
-                  <div className="text-center relative z-10">
-                    {/* Cinematic Profile Picture */}
-                    <div className="relative w-80 h-80 lg:w-96 lg:h-96 mx-auto mb-6">
-                      {/* Multiple shadow layers for depth */}
-                      <div className="absolute inset-0 rounded-full bg-gradient-to-br from-purple-500/20 to-cyan-500/20 blur-xl scale-110" />
-                      <div className="absolute inset-0 rounded-full bg-gradient-to-tl from-cyan-400/10 to-purple-400/10 blur-2xl scale-125" />
-
-                      <img
-                        src="/images/model.png"
-                        alt="Nipun Sujesh"
-                        className="relative w-full h-full object-cover rounded-full border-2 border-white/30 shadow-2xl group-hover:scale-105 transition-all duration-700 z-10"
-                        style={{
-                          filter:
-                            "contrast(1.05) brightness(0.95) drop-shadow(0 0 30px rgba(168, 85, 247, 0.3))",
-                          objectPosition: "center 8%",
-                        }}
-                      />
-
-                      {/* Cinematic orbital rings */}
-                      <div
-                        className="absolute inset-0 rounded-full border border-gradient-to-r from-purple-400/40 via-cyan-400/40 to-purple-400/40 animate-spin"
-                        style={{ animationDuration: "20s" }}
-                      />
-                      <div
-                        className="absolute inset-2 rounded-full border border-gradient-to-l from-cyan-400/20 via-purple-400/20 to-cyan-400/20 animate-spin"
-                        style={{
-                          animationDuration: "15s",
-                          animationDirection: "reverse",
-                        }}
-                      />
-
-                      {/* Cinematic corner accents */}
-                      <div className="absolute -top-2 -left-2 w-8 h-8 border-l-2 border-t-2 border-cyan-400/60 rounded-tl-lg" />
-                      <div className="absolute -top-2 -right-2 w-8 h-8 border-r-2 border-t-2 border-purple-400/60 rounded-tr-lg" />
-                      <div className="absolute -bottom-2 -left-2 w-8 h-8 border-l-2 border-b-2 border-purple-400/60 rounded-bl-lg" />
-                      <div className="absolute -bottom-2 -right-2 w-8 h-8 border-r-2 border-b-2 border-cyan-400/60 rounded-br-lg" />
-                    </div>
-
-                    {/* Name and Title */}
-                    <div>
-                      <h3 className="text-3xl font-bold text-white mb-3 drop-shadow-lg">
-                        Nipun Sujesh
-                      </h3>
-                      <p className="text-cyan-400 font-medium text-lg tracking-wide drop-shadow-md">
-                        AI Developer & Digital Craftsman
-                      </p>
-                    </div>
-                  </div>
+              <div className="relative group">
+                {/* Free-form Profile Image */}
+                <img
+                  src="/images/model.png"
+                  alt="Nipun Sujesh"
+                  className="max-w-sm lg:max-w-md mx-auto group-hover:scale-105 transition-all duration-700 rounded-2xl"
+                  style={{
+                    filter: "contrast(1.05) brightness(0.95) drop-shadow(0 0 20px rgba(245, 195, 107, 0.6)) drop-shadow(0 0 40px rgba(245, 195, 107, 0.3))",
+                    backgroundColor: "transparent",
+                    clipPath: "inset(0 0 60px 0)"
+                  }}
+                />
+                
+                {/* Floating name and title */}
+                <div className="text-center mt-8 group-hover:translate-y-2 transition-transform duration-500">
+                  <h3 className="text-3xl font-bold text-white mb-3 drop-shadow-lg group-hover:text-amber-100 transition-colors duration-300">
+                    Nipun Sujesh
+                  </h3>
+                  <p className="text-amber-300 font-medium text-lg tracking-wide drop-shadow-md group-hover:text-amber-200 transition-colors duration-300">
+                    AI Developer & Digital Craftsman
+                  </p>
                 </div>
-              </TiltCard>
+              </div>
             </div>
           </div>
         </div>

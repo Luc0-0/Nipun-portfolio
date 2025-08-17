@@ -9,7 +9,7 @@ const NAV_ITEMS = [
   { id: 'about', label: 'About', path: '/#about' },
   { id: 'projects', label: 'Projects', path: '/#project1' },
   { id: 'skills', label: 'Skills', path: '/#ai-skills' },
-  { id: 'achievements', label: 'Achievements', path: '/#achievements' },
+  { id: 'blog', label: 'Blog', path: '/#/blog' },
   { id: 'contact', label: 'Contact', path: '/#contact' }
 ];
 
@@ -44,7 +44,9 @@ export default function Navigation() {
   }, []);
 
   const handleNavClick = (item) => {
-    if (item.path.startsWith('/#')) {
+    if (item.id === 'blog') {
+      window.location.href = '/#/blog';
+    } else if (item.path.startsWith('/#')) {
       const sectionId = item.path.substring(2);
       const element = document.getElementById(sectionId);
       if (element) {
