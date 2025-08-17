@@ -1,11 +1,10 @@
 // src/pages/ContactPage.jsx
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import TextReveal from '../components/TextReveal';
 import TiltCard from '../components/TiltCard';
 
 export default function ContactPage() {
-  const [status, setStatus] = useState('');
   return (
     <div className="min-h-screen pt-20 pb-12" style={{ background: 'linear-gradient(to bottom, #000011, #000033)' }}>
       <div className="max-w-4xl mx-auto px-6">
@@ -67,31 +66,7 @@ export default function ContactPage() {
           <TextReveal delay={400}>
             <TiltCard className="bg-white/5 backdrop-blur-sm border border-amber-400/20 rounded-2xl p-8">
               <h2 className="text-2xl font-bold text-white mb-6">Send Message</h2>
-              <form className="space-y-4" action="https://formspree.io/f/meozwavv" method="POST" onSubmit={async (e) => {
-                e.preventDefault();
-                setStatus('Sending...');
-                const form = e.target;
-                const formData = new FormData(form);
-                
-                try {
-                  const response = await fetch('https://formspree.io/f/meozwavv', {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                      'Accept': 'application/json'
-                    }
-                  });
-                  
-                  if (response.ok) {
-                    setStatus('Message sent successfully!');
-                    form.reset();
-                  } else {
-                    setStatus('Failed to send message. Please try again.');
-                  }
-                } catch (error) {
-                  setStatus('Failed to send message. Please try again.');
-                }
-              }}>
+              <form className="space-y-4" action="https://formspree.io/f/meozwavv" method="POST">
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">Name</label>
                   <input type="text" name="name" className="w-full px-4 py-3 bg-white/10 border border-amber-400/20 rounded-lg focus:border-amber-400/40 focus:outline-none text-white" required />
@@ -104,15 +79,9 @@ export default function ContactPage() {
                   <label className="block text-sm font-medium text-gray-300 mb-2">Message</label>
                   <textarea rows="4" name="message" className="w-full px-4 py-3 bg-white/10 border border-amber-400/20 rounded-lg focus:border-amber-400/40 focus:outline-none text-white resize-none" required></textarea>
                 </div>
-                <button type="submit" className="w-full px-6 py-3 bg-gradient-to-r from-amber-500 to-amber-600 text-white font-medium rounded-lg hover:from-amber-400 hover:to-amber-500 transition-all duration-300 disabled:opacity-50" disabled={status === 'Sending...'}>
-                  {status === 'Sending...' ? 'Sending...' : 'Send Message'}
+                <button type="submit" className="w-full px-6 py-3 bg-gradient-to-r from-amber-500 to-amber-600 text-white font-medium rounded-lg hover:from-amber-400 hover:to-amber-500 transition-all duration-300">
+                  Send Message
                 </button>
-                
-                {status && (
-                  <div className={`text-center p-3 rounded-lg ${status.includes('successfully') ? 'bg-green-500/20 text-green-300' : status.includes('Sending') ? 'bg-blue-500/20 text-blue-300' : 'bg-red-500/20 text-red-300'}`}>
-                    {status}
-                  </div>
-                )}
               </form>
             </TiltCard>
           </TextReveal>
