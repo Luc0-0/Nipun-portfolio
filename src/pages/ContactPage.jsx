@@ -66,7 +66,7 @@ export default function ContactPage() {
           <TextReveal delay={400}>
             <TiltCard className="bg-white/5 backdrop-blur-sm border border-amber-400/20 rounded-2xl p-8">
               <h2 className="text-2xl font-bold text-white mb-6">Send Message</h2>
-              <form className="space-y-4" action="https://formspree.io/f/meozwavv" method="POST">
+              <form className="space-y-4" action="https://formspree.io/f/xdkdvgwq" method="POST">
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">Name</label>
                   <input type="text" name="name" className="w-full px-4 py-3 bg-white/10 border border-amber-400/20 rounded-lg focus:border-amber-400/40 focus:outline-none text-white" required />
