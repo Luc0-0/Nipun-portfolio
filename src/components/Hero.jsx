@@ -10,6 +10,7 @@ import AdvancedCursor from "./AdvancedCursor";
 import ScrollReveal from "./ScrollReveal";
 import SkillMeter from "./SkillMeter";
 import LiveGitHubActivity from "./LiveGitHubActivity";
+import SimpleTextReveal from "./SimpleTextReveal";
 
 export default function Hero() {
   const [showWelcome, setShowWelcome] = useState(() => {

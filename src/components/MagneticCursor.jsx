@@ -1,76 +1,69 @@
 // src/components/MagneticCursor.jsx
-// Magnetic cursor with morphing effects
-
-import React, { useRef, useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export default function MagneticCursor() {
-  const cursorRef = useRef();
-  const cursorDotRef = useRef();
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [isHovering, setIsHovering] = useState(false);
 
   useEffect(() => {
-    const cursor = cursorRef.current;
-    const cursorDot = cursorDotRef.current;
-    let mouseX = 0, mouseY = 0;
-    let cursorX = 0, cursorY = 0;
-
     const handleMouseMove = (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
+      setMousePos({ x: e.clientX, y: e.clientY });
     };
 
-    const handleMouseEnter = (e) => {
-      const target = e.target;
-      if (target.matches('button, a, [data-magnetic]')) {
-        cursor.style.transform = `translate(${mouseX - 20}px, ${mouseY - 20}px) scale(2)`;
-        cursor.style.backgroundColor = 'rgba(100, 200, 255, 0.2)';
-        cursorDot.style.opacity = '0';
-      }
-    };
+    const handleMouseEnter = () => setIsHovering(true);
+    const handleMouseLeave = () => setIsHovering(false);
 
-    const handleMouseLeave = () => {
-      cursor.style.transform = `translate(${mouseX - 10}px, ${mouseY - 10}px) scale(1)`;
-      cursor.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-      cursorDot.style.opacity = '1';
-    };
+    // Add event listeners to interactive elements
+    const interactiveElements = document.querySelectorAll('button, a, .magnetic');
+    
+    interactiveElements.forEach(element => {
+      element.addEventListener('mouseenter', handleMouseEnter);
+      element.addEventListener('mouseleave', handleMouseLeave);
+    });
 
-    const animateCursor = () => {
-      cursorX += (mouseX - cursorX) * 0.1;
-      cursorY += (mouseY - cursorY) * 0.1;
-      
-      if (cursor) {
-        cursor.style.left = cursorX - 10 + 'px';
-        cursor.style.top = cursorY - 10 + 'px';
-      }
-      if (cursorDot) {
-        cursorDot.style.left = mouseX - 2 + 'px';
-        cursorDot.style.top = mouseY - 2 + 'px';
-      }
-      
-      requestAnimationFrame(animateCursor);
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mouseenter', handleMouseEnter, true);
-    document.addEventListener('mouseleave', handleMouseLeave, true);
-    animateCursor();
+    document.addEventListener('mousemove', handleMouseMove);
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseenter', handleMouseEnter, true);
-      document.removeEventListener('mouseleave', handleMouseLeave, true);
+      document.removeEventListener('mousemove', handleMouseMove);
+      interactiveElements.forEach(element => {
+        element.removeEventListener('mouseenter', handleMouseEnter);
+        element.removeEventListener('mouseleave', handleMouseLeave);
+      });
     };
   }, []);
 
+  // Hide on mobile
+  if (window.innerWidth < 768) return null;
+
   return (
     <>
+      {/* Main cursor */}
       <div
-        ref={cursorRef}
-        className="fixed w-5 h-5 rounded-full pointer-events-none z-50 mix-blend-difference transition-all duration-300"
-        style={{ backgroundColor: 'rgba(255, 255, 255, 0.1)' }}
+        className={`fixed pointer-events-none z-[9999] transition-all duration-300 ease-out ${
+          isHovering ? 'w-12 h-12' : 'w-6 h-6'
+        }`}
+        style={{
+          left: mousePos.x,
+          top: mousePos.y,
+          transform: 'translate(-50%, -50%)',
+          background: 'rgba(245, 158, 11, 0.3)',
+          border: '2px solid rgba(245, 158, 11, 0.8)',
+          borderRadius: '50%',
+          backdropFilter: 'blur(4px)'
+        }}
       />
+      
+      {/* Cursor dot */}
       <div
-        ref={cursorDotRef}
-        className="fixed w-1 h-1 bg-white rounded-full pointer-events-none z-50"
+        className="fixed pointer-events-none z-[9999] w-1 h-1 transition-all duration-100"
+        style={{
+          left: mousePos.x,
+          top: mousePos.y,
+          transform: 'translate(-50%, -50%)',
+          background: '#f59e0b',
+          borderRadius: '50%',
+          opacity: isHovering ? 0 : 1
+        }}
       />
     </>
   );
