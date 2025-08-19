@@ -4,6 +4,7 @@
 import React from 'react';
 import TextReveal from './TextReveal';
 import TiltCard from './TiltCard';
+import TextRevealAnimation from './TextRevealAnimation';
 
 const SECTIONS = [
   { 
@@ -95,11 +96,11 @@ export default function Sections() {
           >
             {/* Enhanced Container with motion effects */}
             <TextReveal delay={idx * 100}>
-              <TiltCard className="relative bg-white/90 dark:bg-white/5 backdrop-blur-sm border border-gray-200 dark:border-amber-400/20 rounded-2xl p-8 hover:bg-gray-50 dark:hover:bg-white/10 hover:border-gray-300 dark:hover:border-amber-400/40 transition-all duration-300 hover:shadow-2xl hover:shadow-gray-800/30 shadow-lg shadow-gray-600/20 dark:hover:shadow-amber-400/20 dark:shadow-amber-400/20" intensity={2}>
+              <TiltCard className="relative bg-white/90 dark:bg-white/5 backdrop-blur-sm border border-gray-200 dark:border-amber-400/20 rounded-2xl p-8 hover:bg-gray-50 dark:hover:bg-white/10 hover:border-gray-300 dark:hover:border-amber-400/40 transition-all duration-300 hover:shadow-2xl hover:shadow-gray-800/30 shadow-lg shadow-gray-600/20 dark:hover:shadow-amber-400/20 dark:shadow-amber-400/20 fade-in-up" intensity={2}>
               
               {/* Enhanced section number with hover effects */}
               <div 
-                className="absolute -top-4 -left-4 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg group-hover:scale-110 transition-all duration-300"
+                className="absolute -top-4 -left-4 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg group-hover:scale-110 transition-all duration-300 rotate-scroll"
                 style={{ 
                   background: `linear-gradient(135deg, #92400e, #78350f)`,
                   boxShadow: `0 0 20px #92400e60`
@@ -114,7 +115,7 @@ export default function Sections() {
                 {[...Array(3)].map((_, i) => (
                   <div
                     key={i}
-                    className="absolute w-1 h-1 bg-amber-400 rounded-full animate-pulse"
+                    className="absolute w-1 h-1 bg-amber-400 rounded-full animate-pulse parallax-slow"
                     style={{
                       left: `${20 + i * 30}%`,
                       top: `${10 + i * 20}%`,
@@ -142,7 +143,7 @@ export default function Sections() {
                   </header>
 
                   {/* Enhanced skills tags with stagger animation */}
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2 stagger-children">
                     {section.skills.map((skill, skillIdx) => (
                       <span
                         key={skillIdx}

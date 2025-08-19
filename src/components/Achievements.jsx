@@ -4,6 +4,7 @@
 import React from 'react';
 import TextReveal from './TextReveal';
 import TiltCard from './TiltCard';
+import TextRevealAnimation from './TextRevealAnimation';
 
 const ACHIEVEMENTS = [
   {
@@ -67,7 +68,7 @@ export default function Achievements() {
         <div className="grid md:grid-cols-2 gap-8">
           {ACHIEVEMENTS.map((achievement, idx) => (
             <TextReveal key={achievement.id} delay={idx * 100}>
-              <TiltCard className="group relative bg-white/90 dark:bg-white/5 backdrop-blur-sm border border-gray-200 dark:border-amber-400/20 rounded-2xl p-8 hover:bg-gray-50 dark:hover:bg-white/10 hover:border-gray-300 dark:hover:border-amber-400/40 transition-all duration-300 hover:shadow-2xl hover:shadow-gray-800/30 shadow-lg shadow-gray-600/20 dark:hover:shadow-amber-400/20 dark:shadow-amber-400/20" intensity={1.5}>
+              <TiltCard className="group relative bg-white/90 dark:bg-white/5 backdrop-blur-sm border border-gray-200 dark:border-amber-400/20 rounded-2xl p-8 hover:bg-gray-50 dark:hover:bg-white/10 hover:border-gray-300 dark:hover:border-amber-400/40 transition-all duration-300 hover:shadow-2xl hover:shadow-gray-800/30 shadow-lg shadow-gray-600/20 dark:hover:shadow-amber-400/20 dark:shadow-amber-400/20 scale-in" intensity={1.5}>
                 
                 {/* Certificate Number Badge */}
                 <div className="absolute -top-4 -right-4 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg group-hover:scale-110 transition-all duration-300 bg-gradient-to-br from-amber-800 to-amber-900">
@@ -135,7 +136,7 @@ export default function Achievements() {
                     </p>
 
                     {/* Skills Tags */}
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-2 stagger-children">
                       {achievement.skills.map((skill, skillIdx) => (
                         <span
                           key={skillIdx}
