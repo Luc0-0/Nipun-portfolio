@@ -21,9 +21,9 @@ import ScrollEffects from './components/ScrollEffects';
 import PageTransition from './components/PageTransition';
 import EnhancedParallax from './components/EnhancedParallax';
 import GlowCursor from './components/GlowCursor';
-import MorphingBlobCursor from './components/MorphingBlobCursor';
-import ParticleExplosion from './components/ParticleExplosion';
-import LightningEffect from './components/LightningEffect';
+import CometTrail from './components/CometTrail';
+import ConstellationLines from './components/ConstellationLines';
+
 
 export default function App() {
   // Temporarily disabled protection to test Google Analytics
@@ -78,20 +78,16 @@ function AppContent() {
       {/* Scroll Effects */}
       <ScrollEffects />
       
-      {/* Enhanced Parallax */}
-      <EnhancedParallax />
+
       
       {/* Glow Cursor */}
       <GlowCursor />
       
-      {/* Morphing Blob Cursor */}
-      <MorphingBlobCursor />
+      {/* Comet Trail */}
+      <CometTrail />
       
-      {/* Particle Explosion */}
-      <ParticleExplosion />
-      
-      {/* Lightning Effect */}
-      <LightningEffect />
+      {/* Constellation Lines */}
+      <ConstellationLines />
       
       {/* Navigation */}
       <Navigation />
