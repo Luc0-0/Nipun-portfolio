@@ -8,16 +8,22 @@ import SolarSystem3D from './components/SolarSystem3D';
 import Sections from './components/Sections';
 import Achievements from './components/Achievements';
 import Navigation from './components/Navigation';
-import MagneticCursor from './components/MagneticCursor';
 import HolographicElements from './components/HolographicElements';
 import RippleEffect from './components/RippleEffect';
 import QuantumParticles from './components/QuantumParticles';
 import FloatingActionButton from './components/FloatingActionButton';
-import CustomCursor from './components/CustomCursor';
 import { disableDevTools, consoleWarning } from './utils/protection';
 import GoogleAnalytics from './components/GoogleAnalytics';
 import { ThemeProvider, useTheme } from './contexts/ThemeContext';
 import ThemeToggle from './components/ThemeToggle';
+import SmoothScroll from './components/SmoothScroll';
+import ScrollEffects from './components/ScrollEffects';
+import PageTransition from './components/PageTransition';
+import EnhancedParallax from './components/EnhancedParallax';
+import GlowCursor from './components/GlowCursor';
+import MorphingBlobCursor from './components/MorphingBlobCursor';
+import ParticleExplosion from './components/ParticleExplosion';
+import LightningEffect from './components/LightningEffect';
 
 export default function App() {
   // Temporarily disabled protection to test Google Analytics
@@ -66,12 +72,31 @@ function AppContent() {
       {/* Google Analytics */}
       <GoogleAnalytics />
       
+      {/* Smooth Scroll */}
+      <SmoothScroll />
+      
+      {/* Scroll Effects */}
+      <ScrollEffects />
+      
+      {/* Enhanced Parallax */}
+      <EnhancedParallax />
+      
+      {/* Glow Cursor */}
+      <GlowCursor />
+      
+      {/* Morphing Blob Cursor */}
+      <MorphingBlobCursor />
+      
+      {/* Particle Explosion */}
+      <ParticleExplosion />
+      
+      {/* Lightning Effect */}
+      <LightningEffect />
+      
       {/* Navigation */}
       <Navigation />
       
       {/* Enhanced interactive elements */}
-      <CustomCursor />
-      <MagneticCursor />
       <HolographicElements />
       <RippleEffect />
       <QuantumParticles />

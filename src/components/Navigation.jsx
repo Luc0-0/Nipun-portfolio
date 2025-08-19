@@ -52,10 +52,7 @@ export default function Navigation() {
       if (element) {
         const offset = 80;
         const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-        window.scrollTo({
-          top: elementPosition - offset,
-          behavior: 'smooth'
-        });
+        window.lenis?.scrollTo(elementPosition - offset);
       }
     }
   };
