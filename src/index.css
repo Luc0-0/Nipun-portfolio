@@ -81,6 +81,62 @@ body {
   }
 }
 
+/* Neon Mode Styles */
+body.neon-mode {
+  background: #000011 !important;
+}
+
+body.neon-mode * {
+  text-shadow: 0 0 10px currentColor;
+}
+
+body.neon-mode .neon-glow {
+  box-shadow: 0 0 20px currentColor, inset 0 0 20px currentColor;
+  border: 1px solid currentColor;
+}
+
+/* Cinematic Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(245, 158, 11, 0.5); }
+  50% { box-shadow: 0 0 40px rgba(245, 158, 11, 0.8), 0 0 60px rgba(245, 158, 11, 0.4); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* 3D Card Effects */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Smooth Transitions */
+* {
+  transition-property: transform, opacity, box-shadow, background-color, border-color;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 /* Dynamic color variables */
 :root {
   --dynamic-hue: 45;
