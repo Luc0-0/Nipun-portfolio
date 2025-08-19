@@ -23,6 +23,12 @@ import EnhancedParallax from './components/EnhancedParallax';
 import GlowCursor from './components/GlowCursor';
 import CometTrail from './components/CometTrail';
 import ConstellationLines from './components/ConstellationLines';
+import ImmersiveBackground from './components/ImmersiveBackground';
+import CinematicCursor from './components/CinematicCursor';
+import NeonModeToggle from './components/NeonModeToggle';
+import ProjectShowcase from './components/ProjectShowcase';
+import AchievementWall from './components/AchievementWall';
+import QuickFix from './components/QuickFix';
 
 
 export default function App() {
@@ -80,14 +86,18 @@ function AppContent() {
       
 
       
-      {/* Glow Cursor */}
-      <GlowCursor />
+
+      
+      {/* Cinematic Cursor */}
+      <CinematicCursor />
       
       {/* Comet Trail */}
       <CometTrail />
       
       {/* Constellation Lines */}
       <ConstellationLines />
+      
+
       
       {/* Navigation */}
       <Navigation />
@@ -129,6 +139,16 @@ function AppContent() {
           <Sections />
         </div>
         
+        {/* Project Showcase */}
+        <div className="relative py-20">
+          <ProjectShowcase />
+        </div>
+
+        {/* Achievement Wall */}
+        <div className="relative py-20">
+          <AchievementWall />
+        </div>
+
         {/* Achievements section */}
         <div className="relative">
           <Achievements />
@@ -165,8 +185,8 @@ function AppContent() {
         </div>
       </footer>
       
-      {/* Theme Toggle */}
-      <ThemeToggle />
+      {/* Neon Mode Toggle */}
+      <NeonModeToggle />
     </div>
   );
 }
