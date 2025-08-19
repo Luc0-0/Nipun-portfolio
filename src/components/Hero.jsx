@@ -11,6 +11,10 @@ import ScrollReveal from "./ScrollReveal";
 import SkillMeter from "./SkillMeter";
 import LiveGitHubActivity from "./LiveGitHubActivity";
 import SimpleTextReveal from "./SimpleTextReveal";
+import CinematicText from "./CinematicText";
+import ParallaxSection from "./ParallaxSection";
+import SkillsRadar from "./SkillsRadar";
+import { motion } from 'framer-motion';
 
 export default function Hero() {
   const [showWelcome, setShowWelcome] = useState(() => {
@@ -211,7 +215,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Skills and GitHub Section - Bottom of Hero */}
+
       <div className="max-w-6xl mx-auto relative z-10 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* AI Skills */}
