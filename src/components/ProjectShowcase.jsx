@@ -8,10 +8,10 @@ const projects = [
     id: 1,
     title: "Interactive Portfolio Website",
     description: "Modern portfolio featuring 3D animations, smooth scrolling, and responsive design built with React and Three.js",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop",
+    image: "https://st2.depositphotos.com/1032577/6582/i/450/depositphotos_65828845-stock-photo-portfolio-written-on-notebook.jpg",
     video: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop",
     tags: ["React", "Three.js", "Framer Motion", "Tailwind CSS"],
-    demoUrl: "https://nipun-portfolio.vercel.app",
+    demoUrl: "https://nipun-portfolio-eight.vercel.app/",
     codeUrl: "https://github.com/Luc0-0/portfolio",
     featured: true
   },
@@ -19,7 +19,7 @@ const projects = [
     id: 2,
     title: "Machine Learning Dashboard",
     description: "Data visualization dashboard for ML model performance tracking with real-time metrics and interactive charts",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop",
+    image: "https://img.freepik.com/premium-photo/ui-dashboard_841014-9948.jpg",
     video: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop",
     tags: ["Python", "Streamlit", "Pandas", "Plotly"],
     demoUrl: "#",
@@ -29,11 +29,11 @@ const projects = [
   {
     id: 3,
     title: "Task Management App",
-    description: "Full-stack productivity application with user authentication, real-time updates, and collaborative features",
-    image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=300&fit=crop",
+    description: "A full-stack task management application with user authentication and real-time updates.",
+    image: "https://images-platform.99static.com/jBf5a8whJMMbR3S1BcujgHrDDt4=/500x500/top/smart/99designs-contests-attachments/20/20314/attachment_20314019",
     video: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=300&fit=crop",
     tags: ["React", "Node.js", "MongoDB", "Socket.io"],
-    demoUrl: "#",
+    demoUrl: "https://task-manager-pro-are3-drab.vercel.app", // Updated demo URL
     codeUrl: "#",
     featured: false
   }
@@ -60,14 +60,31 @@ function ProjectCard({ project, index }) {
         
         {/* Background Image/Video */}
         <div className="absolute inset-0">
+          {project.demoUrl && project.demoUrl !== '#' && showDemo ? (
+            <iframe
+              src={project.demoUrl}
+              title={project.title}
+              className="w-full h-full border-0"
+              allow="fullscreen"
+              style={{
+                backgroundColor: '#1a202c', // Dark background for iframe
+                width: '100%',
+                height: '100%',
+                display: 'block', // Ensure iframe fills the container
+              }}
+            ></iframe>
+          ) : ( // Render image thumbnail and gradient
+            <> {/* Use fragment to wrap multiple elements */}
           <motion.img
             src={project.image}
             alt={project.title}
             className="w-full h-full object-cover"
             animate={{ scale: isHovered ? 1.1 : 1 }}
             transition={{ duration: 0.6 }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+ />
+ <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" /> {/* Gradient overlay */}
+ </> )}
+
         </div>
 
         {/* Content */}
@@ -83,7 +100,9 @@ function ProjectCard({ project, index }) {
             {project.tags.map((tag, tagIndex) => (
               <span
                 key={tag}
-                className="px-3 py-1 bg-white/20 text-white rounded-full text-xs font-medium border border-white/30 backdrop-blur-sm"
+                className={`px-3 py-1 rounded-full text-xs font-medium backdrop-blur-sm ${
+                  project.id === 3 ? 'text-gray-800 bg-gray-200/30 border border-gray-400' : 'bg-white/20 text-white border border-white/30'
+                }`}
                 style={{ animationDelay: `${tagIndex * 0.1}s` }}
               >
                 {tag}
@@ -94,14 +113,12 @@ function ProjectCard({ project, index }) {
           {/* Title */}
           <CinematicText
             variant="slideUp"
-            className="text-2xl font-bold text-white mb-2"
-          >
-            {project.title}
-          </CinematicText>
+            className={`text-2xl font-bold mb-2 ${project.id === 3 ? 'text-amber-500' : 'text-white'}`}
+          > {project.title} </CinematicText>
 
           {/* Description */}
           <motion.p
-            className="text-gray-300 mb-4 text-sm"
+            className="mb-4 text-sm text-blue-400"
             initial={{ opacity: 0 }}
             animate={isHovered ? { opacity: 1 } : { opacity: 0.7 }}
           >
@@ -127,7 +144,7 @@ function ProjectCard({ project, index }) {
             <motion.button
               className="px-4 py-2 bg-white/10 text-white rounded-lg font-medium text-sm border border-white/20 cursor-view"
               whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.2)" }}
-              whileTap={{ scale: 0.95 }}
+              whileTap={{ scale: 0.95 }} onClick={() => window.open(project.codeUrl, '_blank')}
             >
               View Code
             </motion.button>
