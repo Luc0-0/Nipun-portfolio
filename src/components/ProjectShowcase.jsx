@@ -12,7 +12,7 @@ const projects = [
     video: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop",
     tags: ["React", "Three.js", "Framer Motion", "Tailwind CSS"],
     demoUrl: "https://nipun-portfolio-eight.vercel.app/",
-    codeUrl: "https://github.com/Luc0-0/portfolio",
+    codeUrl: "https://github.com/Luc0-0/Nipun-portfolio",
     featured: true
   },
   {
@@ -34,7 +34,7 @@ const projects = [
     video: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=300&fit=crop",
     tags: ["React", "Node.js", "MongoDB", "Socket.io"],
     demoUrl: "https://task-manager-pro-are3-drab.vercel.app", // Updated demo URL
-    codeUrl: "#",
+    codeUrl: "https://github.com/Luc0-0/Task-manager-pro",
     featured: false
   }
 ];
