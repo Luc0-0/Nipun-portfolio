@@ -1,3 +1,86 @@
+
+export default CategoryPage;
+function CategoryPage({ category }) {
+  const repos = repoData[category] || [];
+  const [flipped, setFlipped] = useState(Array(repos.length).fill(false));
+  const [search, setSearch] = useState("");
+
+  const handleFlip = idx => {
+    setFlipped(f => f.map((v, i) => (i === idx ? !v : v)));
+  };
+
+  const filteredRepos = repos.filter(repo => {
+    const searchLower = search.toLowerCase();
+    return (
+      repo.name.toLowerCase().includes(searchLower) ||
+      repo.description.toLowerCase().includes(searchLower) ||
+      (repo.techstack && repo.techstack.some(tech => tech.toLowerCase().includes(searchLower)))
+    );
+  });
+
+  return (
+    <div className="min-h-screen relative bg-gradient-to-b from-white to-gray-100 dark:bg-gradient-to-b dark:from-gray-900 dark:to-black py-20">
+      <div className="max-w-6xl mx-auto px-6">
+        <h1 className="text-4xl font-bold mb-8 text-center text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500">
+          {category.replace(/-/g, ' ').toUpperCase()} Projects
+        </h1>
+        <div className="mb-8 flex justify-center">
+          <input
+            type="text"
+            value={search}
+            onChange={e => setSearch(e.target.value)}
+            placeholder="Search by name, description, or tech..."
+            className="w-full max-w-md px-4 py-2 rounded-lg border border-amber-400/30 bg-white/80 dark:bg-gray-900/60 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-400"
+          />
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {filteredRepos.length === 0 ? (
+            <p className="text-center text-gray-400">No repositories found for this category.</p>
+          ) : (
+            filteredRepos.map((repo, idx) => (
+              <div
+                key={repo.name}
+                className="perspective"
+                style={{ perspective: '1200px' }}
+              >
+                <div
+                  className={`relative w-full h-80 transition-transform duration-700 transform-style-preserve-3d ${flipped[idx] ? 'rotate-y-180' : ''}`}
+                  style={{ transform: flipped[idx] ? 'rotateY(180deg)' : 'rotateY(0deg)' }}
+                  onClick={() => handleFlip(idx)}
+                >
+                  {/* Front Side */}
+                  <div className="absolute w-full h-full backface-hidden bg-white/90 dark:bg-gray-900/80 rounded-2xl p-8 flex flex-col items-center border border-amber-400/20 shadow-lg hover:shadow-amber-400/30 cursor-pointer">
+                    <img src={repo.image} alt={repo.name} className="mb-4 rounded-lg w-full h-32 object-cover" />
+                    <h2 className="text-xl font-bold mt-2 text-gray-900 dark:text-white text-center">{repo.name}</h2>
+                    <span className="inline-block px-4 py-2 bg-amber-500 text-white rounded hover:bg-amber-600 mt-2">Click to Flip</span>
+                  </div>
+                  {/* Back Side */}
+                  <div className="absolute w-full h-full backface-hidden bg-gradient-to-br from-amber-400/80 to-orange-500/80 rounded-2xl p-8 flex flex-col items-center justify-center border border-amber-400/20 shadow-lg rotate-y-180 cursor-pointer">
+                    <h2 className="text-xl font-bold mb-2 text-white text-center">{repo.name}</h2>
+                    <p className="text-white mb-4 text-center">{repo.description}</p>
+                    {repo.techstack && repo.techstack.length > 0 && (
+                      <div className="flex flex-wrap gap-2 justify-center mb-2">
+                        {repo.techstack.map((tech, i) => (
+                          <span key={i} className="flex items-center gap-1 px-3 py-1 text-xs bg-white/20 text-white rounded-full border border-white/30">
+                            <span>{techIcons[tech] || '🔧'}</span>
+                            <span>{tech}</span>
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                    <a href={repo.url} target="_blank" rel="noopener noreferrer" className="inline-block px-4 py-2 bg-white text-amber-600 rounded hover:bg-amber-100 mt-2 font-bold">View on GitHub</a>
+                  </div>
+                </div>
+              </div>
+            ))
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
 import React, { useState } from 'react';
 
 const techIcons = {
@@ -157,63 +240,4 @@ const repoData = {
   ]
 };
 
-export default function CategoryPage({ category }) {
-  const repos = repoData[category] || [];
-  const [flipped, setFlipped] = useState(Array(repos.length).fill(false));
 
-  const handleFlip = idx => {
-    setFlipped(f => f.map((v, i) => (i === idx ? !v : v)));
-  };
-
-  return (
-    <div className="min-h-screen relative bg-gradient-to-b from-white to-gray-100 dark:bg-gradient-to-b dark:from-gray-900 dark:to-black py-20">
-      <div className="max-w-6xl mx-auto px-6">
-        <h1 className="text-4xl font-bold mb-8 text-center text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500">
-          {category.replace(/-/g, ' ').toUpperCase()} Projects
-        </h1>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {repos.length === 0 ? (
-            <p className="text-center text-gray-400">No repositories found for this category.</p>
-          ) : (
-            repos.map((repo, idx) => (
-              <div
-                key={repo.name}
-                className="perspective"
-                style={{ perspective: '1200px' }}
-              >
-                <div
-                  className={`relative w-full h-80 transition-transform duration-700 transform-style-preserve-3d ${flipped[idx] ? 'rotate-y-180' : ''}`}
-                  style={{ transform: flipped[idx] ? 'rotateY(180deg)' : 'rotateY(0deg)' }}
-                  onClick={() => handleFlip(idx)}
-                >
-                  {/* Front Side */}
-                  <div className="absolute w-full h-full backface-hidden bg-white/90 dark:bg-gray-900/80 rounded-2xl p-8 flex flex-col items-center border border-amber-400/20 shadow-lg hover:shadow-amber-400/30 cursor-pointer">
-                    <img src={repo.image} alt={repo.name} className="mb-4 rounded-lg w-full h-32 object-cover" />
-                    <h2 className="text-xl font-bold mt-2 text-gray-900 dark:text-white text-center">{repo.name}</h2>
-                    <span className="inline-block px-4 py-2 bg-amber-500 text-white rounded hover:bg-amber-600 mt-2">Click to Flip</span>
-                  </div>
-                  {/* Back Side */}
-                  <div className="absolute w-full h-full backface-hidden bg-gradient-to-br from-amber-400/80 to-orange-500/80 rounded-2xl p-8 flex flex-col items-center justify-center border border-amber-400/20 shadow-lg rotate-y-180 cursor-pointer">
-                    <h2 className="text-xl font-bold mb-2 text-white text-center">{repo.name}</h2>
-                    <p className="text-white mb-4 text-center">{repo.description}</p>
-                    {repo.techstack && repo.techstack.length > 0 && (
-                      <div className="flex flex-wrap gap-2 justify-center mb-2">
-                        {repo.techstack.map((tech, i) => (
-                          <span key={i} className="flex items-center gap-1 px-3 py-1 text-xs bg-white/20 text-white rounded-full border border-white/30">
-                            <span>{techIcons[tech] || '🔧'}</span>
-                            <span>{tech}</span>
-                          </span>
-                        ))}
-                      </div>
-                    )}
-                    <a href={repo.url} target="_blank" rel="noopener noreferrer" className="inline-block px-4 py-2 bg-white text-amber-600 rounded hover:bg-amber-100 mt-2 font-bold">View on GitHub</a>
-                  </div>
-                </div>
-              </div>
-            ))
-          )}
-        </div>
-      </div>
-    </div>
-  );
-}
