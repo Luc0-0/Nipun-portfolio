@@ -8,6 +8,7 @@ const NAV_ITEMS = [
   { id: 'home', label: 'Home', path: '/' },
   { id: 'about', label: 'About', path: '/#about' },
   { id: 'projects', label: 'Projects', path: '/#project1' },
+  { id: 'showcase', label: 'Project Showcase', path: '/#projectshowcase' },
   { id: 'skills', label: 'Skills', path: '/#ai-skills' },
   { id: 'blog', label: 'Blog', path: '/#/blog' },
   { id: 'contact', label: 'Contact', path: '/#contact' }
@@ -46,6 +47,13 @@ export default function Navigation() {
   const handleNavClick = (item) => {
     if (item.id === 'blog') {
       window.location.href = '/#/blog';
+    } else if (item.id === 'showcase') {
+      const element = document.querySelector('.project-showcase-anchor');
+      if (element) {
+        const offset = 80;
+        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+        window.scrollTo({ top: elementPosition - offset, behavior: 'smooth' });
+      }
     } else if (item.path.startsWith('/#')) {
       const sectionId = item.path.substring(2);
       const element = document.getElementById(sectionId);

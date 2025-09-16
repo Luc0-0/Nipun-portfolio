@@ -7,73 +7,85 @@ import TiltCard from './TiltCard';
 import TextRevealAnimation from './TextRevealAnimation';
 
 const SECTIONS = [
-  { 
-    id: 'about', 
-    title: 'About Me', 
-    description: 'Final year AI and Data Science student passionate about machine learning, deep learning, and data analytics. Currently building expertise in Python, statistical modeling, and AI algorithms while working on academic projects and certifications.',
+  {
+    id: 'about',
+    title: 'About Me',
+    description: 'Final year AI and Data Science student passionate about machine learning, deep learning, and data analytics. Building expertise in Python, statistical modeling, and AI algorithms through academic projects and certifications.',
     skills: ['Python', 'Machine Learning', 'Data Analysis', 'Statistics'],
     color: '#f5c36b'
   },
-  { 
-    id: 'ongoing', 
-    title: 'Current Studies', 
-    description: 'Pursuing final year coursework in Advanced Machine Learning, Deep Neural Networks, and Big Data Analytics. Working on thesis project involving natural language processing and exploring cutting-edge AI research papers.',
+  {
+    id: 'ongoing',
+    title: 'Current Studies',
+    description: 'Pursuing final year coursework in Advanced Machine Learning, Deep Neural Networks, and Big Data Analytics. Thesis project on NLP and exploring cutting-edge AI research.',
     skills: ['Academic Research', 'Thesis Work', 'Literature Review'],
     color: '#4a90e2'
   },
-  { 
-    id: 'ai-skills', 
-    title: 'AI & ML Skills', 
-    description: 'Learning machine learning fundamentals through coursework and online certifications. Hands-on experience with Python libraries like scikit-learn, pandas, and numpy. IBM AI certified with practical knowledge of supervised and unsupervised learning.',
+  {
+    id: 'ai-skills',
+    title: 'AI & ML Skills',
+    description: 'Learning machine learning fundamentals through coursework and online certifications. Hands-on with Python, scikit-learn, pandas, and numpy. IBM AI certified.',
     skills: ['Python', 'Scikit-learn', 'Pandas', 'NumPy'],
     color: '#e74c3c'
   },
-  { 
-    id: 'web-skills', 
-    title: 'Technical Skills', 
-    description: 'Self-taught web development skills acquired through personal projects and online learning. Familiar with Python for data science, basic web technologies, and database fundamentals. Eager to apply these skills in real-world scenarios.',
+  {
+    id: 'web-skills',
+    title: 'Technical Skills',
+    description: 'Self-taught web development and data science skills. Familiar with Python, web technologies, and databases. Eager to apply these skills in real-world scenarios.',
     skills: ['Python', 'SQL', 'Data Visualization', 'Git'],
     color: '#2ecc71'
   },
-  { 
-    id: 'project1', 
-    title: 'Academic Project Alpha', 
-    description: 'University project focusing on sentiment analysis using natural language processing techniques. Implemented using Python and scikit-learn to analyze social media data and predict sentiment patterns.',
+  {
+    id: 'project1',
+    title: 'Academic Projects',
+    description: 'Explore my university projects, including sentiment analysis and NLP using Python and scikit-learn. Click below to check out the academic project repos.',
     skills: ['NLP', 'Sentiment Analysis', 'Python'],
-    color: '#9b59b6'
+    color: '#9b59b6',
+    category: 'academic'
   },
-  { 
-    id: 'project2', 
-    title: 'Data Analysis Project', 
-    description: 'Coursework project involving exploratory data analysis on a large dataset. Created visualizations and statistical insights using Python libraries to uncover meaningful patterns and trends.',
+  {
+    id: 'project2',
+    title: 'Data Analyst Projects',
+    description: 'Coursework and personal projects in data analysis, visualization, and statistics. Click below to check out the data analyst repos.',
     skills: ['Data Analysis', 'Visualization', 'Statistics'],
-    color: '#f39c12'
+    color: '#f39c12',
+    category: 'data-analyst'
   },
-  { 
-    id: 'project3', 
-    title: 'Machine Learning Model', 
-    description: 'Academic assignment to build and evaluate a predictive model using supervised learning techniques. Implemented various algorithms and compared their performance on real-world datasets.',
+  {
+    id: 'project3',
+    title: 'Machine Learning Projects',
+    description: 'Academic assignments and personal work building predictive models and exploring ML algorithms. Click below to check out the machine learning repos.',
     skills: ['Supervised Learning', 'Model Evaluation', 'Python'],
-    color: '#1abc9c'
+    color: '#1abc9c',
+    category: 'machine-learning'
   },
-  { 
-    id: 'miniprojects', 
-    title: 'Learning Projects', 
-    description: 'Collection of small projects and exercises completed during coursework and self-study. Includes data cleaning scripts, basic ML implementations, and exploratory analysis notebooks.',
+  {
+    id: 'miniprojects',
+    title: 'Mini Projects',
+    description: 'A collection of small, creative projects and experiments. Click below to check out my mini project repos.',
     skills: ['Practice Projects', 'Learning', 'Experimentation'],
-    color: '#e67e22'
+    color: '#e67e22',
+    category: 'mini-projects'
   },
-  { 
-    id: 'services', 
-    title: 'Future Goals', 
-    description: 'Aspiring to work as a Data Scientist or ML Engineer after graduation. Interested in applying AI solutions to real-world problems and contributing to innovative projects in the field of artificial intelligence.',
+  {
+    id: 'learning',
+    title: 'Learning Projects',
+    description: 'Projects and exercises completed during coursework and self-study. Includes data cleaning scripts, basic ML implementations, and exploratory analysis notebooks. Click below to check out learning repos.',
+    skills: ['Practice Projects', 'Learning', 'Experimentation'],
+    color: '#e67e22',
+    category: 'learning'
+  },
+  {
+    id: 'services',
+    title: 'Future Goals',
+    description: 'Aspiring to work as a Data Scientist or ML Engineer after graduation. Interested in applying AI solutions to real-world problems and contributing to innovative projects.',
     skills: ['Career Goals', 'Learning Path', 'Growth Mindset'],
     color: '#34495e'
   },
-  { 
-    id: 'contact', 
-    title: 'Connect With Me', 
-    description: 'Open to internship opportunities, collaborative projects, and networking with professionals in AI and Data Science. Let\'s connect and discuss the exciting possibilities in artificial intelligence!',
+  {
+    id: 'contact',
+    title: 'Connect With Me',
+    description: 'Open to internship opportunities, collaborative projects, and networking with professionals in AI and Data Science. Let\'s connect and discuss the exciting possibilities!',
     skills: ['Networking', 'Opportunities', 'Collaboration'],
     color: '#c0392b',
     socials: [
@@ -157,13 +169,21 @@ export default function Sections() {
 
                   {/* Enhanced action buttons with motion */}
                   <div className="flex flex-wrap gap-4 pt-4">
-                    <button 
-                      onClick={() => window.open(`/#/${section.id}`, '_blank')}
-                      className="px-6 py-3 bg-gray-100 dark:bg-white/10 border border-gray-300 dark:border-amber-400/20 rounded-lg hover:bg-gray-200 dark:hover:bg-amber-500/10 hover:border-gray-400 dark:hover:border-amber-400/40 focus:outline-none focus:ring-2 focus:ring-amber-500 transition-all duration-300 text-gray-900 dark:text-white constellation-point"
-                    >
-                      Know More
-                    </button>
-                    
+                    {section.category ? (
+                      <a
+                        href={`#/projects/${section.category}`}
+                        className="px-6 py-3 bg-amber-500 text-white rounded-lg hover:bg-amber-600 border border-amber-400/20 focus:outline-none focus:ring-2 focus:ring-amber-500 transition-all duration-300 font-semibold shadow-lg hover:scale-105"
+                      >
+                        Check Out
+                      </a>
+                    ) : (
+                      <button 
+                        onClick={() => window.open(`/#/${section.id}`, '_blank')}
+                        className="px-6 py-3 bg-gray-100 dark:bg-white/10 border border-gray-300 dark:border-amber-400/20 rounded-lg hover:bg-gray-200 dark:hover:bg-amber-500/10 hover:border-gray-400 dark:hover:border-amber-400/40 focus:outline-none focus:ring-2 focus:ring-amber-500 transition-all duration-300 text-gray-900 dark:text-white constellation-point"
+                      >
+                        Know More
+                      </button>
+                    )}
                     {section.id === 'contact' ? (
                       <a
                         href="mailto:nipunsujesh28@gmail.com"
