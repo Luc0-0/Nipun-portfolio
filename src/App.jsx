@@ -140,7 +140,7 @@ function AppContent() {
         </div>
         
         {/* Project Showcase */}
-        <div className="relative py-20">
+        <div className="relative py-20 project-showcase-anchor">
           <ProjectShowcase />
         </div>
 
