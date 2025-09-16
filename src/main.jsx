@@ -9,6 +9,7 @@ import OngoingPage from './pages/OngoingPage.jsx'
 import AiSkillsPage from './pages/AiSkillsPage.jsx'
 import WebSkillsPage from './pages/WebSkillsPage.jsx'
 import ProjectsPage from './pages/ProjectsPage.jsx'
+import CategoryPage from './pages/CategoryPage.jsx'
 import ServicesPage from './pages/ServicesPage.jsx'
 import ContactPage from './pages/ContactPage.jsx'
 import BlogPage from './pages/BlogPage.jsx'
@@ -19,21 +20,22 @@ createRoot(document.getElementById('root')).render(
     <ThemeProvider>
       <HashRouter>
         <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/ongoing" element={<OngoingPage />} />
-        <Route path="/ai-skills" element={<AiSkillsPage />} />
-        <Route path="/web-skills" element={<WebSkillsPage />} />
-        <Route path="/project1" element={<ProjectsPage />} />
-        <Route path="/project2" element={<ProjectsPage />} />
-        <Route path="/project3" element={<ProjectsPage />} />
-        <Route path="/miniprojects" element={<ProjectsPage />} />
-        <Route path="/services" element={<ServicesPage />} />
-        <Route path="/contact" element={<ContactPage />} />
-        <Route path="/blog" element={<BlogPage />} />
-        <Route path="/blog/:id" element={<BlogPostPage />} />
+          <Route path="/" element={<App />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/ongoing" element={<OngoingPage />} />
+          <Route path="/ai-skills" element={<AiSkillsPage />} />
+          <Route path="/web-skills" element={<WebSkillsPage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/:id" element={<BlogPostPage />} />
+          <Route path="/projects/academic" element={<CategoryPage category="academic" />} />
+          <Route path="/projects/machine-learning" element={<CategoryPage category="machine-learning" />} />
+          <Route path="/projects/data-analyst" element={<CategoryPage category="data-analyst" />} />
+          <Route path="/projects/learning" element={<CategoryPage category="learning" />} />
+          <Route path="/projects/mini-projects" element={<CategoryPage category="mini-projects" />} />
         </Routes>
       </HashRouter>
     </ThemeProvider>
-  </StrictMode>,
-)
+  </StrictMode>
+);
