@@ -49,14 +49,13 @@ export default function AnimatedSolarSystem({ onPlanetClick }) {
         </p>
       </div>
 
-      {/* Solar system container */}
-      <div className="relative w-[800px] h-[800px]">
-        
+      {/* Responsive Solar system container */}
+      <div className="relative w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-3xl h-[320px] sm:h-[480px] md:h-[600px] lg:h-[800px]">
         {/* Sun (center) */}
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
           <button
             onClick={() => onPlanetClick('about')}
-            className="w-24 h-24 rounded-full bg-gradient-to-r from-gold-400 to-gold-600 flex items-center justify-center text-galaxy-900 font-bold text-lg hover:scale-110 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-gold-500/50 shadow-lg animate-pulse"
+            className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full bg-gradient-to-r from-gold-400 to-gold-600 flex items-center justify-center text-galaxy-900 font-bold text-lg hover:scale-110 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-gold-500/50 shadow-lg animate-pulse"
             style={{
               boxShadow: '0 0 30px rgba(245, 195, 107, 0.5)',
             }}
@@ -71,8 +70,10 @@ export default function AnimatedSolarSystem({ onPlanetClick }) {
             key={`orbit-${i}`}
             className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/10"
             style={{
-              width: `${planet.orbit * 2}px`,
-              height: `${planet.orbit * 2}px`,
+              width: `calc(${planet.orbit * 2}px * (100vw / 800))`,
+              height: `calc(${planet.orbit * 2}px * (100vw / 800))`,
+              maxWidth: `${planet.orbit * 2}px`,
+              maxHeight: `${planet.orbit * 2}px`,
             }}
           />
         ))}
