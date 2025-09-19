@@ -49,13 +49,13 @@ function CategoryPage({ category }) {
                   onClick={() => handleFlip(idx)}
                 >
                   {/* Front Side */}
-                  <div className="absolute w-full h-full backface-hidden bg-white/90 dark:bg-gray-900/80 rounded-2xl p-8 flex flex-col items-center border border-amber-400/20 shadow-lg hover:shadow-amber-400/30 cursor-pointer">
-                    <img src={repo.image} alt={repo.name} className="mb-4 rounded-lg w-full h-32 object-cover" />
+                  <div className="absolute w-full h-full backface-hidden rounded-2xl p-8 flex flex-col items-center border border-gray-800 bg-gray-900 dark:bg-black shadow-md transition-all duration-200 hover:shadow-lg cursor-pointer">
+                    <img src={repo.image} alt={repo.name} className="mb-4 rounded-xl w-full h-32 object-cover shadow-md transition-all duration-200" />
                     <h2 className="text-xl font-bold mt-2 text-gray-900 dark:text-white text-center">{repo.name}</h2>
-                    <span className="inline-block px-4 py-2 bg-amber-500 text-white rounded hover:bg-amber-600 mt-2">Click to Flip</span>
+                    <span className="inline-block px-4 py-2 bg-gray-900 text-amber-200 rounded-lg shadow hover:scale-105 hover:bg-gray-800 mt-2 transition-all duration-200 font-medium tracking-wide border border-gray-700">Click to Flip</span>
                   </div>
                   {/* Back Side */}
-                  <div className="absolute w-full h-full backface-hidden bg-gradient-to-br from-amber-400/80 to-orange-500/80 rounded-2xl p-8 flex flex-col items-center justify-center border border-amber-400/20 shadow-lg rotate-y-180 cursor-pointer">
+                  <div className="absolute w-full h-full backface-hidden rounded-2xl p-8 flex flex-col items-center justify-center border border-gray-800 bg-gray-900 dark:bg-black shadow-md rotate-y-180 transition-all duration-200 hover:shadow-lg cursor-pointer">
                     <h2 className="text-xl font-bold mb-2 text-white text-center">{repo.name}</h2>
                     <p className="text-white mb-4 text-center">{repo.description}</p>
                     {repo.techstack && repo.techstack.length > 0 && (
