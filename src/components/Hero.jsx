@@ -188,17 +188,19 @@ export default function Hero() {
               style={{ animationDelay: "1.2s" }}
             >
               <div className="relative group">
-                {/* Free-form Profile Image */}
-                <img
-                  src="/images/model.png"
-                  alt="Nipun Sujesh"
-                  className="max-w-sm lg:max-w-md mx-auto group-hover:scale-105 transition-all duration-700 rounded-2xl"
-                  style={{
-                    filter: "contrast(1.05) brightness(0.95) drop-shadow(0 0 20px rgba(245, 195, 107, 0.6)) drop-shadow(0 0 40px rgba(245, 195, 107, 0.3))",
-                    backgroundColor: "transparent",
-                    clipPath: "inset(0 0 60px 0)"
-                  }}
-                />
+                {/* Premium Glassmorphism Container for Model Image */}
+                <div className="mx-auto max-w-md rounded-3xl bg-gradient-to-br from-black/90 via-indigo-950/80 to-gray-900/80 dark:from-black/95 dark:via-indigo-950/90 dark:to-gray-900/90 backdrop-blur-lg shadow-2xl border border-gray-800/60 dark:border-gray-900/80 p-6 flex items-center justify-center">
+                  <div className="w-full h-auto rounded-2xl transition-all duration-500 group/image hover:shadow-[0_0_40px_10px_rgba(80,120,255,0.25),0_0_80px_20px_rgba(245,195,107,0.18)]">
+                    <img
+                      src="/images/Model.png"
+                      alt="Nipun Sujesh"
+                      className="w-full h-auto rounded-2xl shadow-lg"
+                      style={{
+                        objectFit: "cover"
+                      }}
+                    />
+                  </div>
+                </div>
                 
                 {/* Floating name and title */}
                 <div className="text-center mt-8 group-hover:translate-y-2 transition-transform duration-500">
