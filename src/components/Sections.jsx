@@ -244,14 +244,27 @@ export default function Sections() {
                 <div className="lg:col-span-1 group-hover:translate-x-1 transition-transform duration-300">
                   <div className="relative rounded-xl overflow-hidden border border-amber-400/20 bg-gradient-to-br from-amber-500/5 to-transparent hover:border-amber-400/40 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-amber-400/30">
                     <div className="aspect-[4/3] flex items-center justify-center">
-                      <div className="text-center group-hover:scale-105 transition-transform duration-300">
-                        <div className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center text-2xl bg-gradient-to-br from-amber-500 to-amber-600 group-hover:shadow-lg group-hover:shadow-amber-400/50">
-                          🎨
-                        </div>
-                        <p className="text-sm text-gray-300 group-hover:text-gray-200 transition-colors duration-300">
-                          Coming Soon
-                        </p>
-                      </div>
+                      {(() => {
+                        const images = [
+                          { src: '/images/Nipun.webp', alt: 'Nipun Sujesh', style: { objectPosition: 'center 30%' } },
+                          { src: '/images/Current Studies.jpg', alt: 'Current Studies' },
+                          { src: '/images/Ai_ml_skills.jpg', alt: 'AI & ML Skills' },
+                          { src: '/images/Technical_skills.jpg', alt: 'Technical Skills' },
+                          { src: '/images/Academic_project.jpg', alt: 'Academic Projects' },
+                          { src: '/images/Data_analysis.jpg', alt: 'Data Analyst Projects' },
+                          { src: '/images/Machine_learning.jpg', alt: 'Machine Learning Projects' },
+                          { src: '/images/Mini_projects.jpg', alt: 'Mini Projects' },
+                          { src: '/images/Learning_projects.jpg', alt: 'Learning Projects' },
+                          { src: '/images/future_goals.jpg', alt: 'Future Goals' },
+                          { src: '/images/COntact_me.jpg', alt: 'Connect With Me' },
+                        ];
+                        const img = images[idx];
+                        return img && img.src ? (
+                          <img src={img.src} alt={img.alt} className="w-full h-full object-cover rounded-xl shadow-lg" style={img.style || {}} />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center text-gray-400 text-xl">No image</div>
+                        );
+                      })()}
                     </div>
                     
                     {/* Subtle glow effect */}

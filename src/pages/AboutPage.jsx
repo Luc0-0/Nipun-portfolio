@@ -37,9 +37,7 @@ export default function AboutPage() {
             <TiltCard className="bg-white/5 backdrop-blur-sm border border-amber-400/20 rounded-2xl p-8">
               <h2 className="text-2xl font-bold text-white mb-4">My Journey</h2>
               <p className="text-gray-300 leading-relaxed mb-4">
-                I'm a passionate full-stack developer with a deep fascination for artificial intelligence and modern web technologies. 
-                My journey began with curiosity about how things work behind the scenes, which led me to explore programming and eventually 
-                specialize in creating innovative digital solutions.
+                I’m an AI & Full-Stack Developer driven by a passion for building intelligent, data-powered solutions. My journey began with curiosity about how systems think and scale, which grew into expertise across artificial intelligence, data science, and modern web technologies. Today, I focus on creating innovative products that merge AI models with robust full-stack engineering—turning ideas into impactful, real-world applications.
               </p>
               <p className="text-gray-300 leading-relaxed">
                 With experience spanning from frontend frameworks like React to backend technologies and AI integration, 
