@@ -1,4 +1,5 @@
 // src/contexts/ThemeContext.jsx
+
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const ThemeContext = createContext();
@@ -12,25 +13,34 @@ export const useTheme = () => {
 };
 
 export const ThemeProvider = ({ children }) => {
-  const [isDark, setIsDark] = useState(() => {
+  // theme: 'light', 'dark', or 'space'
+  const [theme, setTheme] = useState(() => {
     const saved = localStorage.getItem('theme');
-    return saved ? saved === 'dark' : true; // Default to dark mode
+    return saved || 'dark';
   });
 
   useEffect(() => {
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
-    if (isDark) {
+    localStorage.setItem('theme', theme);
+    document.documentElement.setAttribute('data-theme', theme);
+    if (theme === 'dark') {
       document.documentElement.classList.add('dark');
+      document.documentElement.classList.remove('space');
+    } else if (theme === 'space') {
+      document.documentElement.classList.add('space');
+      document.documentElement.classList.remove('dark');
     } else {
       document.documentElement.classList.remove('dark');
+      document.documentElement.classList.remove('space');
     }
-  }, [isDark]);
+  }, [theme]);
 
-  const toggleTheme = () => setIsDark(!isDark);
+  const isDark = theme === 'dark';
+  const isSpace = theme === 'space';
+  const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark');
+  const toggleSpaceTheme = () => setTheme(theme === 'space' ? 'dark' : 'space');
 
   return (
-    <ThemeContext.Provider value={{ isDark, toggleTheme }}>
+    <ThemeContext.Provider value={{ isDark, isSpace, theme, toggleTheme, toggleSpaceTheme }}>
       {children}
     </ThemeContext.Provider>
   );
