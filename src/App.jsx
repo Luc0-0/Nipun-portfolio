@@ -217,10 +217,10 @@ function AppContent() {
               Automatically synced from my GitHub repositories
             </p>
             <a
-              href="#live-projects"
+              href="#/live-projects"
               onClick={(e) => {
                 e.preventDefault();
-                window.open('/live-projects', '_blank');
+                window.location.href = '#/live-projects';
               }}
               className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg hover:from-blue-400 hover:to-purple-500 hover:scale-105 transition-all duration-300 shadow-lg"
             >
@@ -294,7 +294,7 @@ function AppContent() {
             
             <div className="text-center">
               <a
-                href="/#/blog"
+                href="#/blog"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-amber-500 to-amber-600 text-white font-semibold rounded-lg hover:from-amber-400 hover:to-amber-500 hover:scale-105 transition-all duration-300 shadow-lg"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
