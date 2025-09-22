@@ -13,7 +13,7 @@ const NAV_ITEMS = [
   { id: 'showcase', label: 'Showcase', path: '/#projectshowcase' },
   { id: 'live-projects', label: 'Live Projects', path: '/live-projects' },
   { id: 'achievements', label: 'Achievements', path: '/#achievements' },
-  { id: 'blog', label: 'Blog', path: '/#/blog' },
+  { id: 'blog', label: 'Blog', path: '#/blog' },
   { id: 'contact', label: 'Contact', path: '/#contact' }
 ];
 
@@ -82,9 +82,9 @@ export default function Navigation() {
 
   const handleNavClick = (item) => {
     if (item.id === 'blog') {
-      window.location.href = '/#/blog';
+      window.location.href = '#/blog';
     } else if (item.id === 'live-projects') {
-      window.open('/live-projects', '_blank');
+      window.location.href = '#/live-projects';
     } else if (item.id === 'showcase') {
       const element = document.querySelector('.project-showcase-anchor');
       if (element) {
