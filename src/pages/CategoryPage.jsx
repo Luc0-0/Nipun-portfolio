@@ -101,51 +101,51 @@ const repoData = {
     {
       name: "Grand Final Year Project",
       url: "#",
-      image: "https://placehold.co/400x300?text=Coming+Soon",
-      description: "A comprehensive AI-powered solution for real-world problems, integrating advanced machine learning, data analytics, and cloud deployment. Stay tuned for details!",
-      techstack: ["Python", "AI", "Azure"]
+      image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=300&fit=crop",
+      description: "Mental Health AI Embedded Assistance - A comprehensive AI-powered solution for mental health support and monitoring, integrating NLP, sentiment analysis, and conversational AI technologies.",
+      techstack: ["Python", "AI", "NLP"]
     }
   ],
   "machine-learning": [
     {
       name: "BLIP-auto-image-captioning",
       url: "https://github.com/Luc0-0/BLIP-auto-image-captioning",
-      image: "https://placehold.co/400x300?text=ML+Project",
+      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=300&fit=crop",
       description: "A project leveraging BLIP for automatic image captioning. Utilizes deep learning models to generate captions for images, improving accessibility and search.",
       techstack: ["Python", "BLIP", "AI"]
     },
     {
       name: "Final-Ai-Speech-Synthesis",
       url: "https://github.com/Luc0-0/Final-Ai-Speech-Synthesis",
-      image: "https://placehold.co/400x300?text=ML+Project",
+      image: "https://images.unsplash.com/photo-1589254065878-42c9da997008?w=400&h=300&fit=crop",
       description: "End-to-end AI-based speech synthesis system. Converts text to natural-sounding speech using neural networks and advanced signal processing.",
       techstack: ["Python", "Speech Synthesis", "AI"]
     },
     {
       name: "Image-classification-cat-dog",
       url: "https://github.com/Luc0-0/Image-classification-cat-dog",
-      image: "https://placehold.co/400x300?text=ML+Project",
+      image: "https://images.unsplash.com/photo-1574158622682-e40e69881006?w=400&h=300&fit=crop",
       description: "A supervised learning project for classifying cat and dog images. Implements CNN architectures and data augmentation for robust results.",
       techstack: ["Python", "Classification", "AI"]
     },
     {
       name: "Azure-Ai-image-analysis",
       url: "https://github.com/Luc0-0/Azure-Ai-image-analysis",
-      image: "https://placehold.co/400x300?text=ML+Project",
+      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=300&fit=crop",
       description: "Image analysis using Azure AI services. Integrates cloud APIs for object detection, OCR, and image tagging in scalable workflows.",
       techstack: ["Python", "Azure", "AI"]
     },
     {
       name: "Azure-Business-card-analyzer",
       url: "https://github.com/Luc0-0/Azure-Business-card-analyzer",
-      image: "https://placehold.co/400x300?text=ML+Project",
+      image: "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=400&h=300&fit=crop",
       description: "Business card analyzer powered by Azure AI. Extracts contact info and organizes it using NLP and cloud automation.",
       techstack: ["Python", "Azure", "AI"]
     },
     {
       name: "Smart-notes-by-Nipun",
       url: "https://github.com/Luc0-0/Smart-notes-by-Nipun",
-      image: "https://placehold.co/400x300?text=ML+Project",
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop",
       description: "A smart note-taking app with AI features for organization, search, and productivity. Built with React and Python back-end integration.",
       techstack: ["React", "Notes", "Productivity"]
     }
@@ -154,49 +154,49 @@ const repoData = {
     {
       name: "Final-Ai-Speech-Synthesis",
       url: "https://github.com/Luc0-0/Final-Ai-Speech-Synthesis",
-      image: "https://placehold.co/400x300?text=Learning+Project",
+      image: "https://images.unsplash.com/photo-1589254065878-42c9da997008?w=400&h=300&fit=crop",
       description: "End-to-end AI-based speech synthesis system. Converts text to natural-sounding speech using neural networks and advanced signal processing.",
       techstack: ["Python", "Speech Synthesis", "AI"]
     },
     {
       name: "flashcard-generator",
       url: "https://github.com/Luc0-0/flashcard-generator",
-      image: "https://placehold.co/400x300?text=Learning+Project",
+      image: "https://images.unsplash.com/photo-1606868306217-dbf5046868d2?w=400&h=300&fit=crop",
       description: "A flashcard generator for efficient study and memorization. Features spaced repetition and customizable decks.",
       techstack: ["React", "Flashcards", "Learning"]
     },
     {
       name: "Azure-Ai-image-analysis",
       url: "https://github.com/Luc0-0/Azure-Ai-image-analysis",
-      image: "https://placehold.co/400x300?text=Learning+Project",
+      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=300&fit=crop",
       description: "Image analysis using Azure AI services. Integrates cloud APIs for object detection, OCR, and image tagging in scalable workflows.",
       techstack: ["Python", "Azure", "AI"]
     },
     {
       name: "Image-classification-cat-dog",
       url: "https://github.com/Luc0-0/Image-classification-cat-dog",
-      image: "https://placehold.co/400x300?text=Learning+Project",
+      image: "https://images.unsplash.com/photo-1574158622682-e40e69881006?w=400&h=300&fit=crop",
       description: "A supervised learning project for classifying cat and dog images. Implements CNN architectures and data augmentation for robust results.",
       techstack: ["Python", "Classification", "AI"]
     },
     {
       name: "Azure-Business-card-analyzer",
       url: "https://github.com/Luc0-0/Azure-Business-card-analyzer",
-      image: "https://placehold.co/400x300?text=Learning+Project",
+      image: "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=400&h=300&fit=crop",
       description: "Business card analyzer powered by Azure AI. Extracts contact info and organizes it using NLP and cloud automation.",
       techstack: ["Python", "Azure", "AI"]
     },
     {
       name: "BLIP-auto-image-captioning",
       url: "https://github.com/Luc0-0/BLIP-auto-image-captioning",
-      image: "https://placehold.co/400x300?text=Learning+Project",
+      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=300&fit=crop",
       description: "A project leveraging BLIP for automatic image captioning. Utilizes deep learning models to generate captions for images, improving accessibility and search.",
       techstack: ["Python", "BLIP", "AI"]
     },
     {
       name: "oaqjp-final-project-emb-ai",
       url: "https://github.com/Luc0-0/oaqjp-final-project-emb-ai",
-      image: "https://placehold.co/400x300?text=Learning+Project",
+      image: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=400&h=300&fit=crop",
       description: "Embedded AI final project focused on real-time data processing and model deployment on edge devices.",
       techstack: ["Python", "AI", "Azure"]
     }
@@ -205,35 +205,35 @@ const repoData = {
     {
       name: "BLIP-auto-image-captioning",
       url: "https://github.com/Luc0-0/BLIP-auto-image-captioning",
-      image: "https://placehold.co/400x300?text=Mini+Project",
+      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=300&fit=crop",
       description: "A project leveraging BLIP for automatic image captioning. Utilizes deep learning models to generate captions for images, improving accessibility and search.",
       techstack: ["Python", "BLIP", "AI"]
     },
     {
       name: "Final-Ai-Speech-Synthesis",
       url: "https://github.com/Luc0-0/Final-Ai-Speech-Synthesis",
-      image: "https://placehold.co/400x300?text=Mini+Project",
+      image: "https://images.unsplash.com/photo-1589254065878-42c9da997008?w=400&h=300&fit=crop",
       description: "End-to-end AI-based speech synthesis system. Converts text to natural-sounding speech using neural networks and advanced signal processing.",
       techstack: ["Python", "Speech Synthesis", "AI"]
     },
     {
       name: "Image-classification-cat-dog",
       url: "https://github.com/Luc0-0/Image-classification-cat-dog",
-      image: "https://placehold.co/400x300?text=Mini+Project",
+      image: "https://images.unsplash.com/photo-1574158622682-e40e69881006?w=400&h=300&fit=crop",
       description: "A supervised learning project for classifying cat and dog images. Implements CNN architectures and data augmentation for robust results.",
       techstack: ["Python", "Classification", "AI"]
     },
     {
       name: "Azure-Ai-image-analysis",
       url: "https://github.com/Luc0-0/Azure-Ai-image-analysis",
-      image: "https://placehold.co/400x300?text=Mini+Project",
+      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=300&fit=crop",
       description: "Image analysis using Azure AI services. Integrates cloud APIs for object detection, OCR, and image tagging in scalable workflows.",
       techstack: ["Python", "Azure", "AI"]
     },
     {
       name: "Azure-Business-card-analyzer",
       url: "https://github.com/Luc0-0/Azure-Business-card-analyzer",
-      image: "https://placehold.co/400x300?text=Mini+Project",
+      image: "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=400&h=300&fit=crop",
       description: "Business card analyzer powered by Azure AI. Extracts contact info and organizes it using NLP and cloud automation.",
       techstack: ["Python", "Azure", "AI"]
     }
