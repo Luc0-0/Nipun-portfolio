@@ -1,7 +1,8 @@
 // src/components/ProjectShowcase.jsx
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import CinematicText from './CinematicText';
+import { fetchGitHubRepos } from '../utils/githubApi';
 
 // Categorized project groups
 const featuredProjects = [
@@ -187,9 +188,10 @@ function ProjectCard({ project, index }) {
           <motion.img
             src={project.image}
             alt={project.title}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-left"
             animate={{ scale: isHovered ? 1.1 : 1 }}
             transition={{ duration: 0.6 }}
+            style={{ objectPosition: 'left center' }}
  />
  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" /> {/* Gradient overlay */}
  </> )}
@@ -206,6 +208,11 @@ function ProjectCard({ project, index }) {
             animate={isHovered ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ delay: 0.1 }}
           >
+            {project.isGithubRepo && (
+              <span className="px-2 py-1 rounded-full text-xs font-bold bg-green-500/20 text-green-300 border border-green-400/30">
+                🔴 LIVE
+              </span>
+            )}
             {project.tags.map((tag, tagIndex) => (
               <span
                 key={tag}
@@ -217,6 +224,11 @@ function ProjectCard({ project, index }) {
                 {tag}
               </span>
             ))}
+            {project.stars > 0 && (
+              <span className="px-2 py-1 rounded-full text-xs font-medium bg-yellow-500/20 text-yellow-300 border border-yellow-400/30">
+                ⭐ {project.stars}
+              </span>
+            )}
           </motion.div>
 
           {/* Title */}
@@ -232,6 +244,11 @@ function ProjectCard({ project, index }) {
             animate={isHovered ? { opacity: 1 } : { opacity: 0.7 }}
           >
             {project.description}
+            {project.updated && (
+              <span className="block text-xs text-gray-400 mt-2">
+                Updated: {new Date(project.updated).toLocaleDateString()}
+              </span>
+            )}
           </motion.p>
 
           {/* Action Buttons */}
@@ -300,6 +317,68 @@ function ProjectCard({ project, index }) {
 
 export default function ProjectShowcase() {
   const [openGroup, setOpenGroup] = useState('featured');
+  const [githubProjects, setGithubProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadGithubProjects = async () => {
+      try {
+        const repos = await fetchGitHubRepos();
+        const getCustomImage = (repoName, category) => {
+          const imageMap = {
+            'ai': 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=300&fit=crop&crop=left',
+            'ml': 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=400&h=300&fit=crop&crop=left',
+            'data': 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop&crop=left',
+            'web': 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=300&fit=crop&crop=left',
+            'react': 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400&h=300&fit=crop&crop=left',
+            'python': 'https://images.unsplash.com/photo-1526379095098-d400fd0bf935?w=400&h=300&fit=crop&crop=left',
+            'default': 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&h=300&fit=crop&crop=left'
+          };
+          
+          const name = repoName.toLowerCase();
+          if (name.includes('ai') || name.includes('ml') || name.includes('neural')) return imageMap.ai;
+          if (name.includes('data') || name.includes('analysis')) return imageMap.data;
+          if (name.includes('web') || name.includes('react') || name.includes('portfolio')) return imageMap.react;
+          if (name.includes('python')) return imageMap.python;
+          if (category === 'AI/ML Projects') return imageMap.ml;
+          if (category === 'Web Development') return imageMap.web;
+          if (category === 'Data Science') return imageMap.data;
+          return imageMap.default;
+        };
+
+        const formattedRepos = repos.slice(0, 8).map(repo => ({
+          id: `github-${repo.id}`,
+          title: repo.name.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
+          description: repo.description || 'GitHub Repository - Live project automatically synced',
+          image: getCustomImage(repo.name, repo.category),
+          tags: [repo.language, 'Live', repo.category.split('/')[0]].filter(Boolean),
+          demoUrl: '#',
+          codeUrl: repo.html_url,
+          featured: false,
+          isGithubRepo: true,
+          stars: repo.stargazers_count,
+          updated: repo.updated_at,
+          category: repo.category
+        }));
+        setGithubProjects(formattedRepos);
+      } catch (error) {
+        console.error('Failed to load GitHub projects:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadGithubProjects();
+  }, []);
+
+  // Merge GitHub projects with existing categories
+  const githubAI = githubProjects.filter(p => p.category === 'AI/ML Projects');
+  const githubWeb = githubProjects.filter(p => p.category === 'Web Development');
+  const githubMini = githubProjects.filter(p => p.category === 'Mini Projects');
+  const githubData = githubProjects.filter(p => p.category === 'Data Science');
+
+  const allAIProjects = [...aiProjects, ...githubAI];
+  const allWebProjects = [...webProjects, ...githubWeb];
+  const allMiniProjects = [...miniProjects, ...githubMini, ...githubData];
   return (
     <div className="max-w-6xl mx-auto px-6">
       <CinematicText
@@ -310,7 +389,7 @@ export default function ProjectShowcase() {
       </CinematicText>
 
       {/* Dropdown/Accordion for project groups */}
-      <div className="mb-8 flex gap-4 justify-center">
+      <div className="mb-8 flex gap-4 justify-center flex-wrap">
         <button
           className={`px-6 py-2 rounded-lg font-semibold border ${openGroup === 'featured' ? 'bg-amber-400 text-black' : 'bg-white/10 text-white'}`}
           onClick={() => setOpenGroup('featured')}
@@ -318,15 +397,15 @@ export default function ProjectShowcase() {
         <button
           className={`px-6 py-2 rounded-lg font-semibold border ${openGroup === 'ai' ? 'bg-amber-400 text-black' : 'bg-white/10 text-white'}`}
           onClick={() => setOpenGroup('ai')}
-        >AI/ML Projects</button>
+        >AI/ML Projects ({allAIProjects.length})</button>
         <button
           className={`px-6 py-2 rounded-lg font-semibold border ${openGroup === 'web' ? 'bg-amber-400 text-black' : 'bg-white/10 text-white'}`}
           onClick={() => setOpenGroup('web')}
-        >Web Projects</button>
+        >Web Projects ({allWebProjects.length})</button>
         <button
           className={`px-6 py-2 rounded-lg font-semibold border ${openGroup === 'mini' ? 'bg-amber-400 text-black' : 'bg-white/10 text-white'}`}
           onClick={() => setOpenGroup('mini')}
-        >Mini Projects</button>
+        >Mini Projects ({allMiniProjects.length})</button>
       </div>
 
       {/* Nested section for each group */}
@@ -339,21 +418,21 @@ export default function ProjectShowcase() {
       )}
       {openGroup === 'ai' && (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-fr">
-          {aiProjects.map((project, index) => (
+          {allAIProjects.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />
           ))}
         </div>
       )}
       {openGroup === 'web' && (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-fr">
-          {webProjects.map((project, index) => (
+          {allWebProjects.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />
           ))}
         </div>
       )}
       {openGroup === 'mini' && (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-fr">
-          {miniProjects.map((project, index) => (
+          {allMiniProjects.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />
           ))}
         </div>
