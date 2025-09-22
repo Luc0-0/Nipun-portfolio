@@ -30,6 +30,7 @@ import ProjectShowcase from './components/ProjectShowcase';
 import AchievementWall from './components/AchievementWall';
 import QuickFix from './components/QuickFix';
 import AutoProjectShowcase from './components/AutoProjectShowcase';
+import WelcomeModal from './components/WelcomeModal';
 
 
 export default function App() {
@@ -352,6 +353,9 @@ function AppContent() {
       
       {/* Neon Mode Toggle */}
       <NeonModeToggle />
+      
+      {/* Welcome Modal for Visitor Analytics */}
+      <WelcomeModal />
     </div>
   );
 }
