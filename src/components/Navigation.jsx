@@ -6,10 +6,12 @@ import { Link, useLocation } from 'react-router-dom';
 
 const NAV_ITEMS = [
   { id: 'home', label: 'Home', path: '/' },
+  { id: 'solar-system', label: 'Navigation', path: '/#solar-system' },
   { id: 'about', label: 'About', path: '/#about' },
-  { id: 'projects', label: 'Projects', path: '/#project1' },
-  { id: 'showcase', label: 'Project Showcase', path: '/#projectshowcase' },
   { id: 'skills', label: 'Skills', path: '/#ai-skills' },
+  { id: 'projects', label: 'Projects', path: '/#project1' },
+  { id: 'showcase', label: 'Showcase', path: '/#projectshowcase' },
+  { id: 'achievements', label: 'Achievements', path: '/#achievements' },
   { id: 'blog', label: 'Blog', path: '/#/blog' },
   { id: 'contact', label: 'Contact', path: '/#contact' }
 ];
@@ -27,17 +29,50 @@ export default function Navigation() {
       setIsVisible(scrollY > 300);
       
       // Update active section based on scroll position
-      const sections = NAV_ITEMS.map(item => item.id).filter(id => id !== 'home');
-      const current = sections.find(section => {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          return rect.top <= 100 && rect.bottom >= 100;
-        }
-        return false;
-      });
+      const sections = ['solar-system', 'about', 'ongoing', 'ai-skills', 'web-skills', 'project1', 'project2', 'project3', 'miniprojects', 'learning', 'achievements', 'services', 'contact'];
+      let current = 'home';
       
-      setActiveSection(current || 'home');
+      // Check for showcase section
+      const showcaseElement = document.querySelector('.project-showcase-anchor');
+      if (showcaseElement) {
+        const showcaseRect = showcaseElement.getBoundingClientRect();
+        if (showcaseRect.top <= 150 && showcaseRect.bottom >= 150) {
+          current = 'showcase';
+        }
+      }
+      
+      // Check other sections if showcase not active
+      if (current !== 'showcase') {
+        for (const section of sections) {
+          const element = document.getElementById(section);
+          if (element) {
+            const rect = element.getBoundingClientRect();
+            if (rect.top <= 150) {
+              current = section;
+            }
+          }
+        }
+      }
+      
+      // Map section IDs to nav item IDs
+      const sectionToNavMap = {
+        'solar-system': 'solar-system',
+        'about': 'about',
+        'ongoing': 'about',
+        'ai-skills': 'skills',
+        'web-skills': 'skills',
+        'project1': 'projects',
+        'project2': 'projects',
+        'project3': 'projects',
+        'miniprojects': 'projects',
+        'learning': 'projects',
+        'showcase': 'showcase',
+        'achievements': 'achievements',
+        'services': 'contact',
+        'contact': 'contact'
+      };
+      
+      setActiveSection(sectionToNavMap[current] || 'home');
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -49,6 +84,20 @@ export default function Navigation() {
       window.location.href = '/#/blog';
     } else if (item.id === 'showcase') {
       const element = document.querySelector('.project-showcase-anchor');
+      if (element) {
+        const offset = 80;
+        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+        window.scrollTo({ top: elementPosition - offset, behavior: 'smooth' });
+      }
+    } else if (item.id === 'solar-system') {
+      const element = document.querySelector('.solar-system-section');
+      if (element) {
+        const offset = 80;
+        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+        window.scrollTo({ top: elementPosition - offset, behavior: 'smooth' });
+      }
+    } else if (item.id === 'achievements') {
+      const element = document.getElementById('achievements');
       if (element) {
         const offset = 80;
         const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;

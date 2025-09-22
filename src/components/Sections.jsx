@@ -10,29 +10,29 @@ const SECTIONS = [
   {
     id: 'about',
     title: 'About Me',
-    description: 'Final year AI and Data Science student passionate about machine learning, deep learning, and data analytics. Building expertise in Python, statistical modeling, and AI algorithms through academic projects and certifications.',
-    skills: ['Python', 'Machine Learning', 'Data Analysis', 'Statistics'],
+    description: 'BTech AI and Data Science student with 8.0 CGPA, passionate about developing intelligent solutions for real-world problems. Currently working on mental health AI embedded assistance for my final year project, expected to graduate in 2026.',
+    skills: ['Python', 'Machine Learning', 'AI Development', 'Data Science'],
     color: '#f5c36b'
   },
   {
     id: 'ongoing',
     title: 'Current Studies',
-    description: 'Pursuing final year coursework in Advanced Machine Learning, Deep Neural Networks, and Big Data Analytics. Thesis project on NLP and exploring cutting-edge AI research.',
-    skills: ['Academic Research', 'Thesis Work', 'Literature Review'],
+    description: 'Working on final year project: Mental Health AI Embedded Assistance - developing an intelligent system to provide mental health support and monitoring. Focusing on NLP, sentiment analysis, and conversational AI technologies.',
+    skills: ['Mental Health AI', 'NLP', 'Conversational AI', 'Research'],
     color: '#4a90e2'
   },
   {
     id: 'ai-skills',
     title: 'AI & ML Skills',
-    description: 'Learning machine learning fundamentals through coursework and online certifications. Hands-on with Python, scikit-learn, pandas, and numpy. IBM AI certified.',
-    skills: ['Python', 'Scikit-learn', 'Pandas', 'NumPy'],
+    description: 'Proficient in Python for AI/ML development with hands-on experience in building intelligent applications. Completed AI Developer Professional Certificate through Coursera with multiple certifications in machine learning and AI technologies.',
+    skills: ['Python', 'Machine Learning', 'AI Development', 'Coursera Certified'],
     color: '#e74c3c'
   },
   {
     id: 'web-skills',
     title: 'Technical Skills',
-    description: 'Self-taught web development and data science skills. Familiar with Python, web technologies, and databases. Eager to apply these skills in real-world scenarios.',
-    skills: ['Python', 'SQL', 'Data Visualization', 'Git'],
+    description: 'Full-stack development skills with React, FastAPI, Flask, and cloud deployment experience. Proficient in Microsoft Azure, Google Firebase, and version control with Git. Experienced with VS Code and Google Studio for development.',
+    skills: ['React', 'FastAPI', 'Flask', 'Azure', 'Firebase', 'Git'],
     color: '#2ecc71'
   },
   {
