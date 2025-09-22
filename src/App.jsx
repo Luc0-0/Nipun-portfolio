@@ -179,7 +179,7 @@ function AppContent() {
         </div>
         
         {/* Enhanced solar system navigator */}
-        <section className="py-20 relative z-10">
+        <section id="solar-system" className="py-20 relative z-10 solar-system-section">
           <SolarSystem3D onPlanetClick={handlePlanetClick} />
           {/* Professional navigation instructions */}
           <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
@@ -213,6 +213,70 @@ function AppContent() {
         {/* Achievements section */}
         <div className="relative">
           <Achievements />
+        </div>
+
+        {/* Blog Section */}
+        <div className="relative py-20">
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl lg:text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-amber-100">
+                Latest Articles
+              </h2>
+              <p className="text-xl text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
+                Sharing my journey in AI, Data Science, and technology
+              </p>
+            </div>
+            
+            <div className="grid md:grid-cols-3 gap-8 mb-12">
+              <div className="bg-white/90 dark:bg-white/5 backdrop-blur-sm border border-gray-200 dark:border-amber-400/20 rounded-2xl p-6 hover:bg-gray-50 dark:hover:bg-white/10 transition-all duration-300">
+                <div className="aspect-video bg-gradient-to-br from-amber-500/20 to-purple-500/20 rounded-lg mb-4 flex items-center justify-center">
+                  <div className="text-4xl">🧠</div>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">From Zero to AI</h3>
+                <p className="text-gray-700 dark:text-gray-300 text-sm mb-4">My BTech journey in Data Science, maintaining 8.0 CGPA, and choosing mental health AI...</p>
+                <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
+                  <span>Personal • 6 min read</span>
+                  <span>Dec 15, 2024</span>
+                </div>
+              </div>
+              
+              <div className="bg-white/90 dark:bg-white/5 backdrop-blur-sm border border-gray-200 dark:border-amber-400/20 rounded-2xl p-6 hover:bg-gray-50 dark:hover:bg-white/10 transition-all duration-300">
+                <div className="aspect-video bg-gradient-to-br from-blue-500/20 to-green-500/20 rounded-lg mb-4 flex items-center justify-center">
+                  <div className="text-4xl">🐍</div>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Python for AI</h3>
+                <p className="text-gray-700 dark:text-gray-300 text-sm mb-4">Essential Python libraries every AI student should master: NumPy, Pandas, Scikit-learn...</p>
+                <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
+                  <span>Tutorial • 8 min read</span>
+                  <span>Dec 10, 2024</span>
+                </div>
+              </div>
+              
+              <div className="bg-white/90 dark:bg-white/5 backdrop-blur-sm border border-gray-200 dark:border-amber-400/20 rounded-2xl p-6 hover:bg-gray-50 dark:hover:bg-white/10 transition-all duration-300">
+                <div className="aspect-video bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-lg mb-4 flex items-center justify-center">
+                  <div className="text-4xl">💚</div>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Mental Health AI</h3>
+                <p className="text-gray-700 dark:text-gray-300 text-sm mb-4">Building my final year project: Mental Health AI Embedded Assistance system...</p>
+                <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
+                  <span>Project • 10 min read</span>
+                  <span>Dec 5, 2024</span>
+                </div>
+              </div>
+            </div>
+            
+            <div className="text-center">
+              <a
+                href="/#/blog"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-amber-500 to-amber-600 text-white font-semibold rounded-lg hover:from-amber-400 hover:to-amber-500 hover:scale-105 transition-all duration-300 shadow-lg"
+              >
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                </svg>
+                Read All Articles
+              </a>
+            </div>
+          </div>
         </div>
       </main>
       

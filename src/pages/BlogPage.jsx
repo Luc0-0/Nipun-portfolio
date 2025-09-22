@@ -7,36 +7,54 @@ import TiltCard from '../components/TiltCard';
 const BLOG_POSTS = [
   {
     id: 'my-ai-journey',
-    title: 'My Journey into AI and Machine Learning',
-    excerpt: 'How I started learning AI as a student and the challenges I faced along the way.',
-    date: '2024-01-15',
+    title: 'From Zero to AI: My BTech Journey in Data Science',
+    excerpt: 'How I discovered my passion for AI during my BTech program, the challenges of maintaining an 8.0 CGPA, and why I chose mental health AI for my final year project.',
+    date: '2024-12-15',
     category: 'Personal',
-    readTime: '5 min read',
-    image: '/images/blog/ai-journey.jpg'
+    readTime: '6 min read',
+    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=300&fit=crop'
   },
   {
-    id: 'python-for-beginners',
-    title: 'Python Fundamentals for Data Science',
-    excerpt: 'Essential Python concepts every data science student should master.',
-    date: '2024-01-20',
+    id: 'python-for-ai',
+    title: 'Python Libraries Every AI Student Should Master',
+    excerpt: 'My experience learning pandas, numpy, scikit-learn, and TensorFlow. Practical tips for BTech students starting their AI journey with real project examples.',
+    date: '2024-12-10',
     category: 'Tutorial',
     readTime: '8 min read',
-    image: '/images/blog/python-basics.jpg'
+    image: 'https://images.unsplash.com/photo-1526379095098-d400fd0bf935?w=400&h=300&fit=crop'
   },
   {
-    id: 'first-ml-project',
-    title: 'Building My First Machine Learning Model',
-    excerpt: 'Step-by-step guide to creating a sentiment analysis model using scikit-learn.',
-    date: '2024-02-01',
+    id: 'mental-health-ai',
+    title: 'Building Mental Health AI: My Final Year Project',
+    excerpt: 'Deep dive into my final year project on Mental Health AI Embedded Assistance. The challenges, technologies used, and why this project matters.',
+    date: '2024-12-05',
     category: 'Project',
-    readTime: '12 min read',
-    image: '/images/blog/ml-project.jpg'
+    readTime: '10 min read',
+    image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=300&fit=crop'
+  },
+  {
+    id: 'azure-ai-experience',
+    title: 'Learning Cloud AI with Microsoft Azure',
+    excerpt: 'My hands-on experience with Azure Cognitive Services, Computer Vision API, and Form Recognizer. Real projects and lessons learned.',
+    date: '2024-11-28',
+    category: 'Tutorial',
+    readTime: '7 min read',
+    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=300&fit=crop'
+  },
+  {
+    id: 'coursera-ai-certification',
+    title: 'IBM AI Developer Certification: My Experience',
+    excerpt: 'Complete review of the IBM AI Developer Professional Certificate on Coursera. What I learned, projects I built, and how it helped my career.',
+    date: '2024-11-20',
+    category: 'Career',
+    readTime: '5 min read',
+    image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=300&fit=crop'
   }
 ];
 
 export default function BlogPage() {
   return (
-    <div className="min-h-screen pt-20 pb-12" style={{ background: 'linear-gradient(to bottom, #000011, #000033)' }}>
+    <div className="min-h-screen pt-20 pb-12 cursor-default" style={{ background: 'linear-gradient(to bottom, #000011, #000033)' }}>
       <div className="max-w-6xl mx-auto px-6">
         <Link to="/" className="inline-flex items-center gap-2 text-amber-300 hover:text-amber-200 transition-colors duration-300 mb-8">
           ← Back to Home
