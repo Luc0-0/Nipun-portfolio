@@ -14,9 +14,11 @@ import SimpleTextReveal from "./SimpleTextReveal";
 import CinematicText from "./CinematicText";
 import ParallaxSection from "./ParallaxSection";
 import SkillsRadar from "./SkillsRadar";
+
 import { motion } from 'framer-motion';
 
 export default function Hero() {
+
   const [showWelcome, setShowWelcome] = useState(() => {
     if (typeof window === 'undefined') return false;
     
@@ -179,6 +181,9 @@ export default function Hero() {
                 </div>
               </div>
             </div>
+
+            {/* Virtual Office Preview */}
+
           </div>
 
           {/* Right: Floating Profile Image */}
@@ -308,6 +313,8 @@ export default function Hero() {
           </div>
         </div>
       )}
+
+
 
       {/* Next-level features */}
       <PerformanceMonitor />

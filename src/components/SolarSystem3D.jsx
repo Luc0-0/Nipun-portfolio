@@ -466,41 +466,106 @@ function SolarSystemScene({ onPlanetClick, onHover }) {
   );
 }
 
+// Mobile-optimized 3D Solar System Scene
+function MobileSolarSystemScene({ onPlanetClick, onHover }) {
+  const [brightMode, setBrightMode] = useState(false);
+  const sunLightRef = useRef();
+  const ambientRef = useRef();
+
+  useFrame(() => {
+    if (sunLightRef.current) {
+      const targetIntensity = brightMode ? 6 : 2.5;
+      sunLightRef.current.intensity += (targetIntensity - sunLightRef.current.intensity) * 0.05;
+    }
+    if (ambientRef.current) {
+      const targetIntensity = brightMode ? 0.2 : 0.5;
+      ambientRef.current.intensity += (targetIntensity - ambientRef.current.intensity) * 0.05;
+    }
+  });
+
+  // Mobile-scaled planets (closer distances, smaller sizes)
+  const mobilePlanets = PLANETS.map(planet => ({
+    ...planet,
+    distance: planet.distance * 0.6, // Bring planets closer
+    speed: planet.speed * 1.5 // Faster rotation for mobile
+  }));
+
+  return (
+    <group rotation={[-0.2, 0, 0]}>
+      <fog attach="fog" args={["#0a0a0a", 60, 120]} />
+      <ambientLight ref={ambientRef} intensity={0.5} />
+      <pointLight
+        ref={sunLightRef}
+        position={[0, 0, 0]}
+        intensity={2.5}
+        color="#f5c36b"
+        castShadow
+        shadow-mapSize-width={1024}
+        shadow-mapSize-height={1024}
+      />
+      <pointLight position={[20, 20, 20]} intensity={0.4} color="#ffffff" />
+      <pointLight position={[-20, 15, 30]} intensity={0.3} color="#4a90e2" />
+      
+      {/* Mobile orbit rings */}
+      {mobilePlanets.map((planet) => (
+        <mesh key={`orbit-${planet.id}`} rotation={[Math.PI / 2, 0, 0]}>
+          <ringGeometry args={[planet.distance - 0.3, planet.distance + 0.3, 64]} />
+          <meshBasicMaterial color={planet.colors.surface} transparent opacity={0.1} side={2} />
+        </mesh>
+      ))}
+      
+      {/* Mobile-scaled Sun */}
+      <Sun onClick={onPlanetClick} brightMode={brightMode} setBrightMode={setBrightMode} />
+      
+      {/* Mobile-scaled Planets */}
+      {mobilePlanets.map((planet) => (
+        <Planet
+          key={planet.id}
+          planet={planet}
+          onClick={onPlanetClick}
+          onHover={onHover}
+          brightMode={brightMode}
+        />
+      ))}
+      
+      <Stars radius={80} depth={40} count={800} factor={3} saturation={0} fade speed={0.5} />
+    </group>
+  );
+}
+
 export default function SolarSystem3D({ onPlanetClick }) {
   const [hoveredPlanet, setHoveredPlanet] = useState(null);
-  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
-  const prefersReduced =
-    typeof window !== "undefined" &&
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const [isMobile, setIsMobile] = useState(false);
+  const prefersReduced = typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  // Use 2D fallback for mobile or reduced motion
-  if (isMobile || prefersReduced) {
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Only use 2D fallback for reduced motion preference
+  if (prefersReduced) {
     return (
       <div className="max-w-4xl mx-auto px-6">
         <div className="text-center mb-8">
-          <h3 className="text-2xl font-bold text-gold-300 mb-4">Navigation</h3>
-
-          {/* Sun */}
+          <h3 className="text-2xl font-bold text-amber-300 mb-4">Navigation</h3>
           <button
             onClick={() => onPlanetClick("about")}
-            className="w-20 h-20 rounded-full bg-gradient-to-r from-gold-400 to-gold-600 mb-8 mx-auto flex items-center justify-center text-galaxy-900 font-bold hover:scale-105 transition-transform focus:outline-none focus:ring-2 focus:ring-gold-500"
+            className="w-20 h-20 rounded-full bg-gradient-to-r from-amber-400 to-amber-600 mb-8 mx-auto flex items-center justify-center text-black font-bold hover:scale-105 transition-transform"
           >
             NS
           </button>
         </div>
-
-        {/* Planets grid */}
         <div className="grid grid-cols-2 sm:grid-cols-5 gap-4">
           {PLANETS.map((planet) => (
             <button
               key={planet.id}
               onClick={() => onPlanetClick(planet.id)}
-              className="relative group p-4 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-gold-500"
+              className="relative group p-4 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 transition-all duration-300"
             >
-              <div
-                className="w-12 h-12 rounded-full mx-auto mb-2"
-                style={{ backgroundColor: planet.color }}
-              />
+              <div className="w-12 h-12 rounded-full mx-auto mb-2" style={{ backgroundColor: planet.colors.surface }} />
               <span className="text-sm text-gray-300">{planet.label}</span>
             </button>
           ))}
@@ -510,53 +575,58 @@ export default function SolarSystem3D({ onPlanetClick }) {
   }
 
   return (
-    <div className="w-full h-screen relative">
-      <div className="absolute top-4 left-1/2 -translate-x-1/2 z-10 text-center">
-        <h3 className="text-3xl font-bold mb-2">
+    <div className={`w-full relative ${isMobile ? 'h-[70vh]' : 'h-screen'}`}>
+      <div className={`absolute top-4 left-1/2 -translate-x-1/2 z-10 text-center ${isMobile ? 'px-4' : ''}`}>
+        <h3 className={`font-bold mb-2 ${isMobile ? 'text-2xl' : 'text-3xl'}`}>
           <span className="bg-gradient-to-r from-amber-200 to-amber-400 bg-clip-text text-transparent">
             Solar System
           </span>
         </h3>
-        <p className="text-sm text-gray-300 animate-fade-in">
-          Click planets to navigate • Drag to rotate • Scroll to zoom
+        <p className={`text-gray-300 animate-fade-in ${isMobile ? 'text-xs' : 'text-sm'}`}>
+          {isMobile ? 'Tap planets • Pinch to zoom' : 'Click planets to navigate • Drag to rotate • Scroll to zoom'}
         </p>
         {hoveredPlanet && (
-          <p className="text-lg mt-3 font-bold animate-pulse">
+          <p className={`mt-3 font-bold animate-pulse ${isMobile ? 'text-base' : 'text-lg'}`}>
             <span className="bg-gradient-to-r from-amber-200 to-amber-400 bg-clip-text text-transparent">
               {hoveredPlanet}
             </span>
           </p>
         )}
 
-        {/* Animated instruction text */}
-        <div
-          className="mt-4 text-xs text-gray-400 animate-fade-in"
-          style={{ animationDelay: "2s" }}
-        >
-          <span className="inline-block">Explore the digital universe</span>
-        </div>
+        {!isMobile && (
+          <div className="mt-4 text-xs text-gray-400 animate-fade-in" style={{ animationDelay: "2s" }}>
+            <span className="inline-block">Explore the digital universe</span>
+          </div>
+        )}
       </div>
 
       <Canvas
-        camera={{ position: [0, 50, 80], fov: 75 }}
+        camera={{
+          position: isMobile ? [0, 30, 50] : [0, 50, 80],
+          fov: isMobile ? 85 : 75
+        }}
         style={{ background: "linear-gradient(to bottom, #000011, #000033)" }}
+        gl={{ antialias: !isMobile, powerPreference: isMobile ? 'low-power' : 'high-performance' }}
       >
         <OrbitControls
           enablePan={false}
           enableZoom={true}
           enableRotate={true}
-          minDistance={40}
-          maxDistance={200}
+          minDistance={isMobile ? 25 : 40}
+          maxDistance={isMobile ? 100 : 200}
           target={[0, -5, 0]}
           autoRotate={false}
           maxPolarAngle={Math.PI * 0.8}
           minPolarAngle={Math.PI * 0.1}
+          rotateSpeed={isMobile ? 0.8 : 1}
+          zoomSpeed={isMobile ? 0.8 : 1}
         />
         <Suspense fallback={null}>
-          <SolarSystemScene
-            onPlanetClick={onPlanetClick}
-            onHover={setHoveredPlanet}
-          />
+          {isMobile ? (
+            <MobileSolarSystemScene onPlanetClick={onPlanetClick} onHover={setHoveredPlanet} />
+          ) : (
+            <SolarSystemScene onPlanetClick={onPlanetClick} onHover={setHoveredPlanet} />
+          )}
         </Suspense>
       </Canvas>
     </div>

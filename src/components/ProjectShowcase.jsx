@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import CinematicText from './CinematicText';
 import { fetchGitHubRepos } from '../utils/githubApi';
+import { useAnalytics } from '../hooks/useAnalytics';
 
 // Categorized project groups
 const featuredProjects = [
@@ -152,6 +153,7 @@ const miniProjects = [
 function ProjectCard({ project, index }) {
   const [isHovered, setIsHovered] = useState(false);
   const [showDemo, setShowDemo] = useState(false);
+  const { trackProjectClick } = useAnalytics();
 
   return (
     <motion.div
@@ -262,14 +264,21 @@ function ProjectCard({ project, index }) {
               className="px-4 py-2 bg-gradient-to-r from-amber-400 to-orange-500 text-black rounded-lg font-medium text-sm cursor-view"
               whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(245, 158, 11, 0.6)" }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => setShowDemo(!showDemo)}
+              onClick={() => {
+                setShowDemo(!showDemo);
+                trackProjectClick(project.title);
+              }}
             >
               {showDemo ? 'Show Image' : 'Live Demo'}
             </motion.button>
             <motion.button
               className="px-4 py-2 bg-white/10 text-white rounded-lg font-medium text-sm border border-white/20 cursor-view"
               whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.2)" }}
-              whileTap={{ scale: 0.95 }} onClick={() => window.open(project.codeUrl, '_blank')}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => {
+                trackProjectClick(project.title);
+                window.open(project.codeUrl, '_blank');
+              }}
             >
               View Code
             </motion.button>
@@ -281,6 +290,7 @@ function ProjectCard({ project, index }) {
                 className="px-4 py-2 bg-blue-500 text-white rounded-lg font-medium text-sm border border-blue-700 cursor-view hover:bg-blue-600"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => trackProjectClick(project.title)}
               >
                 Website
               </motion.a>
