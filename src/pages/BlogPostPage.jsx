@@ -1,7 +1,8 @@
 // src/pages/BlogPostPage.jsx
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import TextReveal from '../components/TextReveal';
+import { useAnalytics } from '../hooks/useAnalytics';
 
 const BLOG_CONTENT = {
   'my-ai-journey': {
@@ -361,6 +362,13 @@ const BLOG_CONTENT = {
 export default function BlogPostPage() {
   const { id } = useParams();
   const post = BLOG_CONTENT[id];
+  const { trackBlogView } = useAnalytics();
+
+  useEffect(() => {
+    if (post) {
+      trackBlogView(post.title);
+    }
+  }, [post, trackBlogView]);
 
   if (!post) {
     return (

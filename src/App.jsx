@@ -31,6 +31,9 @@ import AchievementWall from './components/AchievementWall';
 import QuickFix from './components/QuickFix';
 import AutoProjectShowcase from './components/AutoProjectShowcase';
 import WelcomeModal from './components/WelcomeModal';
+import AnalyticsDashboard from './components/AnalyticsDashboard';
+
+import { useAnalytics } from './hooks/useAnalytics';
 
 
 export default function App() {
@@ -61,6 +64,7 @@ export default function App() {
 function AppContent() {
   const { isDark, isSpace, toggleSpaceTheme } = useTheme();
   const [showSpaceModal, setShowSpaceModal] = useState(false);
+  const { trackProjectClick, trackBlogView } = useAnalytics();
   useEffect(() => {
     let buffer = '';
     const handler = (e) => {
@@ -356,6 +360,11 @@ function AppContent() {
       
       {/* Welcome Modal for Visitor Analytics */}
       <WelcomeModal />
+      
+      {/* Analytics Dashboard */}
+      <AnalyticsDashboard />
+      
+
     </div>
   );
 }
