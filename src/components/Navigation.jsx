@@ -13,6 +13,7 @@ const NAV_ITEMS = [
   { id: 'showcase', label: 'Showcase', path: '/#projectshowcase' },
   { id: 'live-projects', label: 'Live Projects', path: '/live-projects' },
   { id: 'achievements', label: 'Achievements', path: '/#achievements' },
+  { id: 'certifications', label: 'Certifications', path: '/certifications' },
   { id: 'blog', label: 'Blog', path: '#/blog' },
   { id: 'contact', label: 'Contact', path: '/#contact' }
 ];
@@ -85,6 +86,8 @@ export default function Navigation() {
       window.location.href = '#/blog';
     } else if (item.id === 'live-projects') {
       window.location.href = '#/live-projects';
+    } else if (item.id === 'certifications') {
+      window.location.href = '#/certifications';
     } else if (item.id === 'showcase') {
       const element = document.querySelector('.project-showcase-anchor');
       if (element) {
