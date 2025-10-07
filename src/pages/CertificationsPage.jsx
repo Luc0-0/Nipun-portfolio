@@ -8,6 +8,7 @@ import TextReveal from '../components/TextReveal';
 import TiltCard from '../components/TiltCard';
 import CinematicText from '../components/CinematicText';
 import PDFThumbnail from '../components/PDFThumbnail';
+import SharedBackground from '../components/SharedBackground';
 
 const ALL_CERTIFICATIONS = [
   {
@@ -229,7 +230,7 @@ function CertificationCard({ certification, index }) {
 
 export default function CertificationsPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-100 dark:bg-gradient-to-b dark:from-gray-900 dark:to-black">
+    <SharedBackground>
       {/* Navigation Header */}
       <div className="sticky top-0 z-40 bg-white/80 dark:bg-black/80 backdrop-blur-lg border-b border-gray-200 dark:border-white/10">
         <div className="max-w-6xl mx-auto px-6 py-4">
@@ -342,6 +343,6 @@ export default function CertificationsPage() {
           </div>
         </motion.div>
       </div>
-    </div>
+    </SharedBackground>
   );
 }
