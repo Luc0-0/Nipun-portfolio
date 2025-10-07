@@ -4,7 +4,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-const NAV_ITEMS = [
+const HOME_NAV_ITEMS = [
   { id: 'home', label: 'Home', path: '/' },
   { id: 'solar-system', label: 'Navigation', path: '/#solar-system' },
   { id: 'about', label: 'About', path: '/#about' },
@@ -12,9 +12,15 @@ const NAV_ITEMS = [
   { id: 'projects', label: 'Projects', path: '/#project1' },
   { id: 'showcase', label: 'Showcase', path: '/#projectshowcase' },
   { id: 'live-projects', label: 'Live Projects', path: '/live-projects' },
+  { id: 'timeline', label: 'Timeline', path: '/timeline' },
   { id: 'achievements', label: 'Achievements', path: '/#achievements' },
   { id: 'certifications', label: 'Certifications', path: '/certifications' },
   { id: 'blog', label: 'Blog', path: '#/blog' },
+  { id: 'contact', label: 'Contact', path: '/#contact' }
+];
+
+const ROUTED_NAV_ITEMS = [
+  { id: 'home', label: 'Home', path: '/' },
   { id: 'contact', label: 'Contact', path: '/#contact' }
 ];
 
@@ -23,6 +29,9 @@ export default function Navigation() {
   const [isVisible, setIsVisible] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const location = useLocation();
+  
+  const isHomePage = location.pathname === '/';
+  const NAV_ITEMS = isHomePage ? HOME_NAV_ITEMS : ROUTED_NAV_ITEMS;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -88,6 +97,8 @@ export default function Navigation() {
       window.location.href = '#/live-projects';
     } else if (item.id === 'certifications') {
       window.location.href = '#/certifications';
+    } else if (item.id === 'timeline') {
+      window.location.href = '#/timeline';
     } else if (item.id === 'showcase') {
       const element = document.querySelector('.project-showcase-anchor');
       if (element) {
@@ -121,7 +132,7 @@ export default function Navigation() {
   };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+    <nav className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${
       isScrolled 
         ? 'bg-black/80 backdrop-blur-lg border-b border-amber-400/20 shadow-lg shadow-amber-400/10' 
         : 'bg-transparent'
@@ -140,19 +151,19 @@ export default function Navigation() {
           </Link>
 
           {/* Navigation Links */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-4">
             {NAV_ITEMS.map((item) => (
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item)}
                 className={`relative px-3 py-2 text-sm font-medium transition-all duration-300 ${
-                  activeSection === item.id
+                  (isHomePage && activeSection === item.id) || (!isHomePage && item.id === 'home')
                     ? 'text-amber-300'
                     : 'text-gray-300 hover:text-white'
                 }`}
               >
                 {item.label}
-                {activeSection === item.id && (
+                {((isHomePage && activeSection === item.id) || (!isHomePage && item.id === 'home')) && (
                   <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-amber-400 to-amber-600 rounded-full" />
                 )}
               </button>

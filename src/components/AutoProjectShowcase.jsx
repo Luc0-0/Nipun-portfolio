@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getReposByCategory } from '../utils/githubApi';
 import TextReveal from './TextReveal';
+import SharedBackground from './SharedBackground';
 
 const AutoProjectShowcase = () => {
   const [projects, setProjects] = useState({});
@@ -29,19 +30,22 @@ const AutoProjectShowcase = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen pt-20 pb-12 cursor-default" style={{ background: 'linear-gradient(to bottom, #000011, #000033)' }}>
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center py-20">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-amber-400 mx-auto mb-4"></div>
-            <p className="text-gray-400">Loading projects from GitHub...</p>
+      <SharedBackground>
+        <div className="pt-20 pb-12">
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="text-center py-20">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-amber-400 mx-auto mb-4"></div>
+              <p className="text-gray-400">Loading projects from GitHub...</p>
+            </div>
           </div>
         </div>
-      </div>
+      </SharedBackground>
     );
   }
 
   return (
-    <div className="min-h-screen pt-20 pb-12 cursor-default" style={{ background: 'linear-gradient(to bottom, #000011, #000033)' }}>
+    <SharedBackground>
+      <div className="pt-20 pb-12">
       <div className="max-w-6xl mx-auto px-6">
         <TextReveal>
           <div className="mb-8">
@@ -174,7 +178,8 @@ const AutoProjectShowcase = () => {
           </div>
         </TextReveal>
       </div>
-    </div>
+      </div>
+    </SharedBackground>
   );
 };
 

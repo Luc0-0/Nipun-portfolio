@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import TextReveal from '../components/TextReveal';
 import TiltCard from '../components/TiltCard';
+import SharedBackground from '../components/SharedBackground';
 
 const BLOG_POSTS = [
   {
@@ -54,7 +55,8 @@ const BLOG_POSTS = [
 
 export default function BlogPage() {
   return (
-    <div className="min-h-screen pt-20 pb-12 cursor-default" style={{ background: 'linear-gradient(to bottom, #000011, #000033)' }}>
+    <SharedBackground>
+      <div className="pt-20 pb-12">
       <div className="max-w-6xl mx-auto px-6">
         <Link to="/" className="inline-flex items-center gap-2 text-amber-300 hover:text-amber-200 transition-colors duration-300 mb-8">
           ← Back to Home
@@ -131,6 +133,7 @@ export default function BlogPage() {
           </div>
         </TextReveal>
       </div>
-    </div>
+      </div>
+    </SharedBackground>
   );
 }
