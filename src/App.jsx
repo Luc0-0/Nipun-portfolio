@@ -32,6 +32,7 @@ import QuickFix from './components/QuickFix';
 import AutoProjectShowcase from './components/AutoProjectShowcase';
 import WelcomeModal from './components/WelcomeModal';
 import AnalyticsDashboard from './components/AnalyticsDashboard';
+import Timeline from './components/Timeline';
 
 import { useAnalytics } from './hooks/useAnalytics';
 
@@ -236,6 +237,11 @@ function AppContent() {
           </div>
         </div>
 
+        {/* Timeline Showcase */}
+        <div className="relative py-20">
+          <Timeline />
+        </div>
+
         {/* Achievement Wall */}
         <div className="relative py-20">
           <AchievementWall />
@@ -245,6 +251,8 @@ function AppContent() {
         <div className="relative">
           <Achievements />
         </div>
+
+
 
         {/* Blog Section */}
         <div className="relative py-20">

@@ -7,6 +7,7 @@ import BlogPage from './pages/BlogPage'
 import BlogPostPage from './pages/BlogPostPage'
 import CategoryPage from './pages/CategoryPage'
 import CertificationsPage from './pages/CertificationsPage'
+import TimelinePage from './pages/TimelinePage'
 import AutoProjectShowcase from './components/AutoProjectShowcase'
 import './index.css'
 
@@ -20,6 +21,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="/blog/:id" element={<BlogPostPage />} />
           <Route path="/projects/:category" element={<CategoryPage />} />
           <Route path="/certifications" element={<CertificationsPage />} />
+          <Route path="/timeline" element={<TimelinePage />} />
           <Route path="/live-projects" element={<AutoProjectShowcase />} />
         </Routes>
       </Router>
