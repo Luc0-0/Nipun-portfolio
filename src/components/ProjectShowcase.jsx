@@ -28,6 +28,17 @@ const featuredProjects = [
     demoUrl: "https://elevated-notes--smart-notes-luc-edition.asia-east1.hosted.app/",
     codeUrl: "https://github.com/Luc0-0/Smart-notes-by-Nipun",
     featured: true
+  },
+  {
+    id: 3,
+    title: "Samarth - Data Science Platform",
+    description: "Comprehensive data science platform with advanced analytics, visualization tools, and machine learning capabilities. Features interactive dashboards, data processing pipelines, and predictive modeling tools.",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop",
+    video: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop",
+    tags: ["Data Science", "Analytics", "Machine Learning", "Visualization", "Python"],
+    demoUrl: "https://samarth-two.vercel.app",
+    codeUrl: "https://github.com/Luc0-0/samarth",
+    featured: true
   }
 ];
 

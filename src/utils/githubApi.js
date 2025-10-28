@@ -7,7 +7,7 @@ const CATEGORY_KEYWORDS = {
   'AI/ML Projects': ['ai', 'ml', 'machine-learning', 'neural', 'deep-learning', 'tensorflow', 'pytorch', 'scikit', 'nlp', 'computer-vision', 'data-science'],
   'Web Development': ['react', 'vue', 'angular', 'javascript', 'typescript', 'html', 'css', 'node', 'express', 'next', 'portfolio', 'website'],
   'Mobile Development': ['android', 'ios', 'react-native', 'flutter', 'mobile', 'app'],
-  'Data Science': ['data', 'analysis', 'visualization', 'pandas', 'numpy', 'jupyter', 'dataset', 'analytics'],
+  'Data Science': ['data', 'analysis', 'visualization', 'pandas', 'numpy', 'jupyter', 'dataset', 'analytics', 'samarth'],
   'Mini Projects': ['mini', 'small', 'practice', 'learning', 'tutorial', 'demo', 'simple']
 };
 
