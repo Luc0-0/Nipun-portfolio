@@ -187,7 +187,7 @@ export default function Hero() {
               <button
                 onClick={() => {
                   const link = document.createElement('a');
-                  link.href = '/images/Nipun_Resume.pdf';
+                  link.href = '/images/Nipun_Resume (4).pdf';
                   link.download = 'Nipun_Sujesh_Resume.pdf';
                   link.click();
                 }}
