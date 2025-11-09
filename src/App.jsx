@@ -18,7 +18,6 @@ import { ThemeProvider, useTheme } from './contexts/ThemeContext';
 import ThemeToggle from './components/ThemeToggle';
 import SmoothScroll from './components/SmoothScroll';
 import ScrollEffects from './components/ScrollEffects';
-import PageTransition from './components/PageTransition';
 import EnhancedParallax from './components/EnhancedParallax';
 import GlowCursor from './components/GlowCursor';
 import CometTrail from './components/CometTrail';
@@ -34,6 +33,10 @@ import WelcomeModal from './components/WelcomeModal';
 import AnalyticsDashboard from './components/AnalyticsDashboard';
 import Timeline from './components/Timeline';
 import FloatingProjectsButton from './components/FloatingProjectsButton';
+import IntelligentCursor from './components/IntelligentCursor';
+import PageTransitionNew from './components/PageTransition';
+import AmbientParticles from './components/AmbientParticles';
+import Scroll3DAnimations from './components/Scroll3DAnimations';
 
 import { useAnalytics } from './hooks/useAnalytics';
 
@@ -153,6 +156,11 @@ function AppContent() {
       {/* Scroll Effects */}
       <ScrollEffects />
       
+      {/* Next-level UI Components */}
+      <IntelligentCursor />
+      <PageTransitionNew />
+      <AmbientParticles count={30} speed={0.3} />
+      
 
       
 
@@ -210,7 +218,9 @@ function AppContent() {
         
         {/* Project Showcase */}
         <div className="relative py-20 project-showcase-anchor">
-          <ProjectShowcase />
+          <Scroll3DAnimations index={0} delay={200}>
+            <ProjectShowcase />
+          </Scroll3DAnimations>
         </div>
 
         {/* Live GitHub Projects */}
@@ -243,12 +253,16 @@ function AppContent() {
 
         {/* Timeline Showcase */}
         <div className="relative py-20">
-          <Timeline />
+          <Scroll3DAnimations index={1} delay={300}>
+            <Timeline />
+          </Scroll3DAnimations>
         </div>
 
         {/* Achievement Wall */}
         <div className="relative py-20">
-          <AchievementWall />
+          <Scroll3DAnimations index={2} delay={250}>
+            <AchievementWall />
+          </Scroll3DAnimations>
         </div>
 
         {/* Achievements section */}
@@ -260,15 +274,16 @@ function AppContent() {
 
         {/* Blog Section */}
         <div className="relative py-20">
-          <div className="max-w-6xl mx-auto px-6">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl lg:text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-amber-100">
-                Latest Articles
-              </h2>
-              <p className="text-xl text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
-                Sharing my journey in AI, Data Science, and technology
-              </p>
-            </div>
+          <Scroll3DAnimations index={3} delay={400}>
+            <div className="max-w-6xl mx-auto px-6">
+              <div className="text-center mb-12">
+                <h2 className="text-4xl lg:text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-amber-100">
+                  Latest Articles
+                </h2>
+                <p className="text-xl text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
+                  Sharing my journey in AI, Data Science, and technology
+                </p>
+              </div>
             
             <div className="grid md:grid-cols-3 gap-8 mb-12">
               <div className="bg-white/90 dark:bg-white/5 backdrop-blur-sm border border-gray-200 dark:border-amber-400/20 rounded-2xl p-6 hover:bg-gray-50 dark:hover:bg-white/10 transition-all duration-300">
@@ -326,7 +341,8 @@ function AppContent() {
                 Read All Articles
               </a>
             </div>
-          </div>
+            </div>
+          </Scroll3DAnimations>
         </div>
       </main>
       

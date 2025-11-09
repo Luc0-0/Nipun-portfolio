@@ -75,18 +75,66 @@ body {
   cursor: auto !important;
 }
 
-/* Force cursor visibility on all elements */
-* {
-  cursor: auto !important;
+/* Hide default cursor on desktop for custom cursor */
+@media (min-width: 768px) {
+  * {
+    cursor: none !important;
+  }
 }
 
-button, a, input, textarea, select, [role="button"] {
-  cursor: pointer !important;
+/* Mobile cursor visibility */
+@media (max-width: 767px) {
+  * {
+    cursor: auto !important;
+  }
+  
+  button, a, input, textarea, select, [role="button"] {
+    cursor: pointer !important;
+  }
 }
 
 /* Z-index fixes */
 .z-\[100\] {
   z-index: 100 !important;
+}
+
+.z-\[9999\] {
+  z-index: 9999 !important;
+}
+
+.z-\[9998\] {
+  z-index: 9998 !important;
+}
+
+/* Performance optimizations */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* GPU acceleration for animations */
+.animate-3d-in,
+[style*="transform"] {
+  will-change: transform;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+/* Scroll animations */
+.animate-in {
+  transform: translate3d(0, 0, 0) !important;
+  opacity: 1 !important;
+  filter: blur(0) !important;
+}
+
+/* Breathing animation */
+@keyframes breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+.animate-breathe {
+  animation: breathe 4s ease-in-out infinite;
 }
 
 .z-50 {

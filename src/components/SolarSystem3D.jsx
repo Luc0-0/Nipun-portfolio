@@ -276,10 +276,10 @@ function Planet({ planet, onClick, onHover, brightMode }) {
         <sphereGeometry args={[baseSize, 64, 64]} />
         <meshStandardMaterial
           color={colors.surface}
-          roughness={0.7}
-          metalness={0.2}
+          roughness={0.4}
+          metalness={0.6}
           emissive={colors.core}
-          emissiveIntensity={0.15}
+          emissiveIntensity={0.25}
         />
         
         {/* Inner core gradient */}
@@ -331,17 +331,17 @@ function Planet({ planet, onClick, onHover, brightMode }) {
 
         <Html distanceFactor={2} position={[0, -(baseSize + 3), 0]}>
           <div
-            className={`text-lg font-bold pointer-events-none whitespace-nowrap shadow-md border px-4 py-2 rounded-xl transition-all duration-300 ${
+            className={`text-sm font-light pointer-events-none whitespace-nowrap px-3 py-1 rounded-lg transition-all duration-300 backdrop-blur-sm ${
               brightMode
-                ? "text-gray-800 bg-gradient-to-r from-white/95 to-gray-100/95 border-amber-400"
-                : "text-white bg-gradient-to-r from-black/95 to-gray-900/95 border-amber-400/50"
+                ? "text-gray-800 bg-white/80 border border-amber-400/30"
+                : "text-white/90 bg-black/60 border border-white/10"
             }`}
           >
             <span
-              className={`font-extrabold ${hovered ? "animate-pulse" : ""}`}
-              style={{ color: colors.surface }}
+              className={`tracking-wide ${hovered ? "text-amber-300" : ""}`}
+              style={{ color: hovered ? '#fbbf24' : colors.surface }}
             >
-              {planet.label}
+              {planet.label.toUpperCase()}
             </span>
           </div>
         </Html>
@@ -403,30 +403,30 @@ function SolarSystemScene({ onPlanetClick, onHover }) {
       {" "}
       {/* Tilt backward by ~17 degrees */}
       <fog attach="fog" args={["#0a0a0a", 120, 250]} />
-      <ambientLight ref={ambientRef} intensity={0.4} />
+      <ambientLight ref={ambientRef} intensity={0.3} color="#fbbf24" />
       <pointLight
         ref={sunLightRef}
         position={[0, 0, 0]}
-        intensity={3}
-        color="#f5c36b"
+        intensity={2.5}
+        color="#fbbf24"
         castShadow
         shadow-mapSize-width={2048}
         shadow-mapSize-height={2048}
       />
       <pointLight
         position={[40, 40, 40]}
-        intensity={brightMode ? 0.3 : 0.8}
-        color="#ffffff"
+        intensity={brightMode ? 0.2 : 0.5}
+        color="#fbbf24"
       />
       <pointLight
         position={[-40, 30, 60]}
-        intensity={brightMode ? 0.2 : 0.6}
-        color="#4a90e2"
+        intensity={brightMode ? 0.1 : 0.3}
+        color="#f59e0b"
       />
       <pointLight
         position={[0, -30, 30]}
-        intensity={brightMode ? 0.1 : 0.4}
-        color="#8a2be2"
+        intensity={brightMode ? 0.1 : 0.2}
+        color="#d97706"
       />
       {/* Orbit rings */}
       {PLANETS.map((planet) => {
@@ -576,28 +576,53 @@ export default function SolarSystem3D({ onPlanetClick }) {
 
   return (
     <div className={`w-full relative ${isMobile ? 'h-[70vh]' : 'h-screen'}`}>
-      <div className={`absolute top-4 left-1/2 -translate-x-1/2 z-10 text-center ${isMobile ? 'px-4' : ''}`}>
-        <h3 className={`font-bold mb-2 ${isMobile ? 'text-2xl' : 'text-3xl'}`}>
-          <span className="bg-gradient-to-r from-amber-200 to-amber-400 bg-clip-text text-transparent">
-            Solar System
+      {/* Depth layering background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-gray-900/20 via-slate-900/10 to-black/30" />
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-amber-900/5 to-transparent" />
+      
+      {/* Floating minimalist frame */}
+      <div className="absolute inset-4 border border-white/5 rounded-2xl pointer-events-none">
+        {/* Corner accents */}
+        <div className="absolute top-0 left-0 w-8 h-8 border-l-2 border-t-2 border-amber-400/20 rounded-tl-lg" />
+        <div className="absolute top-0 right-0 w-8 h-8 border-r-2 border-t-2 border-amber-400/20 rounded-tr-lg" />
+        <div className="absolute bottom-0 left-0 w-8 h-8 border-l-2 border-b-2 border-amber-400/20 rounded-bl-lg" />
+        <div className="absolute bottom-0 right-0 w-8 h-8 border-r-2 border-b-2 border-amber-400/20 rounded-br-lg" />
+      </div>
+      
+      {/* Refined typography */}
+      <div className="absolute top-8 left-1/2 -translate-x-1/2 z-10 text-center">
+        <h3 className={`font-extralight tracking-[0.2em] mb-3 ${isMobile ? 'text-lg' : 'text-xl'}`}>
+          <span className="text-white/95 drop-shadow-lg">
+            PORTFOLIO NAVIGATOR
           </span>
         </h3>
-        <p className={`text-gray-300 animate-fade-in ${isMobile ? 'text-xs' : 'text-sm'}`}>
-          {isMobile ? 'Tap planets • Pinch to zoom' : 'Click planets to navigate • Drag to rotate • Scroll to zoom'}
+        <div className="w-16 h-px bg-gradient-to-r from-transparent via-amber-400/40 to-transparent mx-auto mb-4" />
+        <p className={`text-white/50 font-light tracking-wide ${isMobile ? 'text-xs' : 'text-sm'}`}>
+          {isMobile ? 'TAP TO EXPLORE' : 'CLICK TO NAVIGATE'}
         </p>
         {hoveredPlanet && (
-          <p className={`mt-3 font-bold animate-pulse ${isMobile ? 'text-base' : 'text-lg'}`}>
-            <span className="bg-gradient-to-r from-amber-200 to-amber-400 bg-clip-text text-transparent">
-              {hoveredPlanet}
+          <p className={`mt-4 font-light tracking-wider ${isMobile ? 'text-sm' : 'text-base'}`}>
+            <span className="text-amber-300/90 drop-shadow-md">
+              {hoveredPlanet.toUpperCase()}
             </span>
           </p>
         )}
+      </div>
 
-        {!isMobile && (
-          <div className="mt-4 text-xs text-gray-400 animate-fade-in" style={{ animationDelay: "2s" }}>
-            <span className="inline-block">Explore the digital universe</span>
-          </div>
-        )}
+      {/* Ambient particles */}
+      <div className="absolute inset-0 pointer-events-none">
+        {[...Array(20)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 bg-amber-400/20 rounded-full animate-pulse"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 3}s`,
+              animationDuration: `${2 + Math.random() * 2}s`
+            }}
+          />
+        ))}
       </div>
 
       <Canvas
@@ -605,7 +630,9 @@ export default function SolarSystem3D({ onPlanetClick }) {
           position: isMobile ? [0, 30, 50] : [0, 50, 80],
           fov: isMobile ? 85 : 75
         }}
-        style={{ background: "linear-gradient(to bottom, #000011, #000033)" }}
+        style={{ 
+          background: "linear-gradient(135deg, #0f172a 0%, #1e293b 30%, #334155 60%, #1e293b 100%)"
+        }}
         gl={{ antialias: !isMobile, powerPreference: isMobile ? 'low-power' : 'high-performance' }}
       >
         <OrbitControls
