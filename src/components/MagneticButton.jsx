@@ -1,41 +1,38 @@
-// src/components/MagneticButton.jsx
-import { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 
-export default function MagneticButton({ children, className, ...props }) {
+export default function MagneticButton({ children, className = '', intensity = 0.3, ...props }) {
   const buttonRef = useRef();
 
-  const handleMouseMove = (e) => {
+  useEffect(() => {
     const button = buttonRef.current;
     if (!button) return;
 
-    const rect = button.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    
-    const deltaX = (e.clientX - centerX) * 0.15;
-    const deltaY = (e.clientY - centerY) * 0.15;
-    
-    button.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
-  };
+    const handleMouseMove = (e) => {
+      const rect = button.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      
+      button.style.transform = `translate(${x * intensity}px, ${y * intensity}px)`;
+    };
 
-  const handleMouseLeave = () => {
-    const button = buttonRef.current;
-    if (!button) return;
-    
-    button.style.transform = 'translate(0px, 0px)';
-    button.style.transition = 'transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-    
-    setTimeout(() => {
-      button.style.transition = '';
-    }, 500);
-  };
+    const handleMouseLeave = () => {
+      button.style.transform = 'translate(0px, 0px)';
+    };
+
+    button.addEventListener('mousemove', handleMouseMove);
+    button.addEventListener('mouseleave', handleMouseLeave);
+
+    return () => {
+      button.removeEventListener('mousemove', handleMouseMove);
+      button.removeEventListener('mouseleave', handleMouseLeave);
+    };
+  }, [intensity]);
 
   return (
     <button
       ref={buttonRef}
-      className={`magnetic ${className}`}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
+      className={`transition-transform duration-200 ease-out ${className}`}
+      data-magnetic
       {...props}
     >
       {children}
