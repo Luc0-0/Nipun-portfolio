@@ -197,17 +197,7 @@ function AppContent() {
         {/* Enhanced solar system navigator */}
         <section id="solar-system" className="py-20 relative z-10 solar-system-section">
           <SolarSystem3D onPlanetClick={handlePlanetClick} />
-          {/* Professional navigation instructions */}
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
-            <div className="bg-black/70 backdrop-blur-lg px-8 py-4 rounded-lg border border-white/10 shadow-2xl hover:border-white/20 hover:bg-black/80 transition-all duration-500">
-              <p className="text-sm text-gray-200 text-center mb-2 font-medium">
-                Interactive Solar System Navigator
-              </p>
-              <p className="text-xs text-gray-400 text-center">
-                Click planets to explore • Drag to rotate • Scroll to zoom
-              </p>
-            </div>
-          </div>
+
         </section>
         
         {/* Enhanced content sections */}

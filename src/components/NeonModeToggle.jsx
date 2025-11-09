@@ -22,7 +22,7 @@ export default function NeonModeToggle() {
   return (
     <motion.button
       onClick={handleToggle}
-      className={`fixed top-6 right-6 z-50 p-4 rounded-full backdrop-blur-lg border-2 transition-all duration-500 ${
+      className={`fixed top-4 right-4 md:top-6 md:right-6 z-50 p-3 md:p-4 rounded-full backdrop-blur-lg border-2 transition-all duration-500 ${
         isNeon 
           ? 'bg-black/80 border-cyan-400 shadow-[0_0_30px_rgba(6,182,212,0.8)]' 
           : isDark 
