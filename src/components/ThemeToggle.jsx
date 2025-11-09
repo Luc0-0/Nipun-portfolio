@@ -8,7 +8,7 @@ const ThemeToggle = () => {
   return (
     <button
       onClick={toggleTheme}
-      className={`fixed top-6 right-6 z-50 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 ${
+      className={`fixed top-4 right-4 z-50 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 ${
         isDark 
           ? 'bg-white/10 border border-amber-400/20 text-amber-300 hover:bg-amber-400/10' 
           : 'bg-gray-800/10 border border-gray-300 text-gray-700 hover:bg-gray-200'
