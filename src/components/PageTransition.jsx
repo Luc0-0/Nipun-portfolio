@@ -50,9 +50,9 @@ export default function PageTransition() {
       </div>
 
       {/* Loading text */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div className="text-center">
-          <div className={`text-2xl font-light tracking-wider mb-4 ${
+      <div className="absolute inset-0 flex items-center justify-center px-4">
+        <div className="text-center max-w-xs">
+          <div className={`text-xl md:text-2xl font-light tracking-wider mb-4 ${
             isSpace ? 'text-cyan-300' : isDark ? 'text-amber-300' : 'text-gray-800'
           }`}>
             LOADING

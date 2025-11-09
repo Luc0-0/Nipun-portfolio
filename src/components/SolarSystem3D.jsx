@@ -528,7 +528,7 @@ function MobileSolarSystemScene({ onPlanetClick, onHover }) {
         />
       ))}
       
-      <Stars radius={80} depth={40} count={800} factor={3} saturation={0} fade speed={0.5} />
+      <Stars radius={80} depth={40} count={800} factor={4} saturation={0} fade speed={0.5} />
     </group>
   );
 }
@@ -574,8 +574,46 @@ export default function SolarSystem3D({ onPlanetClick }) {
     );
   }
 
+  if (isMobile) {
+    return (
+      <div className="w-full py-8">
+        <div className="max-w-sm mx-auto px-4">
+          {/* Sleek glass box container */}
+          <div className="relative bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] overflow-hidden">
+            {/* Subtle glass effect overlay */}
+            <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-black/10 pointer-events-none" />
+            
+            {/* Mobile Solar System - No text, just the 3D scene */}
+            <div className="h-80 relative">
+              <Canvas
+                camera={{ position: [0, 40, 80], fov: 60 }}
+                style={{ background: "transparent" }}
+                gl={{ antialias: false, powerPreference: 'low-power', alpha: true }}
+              >
+                <OrbitControls
+                  enablePan={false}
+                  enableZoom={true}
+                  enableRotate={true}
+                  minDistance={60}
+                  maxDistance={120}
+                  target={[0, -5, 0]}
+                  autoRotate={false}
+                  rotateSpeed={0.3}
+                  zoomSpeed={0.5}
+                />
+                <Suspense fallback={null}>
+                  <MobileSolarSystemScene onPlanetClick={onPlanetClick} onHover={setHoveredPlanet} />
+                </Suspense>
+              </Canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className={`w-full relative ${isMobile ? 'h-[70vh]' : 'h-screen'}`}>
+    <div className={`w-full relative h-screen`}>
       {/* Depth layering background */}
       <div className="absolute inset-0 bg-gradient-to-b from-gray-900/20 via-slate-900/10 to-black/30" />
       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-amber-900/5 to-transparent" />
@@ -589,71 +627,58 @@ export default function SolarSystem3D({ onPlanetClick }) {
         <div className="absolute bottom-0 right-0 w-8 h-8 border-r-2 border-b-2 border-amber-400/20 rounded-br-lg" />
       </div>
       
-      {/* Refined typography */}
+      {/* Sleek minimal text */}
       <div className="absolute top-8 left-1/2 -translate-x-1/2 z-10 text-center">
-        <h3 className={`font-extralight tracking-[0.2em] mb-3 ${isMobile ? 'text-lg' : 'text-xl'}`}>
-          <span className="text-white/95 drop-shadow-lg">
-            PORTFOLIO NAVIGATOR
-          </span>
+        <h3 className="text-lg font-light tracking-[0.3em] text-white/80">
+          EXPLORE
         </h3>
-        <div className="w-16 h-px bg-gradient-to-r from-transparent via-amber-400/40 to-transparent mx-auto mb-4" />
-        <p className={`text-white/50 font-light tracking-wide ${isMobile ? 'text-xs' : 'text-sm'}`}>
-          {isMobile ? 'TAP TO EXPLORE' : 'CLICK TO NAVIGATE'}
-        </p>
-        {hoveredPlanet && (
-          <p className={`mt-4 font-light tracking-wider ${isMobile ? 'text-sm' : 'text-base'}`}>
-            <span className="text-amber-300/90 drop-shadow-md">
-              {hoveredPlanet.toUpperCase()}
-            </span>
-          </p>
-        )}
       </div>
 
-      {/* Ambient particles */}
+      {/* Ambient particles - positioned closer to center */}
       <div className="absolute inset-0 pointer-events-none">
-        {[...Array(20)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-amber-400/20 rounded-full animate-pulse"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`,
-              animationDuration: `${2 + Math.random() * 2}s`
-            }}
-          />
-        ))}
+        {[...Array(15)].map((_, i) => {
+          const angle = (i / 15) * 360;
+          const radius = 30 + Math.random() * 40;
+          const x = 50 + Math.cos(angle * Math.PI / 180) * radius;
+          const y = 50 + Math.sin(angle * Math.PI / 180) * radius;
+          return (
+            <div
+              key={i}
+              className="absolute w-2 h-2 bg-amber-400/40 animate-pulse"
+              style={{
+                left: `${Math.max(10, Math.min(90, x))}%`,
+                top: `${Math.max(10, Math.min(90, y))}%`,
+                animationDelay: `${Math.random() * 3}s`,
+                animationDuration: `${2 + Math.random() * 2}s`,
+                clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)'
+              }}
+            />
+          );
+        })}
       </div>
 
       <Canvas
-        camera={{
-          position: isMobile ? [0, 30, 50] : [0, 50, 80],
-          fov: isMobile ? 85 : 75
-        }}
+        camera={{ position: [0, 80, 120], fov: 75 }}
         style={{ 
           background: "linear-gradient(135deg, #0f172a 0%, #1e293b 30%, #334155 60%, #1e293b 100%)"
         }}
-        gl={{ antialias: !isMobile, powerPreference: isMobile ? 'low-power' : 'high-performance' }}
+        gl={{ antialias: true, powerPreference: 'high-performance' }}
       >
         <OrbitControls
           enablePan={false}
           enableZoom={true}
           enableRotate={true}
-          minDistance={isMobile ? 25 : 40}
-          maxDistance={isMobile ? 100 : 200}
-          target={[0, -5, 0]}
+          minDistance={100}
+          maxDistance={300}
+          target={[0, 0, 0]}
           autoRotate={false}
-          maxPolarAngle={Math.PI * 0.8}
+          maxPolarAngle={Math.PI * 0.9}
           minPolarAngle={Math.PI * 0.1}
-          rotateSpeed={isMobile ? 0.8 : 1}
-          zoomSpeed={isMobile ? 0.8 : 1}
+          rotateSpeed={1}
+          zoomSpeed={1}
         />
         <Suspense fallback={null}>
-          {isMobile ? (
-            <MobileSolarSystemScene onPlanetClick={onPlanetClick} onHover={setHoveredPlanet} />
-          ) : (
-            <SolarSystemScene onPlanetClick={onPlanetClick} onHover={setHoveredPlanet} />
-          )}
+          <SolarSystemScene onPlanetClick={onPlanetClick} onHover={setHoveredPlanet} />
         </Suspense>
       </Canvas>
     </div>
