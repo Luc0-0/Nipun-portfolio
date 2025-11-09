@@ -359,7 +359,7 @@ function AppContent() {
           {/* Premium Download Resume Button */}
           <div className="flex justify-center mb-8">
             <a
-              href="/images/Nipun_Resume.pdf"
+              href="/images/Nipun_Resume (4).pdf"
               download
               className="inline-flex items-center gap-2 px-7 py-3 rounded-2xl bg-gradient-to-br from-black via-indigo-900 to-amber-400/30 dark:from-black dark:via-indigo-950 dark:to-amber-300/20 shadow-[0_0_24px_2px_rgba(80,120,255,0.18)] border border-indigo-700/40 dark:border-amber-300/20 text-lg font-bold text-amber-200 dark:text-amber-100 hover:shadow-[0_0_40px_10px_rgba(245,195,107,0.18)] hover:scale-105 transition-all duration-300 backdrop-blur-lg focus:outline-none focus:ring-2 focus:ring-indigo-400/40"
             >
