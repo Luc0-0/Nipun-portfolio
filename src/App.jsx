@@ -380,6 +380,9 @@ function AppContent() {
         </div>
       </footer>
       
+      {/* Theme Toggle */}
+      <ThemeToggle />
+      
       {/* Neon Mode Toggle */}
       <NeonModeToggle />
       
