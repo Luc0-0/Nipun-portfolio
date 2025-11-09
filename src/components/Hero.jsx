@@ -194,16 +194,22 @@ export default function Hero() {
             >
               <div className="relative group">
                 {/* Premium Glassmorphism Container for Model Image */}
-                <div className="mx-auto max-w-md rounded-3xl bg-gradient-to-br from-black/90 via-indigo-950/80 to-gray-900/80 dark:from-black/95 dark:via-indigo-950/90 dark:to-gray-900/90 backdrop-blur-lg shadow-2xl border border-gray-800/60 dark:border-gray-900/80 p-6 flex items-center justify-center">
-                  <div className="w-full h-auto rounded-2xl transition-all duration-500 group/image hover:shadow-[0_0_40px_10px_rgba(80,120,255,0.25),0_0_80px_20px_rgba(245,195,107,0.18)]">
+                <div className="mx-auto max-w-md rounded-3xl bg-gradient-to-br from-slate-900/95 via-gray-900/90 to-black/95 backdrop-blur-xl shadow-[0_0_50px_rgba(0,0,0,0.8)] border border-gradient-to-r from-gray-700/50 via-slate-600/30 to-gray-800/50 p-6 flex items-center justify-center relative overflow-hidden">
+                  {/* Animated border gradient */}
+                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-slate-700/40 via-gray-600/20 to-slate-800/40 p-[1px]">
+                    <div className="w-full h-full rounded-3xl bg-gradient-to-br from-slate-900/95 via-gray-900/90 to-black/95" />
+                  </div>
+                  <div className="relative z-10 w-full h-auto rounded-2xl transition-all duration-500 group/image hover:shadow-[0_0_40px_10px_rgba(80,120,255,0.25),0_0_80px_20px_rgba(245,195,107,0.18)]">
                     <img
-                      src="/images/Model.png"
+                      src="/images/Model.jpg"
                       alt="Nipun Sujesh"
-                      className="w-full h-auto rounded-2xl shadow-lg"
+                      className="w-full h-auto rounded-2xl shadow-2xl border border-gray-800/60"
                       style={{
                         objectFit: "cover"
                       }}
                     />
+                    {/* Subtle inner glow */}
+                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
                   </div>
                 </div>
                 

@@ -173,12 +173,24 @@ export default function Sections() {
                       <a
                         href={`#/projects/${section.category}`}
                         className="px-6 py-3 bg-amber-500 text-white rounded-lg hover:bg-amber-600 border border-amber-400/20 focus:outline-none focus:ring-2 focus:ring-amber-500 transition-all duration-300 font-semibold shadow-lg hover:scale-105"
+                        onClick={(e) => {
+                          // Fallback for mobile devices that might have issues with hash routing
+                          if (window.innerWidth < 768) {
+                            e.preventDefault();
+                            window.location.hash = `/projects/${section.category}`;
+                          }
+                        }}
                       >
                         Check Out
                       </a>
                     ) : (
                       <button 
-                        onClick={() => window.open(`/#/${section.id}`, '_blank')}
+                        onClick={() => {
+                          const element = document.getElementById(section.id);
+                          if (element) {
+                            element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                          }
+                        }}
                         className="px-6 py-3 bg-gray-100 dark:bg-white/10 border border-gray-300 dark:border-amber-400/20 rounded-lg hover:bg-gray-200 dark:hover:bg-amber-500/10 hover:border-gray-400 dark:hover:border-amber-400/40 focus:outline-none focus:ring-2 focus:ring-amber-500 transition-all duration-300 text-gray-900 dark:text-white constellation-point"
                       >
                         Know More
@@ -195,15 +207,20 @@ export default function Sections() {
                         <span className="relative">Send Message</span>
                       </a>
                     ) : (
-                      <a
-                        href="#contact"
+                      <button
+                        onClick={() => {
+                          const contactElement = document.getElementById('contact');
+                          if (contactElement) {
+                            contactElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                          }
+                        }}
                         className="relative px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-700 text-white font-medium rounded-lg hover:from-purple-500 hover:to-blue-600 hover:scale-105 hover:shadow-lg hover:shadow-purple-400/25 focus:outline-none focus:ring-2 focus:ring-purple-400 transition-all duration-300 overflow-hidden group/btn"
                         data-magnetic
                         data-ripple
                       >
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-700" />
                         <span className="relative">Discuss This</span>
-                      </a>
+                      </button>
                     )}
                   </div>
                   
