@@ -5,6 +5,9 @@ import React from 'react';
 import TextReveal from './TextReveal';
 import TiltCard from './TiltCard';
 import TextRevealAnimation from './TextRevealAnimation';
+import Scroll3DAnimations from './Scroll3DAnimations';
+import DynamicGlassmorphism from './DynamicGlassmorphism';
+import MagneticButton from './MagneticButton';
 
 const SECTIONS = [
   {
@@ -106,9 +109,9 @@ export default function Sections() {
             key={section.id} 
             className="group"
           >
-            {/* Enhanced Container with motion effects */}
-            <TextReveal delay={idx * 100}>
-              <TiltCard className="relative bg-white/90 dark:bg-white/5 backdrop-blur-sm border border-gray-200 dark:border-amber-400/20 rounded-2xl p-8 hover:bg-gray-50 dark:hover:bg-white/10 hover:border-gray-300 dark:hover:border-amber-400/40 transition-all duration-300 hover:shadow-2xl hover:shadow-gray-800/30 shadow-lg shadow-gray-600/20 dark:hover:shadow-amber-400/20 dark:shadow-amber-400/20" intensity={2}>
+            {/* Enhanced Container with 3D motion effects */}
+            <Scroll3DAnimations index={idx} delay={idx * 150}>
+              <div className="relative bg-white/90 dark:bg-white/5 backdrop-blur-sm border border-gray-200 dark:border-amber-400/20 rounded-2xl p-8 hover:bg-gray-50 dark:hover:bg-white/10 hover:border-gray-300 dark:hover:border-amber-400/40 transition-all duration-300 hover:shadow-2xl hover:shadow-gray-800/30 shadow-lg shadow-gray-600/20 dark:hover:shadow-amber-400/20 dark:shadow-amber-400/20 group">
               
               {/* Enhanced section number with hover effects */}
               <div 
@@ -170,57 +173,57 @@ export default function Sections() {
                   {/* Enhanced action buttons with motion */}
                   <div className="flex flex-wrap gap-4 pt-4">
                     {section.category ? (
-                      <a
-                        href={`#/projects/${section.category}`}
-                        className="px-6 py-3 bg-amber-500 text-white rounded-lg hover:bg-amber-600 border border-amber-400/20 focus:outline-none focus:ring-2 focus:ring-amber-500 transition-all duration-300 font-semibold shadow-lg hover:scale-105"
+                      <MagneticButton
                         onClick={(e) => {
-                          // Fallback for mobile devices that might have issues with hash routing
+                          e.preventDefault();
                           if (window.innerWidth < 768) {
-                            e.preventDefault();
                             window.location.hash = `/projects/${section.category}`;
+                          } else {
+                            window.location.href = `#/projects/${section.category}`;
                           }
                         }}
+                        className="px-6 py-3 bg-amber-500 text-white rounded-lg hover:bg-amber-600 border border-amber-400/20 focus:outline-none focus:ring-2 focus:ring-amber-500 transition-all duration-300 font-semibold shadow-lg"
+                        intensity={0.15}
                       >
                         Check Out
-                      </a>
+                      </MagneticButton>
                     ) : (
-                      <button 
+                      <MagneticButton 
                         onClick={() => {
                           const element = document.getElementById(section.id);
                           if (element) {
                             element.scrollIntoView({ behavior: 'smooth', block: 'center' });
                           }
                         }}
-                        className="px-6 py-3 bg-gray-100 dark:bg-white/10 border border-gray-300 dark:border-amber-400/20 rounded-lg hover:bg-gray-200 dark:hover:bg-amber-500/10 hover:border-gray-400 dark:hover:border-amber-400/40 focus:outline-none focus:ring-2 focus:ring-amber-500 transition-all duration-300 text-gray-900 dark:text-white constellation-point"
+                        className="px-6 py-3 bg-gray-100 dark:bg-white/10 border border-gray-300 dark:border-amber-400/20 rounded-lg hover:bg-gray-200 dark:hover:bg-amber-500/10 hover:border-gray-400 dark:hover:border-amber-400/40 focus:outline-none focus:ring-2 focus:ring-amber-500 transition-all duration-300 text-gray-900 dark:text-white"
+                        intensity={0.15}
                       >
                         Know More
-                      </button>
+                      </MagneticButton>
                     )}
                     {section.id === 'contact' ? (
-                      <a
-                        href="mailto:nipunsujesh28@gmail.com"
-                        className="relative px-6 py-3 bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-semibold rounded-lg hover:from-cyan-400 hover:to-purple-500 hover:scale-105 hover:shadow-lg hover:shadow-cyan-400/25 focus:outline-none focus:ring-2 focus:ring-cyan-300 transition-all duration-300 overflow-hidden group/btn"
-                        data-magnetic
-                        data-ripple
+                      <MagneticButton
+                        onClick={() => window.location.href = 'mailto:nipunsujesh28@gmail.com'}
+                        className="relative px-6 py-3 bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-semibold rounded-lg hover:from-cyan-400 hover:to-purple-500 hover:shadow-lg hover:shadow-cyan-400/25 focus:outline-none focus:ring-2 focus:ring-cyan-300 transition-all duration-300 overflow-hidden group/btn"
+                        intensity={0.2}
                       >
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-700" />
                         <span className="relative">Send Message</span>
-                      </a>
+                      </MagneticButton>
                     ) : (
-                      <button
+                      <MagneticButton
                         onClick={() => {
                           const contactElement = document.getElementById('contact');
                           if (contactElement) {
                             contactElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
                           }
                         }}
-                        className="relative px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-700 text-white font-medium rounded-lg hover:from-purple-500 hover:to-blue-600 hover:scale-105 hover:shadow-lg hover:shadow-purple-400/25 focus:outline-none focus:ring-2 focus:ring-purple-400 transition-all duration-300 overflow-hidden group/btn"
-                        data-magnetic
-                        data-ripple
+                        className="relative px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-700 text-white font-medium rounded-lg hover:from-purple-500 hover:to-blue-600 hover:shadow-lg hover:shadow-purple-400/25 focus:outline-none focus:ring-2 focus:ring-purple-400 transition-all duration-300 overflow-hidden group/btn"
+                        intensity={0.15}
                       >
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-700" />
                         <span className="relative">Discuss This</span>
-                      </button>
+                      </MagneticButton>
                     )}
                   </div>
                   
@@ -290,8 +293,8 @@ export default function Sections() {
                 </div>
                 
               </div>
-              </TiltCard>
-            </TextReveal>
+              </div>
+            </Scroll3DAnimations>
           </section>
         ))}
       </div>

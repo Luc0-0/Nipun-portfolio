@@ -182,7 +182,25 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* Virtual Office Preview */}
+            {/* Professional Download Resume Button */}
+            <div className="mb-8">
+              <button
+                onClick={() => {
+                  const link = document.createElement('a');
+                  link.href = '/images/Nipun_Resume.pdf';
+                  link.download = 'Nipun_Sujesh_Resume.pdf';
+                  link.click();
+                }}
+                className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-500 hover:to-amber-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl hover:shadow-amber-500/25 transition-all duration-300 border border-amber-500/20 backdrop-blur-sm hover:scale-105"
+                data-magnetic
+              >
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 16.5c-.28 0-.53-.11-.71-.29l-5.5-5.5a1.003 1.003 0 011.42-1.42l3.29 3.29V4a1 1 0 112 0v8.58l3.29-3.29a1.003 1.003 0 111.42 1.42l-5.5 5.5c-.18.18-.43.29-.71.29z"/>
+                  <path d="M19 20H5a1 1 0 110-2h14a1 1 0 110 2z"/>
+                </svg>
+                Download Resume
+              </button>
+            </div>
 
           </div>
 
