@@ -28,6 +28,7 @@ export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
   
   const isHomePage = location.pathname === '/';
@@ -91,6 +92,8 @@ export default function Navigation() {
   }, []);
 
   const handleNavClick = (item) => {
+    setIsMobileMenuOpen(false); // Close mobile menu when item is clicked
+    
     if (item.id === 'blog') {
       window.location.href = '#/blog';
     } else if (item.id === 'live-projects') {
@@ -171,12 +174,40 @@ export default function Navigation() {
           </div>
 
           {/* Mobile Menu Button */}
-          <button className="md:hidden p-2 text-gray-300 hover:text-white transition-colors duration-300">
+          <button 
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden p-2 text-gray-300 hover:text-white transition-colors duration-300"
+          >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              {isMobileMenuOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              )}
             </svg>
           </button>
         </div>
+        
+        {/* Mobile Menu */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden bg-black/95 backdrop-blur-lg border-t border-amber-400/20">
+            <div className="px-6 py-4 space-y-2">
+              {NAV_ITEMS.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => handleNavClick(item)}
+                  className={`block w-full text-left px-3 py-2 text-sm font-medium transition-all duration-300 rounded-lg ${
+                    (isHomePage && activeSection === item.id) || (!isHomePage && item.id === 'home')
+                      ? 'text-amber-300 bg-amber-400/10'
+                      : 'text-gray-300 hover:text-white hover:bg-white/5'
+                  }`}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </nav>
   );
