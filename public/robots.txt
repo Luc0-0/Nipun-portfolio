@@ -1,4 +1,13 @@
+# Nipun Sujesh Portfolio - nipun.space
+# AI Developer & Data Science Student
+
 User-agent: *
 Allow: /
+Allow: /images/
+Allow: /images/Model.jpg
 
-Sitemap: https://nipun.space/sitemap.xml
+# Sitemap location
+Sitemap: https://www.nipun.space/sitemap.xml
+
+# Crawl delay (optional, helps with server load)
+Crawl-delay: 1
