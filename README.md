@@ -14,6 +14,7 @@ A modern, interactive portfolio website showcasing my journey as an AI and Data 
 ### 🌟 **Interactive Experience**
 
 - **3D Solar System Navigation** - Unique planet-based navigation system
+- **AI Chat Assistant** - Powered by Google Gemini AI for instant portfolio queries
 - **Dynamic Project Showcase** - Live GitHub repos integrated with static featured projects
 - **Technical Blog** - 5 comprehensive articles about AI/ML journey and experiences
 - **Responsive Design** - Seamless experience across all devices
@@ -39,6 +40,7 @@ A modern, interactive portfolio website showcasing my journey as an AI and Data 
 ### **Integration & APIs**
 
 - **GitHub API** - Automatic repository fetching
+- **Google Gemini AI** - Intelligent chatbot for portfolio assistance
 - **React Router** - Client-side routing
 - **Custom Hooks** - State management and data fetching
 
@@ -61,6 +63,7 @@ A modern, interactive portfolio website showcasing my journey as an AI and Data 
   - Azure cloud AI experiences
   - IBM AI certification insights
 - 🏆 **Achievements** - Certifications and accomplishments
+- 🤖 **AI Chat Assistant** - Interactive chatbot powered by Google Gemini
 - 📞 **Contact** - Professional contact form and social links
 
 ## 🤖 Automatic GitHub Features
@@ -154,6 +157,26 @@ const CATEGORY_KEYWORDS = {
 };
 ```
 
+### **AI Chat Assistant Setup**
+
+1. Create a `.env` file in the root directory:
+
+```bash
+VITE_GEMINI_API_KEY=your_google_gemini_api_key_here
+```
+
+2. Get your API key:
+   - Visit [Google AI Studio](https://makersuite.google.com/app/apikey)
+   - Create a new API key
+   - Copy and paste it into your `.env` file
+
+3. Features:
+   - **Contextual Responses** - Trained on portfolio content
+   - **Real-time Chat** - Instant responses powered by Gemini AI
+   - **Smart Suggestions** - Quick action buttons for common queries
+   - **Conversation History** - Maintains chat context
+   - **Responsive Design** - Works seamlessly on all devices
+
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
@@ -163,7 +186,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Email**: nipunsujesh28@gmail.com
 - **LinkedIn**: [linkedin.com/in/nipun-sujesh](https://linkedin.com/in/nipun-sujesh)
 - **GitHub**: [github.com/Luc0-0](https://github.com/Luc0-0)
-- **Portfolio**: [nipun-portfolio-eight.vercel.app](https://nipun-portfolio-eight.vercel.app)
+- **Portfolio**: [www.nipun.space](https://www.nipun.space)
 
 ---
 
