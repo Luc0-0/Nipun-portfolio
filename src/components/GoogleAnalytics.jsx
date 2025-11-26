@@ -3,10 +3,13 @@ import { useEffect } from 'react';
 
 const GoogleAnalytics = () => {
   useEffect(() => {
+    // Get tracking ID from environment or use default
+    const GA_TRACKING_ID = import.meta.env.VITE_GA_TRACKING_ID || 'G-JFVMFVEPTQ';
+
     // Create and load gtag script
     const script1 = document.createElement('script');
     script1.async = true;
-    script1.src = 'https://www.googletagmanager.com/gtag/js?id=G-JFVMFVEPTQ';
+    script1.src = `https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`;
     document.head.appendChild(script1);
 
     // Initialize gtag with custom parameters
@@ -15,19 +18,27 @@ const GoogleAnalytics = () => {
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-JFVMFVEPTQ', {
+      gtag('config', '${GA_TRACKING_ID}', {
+        // Cross-domain tracking for nipun.space and old domain
+        linker: {
+          domains: ['nipun.space', 'nipun-portfolio.netlify.app']
+        },
+        // Custom dimensions mapping
         custom_map: {
           'custom_parameter_name': 'visitor_name',
           'custom_parameter_email': 'visitor_email',
           'custom_parameter_purpose': 'visitor_purpose',
           'custom_parameter_company': 'visitor_company'
-        }
+        },
+        // Cookie settings for better tracking
+        cookie_flags: 'SameSite=None;Secure'
       });
       
-      // Track page view
+      // Track page view with enhanced data
       gtag('event', 'page_view', {
         page_title: 'Nipun Sujesh Portfolio',
-        page_location: window.location.href
+        page_location: window.location.href,
+        page_path: window.location.pathname
       });
     `;
     document.head.appendChild(script2);
@@ -42,7 +53,7 @@ const GoogleAnalytics = () => {
         });
       }
     };
-    
+
     // Delay tracking to ensure gtag is loaded
     setTimeout(trackVisit, 1000);
 
