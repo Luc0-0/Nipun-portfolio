@@ -26,13 +26,15 @@ export default function IntelligentCursor() {
 
     const handleMouseEnter = (e) => {
       const element = e.target;
-      if (element.matches('button, a, [data-magnetic]')) {
-        setIsHovering(true);
-        setCursorType('magnetic');
-      } else if (element.matches('input, textarea')) {
-        setCursorType('text');
-      } else if (element.matches('[data-cursor="view"]')) {
-        setCursorType('view');
+      if (element && element.matches) {
+        if (element.matches('button, a, [data-magnetic]')) {
+          setIsHovering(true);
+          setCursorType('magnetic');
+        } else if (element.matches('input, textarea')) {
+          setCursorType('text');
+        } else if (element.matches('[data-cursor="view"]')) {
+          setCursorType('view');
+        }
       }
     };
 
