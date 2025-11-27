@@ -86,7 +86,13 @@ class GeminiService {
 
     formatHistoryForGemini(chatHistory) {
         // Convert our chat history format to Gemini's expected format
-        return chatHistory.map(msg => ({
+        // Filter out the initial AI greeting message and ensure we only include user/model pairs
+        const filtered = chatHistory.filter(msg => {
+            // Skip the initial greeting message from AI
+            return msg.isUser || chatHistory.indexOf(msg) > 0;
+        });
+
+        return filtered.map(msg => ({
             role: msg.isUser ? 'user' : 'model',
             parts: [{ text: msg.text }],
         }));
