@@ -1,6 +1,9 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
-const API_KEY = 'AIzaSyDgynDaDH8x13_3-uwPgiw_ZuU8mJFa-Y8';
+// NOTE: Do NOT hardcode API keys in source. Use environment variables instead.
+// Replace this with `process.env.GEMINI_API_KEY` or run the script with
+// `GEMINI_API_KEY=your_key node list-models.mjs` for local testing.
+const API_KEY = process.env.GEMINI_API_KEY || 'YOUR_API_KEY_HERE';
 
 async function listModels() {
   try {
