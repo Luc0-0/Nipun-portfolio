@@ -1,13 +1,15 @@
 // src/components/CometTrail.jsx
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 export default function CometTrail() {
   const [trail, setTrail] = useState([]);
+  const trailIdRef = useRef(0);
 
   useEffect(() => {
     const handleMouseMove = (e) => {
+      trailIdRef.current += 1;
       const newPoint = {
-        id: Date.now(),
+        id: trailIdRef.current,
         x: e.clientX,
         y: e.clientY
       };
