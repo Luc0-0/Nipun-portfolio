@@ -9,10 +9,19 @@ export default function LiveGitHubActivity({ username = "Luc0-0" }) {
   useEffect(() => {
   const fetchGitHubActivity = async () => {
       try {
+        const token = import.meta.env.VITE_GITHUB_TOKEN;
+        const headers = token ? { 'Authorization': `token ${token}` } : {};
+
         // Get recent activity
-        const response = await fetch(`https://api.github.com/users/${username}/events?per_page=5`);
+        const response = await fetch(`https://api.github.com/users/${username}/events?per_page=5`, { headers });
         const data = await response.json();
-        const processedActivity = data.slice(0, 3).map(event => ({
+        
+        // Check for rate limiting
+        if (response.status === 403 || data.message?.includes('API rate limit')) {
+          throw new Error('Rate limited');
+        }
+
+        const processedActivity = (Array.isArray(data) ? data : []).slice(0, 3).map(event => ({
           id: event.id,
           type: event.type,
           repo: event.repo.name.split('/')[1],
@@ -26,7 +35,7 @@ export default function LiveGitHubActivity({ username = "Luc0-0" }) {
         for (const item of processedActivity) {
           if (item.type === 'PushEvent') {
             try {
-              const commitRes = await fetch(`https://api.github.com/repos/${item.repoFull}/commits?per_page=1`);
+              const commitRes = await fetch(`https://api.github.com/repos/${item.repoFull}/commits?per_page=1`, { headers });
               const commitData = await commitRes.json();
               if (commitData && commitData[0]) {
                 setCommitInfo(prev => ({
@@ -46,7 +55,7 @@ export default function LiveGitHubActivity({ username = "Luc0-0" }) {
 
         // Fetch latest repos
         try {
-          const repoRes = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=4`);
+          const repoRes = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=4`, { headers });
           const repoData = await repoRes.json();
           setRepos(Array.isArray(repoData) ? repoData.slice(0, 4) : []);
         } catch {}
