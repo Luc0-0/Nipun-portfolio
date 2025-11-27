@@ -2,7 +2,9 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 
 // Initialize Gemini AI
 const API_KEY = import.meta.env.VITE_GEMINI_API_KEY || '';
-const genAI = API_KEY ? new GoogleGenerativeAI(API_KEY) : null;
+const genAI = API_KEY ? new GoogleGenerativeAI({
+    apiKey: API_KEY,
+}) : null;
 
 // System prompt that defines the chatbot's personality and knowledge
 const SYSTEM_PROMPT = `You are an AI assistant for Nipun's portfolio website. You are friendly, professional, and knowledgeable about Nipun's skills and projects.
@@ -35,8 +37,10 @@ class GeminiService {
         }
 
         try {
+            // Use gemini-2.0-flash (latest and stable) or fall back to gemini-1.5-pro
+            const modelToUse = 'gemini-2.0-flash';
             this.model = genAI.getGenerativeModel({
-                model: 'gemini-1.5-flash',
+                model: modelToUse,
                 generationConfig: {
                     temperature: 0.7,
                     topK: 40,
@@ -44,8 +48,11 @@ class GeminiService {
                     maxOutputTokens: 1024,
                 },
             });
+            console.log(`✅ Gemini model initialized: ${modelToUse}`);
         } catch (error) {
             console.error('Error initializing Gemini:', error);
+            // Fall back to demo mode on error
+            this.model = null;
         }
     }
 

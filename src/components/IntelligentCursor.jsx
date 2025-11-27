@@ -7,18 +7,17 @@ export default function IntelligentCursor() {
   const [isHovering, setIsHovering] = useState(false);
   const [cursorType, setCursorType] = useState('default');
   const [particles, setParticles] = useState([]);
-  const particleIdRef = React.useRef(0);
 
   useEffect(() => {
     const updateCursor = (e) => {
       setPosition({ x: e.clientX, y: e.clientY });
       
       // Add trailing particles
-      particleIdRef.current += 1;
+      const uniqueId = `${Date.now()}-${Math.random()}`;
       setParticles(prev => [
         ...prev.slice(-8),
         {
-          id: particleIdRef.current,
+          id: uniqueId,
           x: e.clientX,
           y: e.clientY,
           opacity: 1
