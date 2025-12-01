@@ -324,15 +324,24 @@ export default function Hero() {
               setTimeout(() => setShowWelcome(false), 500);
             }}
           >
-            <div className="inline-flex items-center px-12 py-6 bg-gradient-to-r from-white/10 via-purple-500/10 to-cyan-500/10 border border-white/30 rounded-3xl backdrop-blur-xl hover:from-white/20 hover:via-purple-500/20 hover:to-cyan-500/20 hover:border-white/50 transition-all duration-700 shadow-2xl">
-              <div className="w-4 h-4 bg-gradient-to-r from-purple-400 to-cyan-400 rounded-full mr-6 animate-pulse shadow-lg" />
-              <span className="text-white text-2xl font-light tracking-wide group-hover:tracking-wider transition-all duration-300">
-                Welcome to my digital space
-              </span>
-              <div className="w-16 h-px bg-gradient-to-r from-cyan-400/60 via-purple-400/40 to-transparent ml-6 group-hover:w-20 transition-all duration-500" />
+            <div className="relative px-12 py-10 rounded-3xl backdrop-blur-xl shadow-2xl border border-white/30 hover:border-white/60 transition-all duration-700 overflow-hidden">
+              {/* Dark space background */}
+              <div className="absolute inset-0 bg-gradient-to-br from-black via-slate-900/50 to-black" />
+              {/* Animated glow effect */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500/20 via-purple-500/10 to-cyan-500/20 rounded-2xl blur-xl animate-pulse" />
+              {/* Content */}
+              <div className="relative z-10">
+                <TypewriterText
+                  text="Welcome to Nipun's Space"
+                  speed={100}
+                  className="text-white text-3xl md:text-4xl font-bold tracking-wider mb-4"
+                  startDelay={0}
+                />
+                <div className="h-1 w-24 bg-gradient-to-r from-cyan-400 via-purple-400 to-cyan-400 rounded-full mx-auto mt-6 animate-pulse" />
+              </div>
             </div>
-            <p className="text-gray-400 mt-4 text-sm animate-pulse">
-              Click to continue
+            <p className="text-cyan-300/70 mt-6 text-sm font-light tracking-widest animate-pulse">
+              ⟲ Click anywhere to explore
             </p>
           </div>
         </div>

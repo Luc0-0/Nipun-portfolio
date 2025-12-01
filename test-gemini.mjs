@@ -1,6 +1,8 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
-const API_KEY = 'AIzaSyDgynDaDH8x13_3-uwPgiw_ZuU8mJFa-Y8';
+// Use environment variable for the API key. Run with:
+// GEMINI_API_KEY=your_key node test-gemini.mjs
+const API_KEY = process.env.GEMINI_API_KEY || process.env.VITE_GEMINI_API_KEY || 'YOUR_API_KEY_HERE';
 
 async function testGemini() {
   try {
