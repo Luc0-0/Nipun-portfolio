@@ -71,20 +71,8 @@ function AppContent() {
   const { isDark, isSpace, toggleSpaceTheme } = useTheme();
   const [showSpaceModal, setShowSpaceModal] = useState(false);
   const { trackProjectClick, trackBlogView } = useAnalytics();
-  useEffect(() => {
-    let buffer = '';
-    const handler = (e) => {
-      buffer += e.key.toUpperCase();
-      if (buffer.length > 5) buffer = buffer.slice(-5);
-      if (buffer === 'SPACE') {
-        toggleSpaceTheme();
-        setShowSpaceModal(true);
-        buffer = '';
-      }
-    };
-    window.addEventListener('keydown', handler);
-    return () => window.removeEventListener('keydown', handler);
-  }, [toggleSpaceTheme]);
+  // Easter egg removed for cleaner UX
+  // Previously triggered 'cosmic mode' by typing 'SPACE' - now disabled
 
   useEffect(() => {
     if (showSpaceModal) {
