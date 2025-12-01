@@ -26,16 +26,16 @@ const SECTIONS = [
   },
   {
     id: 'ai-skills',
-    title: 'AI & ML Skills',
-    description: 'Proficient in Python for AI/ML development with hands-on experience in building intelligent applications. Completed AI Developer Professional Certificate through Coursera with multiple certifications in machine learning and AI technologies.',
-    skills: ['Python', 'Machine Learning', 'AI Development', 'Coursera Certified'],
+    title: 'AI Developer & Engineer',
+    description: 'Specialized in building production-ready AI systems with Python, TensorFlow, and PyTorch. Expert in NLP, computer vision, and deploying ML models via REST APIs. IBM AI Developer certified with hands-on experience in LangChain, Hugging Face, and prompt engineering for LLMs.',
+    skills: ['Python', 'TensorFlow', 'PyTorch', 'NLP', 'LangChain', 'Hugging Face', 'Model Deployment'],
     color: '#e74c3c'
   },
   {
     id: 'web-skills',
-    title: 'Technical Skills',
-    description: 'Full-stack development skills with React, FastAPI, Flask, and cloud deployment experience. Proficient in Microsoft Azure, Google Firebase, and version control with Git. Experienced with VS Code and Google Studio for development.',
-    skills: ['React', 'FastAPI', 'Flask', 'Azure', 'Firebase', 'Git'],
+    title: 'Full Stack Developer (MERN)',
+    description: 'Backend-focused full stack developer proficient in MongoDB, Express.js, React, and Node.js. Experienced in building RESTful APIs, authentication systems, and database design. Skilled in integrating AI models with web applications using FastAPI and Flask.',
+    skills: ['MongoDB', 'Express.js', 'React', 'Node.js', 'FastAPI', 'Flask', 'REST APIs', 'JWT Auth'],
     color: '#2ecc71'
   },
   {

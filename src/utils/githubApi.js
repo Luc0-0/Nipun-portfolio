@@ -23,17 +23,10 @@ export const fetchGitHubRepos = async () => {
 
     const response = await fetch(`${GITHUB_API_BASE}/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=100`, { headers });
 
-    // Inspect rate limit headers for diagnostics
-    const limit = response.headers.get('x-ratelimit-limit');
-    const remaining = response.headers.get('x-ratelimit-remaining');
-    const reset = response.headers.get('x-ratelimit-reset');
-
-    if (response.status === 403 || (remaining !== null && Number(remaining) === 0)) {
-      console.warn('GitHub API rate limit or auth issue detected. Using fallback data.', { status: response.status, limit, remaining, reset });
+    if (!response.ok) {
+      console.warn('GitHub API error. Using fallback data.', { status: response.status });
       return getFallbackRepos();
     }
-
-    if (!response.ok) throw new Error('Failed to fetch repositories');
 
     const repos = await response.json();
     

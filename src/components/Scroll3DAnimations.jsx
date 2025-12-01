@@ -53,13 +53,13 @@ export default function Scroll3DAnimations({
         backfaceVisibility: 'hidden'
       }}
     >
-      <style jsx>{`
+      <style dangerouslySetInnerHTML={{__html: `
         .animate-3d-in {
           opacity: 1 !important;
           transform: translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg) scale(1) !important;
           transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 1.5s ease-out !important;
         }
-      `}</style>
+      `}} />
       {children}
     </div>
   );
