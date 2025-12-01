@@ -81,19 +81,35 @@ html.lenis {
   overscroll-behavior: contain;
 }
 
-/* Ensure cursor visibility */
-body {
-  cursor: auto !important;
-}
-
-/* Hide default cursor on desktop for custom cursor */
+/* Cursor visibility */
 @media (min-width: 768px) {
-  * {
+  body * {
     cursor: none !important;
+  }
+  
+  /* Show cursor on high z-index elements (modals, chatbot) */
+  .z-\[9999\] *,
+  .z-\[10000\] *,
+  .z-\[10001\] *,
+  .chatbot-container *,
+  .chat-trigger-button * {
+    cursor: auto !important;
+  }
+  
+  .z-\[9999\] button,
+  .z-\[10000\] button,
+  .z-\[10001\] button,
+  .chatbot-container button,
+  .chat-trigger-button {
+    cursor: pointer !important;
+  }
+  
+  .chatbot-container input,
+  .chatbot-container textarea {
+    cursor: text !important;
   }
 }
 
-/* Mobile cursor visibility */
 @media (max-width: 767px) {
   * {
     cursor: auto !important;
@@ -111,6 +127,17 @@ body {
 
 .z-\[9999\] {
   z-index: 9999 !important;
+  pointer-events: auto !important;
+}
+
+.z-\[10000\] {
+  z-index: 10000 !important;
+  pointer-events: auto !important;
+}
+
+.z-\[10001\] {
+  z-index: 10001 !important;
+  pointer-events: auto !important;
 }
 
 .z-\[9998\] {

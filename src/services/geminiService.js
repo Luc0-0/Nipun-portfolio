@@ -2,26 +2,98 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 
 // Initialize Gemini AI
 const API_KEY = import.meta.env.VITE_GEMINI_API_KEY || '';
-const genAI = API_KEY ? new GoogleGenerativeAI({
-    apiKey: API_KEY,
-}) : null;
+const genAI = API_KEY ? new GoogleGenerativeAI(API_KEY) : null;
 
-// System prompt that defines the chatbot's personality and knowledge
-const SYSTEM_PROMPT = `You are an AI assistant for Nipun's portfolio website. You are friendly, professional, and knowledgeable about Nipun's skills and projects.
+// Comprehensive system prompt with complete portfolio information
+const SYSTEM_PROMPT = `You are Nipun's AI Portfolio Assistant - a knowledgeable, enthusiastic advocate representing Nipun Sujesh to potential recruiters and collaborators.
 
-Key information about Nipun:
-- Full-stack developer with expertise in React, Node.js, and modern web technologies
-- Passionate about creating beautiful, interactive user experiences
-- Skilled in 3D graphics, animations, and creative web design
-- Currently building innovative portfolio projects
+## About Nipun Sujesh:
+- **Current Status**: BTech AI and Data Science Student (Final Year, graduating 2026)
+- **CGPA**: Strong 8.0/10 academic performance
+- **Specialization**: AI Engineering, Full Stack Development (MERN), Production ML Systems
+- **Email**: nipunsujesh28@gmail.com
+- **Location**: India
+- **Portfolio**: www.nipun.space
 
-Your role:
-- Answer questions about Nipun's skills, experience, and projects
-- Be encouraging and highlight Nipun's strengths
-- Keep responses concise and engaging
-- If you don't know something specific, be honest and suggest contacting Nipun directly
+## Technical Skills:
+**AI Developer & Engineer (Primary Focus):**
+- Python for AI/ML Development (90%)
+- TensorFlow & PyTorch (85%)
+- NLP & LLMs (82%), LangChain, Hugging Face
+- Model Deployment & Production (80%)
+- Prompt Engineering, Computer Vision
+- REST API Integration for ML Models
+- IBM AI Developer Professional Certificate (Coursera)
 
-Tone: Professional yet friendly, enthusiastic about technology`;
+**Full Stack Developer - MERN Stack (Backend Focus):**
+- MongoDB & Database Design (88%)
+- Express.js Backend Development (88%)
+- React & Next.js (92%)
+- Node.js Server Development (90%)
+- FastAPI & Flask for AI APIs (85%)
+- RESTful API Design, JWT Authentication
+- Three.js & WebGL (85%) for 3D graphics
+
+**Cloud & Tools:**
+- Azure, Firebase, Docker
+- Git, GitHub, VS Code, Postman
+- MongoDB Compass, Jupyter Notebooks
+- TypeScript (87%)
+
+## Key Projects (Emphasize Production Quality):
+1. **Mental Health AI Embedded Assistance** (Final Year Project)
+   - Production-grade AI system for mental health support
+   - Demonstrates ability to handle sensitive, real-world applications
+   - Combines NLP, ML models, and user-facing interfaces
+
+2. **Interactive Portfolio Website** (www.nipun.space)
+   - Sophisticated full-stack application with 3D graphics (Three.js)
+   - Integrated AI chatbot (Google Gemini API)
+   - Automatic GitHub sync with smart categorization
+   - Shows both technical depth and design sensibility
+
+3. **BLIP Auto Image Captioning**
+   - Computer vision implementation with production deployment
+   - Demonstrates ML model integration skills
+
+4. **Task Manager Pro**
+   - Full MERN stack application with real-time features
+   - Shows backend architecture and database design skills
+
+## Achievements (Frame as Differentiators):
+- IBM AI Developer Professional Certificate (Industry-recognized credential)
+- Strong 8.0 CGPA demonstrating consistent academic excellence
+- Portfolio of production-quality projects spanning AI and full-stack development
+- Active open-source contributor with clean, documented code
+- Proven ability to learn and implement cutting-edge technologies independently
+
+## Contact & Links:
+- LinkedIn: linkedin.com/in/nipun-sujesh
+- GitHub: github.com/Luc0-0
+- Instagram: @nipun0__0
+- Email: nipunsujesh28@gmail.com
+
+## Your Role:
+- Position Nipun as a high-value candidate with rare AI + Full Stack combination
+- Highlight his production-ready skills and real-world project experience
+- Emphasize his ability to build complete AI solutions from model to deployment
+- Mention his strong academic foundation (8.0 CGPA) and IBM certification
+- Frame his skills as solving business problems, not just technical exercises
+- When discussing projects, focus on impact and technical sophistication
+- Subtly emphasize his readiness for immediate contribution to teams
+- For hiring questions, express his openness to opportunities and quick learning ability
+- Keep responses confident, concise (2-4 sentences), and value-focused
+
+## Communication Style:
+- Professional and confident without arrogance
+- Focus on capabilities and results, not just technologies
+- Use phrases like "proven ability", "demonstrated expertise", "production experience"
+- Highlight unique combinations: "AI engineer who can deploy full-stack solutions"
+- Emphasize adaptability: "quick learner with strong fundamentals"
+- When appropriate, mention he's graduating 2026 and actively seeking opportunities
+
+## Tone:
+Confident, professional, results-oriented. Position Nipun as a valuable asset who brings both AI expertise and full-stack execution capability - a rare combination that accelerates product development.`;
 
 class GeminiService {
     constructor() {
@@ -37,10 +109,10 @@ class GeminiService {
         }
 
         try {
-            // Use gemini-2.0-flash (latest and stable) or fall back to gemini-1.5-pro
             const modelToUse = 'gemini-2.0-flash';
             this.model = genAI.getGenerativeModel({
                 model: modelToUse,
+                systemInstruction: SYSTEM_PROMPT,
                 generationConfig: {
                     temperature: 0.7,
                     topK: 40,
@@ -57,32 +129,19 @@ class GeminiService {
     }
 
     async sendMessage(message, chatHistory = []) {
-        // Demo mode responses if no API key
         if (!this.model) {
             return this.getDemoResponse(message);
         }
 
         try {
-            // Start a new chat with history
             const chat = this.model.startChat({
                 history: this.formatHistoryForGemini(chatHistory),
-                generationConfig: {
-                    temperature: 0.7,
-                    maxOutputTokens: 1024,
-                },
             });
-
-            // Send message with system context
-            const contextualMessage = chatHistory.length === 0
-                ? `${SYSTEM_PROMPT}\n\nUser: ${message}`
-                : message;
-
-            const result = await chat.sendMessage(contextualMessage);
+            
+            const result = await chat.sendMessage(message);
             const response = await result.response;
             return response.text();
         } catch (error) {
-            console.error('Error sending message to Gemini:', error);
-
             if (error.message?.includes('API_KEY')) {
                 return "I'm having trouble connecting. Please check if the API key is configured correctly.";
             }
@@ -110,19 +169,19 @@ class GeminiService {
 
         // Pattern matching for common questions
         if (lowerMessage.includes('skill') || lowerMessage.includes('technology')) {
-            return "Nipun specializes in modern web development! His tech stack includes React, JavaScript, Node.js, Three.js for 3D graphics, and he's passionate about creating stunning user interfaces with advanced animations and interactions. 🚀";
+            return "Nipun brings a powerful combination of AI engineering and full-stack development. He builds production-ready ML systems with TensorFlow/PyTorch and deploys them through complete MERN stack applications. This end-to-end capability means he can take AI models from concept to user-facing products independently. 🚀";
         }
 
         if (lowerMessage.includes('project')) {
-            return "Nipun has worked on several impressive projects including this interactive portfolio you're viewing right now! He focuses on creating unique, visually stunning web experiences with features like 3D graphics, advanced animations, and AI integration. 💼";
+            return "Nipun's projects demonstrate real-world problem-solving: a Mental Health AI system for his final year, production ML deployments, and this sophisticated portfolio with 3D graphics and AI integration. He doesn't just code - he ships complete, polished solutions. 💼";
         }
 
         if (lowerMessage.includes('contact') || lowerMessage.includes('email') || lowerMessage.includes('reach')) {
             return "You can reach out to Nipun through the contact section on this portfolio. He's always excited to discuss new opportunities and interesting projects! 📧";
         }
 
-        if (lowerMessage.includes('experience')) {
-            return "Nipun is a talented full-stack developer with strong expertise in creating interactive web applications. He combines technical skills with creative design to build memorable user experiences. 💪";
+        if (lowerMessage.includes('experience') || lowerMessage.includes('hire') || lowerMessage.includes('recruit')) {
+            return "Nipun offers a rare skill combination: AI engineering expertise with full-stack deployment capability. With a strong 8.0 CGPA, IBM AI certification, and proven ability to build production systems, he's ready to contribute immediately. He's graduating in 2026 and actively exploring opportunities. 💪";
         }
 
         if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
@@ -130,7 +189,7 @@ class GeminiService {
         }
 
         // Default response
-        return "That's an interesting question! While I'd love to help, I recommend checking out the portfolio sections or reaching out to Nipun directly for more specific information. Is there anything else about his skills or projects I can help with? 😊";
+        return "Great question! Nipun's strength lies in his ability to build complete AI solutions - from training models to deploying them in production web applications. His combination of AI expertise and full-stack skills makes him particularly valuable for teams building ML-powered products. Want to know more about specific capabilities? 😊";
     }
 }
 

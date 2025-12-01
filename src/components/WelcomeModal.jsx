@@ -3,67 +3,30 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const WelcomeModal = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    purpose: '',
-    company: ''
-  });
+  const [displayedText, setDisplayedText] = useState('');
+  const fullText = "Welcome to Nipun's Space";
 
   useEffect(() => {
-    // Check if user has already provided info
     const hasVisited = localStorage.getItem('portfolio_visitor_info');
     if (!hasVisited) {
-      // Show modal after a short delay
-      setTimeout(() => setIsOpen(true), 2000);
+      setTimeout(() => setIsOpen(true), 500);
     }
   }, []);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    
-    // Send to Google Analytics
-    if (window.gtag) {
-      window.gtag('event', 'visitor_info_submitted', {
-        custom_parameter_name: formData.name,
-        custom_parameter_email: formData.email,
-        custom_parameter_purpose: formData.purpose,
-        custom_parameter_company: formData.company,
-        event_category: 'engagement',
-        event_label: 'welcome_form'
-      });
-
-      // Set user properties
-      window.gtag('config', 'GA_MEASUREMENT_ID', {
-        custom_map: {
-          'visitor_name': formData.name,
-          'visitor_purpose': formData.purpose
-        }
-      });
+  useEffect(() => {
+    if (isOpen && displayedText.length < fullText.length) {
+      const timeout = setTimeout(() => {
+        setDisplayedText(fullText.slice(0, displayedText.length + 1));
+      }, 30);
+      return () => clearTimeout(timeout);
     }
+  }, [isOpen, displayedText]);
 
-    // Store in localStorage to avoid showing again
+  const handleEnter = () => {
     localStorage.setItem('portfolio_visitor_info', JSON.stringify({
-      ...formData,
+      visited: true,
       timestamp: new Date().toISOString()
     }));
-
-    setIsOpen(false);
-  };
-
-  const handleSkip = () => {
-    if (window.gtag) {
-      window.gtag('event', 'welcome_modal_skipped', {
-        event_category: 'engagement',
-        event_label: 'welcome_form'
-      });
-    }
-    
-    localStorage.setItem('portfolio_visitor_info', JSON.stringify({
-      skipped: true,
-      timestamp: new Date().toISOString()
-    }));
-    
     setIsOpen(false);
   };
 
@@ -74,98 +37,76 @@ const WelcomeModal = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm"
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black"
+          style={{
+            background: 'radial-gradient(ellipse at center, #0a0a0a 0%, #000000 100%)'
+          }}
         >
-          <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.8, opacity: 0 }}
-            className="bg-gradient-to-br from-gray-900 to-black border border-amber-400/30 rounded-2xl p-8 max-w-md w-full mx-4 shadow-2xl"
-          >
-            <div className="text-center mb-6">
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: 0.2 }}
-                className="w-16 h-16 bg-gradient-to-r from-amber-400 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4"
+          {/* Starfield */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            {[...Array(200)].map((_, i) => {
+              const size = Math.random() * 1.5 + 0.5;
+              const initialOpacity = Math.random() * 0.4 + 0.3;
+              return (
+                <motion.div
+                  key={i}
+                  className="absolute rounded-full"
+                  style={{
+                    width: size + 'px',
+                    height: size + 'px',
+                    left: Math.random() * 100 + '%',
+                    top: Math.random() * 100 + '%',
+                    background: 'radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,0.6) 100%)',
+                    boxShadow: `0 0 ${size * 3}px rgba(255,255,255,0.8), 0 0 ${size * 5}px rgba(255,255,255,0.4)`
+                  }}
+                  animate={{
+                    opacity: [initialOpacity + 0.3, initialOpacity * 0.5, initialOpacity + 0.3],
+                  }}
+                  transition={{
+                    duration: Math.random() * 4 + 3,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                />
+              );
+            })}
+          </div>
+
+          {/* Typewriter Text */}
+          <div className="relative z-10 text-center pointer-events-auto">
+            <motion.h1
+              className="text-3xl md:text-5xl font-bold text-white mb-8"
+              style={{
+                fontFamily: 'monospace',
+                textShadow: '0 0 20px rgba(255,255,255,0.5)',
+                cursor: 'default'
+              }}
+            >
+              {displayedText}
+              <motion.span
+                animate={{ opacity: [1, 0, 1] }}
+                transition={{ duration: 0.8, repeat: Infinity }}
+                className="inline-block w-1 h-12 md:h-16 bg-white ml-2 align-middle"
+              />
+            </motion.h1>
+            
+            {displayedText === fullText && (
+              <motion.button
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                onClick={handleEnter}
+                className="relative px-10 py-3 bg-white/10 backdrop-blur-md border border-white/30 text-white font-bold text-lg hover:bg-white/20 hover:border-white/50 transition-all duration-300 group"
+                style={{ 
+                  cursor: 'pointer',
+                  clipPath: 'polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%)'
+                }}
               >
-                <span className="text-2xl">👋</span>
-              </motion.div>
-              <h2 className="text-2xl font-bold text-white mb-2">Welcome to My Portfolio!</h2>
-              <p className="text-gray-300 text-sm">
-                I'd love to know more about you to provide a personalized experience
-              </p>
-            </div>
-
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <input
-                  type="text"
-                  placeholder="Your Name *"
-                  value={formData.name}
-                  onChange={(e) => setFormData({...formData, name: e.target.value})}
-                  className="w-full px-4 py-3 bg-gray-800 text-white rounded-lg border border-gray-600 focus:border-amber-400 focus:outline-none transition-colors"
-                  required
-                />
-              </div>
-              
-              <div>
-                <input
-                  type="email"
-                  placeholder="Email (optional)"
-                  value={formData.email}
-                  onChange={(e) => setFormData({...formData, email: e.target.value})}
-                  className="w-full px-4 py-3 bg-gray-800 text-white rounded-lg border border-gray-600 focus:border-amber-400 focus:outline-none transition-colors"
-                />
-              </div>
-
-              <div>
-                <select
-                  value={formData.purpose}
-                  onChange={(e) => setFormData({...formData, purpose: e.target.value})}
-                  className="w-full px-4 py-3 bg-gray-800 text-white rounded-lg border border-gray-600 focus:border-amber-400 focus:outline-none transition-colors"
-                >
-                  <option value="">What brings you here?</option>
-                  <option value="hiring">Looking to hire</option>
-                  <option value="collaboration">Potential collaboration</option>
-                  <option value="student">Fellow student</option>
-                  <option value="inspiration">Seeking inspiration</option>
-                  <option value="networking">Networking</option>
-                  <option value="other">Just browsing</option>
-                </select>
-              </div>
-
-              <div>
-                <input
-                  type="text"
-                  placeholder="Company/Organization (optional)"
-                  value={formData.company}
-                  onChange={(e) => setFormData({...formData, company: e.target.value})}
-                  className="w-full px-4 py-3 bg-gray-800 text-white rounded-lg border border-gray-600 focus:border-amber-400 focus:outline-none transition-colors"
-                />
-              </div>
-
-              <div className="flex gap-3 pt-4">
-                <button
-                  type="button"
-                  onClick={handleSkip}
-                  className="flex-1 px-4 py-3 text-gray-300 border border-gray-600 rounded-lg hover:bg-gray-800 transition-colors"
-                >
-                  Skip
-                </button>
-                <button
-                  type="submit"
-                  className="flex-1 px-4 py-3 bg-gradient-to-r from-amber-500 to-orange-500 text-black font-semibold rounded-lg hover:from-amber-400 hover:to-orange-400 transition-all transform hover:scale-105"
-                >
-                  Continue
-                </button>
-              </div>
-            </form>
-
-            <p className="text-xs text-gray-400 text-center mt-4">
-              This helps me understand my audience better. Your information is private and secure.
-            </p>
-          </motion.div>
+                <span className="relative z-10">Enter</span>
+                <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </motion.button>
+            )}
+          </div>
         </motion.div>
       )}
     </AnimatePresence>

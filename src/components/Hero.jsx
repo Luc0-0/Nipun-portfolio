@@ -19,24 +19,7 @@ import { motion } from 'framer-motion';
 
 export default function Hero() {
 
-  const [showWelcome, setShowWelcome] = useState(() => {
-    if (typeof window === 'undefined') return false;
-    
-    const hasShown = sessionStorage.getItem('welcomeShown');
-    const timestamp = sessionStorage.getItem('welcomeTimestamp');
-    const isMobile = window.innerWidth < 768;
-    
-    // Check if 24 hours have passed
-    if (timestamp) {
-      const hoursPassed = (Date.now() - parseInt(timestamp)) / (1000 * 60 * 60);
-      if (hoursPassed < 24) return false;
-    }
-    
-    // On mobile, only show welcome on first visit to root path
-    if (isMobile && window.location.hash && window.location.hash !== '#/') return false;
-    
-    return !hasShown;
-  });
+  const [showWelcome, setShowWelcome] = useState(false);
   return (
     <section
       id="hero"
@@ -105,7 +88,7 @@ export default function Hero() {
                   deleteSpeed={0}
                   pauseTime={999999}
                   loop={false}
-                  startDelay={showWelcome ? 999999 : 100}
+                  startDelay={100}
                 />
               </div>
 
@@ -128,7 +111,7 @@ export default function Hero() {
                     speed={20}
                     deleteSpeed={10}
                     pauseTime={800}
-                    startDelay={showWelcome ? 999999 : 30}
+                    startDelay={30}
                   />
                 </div>
                 <div
@@ -179,6 +162,19 @@ export default function Hero() {
                 >
                   <span className="animate-bounce hover:animate-spin">🚀</span>
                 </div>
+              </div>
+            </div>
+
+            {/* Current Status Badge */}
+            <div className="mb-6 animate-slide-up" style={{ animationDelay: "1.6s" }}>
+              <div className="inline-flex items-center gap-3 px-4 py-2.5 bg-white/10 dark:bg-white/5 backdrop-blur-md border border-amber-400/30 rounded-lg shadow-lg">
+                <div className="relative flex items-center justify-center">
+                  <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+                  <div className="absolute w-2 h-2 bg-green-400 rounded-full animate-ping" />
+                </div>
+                <span className="text-sm font-medium text-gray-800 dark:text-gray-200">
+                  Currently: <span className="text-amber-600 dark:text-amber-400 font-semibold">Completing AI Bootcamp at Udemy</span>
+                </span>
               </div>
             </div>
 
@@ -249,18 +245,18 @@ export default function Hero() {
 
       <div className="max-w-6xl mx-auto relative z-10 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* AI Skills */}
+          {/* AI Developer Skills */}
           <div className="bg-white/80 dark:bg-black/20 border border-amber-400/40 dark:border-amber-400/20 rounded-2xl p-8 backdrop-blur-sm">
             <h3 className="text-2xl font-bold text-gray-900 dark:text-amber-100 mb-6 flex items-center gap-4">
               <div className="w-4 h-4 bg-amber-500 dark:bg-amber-400 rounded-full" />
-              AI & ML Skills
+              AI Development
             </h3>
             <div className="space-y-3">
               {[
-                { name: "AI/ML & Python", level: 88 },
-                { name: "Neural Networks", level: 83 },
-                { name: "Data Science", level: 85 },
-                { name: "TensorFlow", level: 80 },
+                { name: "Python & AI/ML", level: 90 },
+                { name: "TensorFlow & PyTorch", level: 85 },
+                { name: "NLP & LLMs", level: 82 },
+                { name: "Model Deployment", level: 80 },
               ].map((skill, index) => (
                 <SkillMeter
                   key={skill.name}
@@ -272,18 +268,18 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Web Development Skills */}
+          {/* MERN Stack Skills */}
           <div className="bg-white/80 dark:bg-black/20 border border-amber-400/40 dark:border-amber-400/20 rounded-2xl p-8 backdrop-blur-sm">
             <h3 className="text-2xl font-bold text-gray-900 dark:text-amber-100 mb-6 flex items-center gap-4">
               <div className="w-4 h-4 bg-amber-500 dark:bg-amber-400 rounded-full" />
-              Web Development
+              Full Stack (MERN)
             </h3>
             <div className="space-y-3">
               {[
+                { name: "MongoDB & Express", level: 88 },
                 { name: "React & Next.js", level: 92 },
-                { name: "Three.js & WebGL", level: 85 },
                 { name: "Node.js & APIs", level: 90 },
-                { name: "TypeScript", level: 87 },
+                { name: "FastAPI & Flask", level: 85 },
               ].map((skill, index) => (
                 <SkillMeter
                   key={skill.name}
@@ -309,43 +305,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Welcome Screen Overlay */}
-      {showWelcome && (
-        <div className="fixed inset-0 bg-black/90 backdrop-blur-md z-50 flex items-center justify-center transition-all duration-1000 ease-out">
-          <div
-            className="text-center cursor-pointer group transform transition-all duration-500 hover:scale-105"
-            onClick={() => {
-              const overlay = document.querySelector(".fixed.inset-0");
-              overlay.style.opacity = "0";
-              overlay.style.transform = "scale(0.95)";
-              sessionStorage.setItem('welcomeShown', 'true');
-              // Also set a timestamp to prevent showing again for 24 hours
-              sessionStorage.setItem('welcomeTimestamp', Date.now().toString());
-              setTimeout(() => setShowWelcome(false), 500);
-            }}
-          >
-            <div className="relative px-12 py-10 rounded-3xl backdrop-blur-xl shadow-2xl border border-white/30 hover:border-white/60 transition-all duration-700 overflow-hidden">
-              {/* Dark space background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-black via-slate-900/50 to-black" />
-              {/* Animated glow effect */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500/20 via-purple-500/10 to-cyan-500/20 rounded-2xl blur-xl animate-pulse" />
-              {/* Content */}
-              <div className="relative z-10">
-                <TypewriterText
-                  text="Welcome to Nipun's Space"
-                  speed={100}
-                  className="text-white text-3xl md:text-4xl font-bold tracking-wider mb-4"
-                  startDelay={0}
-                />
-                <div className="h-1 w-24 bg-gradient-to-r from-cyan-400 via-purple-400 to-cyan-400 rounded-full mx-auto mt-6 animate-pulse" />
-              </div>
-            </div>
-            <p className="text-cyan-300/70 mt-6 text-sm font-light tracking-widest animate-pulse">
-              ⟲ Click anywhere to explore
-            </p>
-          </div>
-        </div>
-      )}
+
 
 
 

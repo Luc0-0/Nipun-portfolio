@@ -6,9 +6,13 @@ import geminiService from '../services/geminiService';
 import './AIChatbot.css';
 
 const SUGGESTED_PROMPTS = [
-    "What are Nipun's skills?",
-    "Tell me about his projects",
+    "What are Nipun's technical skills?",
+    "Tell me about his AI/ML projects",
+    "What's his educational background?",
+    "Show me his certifications",
     "What technologies does he use?",
+    "Tell me about his final year project",
+    "What's his experience with React?",
     "How can I contact him?",
 ];
 
@@ -17,22 +21,38 @@ const AIChatbot = () => {
     const [messages, setMessages] = useState([]);
     const [inputValue, setInputValue] = useState('');
     const [isTyping, setIsTyping] = useState(false);
+    const [showScrollButton, setShowScrollButton] = useState(false);
     const messagesEndRef = useRef(null);
+    const messagesContainerRef = useRef(null);
     const inputRef = useRef(null);
+    const chatContainerRef = useRef(null);
 
     // Auto-scroll to bottom when new messages arrive
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
     };
 
+    // Check if user has scrolled up
+    const handleScroll = () => {
+        if (messagesContainerRef.current) {
+            const { scrollTop, scrollHeight, clientHeight } = messagesContainerRef.current;
+            setShowScrollButton(scrollHeight - scrollTop - clientHeight > 100);
+        }
+    };
+
     useEffect(() => {
-        scrollToBottom();
+        if (messages.length > 1) {
+            scrollToBottom();
+        }
     }, [messages]);
 
-    // Focus input when chat opens
+    // Focus chat container when opened to enable scrolling
     useEffect(() => {
-        if (isOpen && inputRef.current) {
-            inputRef.current.focus();
+        if (isOpen && messagesContainerRef.current) {
+            setTimeout(() => {
+                messagesContainerRef.current.scrollTop = 0;
+                messagesContainerRef.current.focus();
+            }, 100);
         }
     }, [isOpen]);
 
@@ -147,8 +167,8 @@ const AIChatbot = () => {
                             </div>
                         </div>
 
-                        {/* Messages Area */}
-                        <div className="chat-messages">
+                        {/* Combined Messages and Prompts Area */}
+                        <div className="chat-messages" ref={messagesContainerRef} onScroll={handleScroll} tabIndex={0}>
                             {messages.map((msg, index) => (
                                 <ChatMessage
                                     key={index}
@@ -171,27 +191,45 @@ const AIChatbot = () => {
                                 </motion.div>
                             )}
 
+                            {/* Suggested Prompts (show when no messages yet) */}
+                            {messages.length <= 1 && !isTyping && (
+                                <div className="suggested-prompts-inline">
+                                    <p className="text-xs text-gray-400 mb-2">Quick questions:</p>
+                                    <div className="grid grid-cols-1 gap-2">
+                                        {SUGGESTED_PROMPTS.map((prompt, index) => (
+                                            <motion.button
+                                                key={index}
+                                                className="suggested-prompt"
+                                                onClick={() => handleSuggestedPrompt(prompt)}
+                                                whileHover={{ scale: 1.02 }}
+                                                whileTap={{ scale: 0.98 }}
+                                                initial={{ opacity: 0, y: 10 }}
+                                                animate={{ opacity: 1, y: 0 }}
+                                                transition={{ delay: index * 0.05 }}
+                                            >
+                                                {prompt}
+                                            </motion.button>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+
                             <div ref={messagesEndRef} />
                         </div>
 
-                        {/* Suggested Prompts (show when no messages yet) */}
-                        {messages.length <= 1 && !isTyping && (
-                            <div className="suggested-prompts">
-                                {SUGGESTED_PROMPTS.map((prompt, index) => (
-                                    <motion.button
-                                        key={index}
-                                        className="suggested-prompt"
-                                        onClick={() => handleSuggestedPrompt(prompt)}
-                                        whileHover={{ scale: 1.02 }}
-                                        whileTap={{ scale: 0.98 }}
-                                        initial={{ opacity: 0, y: 10 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        transition={{ delay: index * 0.1 }}
-                                    >
-                                        {prompt}
-                                    </motion.button>
-                                ))}
-                            </div>
+                        {/* Scroll to Bottom Button */}
+                        {showScrollButton && (
+                            <motion.button
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.8 }}
+                                onClick={scrollToBottom}
+                                className="scroll-to-bottom"
+                            >
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M10 14l-6-6h12l-6 6z" />
+                                </svg>
+                            </motion.button>
                         )}
 
                         {/* Input Area */}

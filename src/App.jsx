@@ -68,18 +68,8 @@ export default function App() {
 }
 
 function AppContent() {
-  const { isDark, isSpace, toggleSpaceTheme } = useTheme();
-  const [showSpaceModal, setShowSpaceModal] = useState(false);
+  const { isDark, isSpace } = useTheme();
   const { trackProjectClick, trackBlogView } = useAnalytics();
-  // Easter egg removed for cleaner UX
-  // Previously triggered 'cosmic mode' by typing 'SPACE' - now disabled
-
-  useEffect(() => {
-    if (showSpaceModal) {
-      const timer = setTimeout(() => setShowSpaceModal(false), 3500);
-      return () => clearTimeout(timer);
-    }
-  }, [showSpaceModal]);
   const handlePlanetClick = (sectionId) => {
     console.log('Navigating to:', sectionId);
     const element = document.getElementById(sectionId);
@@ -113,29 +103,7 @@ function AppContent() {
           </svg>
         </div>
       )}
-      {showSpaceModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90">
-          <div className="relative px-12 py-10 rounded-3xl shadow-2xl border-4 border-yellow-400 bg-gradient-to-br from-indigo-900 via-purple-900 to-black text-yellow-100 text-center animate-fade-in"
-            style={{
-              boxShadow: '0 8px 48px 0 #ffd70044',
-              border: '4px solid #ffd700',
-              background: 'linear-gradient(135deg, #23234f 0%, #8f5fff 60%, #0d0d1a 100%)',
-            }}>
-            <div className="absolute -top-10 left-1/2 -translate-x-1/2">
-              <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
-                <ellipse cx="40" cy="40" rx="38" ry="38" fill="#ffd700" fillOpacity="0.10" />
-                <path d="M40 16 L46 36 L66 36 L49 46 L54 66 L40 54 L26 66 L31 46 L14 36 L34 36 Z" fill="#ffd700" />
-              </svg>
-            </div>
-            <h2 className="text-4xl font-extrabold mb-4 tracking-tight text-yellow-200 drop-shadow-xl" style={{ letterSpacing: '-1px', textShadow: '0 2px 8px #23234f' }}>Cosmic Mode Activated</h2>
-            <p className="mb-6 text-lg text-yellow-100 font-semibold" style={{ textShadow: '0 2px 8px #23234f' }}>Welcome to the premium space experience.<br />Enjoy the luxury cosmic vibes!</p>
-            <button className="mt-6 px-8 py-3 bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 rounded-xl font-bold text-[#23234f] shadow-lg hover:scale-105 transition-all duration-200 border-2 border-yellow-300 focus:outline-none focus:ring-2 focus:ring-yellow-400/60" onClick={() => setShowSpaceModal(false)}>
-              Close
-            </button>
-            <div className="absolute inset-0 rounded-3xl pointer-events-none animate-glow" style={{ boxShadow: '0 0 80px 20px #23234fcc, 0 0 160px 40px #1a1a40cc' }}></div>
-          </div>
-        </div>
-      )}
+
       {/* Google Analytics */}
       <GoogleAnalytics />
 
