@@ -49,42 +49,6 @@ export default function LightweightInteractiveBackground() {
   const trailRef = useRef([]);
   const [mouseTrail, setMouseTrail] = useState([]);
   const [comets, setComets] = useState([]);
-  const [cometRain, setCometRain] = useState(false);
-  const [showNotification, setShowNotification] = useState(false);
-  
-  // Expose comet rain function globally for easter egg
-  useEffect(() => {
-    window.triggerCometRain = () => {
-      setCometRain(true);
-      setShowNotification(true);
-      
-      // Create massive comet shower
-      const rainComets = [];
-      for (let i = 0; i < 50; i++) {
-        rainComets.push({
-          id: Date.now() + i,
-          x: Math.random() * window.innerWidth,
-          y: -Math.random() * 200 - 50,
-          vx: (Math.random() - 0.5) * 6,
-          vy: Math.random() * 4 + 3,
-          life: 1,
-          trail: [],
-          size: Math.random() * 2 + 1
-        });
-      }
-      setComets(prev => [...prev, ...rainComets]);
-      
-      // Hide notification after 3 seconds
-      setTimeout(() => setShowNotification(false), 3000);
-      
-      // Stop rain after 5 seconds
-      setTimeout(() => setCometRain(false), 5000);
-    };
-    
-    return () => {
-      delete window.triggerCometRain;
-    };
-  }, []);
   
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -117,7 +81,7 @@ export default function LightweightInteractiveBackground() {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
   
-  // Create more frequent random comets
+  // Create random comets
   useEffect(() => {
     const createComet = () => {
       const comet = {
@@ -134,12 +98,11 @@ export default function LightweightInteractiveBackground() {
     };
     
     const interval = setInterval(() => {
-      const chance = cometRain ? 0.9 : 0.6; // Higher chance during rain
-      if (Math.random() < chance) createComet();
-    }, cometRain ? 200 : 1500); // More frequent during rain
+      if (Math.random() < 0.6) createComet();
+    }, 1500);
     
     return () => clearInterval(interval);
-  }, [cometRain]);
+  }, []);
   
   // Update comets
   useEffect(() => {
@@ -295,20 +258,7 @@ export default function LightweightInteractiveBackground() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/20" />
       </div>
       
-      {/* Comet rain notification */}
-      {showNotification && (
-        <div className="fixed top-8 left-1/2 transform -translate-x-1/2 z-50 pointer-events-none">
-          <div className="bg-gradient-to-r from-purple-600/90 to-cyan-600/90 backdrop-blur-md px-6 py-3 rounded-full border border-white/20 shadow-2xl animate-bounce">
-            <div className="flex items-center gap-3">
-              <span className="text-2xl animate-spin">🌌</span>
-              <span className="text-white font-medium tracking-wide">
-                COMET RAIN ACTIVATED!
-              </span>
-              <span className="text-2xl animate-pulse">✨</span>
-            </div>
-          </div>
-        </div>
-      )}
+
     </>
   );
 }

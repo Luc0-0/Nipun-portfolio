@@ -170,17 +170,11 @@ html.lenis {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* GPU acceleration for animations */
-.animate-3d-in,
-[style*="transform"],
+/* GPU acceleration for animations - optimized */
 canvas,
-#solar-system,
-button,
-a,
-img {
+#solar-system {
   will-change: transform;
   backface-visibility: hidden;
-  transform-style: preserve-3d;
   transform: translateZ(0);
 }
 
@@ -288,16 +282,9 @@ body.neon-mode .neon-glow {
   transform: rotateY(180deg);
 }
 
-/* Smooth Transitions */
-* {
-  transition-property: transform, opacity;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 0.2s;
-}
-
+/* Smooth Transitions - optimized */
 button, a {
-  transition-property: transform, opacity, background-color;
-  transition-duration: 0.2s;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Dynamic color variables */

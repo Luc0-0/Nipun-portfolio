@@ -382,7 +382,7 @@ export default function BlogPostPage() {
   }
 
   return (
-    <div className="min-h-screen pt-20 pb-12 cursor-default" style={{ background: 'linear-gradient(to bottom, #000011, #000033)' }}>
+    <div className="min-h-screen pt-20 pb-12 cursor-default relative z-10" style={{ background: 'linear-gradient(to bottom, #000011, #000033)' }}>
       <style jsx>{`
         .blog-content {
           line-height: 1.8;
@@ -462,9 +462,9 @@ export default function BlogPostPage() {
         }
       `}</style>
       <div className="max-w-5xl mx-auto px-6">
-        <Link to="/blog" className="inline-flex items-center gap-3 text-amber-300 hover:text-amber-200 transition-all duration-300 mb-10 group">
+        <Link to="/blog" className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm border border-amber-400/30 rounded-lg text-amber-300 hover:text-amber-200 hover:bg-white/20 hover:border-amber-400/50 transition-all duration-300 mb-10 group">
           <svg className="w-5 h-5 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
           </svg>
           Back to Blog
         </Link>

@@ -103,7 +103,7 @@ export default function IntelligentCursor() {
       {particles.map((particle, i) => (
         <div
           key={particle.id}
-          className="fixed pointer-events-none z-[9999] w-1 h-1 rounded-full"
+          className="fixed pointer-events-none z-[99999] w-1 h-1 rounded-full"
           style={{
             left: particle.x - 2,
             top: particle.y - 2,
@@ -121,7 +121,7 @@ export default function IntelligentCursor() {
 
       {/* Main cursor */}
       <div
-        className={`fixed pointer-events-none z-[9999] ${
+        className={`fixed pointer-events-none z-[99999] ${
           isHovering ? 'scale-150' : 'scale-100'
         }`}
         style={{

@@ -143,25 +143,7 @@ export default function Hero() {
                   that bridge human creativity with artificial intelligence.
                 </p>
 
-                {/* Interactive easter egg - comet rain trigger */}
-                <div
-                  className="absolute -top-2 -right-2 opacity-0 group-hover:opacity-100 transition-all duration-500 text-lg text-purple-400 cursor-pointer hover:scale-125 hover:text-cyan-400 active:scale-150"
-                  title="🎯 Click for comet rain!"
-                  onClick={() => {
-                    if (window.triggerCometRain) {
-                      window.triggerCometRain();
-                      // Add some visual feedback
-                      const target = event.target;
-                      target.style.transform = "scale(2) rotate(360deg)";
-                      target.style.transition = "transform 0.5s ease";
-                      setTimeout(() => {
-                        target.style.transform = "";
-                      }, 500);
-                    }
-                  }}
-                >
-                  <span className="animate-bounce hover:animate-spin">🚀</span>
-                </div>
+
               </div>
             </div>
 
