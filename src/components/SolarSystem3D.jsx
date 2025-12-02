@@ -4,6 +4,7 @@
 import React, { useRef, useState, Suspense, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Html, OrbitControls, Stars } from "@react-three/drei";
+import { EffectComposer, Bloom } from '@react-three/postprocessing';
 import * as THREE from "three";
 
 const PLANETS = [
@@ -461,7 +462,13 @@ function SolarSystemScene({ onPlanetClick, onHover }) {
       ))}
       {/* Stars background */}
       <Stars />
-      {/* Bloom removed for better performance */}
+      <EffectComposer>
+        <Bloom
+          intensity={0.2}
+          luminanceThreshold={0.4}
+          luminanceSmoothing={0.8}
+        />
+      </EffectComposer>
     </group>
   );
 }
