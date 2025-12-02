@@ -276,7 +276,7 @@ export default function Timeline() {
                 data-index={index}
                 className={`timeline-item relative flex items-center mb-12 md:mb-20 transition-all duration-1000 ${
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-                } flex-row md:${isLeft ? 'flex-row' : 'flex-row-reverse'}`}
+                } ${isLeft ? 'md:justify-start' : 'md:justify-end'}`}
                 onMouseEnter={() => setActiveIndex(index)}
                 onMouseLeave={() => setActiveIndex(null)}
               >
@@ -298,8 +298,8 @@ export default function Timeline() {
                 </div>
 
                 {/* 3D Content card with space theme */}
-                <div className={`w-full md:w-5/12 pl-20 md:${isLeft ? 'pr-16' : 'pl-16'} md:pl-0 transition-all duration-700 ${
-                  isActive ? 'md:scale-110 md:-translate-y-4' : 'scale-100'
+                <div className={`w-full md:w-5/12 pl-20 md:pl-0 ${isLeft ? 'md:pr-8' : 'md:pl-8'} transition-all duration-700 ${
+                  isActive ? 'md:scale-105 md:-translate-y-2' : 'scale-100'
                 }`}>
                   <div className={`relative group cursor-pointer transition-all duration-700 ${
                     isActive ? 'transform rotate-1' : ''
@@ -361,7 +361,7 @@ export default function Timeline() {
                 </div>
 
                 {/* 3D Connection beam to timeline */}
-                <div className={`absolute left-8 md:left-1/2 transform md:-translate-x-1/2 translate-x-4 md:${isLeft ? 'translate-x-6' : '-translate-x-6'} w-8 md:w-12 h-1 bg-gradient-to-r ${item.color} opacity-70`} style={{
+                <div className={`hidden md:block absolute left-1/2 top-1/2 transform -translate-y-1/2 ${isLeft ? '-translate-x-full' : 'translate-x-0'} ${isLeft ? 'right-1/2 mr-6' : 'left-1/2 ml-6'} w-12 h-1 bg-gradient-to-r ${item.color} opacity-70`} style={{
                   boxShadow: `0 0 10px ${item.glow}60`
                 }}></div>
               </div>

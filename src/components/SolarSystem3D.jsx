@@ -620,7 +620,7 @@ export default function SolarSystem3D({ onPlanetClick }) {
   }
 
   return (
-    <div className={`w-full relative h-screen`} style={{ pointerEvents: 'auto' }}>
+    <div className={`w-full relative h-screen`}>
       {/* Depth layering background */}
       <div className="absolute inset-0 bg-gradient-to-b from-gray-900/20 via-slate-900/10 to-black/30 pointer-events-none" />
       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-amber-900/5 to-transparent pointer-events-none" />
@@ -657,35 +657,11 @@ export default function SolarSystem3D({ onPlanetClick }) {
         </div>
       </div>
 
-      {/* Ambient particles - positioned closer to center */}
-      <div className="absolute inset-0 pointer-events-none z-0">
-        {[...Array(15)].map((_, i) => {
-          const angle = (i / 15) * 360;
-          const radius = 30 + Math.random() * 40;
-          const x = 50 + Math.cos(angle * Math.PI / 180) * radius;
-          const y = 50 + Math.sin(angle * Math.PI / 180) * radius;
-          return (
-            <div
-              key={i}
-              className="absolute w-2 h-2 bg-amber-400/40 animate-pulse"
-              style={{
-                left: `${Math.max(10, Math.min(90, x))}%`,
-                top: `${Math.max(10, Math.min(90, y))}%`,
-                animationDelay: `${Math.random() * 3}s`,
-                animationDuration: `${2 + Math.random() * 2}s`,
-                clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)'
-              }}
-            />
-          );
-        })}
-      </div>
-
       <Canvas
         camera={{ position: [0, 80, 120], fov: 75 }}
         style={{ 
           background: "linear-gradient(135deg, #0f172a 0%, #1e293b 30%, #334155 60%, #1e293b 100%)",
-          cursor: 'auto',
-          pointerEvents: 'auto'
+          cursor: 'auto'
         }}
         gl={{ antialias: true, powerPreference: 'high-performance' }}
       >

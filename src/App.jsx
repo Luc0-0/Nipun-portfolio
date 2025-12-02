@@ -29,8 +29,9 @@ import QuickFix from './components/QuickFix';
 import AutoProjectShowcase from './components/AutoProjectShowcase';
 import WelcomeModal from './components/WelcomeModal';
 import AnalyticsDashboard from './components/AnalyticsDashboard';
-import Timeline from './components/Timeline';
+
 import FloatingProjectsButton from './components/FloatingProjectsButton';
+import FloatingTimelineButton from './components/FloatingTimelineButton';
 import IntelligentCursor from './components/IntelligentCursor';
 import PageTransitionNew from './components/PageTransition';
 import Scroll3DAnimations from './components/Scroll3DAnimations';
@@ -166,7 +167,7 @@ function AppContent() {
         </div>
 
         {/* Enhanced solar system navigator */}
-        <section id="solar-system" className="py-20 relative solar-system-section" style={{ zIndex: 10, pointerEvents: 'auto' }}>
+        <section id="solar-system" className="py-20 relative solar-system-section">
           <SolarSystem3D onPlanetClick={handlePlanetClick} />
         </section>
 
@@ -209,13 +210,6 @@ function AppContent() {
               View Live Projects
             </a>
           </div>
-        </div>
-
-        {/* Timeline Showcase */}
-        <div className="relative py-20">
-          <Scroll3DAnimations index={1} delay={300}>
-            <Timeline />
-          </Scroll3DAnimations>
         </div>
 
         {/* Achievement Wall */}
@@ -364,6 +358,9 @@ function AppContent() {
 
       {/* Floating Projects Button */}
       <FloatingProjectsButton />
+
+      {/* Floating Timeline Button */}
+      <FloatingTimelineButton />
 
       {/* AI Chatbot */}
       <AIChatbot />

@@ -11,6 +11,7 @@ export default defineConfig({
       compress: {
         drop_console: true,
         drop_debugger: true,
+        passes: 2,
       },
       mangle: {
         toplevel: true,
@@ -21,8 +22,22 @@ export default defineConfig({
     },
     rollupOptions: {
       output: {
-        manualChunks: undefined,
+        manualChunks: {
+          'react-core': ['react', 'react-dom', 'react-router-dom'],
+          'three': ['three'],
+          'animations': ['framer-motion'],
+        },
+        chunkFileNames: 'assets/[name]-[hash].js',
+        entryFileNames: 'assets/[name]-[hash].js',
+        assetFileNames: 'assets/[name]-[hash].[ext]',
       },
     },
+    chunkSizeWarningLimit: 1000,
+    cssCodeSplit: true,
+    sourcemap: false,
+  },
+
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'react-router-dom'],
   },
 })
