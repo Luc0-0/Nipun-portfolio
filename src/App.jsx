@@ -20,8 +20,6 @@ import SmoothScroll from './components/SmoothScroll';
 import ScrollEffects from './components/ScrollEffects';
 import EnhancedParallax from './components/EnhancedParallax';
 import GlowCursor from './components/GlowCursor';
-import CometTrail from './components/CometTrail';
-import ConstellationLines from './components/ConstellationLines';
 import ImmersiveBackground from './components/ImmersiveBackground';
 import CinematicCursor from './components/CinematicCursor';
 import NeonModeToggle from './components/NeonModeToggle';
@@ -35,7 +33,6 @@ import Timeline from './components/Timeline';
 import FloatingProjectsButton from './components/FloatingProjectsButton';
 import IntelligentCursor from './components/IntelligentCursor';
 import PageTransitionNew from './components/PageTransition';
-import AmbientParticles from './components/AmbientParticles';
 import Scroll3DAnimations from './components/Scroll3DAnimations';
 import AIChatbot from './components/AIChatbot';
 
@@ -55,10 +52,27 @@ export default function App() {
     if (element) {
       const offset = 100;
       const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-      window.scrollTo({
-        top: elementPosition - offset,
-        behavior: 'smooth'
-      });
+      const start = window.pageYOffset;
+      const distance = elementPosition - offset - start;
+      const duration = 800;
+      let startTime = null;
+      
+      const easeInOutCubic = (t) => t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+      
+      const animation = (currentTime) => {
+        if (startTime === null) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        const progress = Math.min(timeElapsed / duration, 1);
+        const ease = easeInOutCubic(progress);
+        
+        window.scrollTo(0, start + distance * ease);
+        
+        if (timeElapsed < duration) {
+          requestAnimationFrame(animation);
+        }
+      };
+      
+      requestAnimationFrame(animation);
     } else {
       console.log('Element not found:', sectionId);
     }
@@ -76,10 +90,27 @@ function AppContent() {
     if (element) {
       const offset = 100;
       const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-      window.scrollTo({
-        top: elementPosition - offset,
-        behavior: 'smooth'
-      });
+      const start = window.pageYOffset;
+      const distance = elementPosition - offset - start;
+      const duration = 800;
+      let startTime = null;
+      
+      const easeInOutCubic = (t) => t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+      
+      const animation = (currentTime) => {
+        if (startTime === null) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        const progress = Math.min(timeElapsed / duration, 1);
+        const ease = easeInOutCubic(progress);
+        
+        window.scrollTo(0, start + distance * ease);
+        
+        if (timeElapsed < duration) {
+          requestAnimationFrame(animation);
+        }
+      };
+      
+      requestAnimationFrame(animation);
     } else {
       console.log('Element not found:', sectionId);
     }
@@ -116,20 +147,6 @@ function AppContent() {
       {/* Next-level UI Components */}
       <IntelligentCursor />
       <PageTransitionNew />
-      <AmbientParticles count={30} speed={0.3} />
-
-
-
-
-
-      {/* Cinematic Cursor */}
-      <CinematicCursor />
-
-      {/* Comet Trail */}
-      <CometTrail />
-
-      {/* Constellation Lines */}
-      <ConstellationLines />
 
 
 
@@ -137,9 +154,6 @@ function AppContent() {
       <Navigation />
 
       {/* Enhanced interactive elements */}
-      <HolographicElements />
-      <RippleEffect />
-      <QuantumParticles />
       <LightweightInteractiveBackground />
 
 
@@ -152,9 +166,8 @@ function AppContent() {
         </div>
 
         {/* Enhanced solar system navigator */}
-        <section id="solar-system" className="py-20 relative z-10 solar-system-section">
+        <section id="solar-system" className="py-20 relative solar-system-section" style={{ zIndex: 10, pointerEvents: 'auto' }}>
           <SolarSystem3D onPlanetClick={handlePlanetClick} />
-
         </section>
 
         {/* Enhanced content sections */}
