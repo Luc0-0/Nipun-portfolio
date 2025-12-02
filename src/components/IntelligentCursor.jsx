@@ -10,6 +10,20 @@ export default function IntelligentCursor() {
 
   useEffect(() => {
     const updateCursor = (e) => {
+      // Check if cursor is over solar system
+      const solarSystem = document.querySelector('#solar-system');
+      if (solarSystem) {
+        const rect = solarSystem.getBoundingClientRect();
+        if (
+          e.clientX >= rect.left &&
+          e.clientX <= rect.right &&
+          e.clientY >= rect.top &&
+          e.clientY <= rect.bottom
+        ) {
+          return; // Don't show custom cursor over solar system
+        }
+      }
+      
       setPosition({ x: e.clientX, y: e.clientY });
       
       // Add trailing particles
@@ -67,6 +81,21 @@ export default function IntelligentCursor() {
   }, []);
 
   if (window.innerWidth < 768) return null; // Hide on mobile
+
+  // Hide cursor if over solar system
+  const solarSystem = document.querySelector('#solar-system');
+  let isOverSolarSystem = false;
+  if (solarSystem) {
+    const rect = solarSystem.getBoundingClientRect();
+    isOverSolarSystem = (
+      position.x >= rect.left &&
+      position.x <= rect.right &&
+      position.y >= rect.top &&
+      position.y <= rect.bottom
+    );
+  }
+
+  if (isOverSolarSystem) return null;
 
   return (
     <>

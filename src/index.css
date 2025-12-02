@@ -94,6 +94,16 @@ html.lenis {
   .chatbot-container *,
   .chat-trigger-button * {
     cursor: auto !important;
+    pointer-events: auto !important;
+  }
+  
+  /* Show normal cursor on solar system */
+  #solar-system,
+  #solar-system *,
+  #solar-system canvas,
+  .solar-system-section,
+  .solar-system-section * {
+    cursor: auto !important;
   }
   
   .z-\[9999\] button,
@@ -113,6 +123,7 @@ html.lenis {
 @media (max-width: 767px) {
   * {
     cursor: auto !important;
+    pointer-events: auto !important;
   }
   
   button, a, input, textarea, select, [role="button"] {
@@ -121,6 +132,15 @@ html.lenis {
 }
 
 /* Z-index fixes */
+#solar-system,
+#solar-system *,
+#solar-system canvas,
+.solar-system-section,
+.solar-system-section * {
+  cursor: auto !important;
+  pointer-events: auto !important;
+}
+
 .z-\[100\] {
   z-index: 100 !important;
 }
@@ -152,10 +172,29 @@ html.lenis {
 
 /* GPU acceleration for animations */
 .animate-3d-in,
-[style*="transform"] {
+[style*="transform"],
+canvas,
+#solar-system,
+button,
+a,
+img {
   will-change: transform;
   backface-visibility: hidden;
   transform-style: preserve-3d;
+  transform: translateZ(0);
+}
+
+/* Smooth scrolling optimization */
+html {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Reduce motion for better performance */
+@media (prefers-reduced-motion: no-preference) {
+  * {
+    scroll-behavior: smooth;
+  }
 }
 
 /* Scroll animations */
@@ -251,8 +290,14 @@ body.neon-mode .neon-glow {
 
 /* Smooth Transitions */
 * {
-  transition-property: transform, opacity, box-shadow, background-color, border-color;
+  transition-property: transform, opacity;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 0.2s;
+}
+
+button, a {
+  transition-property: transform, opacity, background-color;
+  transition-duration: 0.2s;
 }
 
 /* Dynamic color variables */

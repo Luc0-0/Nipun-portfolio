@@ -4,16 +4,16 @@
 import React, { useState, useEffect } from 'react';
 
 const PLANETS = [
-  { id: 'about', label: 'About', color: '#f5c36b', orbit: 120, duration: 20 },
-  { id: 'ongoing', label: 'Research', color: '#4a90e2', orbit: 150, duration: 25 },
-  { id: 'ai-skills', label: 'AI Skills', color: '#e74c3c', orbit: 180, duration: 30 },
-  { id: 'web-skills', label: 'Web Dev', color: '#2ecc71', orbit: 210, duration: 35 },
-  { id: 'project1', label: 'Project 1', color: '#9b59b6', orbit: 240, duration: 40 },
-  { id: 'project2', label: 'Project 2', color: '#f39c12', orbit: 270, duration: 45 },
-  { id: 'project3', label: 'Project 3', color: '#1abc9c', orbit: 300, duration: 50 },
+  { id: 'about', label: 'About Me', color: '#f5c36b', orbit: 120, duration: 20 },
+  { id: 'ongoing', label: 'Current Studies', color: '#4a90e2', orbit: 150, duration: 25 },
+  { id: 'ai-skills', label: 'AI Developer & Engineer', color: '#e74c3c', orbit: 180, duration: 30 },
+  { id: 'web-skills', label: 'Full Stack (MERN)', color: '#2ecc71', orbit: 210, duration: 35 },
+  { id: 'project1', label: 'Academic Projects', color: '#9b59b6', orbit: 240, duration: 40 },
+  { id: 'project2', label: 'Data Analyst Projects', color: '#f39c12', orbit: 270, duration: 45 },
+  { id: 'project3', label: 'Machine Learning Projects', color: '#1abc9c', orbit: 300, duration: 50 },
   { id: 'miniprojects', label: 'Mini Projects', color: '#e67e22', orbit: 330, duration: 55 },
-  { id: 'services', label: 'Services', color: '#34495e', orbit: 360, duration: 60 },
-  { id: 'contact', label: 'Contact', color: '#c0392b', orbit: 390, duration: 65 },
+  { id: 'services', label: 'Future Goals', color: '#34495e', orbit: 360, duration: 60 },
+  { id: 'contact', label: 'Connect With Me', color: '#c0392b', orbit: 390, duration: 65 },
 ];
 
 export default function AnimatedSolarSystem({ onPlanetClick }) {
@@ -105,11 +105,13 @@ export default function AnimatedSolarSystem({ onPlanetClick }) {
                 }}
                 aria-label={`Navigate to ${planet.label}`}
               >
-                {/* Planet label */}
-                <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap">
-                  <span className="text-xs text-white bg-black/70 px-2 py-1 rounded font-medium">
-                    {planet.label}
-                  </span>
+                {/* Planet label - shows on hover */}
+                <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                  <div className="bg-gradient-to-r from-gray-900/95 to-black/95 backdrop-blur-sm px-3 py-1.5 rounded-lg border border-amber-400/30 shadow-lg">
+                    <span className="text-xs font-semibold text-amber-100">
+                      {planet.label}
+                    </span>
+                  </div>
                 </div>
               </button>
             </div>
