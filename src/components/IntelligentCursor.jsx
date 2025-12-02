@@ -121,16 +121,17 @@ export default function IntelligentCursor() {
 
       {/* Main cursor */}
       <div
-        className={`fixed pointer-events-none z-[9999] transition-all duration-200 ease-out ${
+        className={`fixed pointer-events-none z-[9999] ${
           isHovering ? 'scale-150' : 'scale-100'
         }`}
         style={{
           left: position.x - 8,
           top: position.y - 8,
+          transition: 'transform 0.15s ease-out',
         }}
       >
         <div
-          className={`w-4 h-4 rounded-full border-2 transition-all duration-200 ${
+          className={`w-4 h-4 rounded-full border-2 ${
             cursorType === 'magnetic' 
               ? 'bg-amber-400/20 border-amber-400' 
               : cursorType === 'text'
