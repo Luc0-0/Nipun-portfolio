@@ -26,7 +26,7 @@ const timelineData = [
     title: '10th Grade - KV Delhi',
     description: 'Completed 10th standard at Kendriya Vidyalaya Delhi with strong foundation in mathematics and science',
     type: 'education',
-    icon: '📚',
+    icon: '●',
     color: 'from-blue-400 to-purple-500',
     glow: '#4169E1'
   },
@@ -35,7 +35,7 @@ const timelineData = [
     title: 'Python Journey Begins',
     description: 'Started learning Python programming at Kendriya Vidyalaya - First step into coding universe',
     type: 'skill',
-    icon: '🐍',
+    icon: '◆',
     color: 'from-green-400 to-blue-500',
     glow: '#32CD32'
   },
@@ -44,7 +44,7 @@ const timelineData = [
     title: '12th Grade - KV Kannur',
     description: 'Completed 12th standard at Kendriya Vidyalaya Kannur, focusing on Science stream with excellence',
     type: 'education',
-    icon: '🎓',
+    icon: '■',
     color: 'from-purple-400 to-pink-500',
     glow: '#9370DB'
   },
@@ -53,7 +53,7 @@ const timelineData = [
     title: 'BTech AI-DS at Kathir College',
     description: 'Joined Kathir College of Engineering for BTech in Artificial Intelligence and Data Science - The AI adventure begins',
     type: 'education',
-    icon: '🏛️',
+    icon: '▲',
     color: 'from-amber-400 to-orange-500',
     glow: '#FFA500'
   },
@@ -62,7 +62,7 @@ const timelineData = [
     title: 'IBM AI Developer Certified',
     description: 'Completed IBM AI Developer Professional Certificate on Coursera with multiple AI/ML specializations',
     type: 'certification',
-    icon: '🏆',
+    icon: '★',
     color: 'from-yellow-400 to-red-500',
     glow: '#FFD700'
   },
@@ -71,7 +71,7 @@ const timelineData = [
     title: 'Mental Health AI Project',
     description: 'Leading final year project on Mental Health AI Embedded Assistance system - Building AI for good',
     type: 'project',
-    icon: '💚',
+    icon: '◉',
     color: 'from-emerald-400 to-teal-500',
     glow: '#20B2AA'
   },
@@ -80,7 +80,7 @@ const timelineData = [
     title: 'Expected Graduation',
     description: 'Graduating with BTech AI-DS (Current CGPA: 8.0) - Ready to launch into the AI industry',
     type: 'future',
-    icon: '🚀',
+    icon: '▶',
     color: 'from-indigo-400 to-purple-600',
     glow: '#8A2BE2'
   }
@@ -253,7 +253,7 @@ export default function Timeline() {
                 animation: 'rocketFloat 3s ease-in-out infinite'
               }}
             >
-              🚀
+              ▶
             </div>
             {/* Enhanced rocket trail */}
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">

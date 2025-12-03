@@ -9,8 +9,8 @@ const achievements = [
     title: "Excellence in Computer Science",
     organization: "University Academic Board",
     date: "2025",
-    description: "Recognized for outstanding academic performance and innovative project contributions in AI and machine learning coursework.",
-    icon: "🎖️",
+    description: "Got recognized for good grades and solid project work in AI and ML classes.",
+    icon: "★",
     color: "from-slate-600 to-slate-800",
     glowColor: "rgba(71, 85, 105, 0.4)"
   },
@@ -19,8 +19,8 @@ const achievements = [
     title: "React Developer Certification",
     organization: "Meta Professional Certificate",
     date: "2025",
-    description: "Completed comprehensive training in React ecosystem, including advanced hooks, state management, and modern development practices.",
-    icon: "📜",
+    description: "Finished React training covering hooks, state management, and how to build modern apps.",
+    icon: "◆",
     color: "from-slate-700 to-gray-800",
     glowColor: "rgba(55, 65, 81, 0.4)"
   },
@@ -29,8 +29,8 @@ const achievements = [
     title: "Python Programming Proficiency",
     organization: "Industry Certification",
     date: "2025",
-    description: "Demonstrated expertise in Python for data science, machine learning, and web development applications.",
-    icon: "🐍",
+    description: "Certified in Python for data science, ML, and web dev. Use it daily for projects.",
+    icon: "◉",
     color: "from-gray-600 to-slate-700",
     glowColor: "rgba(75, 85, 99, 0.4)"
   },
@@ -39,8 +39,8 @@ const achievements = [
     title: "Open Source Contributions",
     organization: "GitHub Community",
     date: "2025",
-    description: "Active contributor to various open-source projects, focusing on educational tools and developer utilities.",
-    icon: "💼",
+    description: "Contributing to open-source projects, mostly educational tools and dev utilities.",
+    icon: "■",
     color: "from-gray-700 to-slate-800",
     glowColor: "rgba(55, 65, 81, 0.4)"
   }
@@ -149,7 +149,7 @@ Certifications & Recognition
         transition={{ delay: 1 }}
       >
         <p className="text-gray-600 dark:text-gray-400 text-sm">
-          💡 Click on any achievement card to see more details
+          Click on any achievement card to see more details
         </p>
       </motion.div>
     </div>
