@@ -17,7 +17,7 @@ export default function SkillsSection() {
             </span>
           </h2>
           <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-            Crafting intelligent solutions with cutting-edge technologies
+            Building things with AI, web tech, and whatever works
           </p>
         </div>
 

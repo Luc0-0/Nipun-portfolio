@@ -99,7 +99,7 @@ export default function Hero() {
                 <div
                   className="block text-2xl lg:text-3xl text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-amber-800 dark:from-amber-200 dark:to-amber-400 font-light tracking-[0.2em] animate-slide-up hover:tracking-[0.3em] transition-all duration-300"
                   style={{ animationDelay: "0.1s" }}
-                  title="🎓 Learning the future"
+                  title="Learning the future"
                 >
                   <TypewriterText
                     texts={[
@@ -132,15 +132,15 @@ export default function Hero() {
             >
               <div className="relative group">
                 <p className="text-xl text-gray-700 dark:text-gray-100 max-w-2xl leading-relaxed">
-                  Training neural networks and crafting
+                  I train neural networks and build
                   <span
                     className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-cyan-600 dark:from-purple-300 dark:to-cyan-300 font-semibold bg-purple-400/10 px-2 py-1 rounded border border-purple-400/20 hover:border-cyan-400/40 transition-all duration-300 cursor-pointer"
-                    title="🧠 Deep learning in progress..."
+                    title="Deep learning in progress..."
                   >
                     {" "}
                     intelligent experiences{" "}
                   </span>
-                  that bridge human creativity with artificial intelligence.
+                  that blend human creativity with AI. I love what I do.
                 </p>
 
 
@@ -155,7 +155,7 @@ export default function Hero() {
                   <div className="absolute w-2 h-2 bg-green-400 rounded-full animate-ping" />
                 </div>
                 <span className="text-sm font-medium text-gray-800 dark:text-gray-200">
-                  Currently: <span className="text-amber-600 dark:text-amber-400 font-semibold">Completing AI Bootcamp at Udemy</span>
+                  Right now: <span className="text-amber-600 dark:text-amber-400 font-semibold">Wrapping up an AI Bootcamp on Udemy</span>
                 </span>
               </div>
             </div>
@@ -215,7 +215,7 @@ export default function Hero() {
                     Nipun Sujesh
                   </h3>
                   <p className="text-amber-700 dark:text-amber-300 font-medium text-lg tracking-wide drop-shadow-md group-hover:text-amber-600 dark:group-hover:text-amber-200 transition-colors duration-300">
-                    AI Developer & Digital Craftsman
+                    AI Developer & Full-Stack Builder
                   </p>
                 </div>
               </div>

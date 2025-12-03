@@ -60,11 +60,11 @@ export default function FloatingProjectsButton() {
               : '0 20px 40px rgba(59, 130, 246, 0.2), 0 0 30px rgba(147, 51, 234, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
         }}>
           <div className="flex items-center gap-3">
-            <div className={`text-xl transition-all duration-300 group-hover:scale-110 group-hover:rotate-12 ${
+            <svg className={`w-5 h-5 transition-all duration-300 group-hover:scale-110 ${
               isSpace ? 'text-cyan-300' : isDark ? 'text-amber-300' : 'text-blue-300'
-            }`}>
-              ⚡
-            </div>
+            }`} fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
+            </svg>
             <span className={`text-sm font-bold tracking-wide transition-all duration-300 ${
               isSpace ? 'text-cyan-100' : isDark ? 'text-amber-100' : 'text-blue-100'
             }`}>

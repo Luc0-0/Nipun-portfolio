@@ -10,7 +10,7 @@ const featuredProjects = [
   {
     id: 1,
     title: "Task Manager Pro",
-    description: "Full-stack task management application built with React and Node.js. Features user authentication, real-time updates, task categorization, and responsive design. Deployed on Vercel with MongoDB backend integration.",
+    description: "Task manager I built to learn full-stack dev. Has user auth, real-time updates, and works pretty smoothly. React frontend, Node backend, MongoDB for data. Deployed on Vercel.",
     image: "https://images-platform.99static.com/jBf5a8whJMMbR3S1BcujgHrDDt4=/500x500/top/smart/99designs-contests-attachments/20/20314/attachment_20314019",
     video: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=300&fit=crop",
     tags: ["React", "Node.js", "MongoDB", "Authentication", "Responsive Design"],
@@ -21,7 +21,7 @@ const featuredProjects = [
   {
     id: 2,
     title: "Smart Notes Application",
-    description: "Intelligent note-taking application with search functionality, categorization, and cloud storage. Built using React with Firebase backend for real-time synchronization and user management.",
+    description: "Note-taking app with search and cloud sync. Built with React and Firebase. Saves everything in real-time so you never lose your notes.",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop",
     video: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop",
     tags: ["React", "Firebase", "Cloud Storage", "Real-time Sync"],
@@ -32,7 +32,7 @@ const featuredProjects = [
   {
     id: 3,
     title: "Samarth - Data Science Platform",
-    description: "Comprehensive data science platform with advanced analytics, visualization tools, and machine learning capabilities. Features interactive dashboards, data processing pipelines, and predictive modeling tools.",
+    description: "Data science platform I'm working on. Has analytics, visualizations, and some ML features. Still adding more tools but the core stuff works well.",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop",
     video: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop",
     tags: ["Data Science", "Analytics", "Machine Learning", "Visualization", "Python"],
@@ -46,7 +46,7 @@ const aiProjects = [
   {
     id: 3,
     title: "BLIP Image Captioning System",
-    description: "Computer vision project implementing BLIP (Bootstrapping Language-Image Pre-training) for automatic image captioning. Uses Python with transformers library for generating descriptive captions from images.",
+    description: "Image captioning using BLIP. Feed it an image, it tells you what's in it. Built with Python and the transformers library.",
     image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=300&fit=crop",
     tags: ["Python", "BLIP", "Computer Vision", "Transformers"],
     demoUrl: "#",
@@ -56,7 +56,7 @@ const aiProjects = [
   {
     id: 4,
     title: "AI Speech Synthesis",
-    description: "Text-to-speech synthesis project using AI models. Implements neural speech synthesis techniques to convert text input into natural-sounding speech output using Python and deep learning frameworks.",
+    description: "Text-to-speech project using neural networks. Type something, it speaks it out. Pretty cool to see AI generate human-like speech.",
     image: "https://images.unsplash.com/photo-1589254065878-42c9da997008?w=400&h=300&fit=crop",
     tags: ["Python", "TTS", "Neural Networks", "Audio Processing"],
     demoUrl: "#",
@@ -66,7 +66,7 @@ const aiProjects = [
   {
     id: 5,
     title: "Cat vs Dog Classifier",
-    description: "Binary image classification project using convolutional neural networks to distinguish between cats and dogs. Built with Python, implementing CNN architecture for accurate pet image classification.",
+    description: "Classic cat vs dog classifier using CNNs. Good learning project for understanding image classification. Works surprisingly well.",
     image: "https://images.unsplash.com/photo-1574158622682-e40e69881006?w=400&h=300&fit=crop",
     tags: ["Python", "CNN", "Image Classification", "Deep Learning"],
     demoUrl: "#",
@@ -76,7 +76,7 @@ const aiProjects = [
   {
     id: 6,
     title: "Azure Computer Vision",
-    description: "Cloud-based image analysis application using Microsoft Azure Cognitive Services. Integrates Azure Computer Vision API for object detection, text recognition, and image analysis capabilities.",
+    description: "Image analysis using Azure's Computer Vision API. Detects objects, reads text from images, and analyzes content. Cloud-based so it's fast.",
     image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=300&fit=crop",
     tags: ["Python", "Azure", "Computer Vision", "Cloud API"],
     demoUrl: "#",
@@ -86,7 +86,7 @@ const aiProjects = [
   {
     id: 7,
     title: "Business Card OCR",
-    description: "Optical Character Recognition system for business cards using Azure Form Recognizer. Extracts and structures contact information from business card images with high accuracy.",
+    description: "OCR for business cards using Azure. Snap a photo of a card, it extracts all the contact info. Saves a lot of manual typing.",
     image: "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=400&h=300&fit=crop",
     tags: ["Python", "Azure", "OCR", "Form Recognition"],
     demoUrl: "#",
@@ -99,7 +99,7 @@ const webProjects = [
   {
     id: 5,
     title: "Interactive Portfolio",
-    description: "Personal portfolio website showcasing AI/Data Science projects with 3D solar system navigation. Built with React, Three.js, and Framer Motion, deployed on Vercel with responsive design and interactive animations.",
+    description: "This portfolio you're looking at right now. 3D solar system navigation, auto-syncing GitHub projects, and an AI chatbot. Built with React and Three.js.",
     image: "https://st2.depositphotos.com/1032577/6582/i/450/depositphotos_65828845-stock-photo-portfolio-written-on-notebook.jpg",
     tags: ["React", "Three.js", "Framer Motion", "Tailwind CSS", "Vercel"],
     demoUrl: "https://nipun-portfolio-eight.vercel.app/",
@@ -223,7 +223,7 @@ function ProjectCard({ project, index }) {
           >
             {project.isGithubRepo && (
               <span className="px-2 py-1 rounded-full text-xs font-bold bg-green-500/20 text-green-300 border border-green-400/30">
-                🔴 LIVE
+                LIVE
               </span>
             )}
             {project.tags.map((tag, tagIndex) => (

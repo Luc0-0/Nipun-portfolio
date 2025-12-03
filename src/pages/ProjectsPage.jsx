@@ -44,7 +44,7 @@ export default function ProjectsPage() {
             <h1 className="text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-white to-amber-100">
               Featured Projects
             </h1>
-            <p className="text-xl text-gray-300">Innovative solutions combining cutting-edge technology with user-centric design</p>
+            <p className="text-xl text-gray-300">Projects I've built using modern tech and good design</p>
           </div>
         </TextReveal>
 

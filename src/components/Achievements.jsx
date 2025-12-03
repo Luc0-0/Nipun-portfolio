@@ -14,30 +14,30 @@ const ACHIEVEMENTS = [
     title: 'IBM AI Developer Professional Certificate',
     issuer: 'IBM - Coursera',
     date: '2024',
-    description: 'Comprehensive professional certification program covering AI development, machine learning implementation, and practical AI application development. This is my flagship certification representing expertise in IBM AI technologies.',
+    description: 'My main certification from IBM covering AI development and machine learning. Learned a ton about building real AI applications and working with IBM Watson.',
     skills: ['AI Development', 'IBM Watson', 'Machine Learning', 'Professional Skills'],
     certificateUrl: '/images/certifications/Coursera Professional Certificate IBM AI Developer.pdf',
     isMain: true,
     hasImage: true,
-    badge: '🏆'
+    badge: '★'
   },
   {
     id: 'intro-ai',
     title: 'Introduction to Artificial Intelligence',
     issuer: 'IBM - Coursera',
     date: '2024',
-    description: 'Comprehensive introduction to AI concepts, machine learning fundamentals, and practical applications in real-world scenarios.',
+    description: 'Intro to AI course that covered the basics. Good foundation for understanding how AI and ML actually work.',
     skills: ['Artificial Intelligence', 'Machine Learning', 'IBM Watson'],
     certificateUrl: '/images/certifications/Coursera 4 Introduction To Artificial Intelligence (AI).pdf',
     hasImage: true,
-    badge: '🧠'
+    badge: '◆'
   },
   {
     id: 'python-data-science',
     title: 'Python for Data Science, AI & Development',
     issuer: 'IBM - Coursera',
     date: '2024',
-    description: 'Master Python programming for data science, AI applications, and software development with hands-on projects and real-world applications.',
+    description: 'Python course focused on data science and AI. Lots of hands-on coding and practical projects.',
     skills: ['Python', 'Data Science', 'AI Development', 'Programming'],
     certificateUrl: '/images/certifications/Coursera 5 Python for Data Science, AI & Development.pdf',
     hasImage: true,
@@ -48,7 +48,7 @@ const ACHIEVEMENTS = [
     title: 'Generative AI Prompt Engineering',
     issuer: 'IBM - Coursera',
     date: '2024',
-    description: 'Advanced course on prompt engineering for generative AI models, including best practices for creating effective prompts and optimizing AI interactions.',
+    description: 'Learned how to write better prompts for AI models. Turns out there is a whole science to getting good outputs from LLMs.',
     skills: ['Generative AI', 'Prompt Engineering', 'AI Optimization'],
     certificateUrl: '/images/certifications/Coursera 2 Generative AI Prompt Engineering.pdf',
     hasImage: true,
@@ -68,7 +68,7 @@ export default function Achievements() {
               Achievements & Certificates
             </h2>
             <p className="text-xl text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
-              Professional certifications and achievements that validate my expertise
+              Certifications I've earned along the way
             </p>
           </div>
         </TextReveal>

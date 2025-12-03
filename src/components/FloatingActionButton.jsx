@@ -21,9 +21,9 @@ export default function FloatingActionButton() {
   };
 
   const actions = [
-    { icon: '🚀', label: 'Top', action: scrollToTop },
-    { icon: '💼', label: 'Projects', action: () => document.getElementById('project1')?.scrollIntoView({ behavior: 'smooth' }) },
-    { icon: '📧', label: 'Contact', action: () => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }) }
+    { icon: '↑', label: 'Top', action: scrollToTop },
+    { icon: '■', label: 'Projects', action: () => document.getElementById('project1')?.scrollIntoView({ behavior: 'smooth' }) },
+    { icon: '✉', label: 'Contact', action: () => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }) }
   ];
 
   if (!isVisible) return null;
@@ -57,7 +57,7 @@ export default function FloatingActionButton() {
           data-magnetic
         >
           <span className={`text-xl transition-transform duration-300 ${isExpanded ? 'rotate-45' : ''}`}>
-            {isExpanded ? '✕' : '⚡'}
+            {isExpanded ? '✕' : '+'}
           </span>
         </button>
       </div>

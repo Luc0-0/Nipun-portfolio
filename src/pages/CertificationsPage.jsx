@@ -16,7 +16,7 @@ const ALL_CERTIFICATIONS = [
     title: 'IBM AI Developer Professional Certificate',
     issuer: 'IBM - Coursera',
     date: '2025',
-    description: 'Comprehensive professional certification program covering AI development, machine learning implementation, and practical AI application development. This is my flagship certification representing expertise in IBM AI technologies.',
+    description: 'My main certification from IBM covering AI development and machine learning. Learned a ton about building real AI applications and working with IBM Watson.',
     skills: ['AI Development', 'IBM Watson', 'Machine Learning', 'Professional Skills', 'AI Applications'],
     certificateUrl: '/images/certifications/Coursera Professional Certificate IBM AI Developer.pdf',
     isMain: true,
@@ -263,7 +263,7 @@ export default function CertificationsPage() {
               Professional Certifications
             </CinematicText>
             <p className="text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
-              Comprehensive collection of IBM and industry certifications demonstrating expertise in AI, Data Science, and Software Development
+              Collection of IBM certifications in AI, Data Science, and Software Development
             </p>
           </div>
         </TextReveal>

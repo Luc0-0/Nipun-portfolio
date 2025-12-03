@@ -13,35 +13,35 @@ const SECTIONS = [
   {
     id: 'about',
     title: 'About Me',
-    description: 'BTech AI and Data Science student with 8.0 CGPA, passionate about developing intelligent solutions for real-world problems. Currently working on mental health AI embedded assistance for my final year project, expected to graduate in 2026.',
+    description: 'Hey! I\'m a final-year AI student (8.0 CGPA) who loves building stuff that actually works. Right now I\'m knee-deep in my final year project—a mental health AI assistant. Graduating 2026, and honestly can\'t wait to see where this takes me.',
     skills: ['Python', 'Machine Learning', 'AI Development', 'Data Science'],
     color: '#f5c36b'
   },
   {
     id: 'ongoing',
     title: 'Current Studies',
-    description: 'Working on final year project: Mental Health AI Embedded Assistance - developing an intelligent system to provide mental health support and monitoring. Focusing on NLP, sentiment analysis, and conversational AI technologies.',
+    description: 'My final year project is all about mental health AI. Think of it as a smart companion that actually listens and helps. I\'m diving deep into NLP and sentiment analysis—basically teaching machines to understand human emotions. It\'s challenging but super rewarding.',
     skills: ['Mental Health AI', 'NLP', 'Conversational AI', 'Research'],
     color: '#4a90e2'
   },
   {
     id: 'ai-skills',
     title: 'AI Developer & Engineer',
-    description: 'Specialized in building production-ready AI systems with Python, TensorFlow, and PyTorch. Expert in NLP, computer vision, and deploying ML models via REST APIs. IBM AI Developer certified with hands-on experience in LangChain, Hugging Face, and prompt engineering for LLMs.',
+    description: 'I build AI systems that don\'t just work in notebooks—they work in production. Python, TensorFlow, PyTorch, you name it. Got my IBM AI Developer cert and I\'ve been playing with LangChain and Hugging Face models. Prompt engineering? Yeah, I speak fluent GPT now.',
     skills: ['Python', 'TensorFlow', 'PyTorch', 'NLP', 'LangChain', 'Hugging Face', 'Model Deployment'],
     color: '#e74c3c'
   },
   {
     id: 'web-skills',
     title: 'Full Stack Developer (MERN)',
-    description: 'Backend-focused full stack developer proficient in MongoDB, Express.js, React, and Node.js. Experienced in building RESTful APIs, authentication systems, and database design. Skilled in integrating AI models with web applications using FastAPI and Flask.',
+    description: 'Full-stack dev with a backend bias. MERN stack is my playground—MongoDB, Express, React, Node. I love building APIs and making AI models talk to web apps. FastAPI and Flask are my go-to for bridging the gap between ML models and real users.',
     skills: ['MongoDB', 'Express.js', 'React', 'Node.js', 'FastAPI', 'Flask', 'REST APIs', 'JWT Auth'],
     color: '#2ecc71'
   },
   {
     id: 'project1',
     title: 'Academic Projects',
-    description: 'Explore my university projects, including sentiment analysis and NLP using Python and scikit-learn. Click below to check out the academic project repos.',
+    description: 'These are my university projects where I got my hands dirty with NLP and sentiment analysis. Lots of Python and scikit-learn. Some worked great, some... well, we learned from those too.',
     skills: ['NLP', 'Sentiment Analysis', 'Python'],
     color: '#9b59b6',
     category: 'academic'
@@ -49,7 +49,7 @@ const SECTIONS = [
   {
     id: 'project2',
     title: 'Data Analyst Projects',
-    description: 'Coursework and personal projects in data analysis, visualization, and statistics. Click below to check out the data analyst repos.',
+    description: 'Data viz and analysis projects from coursework and late-night curiosity. Turning messy data into pretty charts is oddly satisfying.',
     skills: ['Data Analysis', 'Visualization', 'Statistics'],
     color: '#f39c12',
     category: 'data-analyst'
@@ -57,7 +57,7 @@ const SECTIONS = [
   {
     id: 'project3',
     title: 'Machine Learning Projects',
-    description: 'Academic assignments and personal work building predictive models and exploring ML algorithms. Click below to check out the machine learning repos.',
+    description: 'ML projects where I trained models, broke them, fixed them, and learned a ton. From simple linear regression to neural networks—it\'s all here.',
     skills: ['Supervised Learning', 'Model Evaluation', 'Python'],
     color: '#1abc9c',
     category: 'machine-learning'
@@ -65,7 +65,7 @@ const SECTIONS = [
   {
     id: 'miniprojects',
     title: 'Mini Projects',
-    description: 'A collection of small, creative projects and experiments. Click below to check out my mini project repos.',
+    description: 'Random stuff I built for fun or to test an idea. Not everything here is polished, but that\'s the point—experimenting and learning.',
     skills: ['Practice Projects', 'Learning', 'Experimentation'],
     color: '#e67e22',
     category: 'mini-projects'
@@ -73,7 +73,7 @@ const SECTIONS = [
   {
     id: 'learning',
     title: 'Learning Projects',
-    description: 'Projects and exercises completed during coursework and self-study. Includes data cleaning scripts, basic ML implementations, and exploratory analysis notebooks. Click below to check out learning repos.',
+    description: 'My learning journey in code form. Practice projects, tutorials I followed, and experiments that taught me something new. It\'s messy, it\'s real, it\'s how I learned.',
     skills: ['Practice Projects', 'Learning', 'Experimentation'],
     color: '#e67e22',
     category: 'learning'
@@ -81,14 +81,14 @@ const SECTIONS = [
   {
     id: 'services',
     title: 'Future Goals',
-    description: 'Aspiring to work as a Data Scientist or ML Engineer after graduation. Interested in applying AI solutions to real-world problems and contributing to innovative projects.',
+    description: 'After I graduate? I want to be a Data Scientist or ML Engineer solving actual problems. Not just building models—building solutions that matter. Let\'s make AI useful, not just cool.',
     skills: ['Career Goals', 'Learning Path', 'Growth Mindset'],
     color: '#34495e'
   },
   {
     id: 'contact',
     title: 'Connect With Me',
-    description: 'Open to internship opportunities, collaborative projects, and networking with professionals in AI and Data Science. Let\'s connect and discuss the exciting possibilities!',
+    description: 'Looking for internships, cool projects to collaborate on, or just want to chat about AI? Hit me up! Always down to connect with fellow tech enthusiasts. Let\'s build something awesome together.',
     skills: ['Networking', 'Opportunities', 'Collaboration'],
     color: '#c0392b',
     socials: [

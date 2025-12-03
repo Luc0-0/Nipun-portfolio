@@ -202,7 +202,7 @@ const repoData = {
       name: "Grand Final Year Project",
       url: "#",
       image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=300&fit=crop",
-      description: "Mental Health AI Embedded Assistance - A comprehensive AI-powered solution for mental health support and monitoring, integrating NLP, sentiment analysis, and conversational AI technologies.",
+      description: "Mental Health AI project - Building an AI system for mental health support using NLP and sentiment analysis. My final year project.",
       techstack: ["Python", "AI", "NLP"]
     }
   ],
@@ -211,42 +211,42 @@ const repoData = {
       name: "BLIP-auto-image-captioning",
       url: "https://github.com/Luc0-0/BLIP-auto-image-captioning",
       image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=300&fit=crop",
-      description: "A project leveraging BLIP for automatic image captioning. Utilizes deep learning models to generate captions for images, improving accessibility and search.",
+      description: "Image captioning using BLIP. Feed it images, it generates captions. Built with deep learning models.",
       techstack: ["Python", "BLIP", "AI"]
     },
     {
       name: "Final-Ai-Speech-Synthesis",
       url: "https://github.com/Luc0-0/Final-Ai-Speech-Synthesis",
       image: "https://images.unsplash.com/photo-1589254065878-42c9da997008?w=400&h=300&fit=crop",
-      description: "End-to-end AI-based speech synthesis system. Converts text to natural-sounding speech using neural networks and advanced signal processing.",
+      description: "Text-to-speech using neural networks. Type text, get speech output. Works pretty well.",
       techstack: ["Python", "Speech Synthesis", "AI"]
     },
     {
       name: "Image-classification-cat-dog",
       url: "https://github.com/Luc0-0/Image-classification-cat-dog",
       image: "https://images.unsplash.com/photo-1574158622682-e40e69881006?w=400&h=300&fit=crop",
-      description: "A supervised learning project for classifying cat and dog images. Implements CNN architectures and data augmentation for robust results.",
+      description: "Cat vs dog classifier using CNNs. Classic ML project for learning image classification.",
       techstack: ["Python", "Classification", "AI"]
     },
     {
       name: "Azure-Ai-image-analysis",
       url: "https://github.com/Luc0-0/Azure-Ai-image-analysis",
       image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=300&fit=crop",
-      description: "Image analysis using Azure AI services. Integrates cloud APIs for object detection, OCR, and image tagging in scalable workflows.",
+      description: "Image analysis with Azure AI. Detects objects, reads text, tags images. Cloud-based.",
       techstack: ["Python", "Azure", "AI"]
     },
     {
       name: "Azure-Business-card-analyzer",
       url: "https://github.com/Luc0-0/Azure-Business-card-analyzer",
       image: "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=400&h=300&fit=crop",
-      description: "Business card analyzer powered by Azure AI. Extracts contact info and organizes it using NLP and cloud automation.",
+      description: "Business card scanner using Azure. Extracts contact info from card photos.",
       techstack: ["Python", "Azure", "AI"]
     },
     {
       name: "Smart-notes-by-Nipun",
       url: "https://github.com/Luc0-0/Smart-notes-by-Nipun",
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop",
-      description: "A smart note-taking app with AI features for organization, search, and productivity. Built with React and Python back-end integration.",
+      description: "Note-taking app with search and organization. Built with React and Python backend.",
       techstack: ["React", "Notes", "Productivity"]
     }
   ],
@@ -255,49 +255,49 @@ const repoData = {
       name: "Final-Ai-Speech-Synthesis",
       url: "https://github.com/Luc0-0/Final-Ai-Speech-Synthesis",
       image: "https://images.unsplash.com/photo-1589254065878-42c9da997008?w=400&h=300&fit=crop",
-      description: "End-to-end AI-based speech synthesis system. Converts text to natural-sounding speech using neural networks and advanced signal processing.",
+      description: "Text-to-speech using neural networks. Type text, get speech output. Works pretty well.",
       techstack: ["Python", "Speech Synthesis", "AI"]
     },
     {
       name: "flashcard-generator",
       url: "https://github.com/Luc0-0/flashcard-generator",
       image: "https://images.unsplash.com/photo-1606868306217-dbf5046868d2?w=400&h=300&fit=crop",
-      description: "A flashcard generator for efficient study and memorization. Features spaced repetition and customizable decks.",
+      description: "Flashcard app for studying. Has spaced repetition and custom decks.",
       techstack: ["React", "Flashcards", "Learning"]
     },
     {
       name: "Azure-Ai-image-analysis",
       url: "https://github.com/Luc0-0/Azure-Ai-image-analysis",
       image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=300&fit=crop",
-      description: "Image analysis using Azure AI services. Integrates cloud APIs for object detection, OCR, and image tagging in scalable workflows.",
+      description: "Image analysis with Azure AI. Detects objects, reads text, tags images. Cloud-based.",
       techstack: ["Python", "Azure", "AI"]
     },
     {
       name: "Image-classification-cat-dog",
       url: "https://github.com/Luc0-0/Image-classification-cat-dog",
       image: "https://images.unsplash.com/photo-1574158622682-e40e69881006?w=400&h=300&fit=crop",
-      description: "A supervised learning project for classifying cat and dog images. Implements CNN architectures and data augmentation for robust results.",
+      description: "Cat vs dog classifier using CNNs. Classic ML project for learning image classification.",
       techstack: ["Python", "Classification", "AI"]
     },
     {
       name: "Azure-Business-card-analyzer",
       url: "https://github.com/Luc0-0/Azure-Business-card-analyzer",
       image: "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=400&h=300&fit=crop",
-      description: "Business card analyzer powered by Azure AI. Extracts contact info and organizes it using NLP and cloud automation.",
+      description: "Business card scanner using Azure. Extracts contact info from card photos.",
       techstack: ["Python", "Azure", "AI"]
     },
     {
       name: "BLIP-auto-image-captioning",
       url: "https://github.com/Luc0-0/BLIP-auto-image-captioning",
       image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=300&fit=crop",
-      description: "A project leveraging BLIP for automatic image captioning. Utilizes deep learning models to generate captions for images, improving accessibility and search.",
+      description: "Image captioning using BLIP. Feed it images, it generates captions. Built with deep learning models.",
       techstack: ["Python", "BLIP", "AI"]
     },
     {
       name: "oaqjp-final-project-emb-ai",
       url: "https://github.com/Luc0-0/oaqjp-final-project-emb-ai",
       image: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=400&h=300&fit=crop",
-      description: "Embedded AI final project focused on real-time data processing and model deployment on edge devices.",
+      description: "Embedded AI project for real-time data processing on edge devices.",
       techstack: ["Python", "AI", "Azure"]
     }
   ],
@@ -306,35 +306,35 @@ const repoData = {
       name: "BLIP-auto-image-captioning",
       url: "https://github.com/Luc0-0/BLIP-auto-image-captioning",
       image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=300&fit=crop",
-      description: "A project leveraging BLIP for automatic image captioning. Utilizes deep learning models to generate captions for images, improving accessibility and search.",
+      description: "Image captioning using BLIP. Feed it images, it generates captions. Built with deep learning models.",
       techstack: ["Python", "BLIP", "AI"]
     },
     {
       name: "Final-Ai-Speech-Synthesis",
       url: "https://github.com/Luc0-0/Final-Ai-Speech-Synthesis",
       image: "https://images.unsplash.com/photo-1589254065878-42c9da997008?w=400&h=300&fit=crop",
-      description: "End-to-end AI-based speech synthesis system. Converts text to natural-sounding speech using neural networks and advanced signal processing.",
+      description: "Text-to-speech using neural networks. Type text, get speech output. Works pretty well.",
       techstack: ["Python", "Speech Synthesis", "AI"]
     },
     {
       name: "Image-classification-cat-dog",
       url: "https://github.com/Luc0-0/Image-classification-cat-dog",
       image: "https://images.unsplash.com/photo-1574158622682-e40e69881006?w=400&h=300&fit=crop",
-      description: "A supervised learning project for classifying cat and dog images. Implements CNN architectures and data augmentation for robust results.",
+      description: "Cat vs dog classifier using CNNs. Classic ML project for learning image classification.",
       techstack: ["Python", "Classification", "AI"]
     },
     {
       name: "Azure-Ai-image-analysis",
       url: "https://github.com/Luc0-0/Azure-Ai-image-analysis",
       image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=300&fit=crop",
-      description: "Image analysis using Azure AI services. Integrates cloud APIs for object detection, OCR, and image tagging in scalable workflows.",
+      description: "Image analysis with Azure AI. Detects objects, reads text, tags images. Cloud-based.",
       techstack: ["Python", "Azure", "AI"]
     },
     {
       name: "Azure-Business-card-analyzer",
       url: "https://github.com/Luc0-0/Azure-Business-card-analyzer",
       image: "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=400&h=300&fit=crop",
-      description: "Business card analyzer powered by Azure AI. Extracts contact info and organizes it using NLP and cloud automation.",
+      description: "Business card scanner using Azure. Extracts contact info from card photos.",
       techstack: ["Python", "Azure", "AI"]
     }
   ]
