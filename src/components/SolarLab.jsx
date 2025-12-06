@@ -186,17 +186,17 @@ function ParticleField({ brightMode }) {
 }
 
 // Refined minimal Planet component
-function Planet({ planet, onClick, onHover, _brightMode }) {
+function Planet({ planet, onClick, onHover }) {
   const meshRef = useRef();
   const orbitRef = useRef();
   const glowRef = useRef();
   const [hovered, setHovered] = useState(false);
-  const [clicked, setClicked] = useState(false);
+  const [_clicked, _setClicked] = useState(false);
 
   const baseSize = planet.size || 1.8;
 
   // Realistic planet colors with gradients
-  const planetColors = {
+  const _planetColors = {
     "#f5c36b": { base: "#D2691E", emissive: "#CD853F", atmosphere: "#F4A460" }, // Sandy brown
     "#4a90e2": { base: "#4169E1", emissive: "#1E90FF", atmosphere: "#87CEEB" }, // Royal blue
     "#e74c3c": { base: "#DC143C", emissive: "#FF6347", atmosphere: "#FFA07A" }, // Crimson
