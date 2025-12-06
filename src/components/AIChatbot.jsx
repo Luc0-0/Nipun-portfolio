@@ -25,7 +25,6 @@ const AIChatbot = () => {
     const messagesEndRef = useRef(null);
     const messagesContainerRef = useRef(null);
     const inputRef = useRef(null);
-    const chatContainerRef = useRef(null);
 
     // Auto-scroll to bottom when new messages arrive
     const scrollToBottom = () => {
