@@ -1,15 +1,16 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import ReactDOM from 'react-dom/client'
 import { HashRouter as Router, Routes, Route } from 'react-router-dom'
 import { ThemeProvider } from './contexts/ThemeContext'
 import ErrorBoundary from './components/ErrorBoundary'
 import App from './App.jsx'
-import BlogPage from './pages/BlogPage'
-import BlogPostPage from './pages/BlogPostPage'
-import CategoryPage from './pages/CategoryPage'
-import CertificationsPage from './pages/CertificationsPage'
-import TimelinePage from './pages/TimelinePage'
-import AutoProjectShowcase from './components/AutoProjectShowcase'
+import WorkPage from './pages/WorkPage'
+import WritingPage from './pages/WritingPage'
+import AboutPage from './pages/AboutPage'
+import TimelineResumePage from './pages/TimelineResumePage'
+import ContactPage from './pages/ContactPage'
+import LabPage from './pages/LabPage'
+import AchievementsPage from './pages/AchievementsPage'
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -19,12 +20,14 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Router>
           <Routes>
             <Route path="/" element={<App />} />
-            <Route path="/blog" element={<BlogPage />} />
-            <Route path="/blog/:id" element={<BlogPostPage />} />
-            <Route path="/projects/:category" element={<CategoryPage />} />
-            <Route path="/certifications" element={<CertificationsPage />} />
-            <Route path="/timeline" element={<TimelinePage />} />
-            <Route path="/live-projects" element={<AutoProjectShowcase />} />
+            <Route path="/work" element={<WorkPage />} />
+            <Route path="/work/:projectId" element={<WorkPage />} />
+            <Route path="/writing" element={<WritingPage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/achievements" element={<AchievementsPage />} />
+            <Route path="/timeline" element={<TimelineResumePage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/lab" element={<Suspense fallback={<div className="w-full h-screen bg-black" />}><LabPage /></Suspense>} />
           </Routes>
         </Router>
       </ThemeProvider>

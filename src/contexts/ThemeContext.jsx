@@ -22,15 +22,17 @@ export const ThemeProvider = ({ children }) => {
   useEffect(() => {
     localStorage.setItem('theme', theme);
     document.documentElement.setAttribute('data-theme', theme);
+    
+    // Clear all theme classes first
+    document.documentElement.classList.remove('dark', 'space', 'light');
+    
+    // Apply appropriate theme class
     if (theme === 'dark') {
       document.documentElement.classList.add('dark');
-      document.documentElement.classList.remove('space');
     } else if (theme === 'space') {
       document.documentElement.classList.add('space');
-      document.documentElement.classList.remove('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      document.documentElement.classList.remove('space');
+    } else if (theme === 'light') {
+      document.documentElement.classList.add('light');
     }
   }, [theme]);
 

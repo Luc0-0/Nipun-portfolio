@@ -17,16 +17,21 @@ function AnimatedStars({ theme }) {
     }
   });
 
+  // Increased star count for better space perspective
+  const starCount = theme === 'light' ? 5000 : 8000;
+  const starColor = theme === 'light' ? 0x000000 : 0xffffff; // black in light, white in dark
+
   return (
     <Stars
       ref={starsRef}
       radius={100}
       depth={50}
-      count={theme === 'light' ? 2000 : 3000}
+      count={starCount}
       factor={4}
       saturation={0}
       fade
       speed={0.5}
+      emissive={starColor}
     />
   );
 }
@@ -34,11 +39,11 @@ function AnimatedStars({ theme }) {
 // CSS fallback for mobile/reduced motion
 function CSSStarfield({ theme }) {
   const stars = useMemo(() => {
-    return Array.from({ length: 100 }, (_, i) => ({
+    return Array.from({ length: 300 }, (_, i) => ({
       id: i,
       left: Math.random() * 100,
       top: Math.random() * 100,
-      size: Math.random() * 2 + 1,
+      size: Math.random() * 2 + 0.5,
       duration: Math.random() * 3 + 2,
       delay: Math.random() * 2,
     }));
@@ -50,7 +55,7 @@ function CSSStarfield({ theme }) {
         <div
           key={star.id}
           className={`absolute rounded-full animate-pulse ${
-            theme === 'light' ? 'bg-gray-600' : 'bg-white'
+            theme === 'light' ? 'bg-gray-800' : 'bg-white'
           }`}
           style={{
             left: `${star.left}%`,
@@ -79,9 +84,22 @@ export default function Starfield({ theme }) {
   return (
     <div className="fixed inset-0 pointer-events-none" style={{ zIndex: -10 }}>
       <Canvas
-        gl={{ alpha: true, antialias: false }}
+        gl={{ 
+          alpha: true, 
+          antialias: false,
+          powerPreference: 'high-performance',
+          failIfMajorPerformanceCaveat: false,
+          preserveDrawingBuffer: true
+        }}
         camera={{ position: [0, 0, 5], fov: 75 }}
         dpr={[1, 2]}
+        onCreated={(state) => {
+          const gl = state.gl;
+          gl.context.canvas.addEventListener('webglcontextlost', (event) => {
+            event.preventDefault();
+            console.log('WebGL context lost, recovering...');
+          });
+        }}
       >
         <AnimatedStars theme={theme} />
       </Canvas>
