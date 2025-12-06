@@ -2,7 +2,7 @@
 // CSS-based animated solar system with orbiting planets
 
 import React, { useState, useEffect } from 'react';
-import { useTheme } from '../contexts/ThemeContext';
+import { useTheme } from '../contexts/useTheme';
 
 const PLANETS = [
   { id: 'about', label: 'About Me', color: '#ffffff', orbit: 120, duration: 20 },

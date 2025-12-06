@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { useTheme } from '../contexts/ThemeContext';
+import { useTheme } from '../contexts/useTheme'';
 
 export default function AmbientParticles({ count = 50, speed = 0.5 }) {
   const { isSpace, isDark } = useTheme();

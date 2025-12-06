@@ -5,7 +5,7 @@ import React, { useRef, useState, Suspense } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Html } from "@react-three/drei";
 import * as THREE from "three";
-import { useTheme } from "../contexts/ThemeContext";
+import { useTheme } from '../contexts/useTheme'";
 
 const PLANETS = [
   { id: "about", label: "About", distance: 4, speed: 0.01 },

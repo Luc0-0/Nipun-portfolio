@@ -1,6 +1,6 @@
 // src/components/NeonModeToggle.jsx
 import { motion } from 'framer-motion';
-import { useTheme } from '../contexts/ThemeContext';
+import { useTheme } from '../contexts/useTheme'';
 import { useState } from 'react';
 
 export default function NeonModeToggle() {

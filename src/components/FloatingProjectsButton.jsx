@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useTheme } from '../contexts/ThemeContext';
+import { useTheme } from '../contexts/useTheme'';
 import MagneticButton from './MagneticButton';
 
 export default function FloatingProjectsButton() {
