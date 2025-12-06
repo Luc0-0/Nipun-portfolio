@@ -8,7 +8,7 @@ import SolarLab from "../components/SolarLab";
 
 export default function LabPage() {
   const navigate = useNavigate();
-  const [brightMode, _setBrightMode] = useState(false);
+  const [brightMode, setBrightMode] = useState(false);
 
   const handlePlanetClick = (planetId) => {
     // Safe route mapping with fallbacks
