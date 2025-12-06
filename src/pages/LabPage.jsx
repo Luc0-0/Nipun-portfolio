@@ -4,11 +4,11 @@
 
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import ProfessionalSolarSystem3D from "../components/ProfessionalSolarSystem3D";
+import SolarLab from "../components/SolarLab";
 
 export default function LabPage() {
   const navigate = useNavigate();
-  const [brightMode, setBrightMode] = useState(false);
+  const [brightMode, _setBrightMode] = useState(false);
 
   const handlePlanetClick = (planetId) => {
     // Safe route mapping with fallbacks
@@ -64,7 +64,7 @@ export default function LabPage() {
       </button>
 
       {/* Main 3D Solar System — Premium Cinema Rendering */}
-      <ProfessionalSolarSystem3D onPlanetClick={handlePlanetClick} onBrightModeChange={handleBrightModeChange} />
+      <SolarLab onPlanetClick={handlePlanetClick} onBrightModeChange={handleBrightModeChange} />
 
       {/* Footer Info Card — Obsidian Luxe Aesthetic */}
       <div className="fixed bottom-8 right-8 z-10 max-w-xs">
