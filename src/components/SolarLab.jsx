@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Stars } from "@react-three/drei";
 import { EffectComposer, Bloom } from '@react-three/postprocessing';
-import { useTheme } from "../contexts/ThemeContext";
+
 import * as THREE from "three";
 
 const PLANETS = [
@@ -83,10 +83,10 @@ const PLANETS = [
 ];
 
 // Refined minimal Sun component with theme toggle
-function Sun({ brightMode, setBrightMode, isDark }) {
+function Sun({ _brightMode, _setBrightMode, isDark }) {
   const meshRef = useRef();
   const glowRef = useRef();
-  const [hovered, setHovered] = useState(false);
+  const [_hovered, _setHovered] = useState(false);
 
   useFrame(({ clock }) => {
     if (meshRef.current) {
@@ -190,13 +190,13 @@ function Planet({ planet, onClick, onHover, brightMode }) {
   const meshRef = useRef();
   const orbitRef = useRef();
   const glowRef = useRef();
-  const [hovered, setHovered] = useState(false);
-  const [clicked, setClicked] = useState(false);
+  const [_hovered, _setHovered] = useState(false);
+  const [_clicked, _setClicked] = useState(false);
 
   const baseSize = planet.size || 1.8;
 
   // Realistic planet colors with gradients
-  const planetColors = {
+  const _planetColors = {
     "#f5c36b": { base: "#D2691E", emissive: "#CD853F", atmosphere: "#F4A460" }, // Sandy brown
     "#4a90e2": { base: "#4169E1", emissive: "#1E90FF", atmosphere: "#87CEEB" }, // Royal blue
     "#e74c3c": { base: "#DC143C", emissive: "#FF6347", atmosphere: "#FFA07A" }, // Crimson
@@ -480,7 +480,7 @@ function MobileSolarSystemScene({ onPlanetClick, onHover, brightMode, onSunClick
   );
 }
 
-export default function ProfessionalSolarSystem3D({ onBrightModeChange }) {
+export default function SolarLab({ onBrightModeChange }) {
   const [hoveredPlanet, setHoveredPlanet] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
   const [brightMode, setBrightMode] = useState(false);
