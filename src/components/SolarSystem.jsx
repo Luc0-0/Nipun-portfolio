@@ -5,77 +5,71 @@ import React, { useRef, useState, Suspense } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Html } from "@react-three/drei";
 import * as THREE from "three";
+import { useTheme } from "../contexts/ThemeContext";
 
 const PLANETS = [
-  { id: "about", label: "About", distance: 4, speed: 0.01, color: "#f5c36b" },
+  { id: "about", label: "About", distance: 4, speed: 0.01 },
   {
     id: "ongoing",
     label: "Research",
     distance: 5.5,
     speed: 0.008,
-    color: "#4a90e2",
   },
   {
     id: "ai-skills",
     label: "AI Skills",
     distance: 7,
     speed: 0.007,
-    color: "#e74c3c",
   },
   {
     id: "web-skills",
     label: "Web Dev",
     distance: 8.5,
     speed: 0.006,
-    color: "#2ecc71",
   },
   {
     id: "project1",
     label: "Project 1",
     distance: 10,
     speed: 0.005,
-    color: "#9b59b6",
   },
   {
     id: "project2",
     label: "Project 2",
     distance: 11.5,
     speed: 0.004,
-    color: "#f39c12",
   },
   {
     id: "project3",
     label: "Project 3",
     distance: 13,
     speed: 0.003,
-    color: "#1abc9c",
   },
   {
     id: "miniprojects",
     label: "Mini Projects",
     distance: 14.5,
     speed: 0.002,
-    color: "#e67e22",
   },
   {
     id: "services",
     label: "Services",
     distance: 16,
     speed: 0.001,
-    color: "#34495e",
   },
   {
     id: "contact",
     label: "Contact",
     distance: 17.5,
     speed: 0.0008,
-    color: "#c0392b",
   },
 ];
 
 // Sun component (center)
-function Sun({ onClick }) {
+function Sun({ onClick, isDark }) {
   const meshRef = useRef();
+  const sunColor = "#a8a8a8"; // grey
+  const shadowColor = isDark ? "#2a2a2a" : "#e8e8e8"; // dark grey in dark theme, light grey in light theme
 
   useFrame(() => {
     if (meshRef.current) {
@@ -85,14 +79,14 @@ function Sun({ onClick }) {
 
   return (
     <mesh ref={meshRef} onClick={() => onClick("about")} position={[0, 0, 0]}>
-      <sphereGeometry args={[1.2, 32, 32]} />
+      <sphereGeometry args={[1.8, 32, 32]} />
       <meshStandardMaterial
-        color="#f5c36b"
-        emissive="#f5c36b"
-        emissiveIntensity={0.3}
+        color={sunColor}
+        emissive={isDark ? "#3a3a3a" : "#888888"}
+        emissiveIntensity={0.1}
       />
-      <Html distanceFactor={8} position={[0, -2, 0]}>
-        <div className="text-sm text-gold-300 text-center font-semibold pointer-events-none">
+      <Html distanceFactor={8} position={[0, -2.5, 0]}>
+        <div className="text-sm text-gray-300 text-center font-semibold pointer-events-none">
           Nipun
         </div>
       </Html>
@@ -101,10 +95,11 @@ function Sun({ onClick }) {
 }
 
 // Planet component
-function Planet({ planet, onClick, onHover }) {
+function Planet({ planet, onClick, onHover, isDark }) {
   const meshRef = useRef();
   const orbitRef = useRef();
   const [hovered, setHovered] = useState(false);
+  const planetColor = isDark ? "#ffffff" : "#000000"; // white in dark theme, black in light theme
 
   useFrame(() => {
     if (orbitRef.current) {
@@ -133,9 +128,15 @@ function Planet({ planet, onClick, onHover }) {
         }}
       >
         <sphereGeometry args={[0.6, 20, 20]} />
-        <meshStandardMaterial color={planet.color} />
+        <meshStandardMaterial 
+          color={planetColor}
+          emissive={isDark ? "#333333" : "#d0d0d0"}
+          emissiveIntensity={0.05}
+        />
         <Html distanceFactor={12} position={[0, -1.2, 0]}>
-          <div className="text-xs text-white bg-black/70 px-2 py-1 rounded font-medium pointer-events-none whitespace-nowrap">
+          <div className={`text-xs px-2 py-1 rounded font-medium pointer-events-none whitespace-nowrap ${
+            isDark ? 'text-white bg-black/70' : 'text-black bg-white/70'
+          }`}>
             {planet.label}
           </div>
         </Html>
@@ -145,7 +146,10 @@ function Planet({ planet, onClick, onHover }) {
 }
 
 // Orbit rings
-function OrbitRings() {
+function OrbitRings({ isDark }) {
+  const orbitColor = isDark ? "#ffffff" : "#000000"; // white in dark, black in light
+  const orbitOpacity = isDark ? 0.3 : 0.4; // slightly more visible in light theme
+
   return (
     <>
       {PLANETS.map((planet, i) => {
@@ -164,7 +168,7 @@ function OrbitRings() {
 
         return (
           <line key={i} geometry={geometry}>
-            <lineBasicMaterial color="#ffffff" opacity={0.1} transparent />
+            <lineBasicMaterial color={orbitColor} opacity={orbitOpacity} transparent />
           </line>
         );
       })}
@@ -173,15 +177,18 @@ function OrbitRings() {
 }
 
 // 3D Scene
-function SolarSystemScene({ onPlanetClick, onHover }) {
+function SolarSystemScene({ onPlanetClick, onHover, isDark }) {
+  const lightColor = isDark ? "#a8a8a8" : "#c0c0c0";
+  const lightIntensity = isDark ? 0.3 : 0.35;
+
   return (
     <>
-      <ambientLight intensity={0.4} />
-      <pointLight position={[0, 0, 0]} intensity={1} color="#f5c36b" />
-      <pointLight position={[10, 10, 10]} intensity={0.5} />
+      <ambientLight intensity={lightIntensity} />
+      <pointLight position={[0, 0, 0]} intensity={0.5} color={lightColor} />
+      <pointLight position={[10, 10, 10]} intensity={0.2} />
 
-      <OrbitRings />
-      <Sun onClick={onPlanetClick} />
+      <OrbitRings isDark={isDark} />
+      <Sun onClick={onPlanetClick} isDark={isDark} />
 
       {PLANETS.map((planet) => (
         <Planet
@@ -189,6 +196,7 @@ function SolarSystemScene({ onPlanetClick, onHover }) {
           planet={planet}
           onClick={onPlanetClick}
           onHover={onHover}
+          isDark={isDark}
         />
       ))}
     </>
@@ -196,16 +204,22 @@ function SolarSystemScene({ onPlanetClick, onHover }) {
 }
 
 // Mobile fallback
-function MobileSolarSystem({ onPlanetClick }) {
+function MobileSolarSystem({ onPlanetClick, isDark }) {
+  const sunBg = isDark ? 'bg-gray-500' : 'bg-gray-400';
+  const sunText = isDark ? 'text-white' : 'text-black';
+  const planetColor = isDark ? '#ffffff' : '#000000';
+  const bgClass = isDark ? 'bg-black/5 border-white/10' : 'bg-white/10 border-black/10';
+  const textClass = isDark ? 'text-gray-300' : 'text-gray-700';
+
   return (
     <div className="max-w-4xl mx-auto px-6">
       <div className="text-center mb-8">
-        <h3 className="text-2xl font-bold text-gold-300 mb-4">Navigation</h3>
+        <h3 className={`text-2xl font-bold mb-4 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>Navigation</h3>
 
         {/* Sun */}
         <button
           onClick={() => onPlanetClick("about")}
-          className="w-20 h-20 rounded-full bg-gradient-to-r from-gold-400 to-gold-600 mb-8 mx-auto flex items-center justify-center text-galaxy-900 font-bold hover:scale-105 transition-transform focus:outline-none focus:ring-2 focus:ring-gold-500"
+          className={`w-20 h-20 rounded-full mb-8 mx-auto flex items-center justify-center font-bold hover:scale-105 transition-transform focus:outline-none ${sunBg} ${sunText}`}
         >
           NS
         </button>
@@ -217,13 +231,13 @@ function MobileSolarSystem({ onPlanetClick }) {
           <button
             key={planet.id}
             onClick={() => onPlanetClick(planet.id)}
-            className="relative group p-4 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-gold-500"
+            className={`relative group p-4 border rounded-lg hover:opacity-80 transition-all duration-300 focus:outline-none ${bgClass}`}
           >
             <div
               className="w-12 h-12 rounded-full mx-auto mb-2"
-              style={{ backgroundColor: planet.color }}
+              style={{ backgroundColor: planetColor }}
             />
-            <span className="text-sm text-gray-300">{planet.label}</span>
+            <span className={`text-sm ${textClass}`}>{planet.label}</span>
           </button>
         ))}
       </div>
@@ -232,6 +246,7 @@ function MobileSolarSystem({ onPlanetClick }) {
 }
 
 export default function SolarSystem({ onPlanetClick }) {
+  const { isDark } = useTheme();
   const [hoveredPlanet, setHoveredPlanet] = useState(null);
   const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
   const prefersReduced =
@@ -239,18 +254,18 @@ export default function SolarSystem({ onPlanetClick }) {
     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   if (isMobile || prefersReduced) {
-    return <MobileSolarSystem onPlanetClick={onPlanetClick} />;
+    return <MobileSolarSystem onPlanetClick={onPlanetClick} isDark={isDark} />;
   }
 
   return (
     <div className="w-full h-[700px] relative">
       <div className="absolute top-4 left-1/2 -translate-x-1/2 z-10 text-center">
-        <h3 className="text-2xl font-bold text-gold-300 mb-2">Solar System</h3>
-        <p className="text-sm text-gray-400">
+        <h3 className={`text-2xl font-bold mb-2 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>Solar System</h3>
+        <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
           Click planets to navigate • Hover for details
         </p>
         {hoveredPlanet && (
-          <p className="text-sm text-gold-300 mt-2 font-medium">
+          <p className={`text-sm mt-2 font-medium ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
             {hoveredPlanet}
           </p>
         )}
@@ -264,6 +279,7 @@ export default function SolarSystem({ onPlanetClick }) {
           <SolarSystemScene
             onPlanetClick={onPlanetClick}
             onHover={setHoveredPlanet}
+            isDark={isDark}
           />
         </Suspense>
       </Canvas>
