@@ -92,7 +92,6 @@ function Sun({ brightMode, setBrightMode, isDark }) {
   useFrame(({ clock }) => {
     if (meshRef.current) {
       meshRef.current.rotation.y += 0.003;
-      // Subtle pulsing only
       const pulse = Math.sin(clock.elapsedTime * 1.5) * 0.08 + 1;
       meshRef.current.scale.setScalar(pulse);
     }
@@ -111,6 +110,7 @@ function Sun({ brightMode, setBrightMode, isDark }) {
         position={[0, 0, 0]}
         castShadow={false}
         receiveShadow={false}
+        style={{ cursor: "pointer" }}
       >
         <sphereGeometry args={[10, 48, 48]} />
         <meshStandardMaterial
@@ -635,6 +635,27 @@ export default function SolarLab({ onBrightModeChange }) {
           </div>
         )}
       </div>
+
+      {/* Sun Click Hint */}
+      <motion.div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none"
+        initial={{ opacity: 0 }}
+        animate={{
+          opacity: [0, 0, 1, 1, 0],
+        }}
+        transition={{
+          duration: 6,
+          repeat: Infinity,
+          times: [0, 0.667, 0.667, 0.917, 1],
+        }}
+      >
+        <div className="flex items-center gap-2 text-sm font-light tracking-[0.1em] text-[#1a1a1a]">
+          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M13 6.06V3h-2v3.06A7 7 0 1 0 19.94 13H23v-2h-3.06A7 7 0 0 0 13 6.06zM9 13a4 4 0 1 1 8 0 4 4 0 0 1-8 0z" />
+          </svg>
+          Click Me
+        </div>
+      </motion.div>
 
       {/* Zoom hint */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 pointer-events-none">
