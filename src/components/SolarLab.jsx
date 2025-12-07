@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Stars } from "@react-three/drei";
 import { EffectComposer, Bloom } from '@react-three/postprocessing';
+import { motion } from "framer-motion";
 
 import * as THREE from "three";
 
@@ -449,7 +450,7 @@ function MobileSolarSystemScene({ onPlanetClick, onHover, brightMode, onSunClick
       />
       <pointLight position={[20, 20, 20]} intensity={0.4} color="#ffffff" />
       <pointLight position={[-20, 15, 30]} intensity={0.3} color="#4a90e2" />
-      
+
       {/* Mobile orbit rings */}
       {mobilePlanets.map((planet) => {
         const opacity = Math.max(0.08, 0.25 - planet.distance / 500);
@@ -460,10 +461,10 @@ function MobileSolarSystemScene({ onPlanetClick, onHover, brightMode, onSunClick
           </mesh>
         );
       })}
-      
+
       {/* Mobile-scaled Sun */}
       <Sun brightMode={brightMode} setBrightMode={onSunClick} isDark={!brightMode} />
-      
+
       {/* Mobile-scaled Planets */}
       {mobilePlanets.map((planet) => (
         <Planet
@@ -474,7 +475,7 @@ function MobileSolarSystemScene({ onPlanetClick, onHover, brightMode, onSunClick
           brightMode={brightMode}
         />
       ))}
-      
+
       <ParticleField brightMode={brightMode} />
     </group>
   );
@@ -483,6 +484,7 @@ function MobileSolarSystemScene({ onPlanetClick, onHover, brightMode, onSunClick
 export default function SolarLab({ onBrightModeChange }) {
   const [hoveredPlanet, setHoveredPlanet] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [isLandscape, setIsLandscape] = useState(false);
   const [brightMode, setBrightMode] = useState(false);
   const navigate = useNavigate();
   const prefersReduced = typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -512,9 +514,20 @@ export default function SolarLab({ onBrightModeChange }) {
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    const checkOrientation = () => setIsLandscape(window.innerHeight < window.innerWidth);
+
     checkMobile();
+    checkOrientation();
+
     window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    window.addEventListener('resize', checkOrientation);
+    window.addEventListener('orientationchange', checkOrientation);
+
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+      window.removeEventListener('resize', checkOrientation);
+      window.removeEventListener('orientationchange', checkOrientation);
+    };
   }, []);
 
   // Only use 2D fallback for reduced motion preference
@@ -524,11 +537,11 @@ export default function SolarLab({ onBrightModeChange }) {
         <div className="text-center mb-8">
           <h3 className="text-2xl font-bold text-amber-300 mb-4">Navigation</h3>
           <button
-              onClick={() => handlePlanetClick("about")}
-              className="w-20 h-20 rounded-full bg-gradient-to-r from-amber-400 to-amber-600 mb-8 mx-auto flex items-center justify-center text-black font-bold hover:scale-105 transition-transform"
-            >
-              NS
-            </button>
+            onClick={() => handlePlanetClick("about")}
+            className="w-20 h-20 rounded-full bg-gradient-to-r from-amber-400 to-amber-600 mb-8 mx-auto flex items-center justify-center text-black font-bold hover:scale-105 transition-transform"
+          >
+            NS
+          </button>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-5 gap-4">
           {PLANETS.map((planet) => (
@@ -546,39 +559,47 @@ export default function SolarLab({ onBrightModeChange }) {
     );
   }
 
-  if (isMobile) {
+  // Mobile portrait: show rotation prompt
+  // Mobile landscape: show full desktop-style solar system
+  if (isMobile && !isLandscape) {
+    // Portrait mode - show rotate screen message
     return (
-      <div className="w-full py-8">
-        <div className="max-w-sm mx-auto px-4">
-          {/* Sleek glass box container */}
-          <div className="relative bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] overflow-hidden">
-            {/* Subtle glass effect overlay */}
-            <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-black/10 pointer-events-none" />
-            
-            {/* Mobile Solar System - No text, just the 3D scene */}
-            <div className="h-80 relative">
-              <Canvas
-                camera={{ position: [0, 40, 80], fov: 60 }}
-                style={{ background: "transparent" }}
-                gl={{ antialias: false, powerPreference: 'low-power', alpha: true }}
+      <div className="w-full h-screen flex items-center justify-center bg-[var(--color-bg-primary)]">
+        <div className="text-center px-8">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            className="glass-card p-8"
+          >
+            {/* Rotate phone icon */}
+            <motion.div
+              animate={{ rotate: [0, 90, 90, 0] }}
+              transition={{ duration: 2, repeat: Infinity, repeatDelay: 1 }}
+              className="w-20 h-20 mx-auto mb-6"
+            >
+              <svg
+                className="w-full h-full text-[var(--color-accent)]"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
               >
-                <OrbitControls
-                  enablePan={false}
-                  enableZoom={true}
-                  enableRotate={true}
-                  minDistance={60}
-                  maxDistance={120}
-                  target={[0, -5, 0]}
-                  autoRotate={false}
-                  rotateSpeed={0.3}
-                  zoomSpeed={0.5}
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={1.5}
+                  d="M12 18h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"
                 />
-                <Suspense fallback={null}>
-                           <MobileSolarSystemScene onPlanetClick={handlePlanetClick} onHover={setHoveredPlanet} brightMode={brightMode} onSunClick={handleThemeToggle} />
-                          </Suspense>
-              </Canvas>
-            </div>
-          </div>
+              </svg>
+            </motion.div>
+
+            <h2 className="text-heading-lg text-[var(--color-text-primary)] mb-3">
+              Rotate Your Screen
+            </h2>
+            <p className="text-body-sm text-[var(--color-text-secondary)]">
+              Please rotate your device to landscape mode for the best 3D experience
+            </p>
+          </motion.div>
         </div>
       </div>
     );
@@ -589,7 +610,7 @@ export default function SolarLab({ onBrightModeChange }) {
       {/* Depth layering background */}
       <div className="absolute inset-0 bg-gradient-to-b from-gray-900/20 via-slate-900/10 to-black/30 pointer-events-none" />
       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-amber-900/5 to-transparent pointer-events-none" />
-      
+
       {/* Floating minimalist frame */}
       <div className="absolute inset-4 border border-white/5 rounded-2xl pointer-events-none">
         {/* Corner accents */}
@@ -598,7 +619,7 @@ export default function SolarLab({ onBrightModeChange }) {
         <div className="absolute bottom-0 left-0 w-8 h-8 border-l-2 border-b-2 border-amber-400/20 rounded-bl-lg" />
         <div className="absolute bottom-0 right-0 w-8 h-8 border-r-2 border-b-2 border-amber-400/20 rounded-br-lg" />
       </div>
-      
+
       {/* Premium minimal hover label */}
       <div className="absolute top-8 left-1/2 -translate-x-1/2 z-10 text-center pointer-events-none">
         <h3 className={`text-sm font-light tracking-[0.25em] mb-6 ${brightMode ? 'text-[#2A2A2A]' : 'text-[var(--color-text-secondary)]'}`}>
@@ -614,7 +635,7 @@ export default function SolarLab({ onBrightModeChange }) {
           </div>
         )}
       </div>
-      
+
       {/* Zoom hint */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 pointer-events-none">
         <div className={`text-xs tracking-[0.08em] font-light ${brightMode ? 'text-[#3A3A3A]' : 'text-[var(--color-text-muted)]'}`}>
@@ -624,7 +645,7 @@ export default function SolarLab({ onBrightModeChange }) {
 
       <Canvas
         camera={{ position: [0, 60, 85], fov: 60 }}
-        style={{ 
+        style={{
           background: brightMode ? "#F5F1E8" : "#0a0a0b",
           cursor: 'auto'
         }}
