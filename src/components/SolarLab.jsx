@@ -242,10 +242,10 @@ function Planet({ planet, onClick, onHover }) {
         ref={meshRef}
         position={[planet.distance, 0, 0]}
         onClick={() => {
-          setClicked(true);
+          _setClicked(true);
           setTimeout(() => {
             onClick(planet.id);
-            setClicked(false);
+            _setClicked(false);
           }, 200);
         }}
         onPointerOver={() => {
