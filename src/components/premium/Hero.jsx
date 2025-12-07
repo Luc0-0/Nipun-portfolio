@@ -171,36 +171,68 @@ const Hero = memo(() => {
               </motion.button>
             </motion.div>
 
-            {/* Subtle Lab Hint */}
-            <motion.a
-              href="#/lab"
+            {/* Lab Hint with Underline Glow & Text Highlight */}
+            <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: ANIMATION_DELAYS.buttons + 0.2, duration: 0.8 }}
-              className="inline-flex items-center gap-2 mt-8 text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent)] transition-colors group"
+              className="inline-block mt-8"
             >
-              <motion.span
-                animate={{
-                  opacity: [0.6, 1, 0.6],
-                  scale: [1, 1.05, 1]
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-                className="w-2 h-2 rounded-full bg-[var(--color-accent)]"
-              />
-              <span className="tracking-wide">Explore 3D Systems Lab</span>
-              <svg
-                className="w-4 h-4 group-hover:translate-x-1 transition-transform"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+              <motion.a
+                href="#/lab"
+                className="inline-flex items-center gap-2 text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent)] transition-colors group relative"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </motion.a>
+                <motion.span
+                  animate={{
+                    opacity: [0.6, 1, 0.6],
+                    scale: [1, 1.05, 1]
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                  className="w-2 h-2 rounded-full bg-[var(--color-accent)] relative z-10"
+                />
+                
+                <span className="tracking-wide relative z-10">Explore 3D Systems Lab</span>
+
+                {/* Underline with glow */}
+                <motion.div
+                  className="absolute bottom-0 left-0 right-0 h-0.5 rounded-full bg-gradient-to-r from-transparent via-[var(--color-accent)] to-transparent"
+                  animate={{
+                    scaleX: [0, 1, 0],
+                    opacity: [0, 1, 0]
+                  }}
+                  transition={{
+                    duration: 2.5,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                  style={{ 
+                    boxShadow: "0 0 8px rgba(212, 168, 83, 0.6)",
+                    transformOrigin: "left"
+                  }}
+                />
+
+                <motion.svg
+                  className="w-4 h-4 relative z-10"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  whileHover={{
+                    x: 4
+                  }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 300,
+                    damping: 20
+                  }}
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </motion.svg>
+              </motion.a>
+            </motion.div>
 
             {/* Quick Stats */}
             <motion.div
