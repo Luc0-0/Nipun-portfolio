@@ -36,7 +36,7 @@ export default function LabPage() {
     <>
       {/* Back Button — Obsidian Luxe Glass Card */}
       <button
-        onClick={() => (window.location.hash = "/")}
+        onClick={() => navigate("/")}
         className={`fixed top-8 left-8 z-20 glass-card px-4 py-2 flex items-center gap-2 group transition-all duration-300 opacity-0 animate-fade-in ${brightMode
             ? 'hover:border-[#1A1A1A]/60 border-[#2A2A2A]/40'
             : 'hover:border-[var(--color-accent)]/60'

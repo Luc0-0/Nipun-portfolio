@@ -1,7 +1,7 @@
 // src/App.jsx
 // Obsidian Luxe - Premium Portfolio
 
-import React, { useEffect, Suspense } from 'react';
+import React, { useEffect, Suspense, useState } from 'react';
 
 // Premium Components
 import Navigation from './components/premium/Navigation';
@@ -19,6 +19,9 @@ import GlowingOrbs from './components/premium/GlowingOrbs';
 import PremiumCursor from './components/premium/PremiumCursor';
 const AmbientParticles = React.lazy(() => import('./components/premium/AmbientParticles'));
 
+// Loader
+import Loader from './components/ui/Loader';
+
 // Existing Components to Keep
 import AIChatbot from './components/AIChatbot';
 import GoogleAnalytics from './components/GoogleAnalytics';
@@ -28,6 +31,8 @@ import SmoothScroll from './components/SmoothScroll';
 import './components/premium/Chatbot.css';
 
 export default function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     // Set initial theme based on system preference
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -35,6 +40,17 @@ export default function App() {
       document.documentElement.classList.add('light');
     }
   }, []);
+
+  useEffect(() => {
+    // Minimum splash duration: ~2200ms
+    const timer = setTimeout(() => setIsLoading(false), 2200);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Show loader while loading
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <>
