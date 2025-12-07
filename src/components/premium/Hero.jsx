@@ -1,6 +1,7 @@
 import React, { useRef, useCallback, memo } from "react";
 import { motion } from "framer-motion";
 import HeroBackground from "./HeroBackground";
+import HeroSpotlight from "./HeroSpotlight";
 
 // Animation variants for reusability and maintainability
 const fadeInUpVariants = {
@@ -147,28 +148,6 @@ const Hero = memo(() => {
                 <span>View Work</span>
               </motion.a>
 
-              <motion.a
-                href="#/lab"
-                className="btn-primary"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <span>Explore Lab</span>
-              </motion.a>
-
               <motion.button
                 onClick={handleResumeDownload}
                 className="btn-secondary"
@@ -191,6 +170,37 @@ const Hero = memo(() => {
                 <span>Resume</span>
               </motion.button>
             </motion.div>
+
+            {/* Subtle Lab Hint */}
+            <motion.a
+              href="#/lab"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: ANIMATION_DELAYS.buttons + 0.2, duration: 0.8 }}
+              className="inline-flex items-center gap-2 mt-8 text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent)] transition-colors group"
+            >
+              <motion.span
+                animate={{
+                  opacity: [0.6, 1, 0.6],
+                  scale: [1, 1.05, 1]
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+                className="w-2 h-2 rounded-full bg-[var(--color-accent)]"
+              />
+              <span className="tracking-wide">Explore 3D Systems Lab</span>
+              <svg
+                className="w-4 h-4 group-hover:translate-x-1 transition-transform"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </motion.a>
 
             {/* Quick Stats */}
             <motion.div
@@ -238,6 +248,9 @@ const Hero = memo(() => {
             className="order-1 lg:order-2 flex justify-center lg:justify-start lg:pl-48"
           >
             <div className="relative">
+              {/* Premium Spotlight Effect */}
+              <HeroSpotlight />
+
               {/* Decorative Frame */}
               <div className="absolute -inset-4 border border-[var(--color-accent)]/20 rounded-2xl" />
               <div className="absolute -inset-8 border border-[var(--color-border)] rounded-3xl" />

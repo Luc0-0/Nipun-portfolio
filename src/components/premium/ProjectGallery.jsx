@@ -77,10 +77,10 @@ function ProjectCard({ project, index }) {
             animate={{ scale: isHovered ? 1.05 : 1 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           />
-          
+
           {/* Overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg-primary)] via-[var(--color-bg-primary)]/20 to-transparent" />
-          
+
           {/* Category Badge */}
           <div className="absolute top-4 left-4">
             <span className="tag">{project.category}</span>
@@ -145,7 +145,7 @@ function ProjectCard({ project, index }) {
               whileTap={{ scale: 0.98 }}
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
               </svg>
             </motion.a>
           </div>
@@ -158,9 +158,12 @@ function ProjectCard({ project, index }) {
 export default function ProjectGallery() {
   const sectionRef = useRef(null);
   const scrollContainerRef = useRef(null);
+  const secondCardRef = useRef(null); // Track the second project card for mobile
+  const fourthCardRef = useRef(null); // Track the fourth project card for desktop
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
+  const [showSwipeHint, setShowSwipeHint] = useState(true); // Show hint by default
 
   const checkScroll = () => {
     if (scrollContainerRef.current) {
@@ -177,6 +180,57 @@ export default function ProjectGallery() {
       container.addEventListener('scroll', checkScroll);
       return () => container.removeEventListener('scroll', checkScroll);
     }
+  }, []);
+
+  // Track card visibility to hide swipe hint (2nd card for mobile, 4th card for desktop)
+  useEffect(() => {
+    const observers = [];
+
+    // Mobile: hide when 2nd card is visible
+    if (secondCardRef.current) {
+      const mobileObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setShowSwipeHint(false);
+            }
+          });
+        },
+        {
+          root: null,
+          threshold: 0.5,
+        }
+      );
+      mobileObserver.observe(secondCardRef.current);
+      observers.push({ ref: secondCardRef, observer: mobileObserver });
+    }
+
+    // Desktop: hide when 4th card is visible
+    if (fourthCardRef.current) {
+      const desktopObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setShowSwipeHint(false);
+            }
+          });
+        },
+        {
+          root: null,
+          threshold: 0.3, // Lower threshold for 4th card
+        }
+      );
+      desktopObserver.observe(fourthCardRef.current);
+      observers.push({ ref: fourthCardRef, observer: desktopObserver });
+    }
+
+    return () => {
+      observers.forEach(({ ref, observer }) => {
+        if (ref.current) {
+          observer.unobserve(ref.current);
+        }
+      });
+    };
   }, []);
 
   const scroll = (direction) => {
@@ -213,11 +267,10 @@ export default function ProjectGallery() {
             <motion.button
               onClick={() => scroll('left')}
               disabled={!canScrollLeft}
-              className={`w-12 h-12 rounded-full border flex items-center justify-center transition-all ${
-                canScrollLeft
-                  ? 'border-[var(--color-border)] hover:border-[var(--color-accent)] hover:bg-[var(--color-accent-muted)]'
-                  : 'border-[var(--color-border)] opacity-30 cursor-not-allowed'
-              }`}
+              className={`w-12 h-12 rounded-full border flex items-center justify-center transition-all ${canScrollLeft
+                ? 'border-[var(--color-border)] hover:border-[var(--color-accent)] hover:bg-[var(--color-accent-muted)]'
+                : 'border-[var(--color-border)] opacity-30 cursor-not-allowed'
+                }`}
               whileHover={canScrollLeft ? { scale: 1.05 } : {}}
               whileTap={canScrollLeft ? { scale: 0.95 } : {}}
             >
@@ -228,11 +281,10 @@ export default function ProjectGallery() {
             <motion.button
               onClick={() => scroll('right')}
               disabled={!canScrollRight}
-              className={`w-12 h-12 rounded-full border flex items-center justify-center transition-all ${
-                canScrollRight
-                  ? 'border-[var(--color-border)] hover:border-[var(--color-accent)] hover:bg-[var(--color-accent-muted)]'
-                  : 'border-[var(--color-border)] opacity-30 cursor-not-allowed'
-              }`}
+              className={`w-12 h-12 rounded-full border flex items-center justify-center transition-all ${canScrollRight
+                ? 'border-[var(--color-border)] hover:border-[var(--color-accent)] hover:bg-[var(--color-accent-muted)]'
+                : 'border-[var(--color-border)] opacity-30 cursor-not-allowed'
+                }`}
               whileHover={canScrollRight ? { scale: 1.05 } : {}}
               whileTap={canScrollRight ? { scale: 0.95 } : {}}
             >
@@ -259,13 +311,76 @@ export default function ProjectGallery() {
       {/* Horizontal Scroll Gallery */}
       <div
         ref={scrollContainerRef}
-        className="gallery-scroll pl-6 md:pl-12 lg:pl-[calc((100vw-1200px)/2+1.5rem)]"
+        className="gallery-scroll pl-6 md:pl-12 lg:pl-[calc((100vw-1200px)/2+1.5rem)] relative"
         style={{ scrollPaddingLeft: '1.5rem' }}
       >
-        {FEATURED_PROJECTS.map((project, index) => (
-          <ProjectCard key={project.id} project={project} index={index} />
-        ))}
-        
+        {FEATURED_PROJECTS.map((project, index) => {
+          // Attach refs to track visibility
+          let cardRef = null;
+          if (index === 1) cardRef = secondCardRef; // 2nd card for mobile
+          if (index === 3) cardRef = fourthCardRef; // 4th card for desktop
+
+          // Show indicator on 1st card (mobile) or 3rd card (desktop)
+          const showIndicator = index === 0 || index === 2;
+
+          return (
+            <div key={project.id} ref={cardRef} className="relative">
+              <ProjectCard project={project} index={index} />
+
+              {/* Swipe Hint */}
+              {showIndicator && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{
+                    opacity: showSwipeHint ? 1 : 0,
+                    pointerEvents: showSwipeHint ? 'auto' : 'none'
+                  }}
+                  transition={{ duration: 0.5 }}
+                  className={`absolute bottom-8 right-8 z-10 ${index === 0 ? 'md:hidden' : 'hidden md:block'
+                    }`}
+                >
+                  <div className="glass-card px-4 py-3 flex items-center gap-2 border border-[var(--color-accent)]/30">
+                    <span className="text-xs text-[var(--color-accent)] font-medium tracking-wide">
+                      Swipe
+                    </span>
+                    <div className="flex items-center">
+                      <motion.svg
+                        className="w-4 h-4 text-[var(--color-accent)]"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        animate={{ x: [0, 4, 0] }}
+                        transition={{
+                          duration: 1.5,
+                          repeat: Infinity,
+                          ease: "easeInOut"
+                        }}
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </motion.svg>
+                      <motion.svg
+                        className="w-4 h-4 text-[var(--color-accent)] -ml-2"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        animate={{ x: [0, 4, 0] }}
+                        transition={{
+                          duration: 1.5,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                          delay: 0.15
+                        }}
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </motion.svg>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+            </div>
+          );
+        })}
+
         {/* View All Card */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}

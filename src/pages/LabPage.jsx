@@ -37,11 +37,10 @@ export default function LabPage() {
       {/* Back Button — Obsidian Luxe Glass Card */}
       <button
         onClick={() => (window.location.hash = "/")}
-        className={`fixed top-8 left-8 z-20 glass-card px-4 py-2 flex items-center gap-2 group transition-all duration-300 opacity-0 animate-fade-in ${
-          brightMode 
-            ? 'hover:border-[#1A1A1A]/60 border-[#2A2A2A]/40' 
+        className={`fixed top-8 left-8 z-20 glass-card px-4 py-2 flex items-center gap-2 group transition-all duration-300 opacity-0 animate-fade-in ${brightMode
+            ? 'hover:border-[#1A1A1A]/60 border-[#2A2A2A]/40'
             : 'hover:border-[var(--color-accent)]/60'
-        }`}
+          }`}
         style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
         aria-label="Back to home"
       >
@@ -73,7 +72,7 @@ export default function LabPage() {
             <span className={`font-semibold ${brightMode ? 'text-[#1A1A1A]' : 'text-[var(--color-accent)]'}`}>
               Systems Explorer
             </span>{" "}
-            — Interactive 3D universe of your work, skills, projects, and
+            — Interactive 3D universe of work, skills, projects, and
             capabilities.
           </p>
         </div>
