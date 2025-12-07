@@ -69,7 +69,7 @@ When you push code to GitHub, the portfolio fetches it and automatically sorts p
 
 ## License
 
-MIT - use it for your own portfolio.
+MIT - use it for your own portfolio. Drop a STAR!!
 
 ---
 
