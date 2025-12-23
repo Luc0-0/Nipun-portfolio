@@ -1,0 +1,44 @@
+name: Portfolio Project Sync
+
+on:
+  schedule:
+    - cron: '0 0 * * 0' # Run weekly on Sunday
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  sync-projects:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+          cache: 'npm'
+          
+      - name: Install Dependencies
+        run: npm ci
+        
+      - name: Generate Projects Data
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: node scripts/generate-projects.mjs
+        
+      - name: Check for changes
+        id: git-check
+        run: |
+          git diff --exit-code src/data/projects.json || echo "changes_exist=true" >> $GITHUB_OUTPUT
+          
+      - name: Commit and Push
+        if: steps.git-check.outputs.changes_exist == 'true'
+        run: |
+          git config --global user.name 'Portfolio Sync Bot'
+          git config --global user.email 'bot@noreply.github.com'
+          git add src/data/projects.json
+          git commit -m "chore: auto-sync github projects [skip ci]"
+          git push

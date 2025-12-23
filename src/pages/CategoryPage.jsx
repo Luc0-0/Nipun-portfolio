@@ -2,75 +2,58 @@
 export default CategoryPage;
 function CategoryPage() {
   const { category } = useParams();
-  const [githubRepos, setGithubRepos] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const staticRepos = repoData[category] || [];
   const [flipped, setFlipped] = useState([]);
   const [search, setSearch] = useState("");
 
-  useEffect(() => {
-    const loadGithubRepos = async () => {
-      try {
-        const repos = await fetchGitHubRepos();
-        const categoryMap = {
-          'machine-learning': 'AI/ML Projects',
-          'academic': 'AI/ML Projects',
-          'learning': 'Data Science',
-          'mini-projects': 'Mini Projects'
-        };
-        const targetCategory = categoryMap[category];
-        const getCustomImage = (repoName, category) => {
-          const imageMap = {
-            'ai': 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=300&fit=crop',
-            'ml': 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=400&h=300&fit=crop',
-            'data': 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop',
-            'web': 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=300&fit=crop',
-            'react': 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400&h=300&fit=crop',
-            'python': 'https://images.unsplash.com/photo-1526379095098-d400fd0bf935?w=400&h=300&fit=crop',
-            'azure': 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=300&fit=crop',
-            'speech': 'https://images.unsplash.com/photo-1589254065878-42c9da997008?w=400&h=300&fit=crop',
-            'classification': 'https://images.unsplash.com/photo-1574158622682-e40e69881006?w=400&h=300&fit=crop',
-            'default': 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&h=300&fit=crop'
-          };
-          
-          const name = repoName.toLowerCase();
-          if (name.includes('ai') || name.includes('ml') || name.includes('neural')) return imageMap.ai;
-          if (name.includes('data') || name.includes('analysis')) return imageMap.data;
-          if (name.includes('web') || name.includes('react') || name.includes('portfolio')) return imageMap.react;
-          if (name.includes('python')) return imageMap.python;
-          if (name.includes('azure')) return imageMap.azure;
-          if (name.includes('speech') || name.includes('synthesis')) return imageMap.speech;
-          if (name.includes('classification') || name.includes('cat') || name.includes('dog')) return imageMap.classification;
-          if (category === 'AI/ML Projects') return imageMap.ml;
-          if (category === 'Web Development') return imageMap.web;
-          if (category === 'Data Science') return imageMap.data;
-          return imageMap.default;
-        };
+  // Map URL param to projects.json categories
+  const categoryMap = {
+    'machine-learning': 'ai-systems',
+    'academic': 'ai-systems',
+    'learning': 'learning',
+    'mini-projects': 'learning', // Default bucket
+    'web': 'production'
+  };
 
-        const filteredRepos = repos
-          .filter(repo => repo.category === targetCategory)
-          .map(repo => ({
-            name: repo.name.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
-            url: repo.html_url,
-            image: getCustomImage(repo.name, repo.category),
-            description: repo.description || 'GitHub Repository - Live project automatically synced',
-            techstack: [repo.language, 'Live'].filter(Boolean),
-            isGithubRepo: true,
-            stars: repo.stargazers_count,
-            updated: repo.updated_at
-          }));
-        setGithubRepos(filteredRepos);
-      } catch (error) {
-        console.error('Failed to load GitHub repos:', error);
-      } finally {
-        setLoading(false);
-      }
+  const getCustomImage = (repoName, category) => {
+    // ... image logic kept same or simplified ...
+    const imageMap = {
+      'ai': 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=300&fit=crop',
+      'ml': 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=400&h=300&fit=crop',
+      'data': 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop',
+      'web': 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=300&fit=crop',
+      'react': 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400&h=300&fit=crop',
+      'python': 'https://images.unsplash.com/photo-1526379095098-d400fd0bf935?w=400&h=300&fit=crop',
+      'azure': 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=300&fit=crop',
+      'speech': 'https://images.unsplash.com/photo-1589254065878-42c9da997008?w=400&h=300&fit=crop',
+      'classification': 'https://images.unsplash.com/photo-1574158622682-e40e69881006?w=400&h=300&fit=crop',
+      'default': 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&h=300&fit=crop'
     };
-    loadGithubRepos();
-  }, [category]);
+    const name = repoName.toLowerCase();
+    if (name.includes('ai') || name.includes('ml')) return imageMap.ai;
+    if (category === 'ai-systems') return imageMap.ml;
+    if (category === 'production') return imageMap.web;
+    return imageMap.default;
+  };
+
+  // Sync projects from JSON
+  const targetCategory = categoryMap[category];
+  const githubRepos = projectsData
+    .filter(repo => repo.category === targetCategory)
+    .map(repo => ({
+      name: repo.name.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
+      url: repo.repoUrl,
+      image: getCustomImage(repo.name, repo.category),
+      description: repo.description,
+      techstack: repo.tech,
+      isGithubRepo: true,
+      stars: repo.stars,
+      updated: repo.lastUpdated
+    }));
 
   const allRepos = [...staticRepos, ...githubRepos];
-  
+
   useEffect(() => {
     setFlipped(Array(allRepos.length).fill(false));
   }, [allRepos.length]);
@@ -181,7 +164,7 @@ function CategoryPage() {
 
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { fetchGitHubRepos } from '../utils/githubApi';
+import projectsData from '../data/projects.json';
 
 const techIcons = {
   Python: '🐍',
