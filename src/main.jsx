@@ -12,6 +12,7 @@ import TimelineResumePage from './pages/TimelineResumePage'
 import ContactPage from './pages/ContactPage'
 import LabPage from './pages/LabPage'
 import AchievementsPage from './pages/AchievementsPage'
+import OpenSourcePage from './pages/OpenSourcePage'
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -23,6 +24,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <Route path="/" element={<App />} />
             <Route path="/work" element={<WorkPage />} />
             <Route path="/work/:projectId" element={<WorkPage />} />
+            <Route path="/opensource" element={<OpenSourcePage />} />
             <Route path="/writing" element={<WritingPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/achievements" element={<AchievementsPage />} />

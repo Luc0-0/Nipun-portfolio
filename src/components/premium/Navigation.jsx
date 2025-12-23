@@ -7,6 +7,7 @@ const NAV_ITEMS = [
   { id: "home", label: "Home", path: "/" },
   { id: "lab", label: "Lab", path: "/lab" },
   { id: "work", label: "Work", path: "/work" },
+  { id: "opensource", label: "Open Source", path: "/opensource" },
   { id: "writing", label: "Writing", path: "/writing" },
   { id: "achievements", label: "Achievements", path: "/achievements" },
   { id: "about", label: "About", path: "/about" },
@@ -39,11 +40,10 @@ export default function Navigation() {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className={`fixed top-0 left-0 right-0 z-navigation transition-all duration-500 ${
-          isScrolled
+        className={`fixed top-0 left-0 right-0 z-navigation transition-all duration-500 ${isScrolled
             ? "bg-[var(--color-bg-primary)]/90 backdrop-blur-xl border-b border-[var(--color-border)]"
             : "bg-transparent"
-        }`}
+          }`}
       >
         <div className="section-container">
           <div className="flex items-center justify-between h-20">
@@ -61,11 +61,10 @@ export default function Navigation() {
                 <Link
                   key={item.id}
                   to={item.path}
-                  className={`relative py-2 text-sm font-medium tracking-wide transition-all duration-300 ${
-                    location.pathname === item.path
+                  className={`relative py-2 text-sm font-medium tracking-wide transition-all duration-300 ${location.pathname === item.path
                       ? "text-[var(--color-accent)]"
                       : "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
-                  }`}
+                    }`}
                 >
                   {item.label}
                   {location.pathname === item.path && (
@@ -177,11 +176,10 @@ export default function Navigation() {
                     key={item.id}
                     to={item.path}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className={`text-left text-2xl font-display font-medium py-3 border-b border-[var(--color-border)] transition-colors ${
-                      location.pathname === item.path
+                    className={`text-left text-2xl font-display font-medium py-3 border-b border-[var(--color-border)] transition-colors ${location.pathname === item.path
                         ? "text-[var(--color-accent)]"
                         : "text-[var(--color-text-primary)]"
-                    }`}
+                      }`}
                   >
                     {item.label}
                   </Link>
@@ -230,7 +228,7 @@ export default function Navigation() {
                       Switch to Dark Mode
                     </>
                   )}
-                  </button>
+                </button>
               </div>
             </div>
           </motion.div>
