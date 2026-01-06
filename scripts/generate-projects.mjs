@@ -25,7 +25,8 @@ const GENERIC_EXCLUDES = ['portfolio', 'readme', 'test', 'demo'];
 
 // Manual Description Overrides
 const DESCRIPTION_OVERRIDES = {
-    'learning-nlp-from-scratch': 'A comprehensive collection of NLP implementations built from the ground up. Includes Bag of Words, TF-IDF, LSA, and Topic Modeling with clear, step-by-step Jupyter notebooks.'
+    'learning-nlp-from-scratch': 'A comprehensive collection of NLP implementations built from the ground up. Includes Bag of Words, TF-IDF, LSA, and Topic Modeling with clear, step-by-step Jupyter notebooks.',
+    'fake-news-classification-nlp': 'Standardized binary classification pipeline comparing Logistic Regression and Linear SVM (~87% acc) using TF-IDF features for interpretable fake news detection.'
 };
 
 // Strict Whitelist for Libraries
