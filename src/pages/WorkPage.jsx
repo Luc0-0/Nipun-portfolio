@@ -44,6 +44,25 @@ const PROJECTS = [
     codeUrl: "https://github.com/Luc0-0/Smart-notes-by-Nipun",
   },
   {
+    id: 5,
+    title: "Fake News Classifier",
+    subtitle: "Classical NLP & Interpretation | 2025",
+    summary:
+      "Interpretable fake news detection pipeline using classical NLP techniques (TF-IDF, SVM) to establish strong baselines.",
+    problem:
+      "Complex black-box models often lack interpretability. It is critical to establish strong, transparent baselines to understand fundamental linguistic distinctions between fake and factual news.",
+    approach:
+      "Built a transparent pipeline using NLTK/spaCy for stemming and stopword removal. Extracted TF-IDF features and benchmarked Logistic Regression against Linear SVM (SGDClassifier). Focused on feature interpretability over raw complexity.",
+    outcome:
+      "Linear SVM achieved ~87% test accuracy, outperforming Logistic Regression (83%). Proved that interpretable linear models remain highly effective for sparse text classification tasks.",
+    tags: ["NLP", "Linear SVM", "TF-IDF", "Python"],
+    stack: ["Python", "Scikit-learn", "NLTK", "spaCy", "Pandas", "Matplotlib"],
+    year: "2025",
+    category: "AI/ML Engineering",
+    liveUrl: null,
+    codeUrl: "https://github.com/Luc0-0/fake-news-classification-nlp",
+  },
+  {
     id: 3,
     title: "Task Manager Pro",
     subtitle: "Full-Stack | 2024",
