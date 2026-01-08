@@ -27,6 +27,18 @@ const FEATURED_PROJECTS = [
     category: "AI/ML"
   },
   {
+    id: 5,
+    title: "Fake News Classification NLP",
+    subtitle: "AI Research | 2025",
+    description: "Standardized binary classification pipeline comparing Logistic Regression and Linear SVM (~87% acc) using TF-IDF features for interpretable fake news detection.",
+    image: "/images/Signature Project/Fake News Classification NLP.png",
+    tags: ["Python", "NLP", "Scikit-learn", "TF-IDF", "AI"],
+    liveUrl: null,
+    codeUrl: "https://github.com/Luc0-0/Fake-News-Classification-NLP",
+    year: "2025",
+    category: "AI/ML"
+  },
+  {
     id: 3,
     title: "Task Manager Pro",
     subtitle: "Full-Stack | 2024",
