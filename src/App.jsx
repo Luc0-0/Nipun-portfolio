@@ -1,23 +1,25 @@
 // src/App.jsx
 // Obsidian Luxe - Premium Portfolio
 
-import React, { useEffect, Suspense, useState } from 'react';
+import React, { useEffect, Suspense, useState, lazy } from 'react';
 
 // Premium Components
 import Navigation from './components/premium/Navigation';
 import Hero from './components/premium/Hero';
-import ProjectGallery from './components/premium/ProjectGallery';
-import About from './components/premium/About';
-import Expertise from './components/premium/Expertise';
-import Credentials from './components/premium/Credentials';
-import NeuralTimeline from './components/premium/NeuralTimeline';
-import Contact from './components/premium/Contact';
-import Footer from './components/premium/Footer';
+
+// Lazy load heavy sections
+const ProjectGallery = lazy(() => import('./components/premium/ProjectGallery'));
+const About = lazy(() => import('./components/premium/About'));
+const Expertise = lazy(() => import('./components/premium/Expertise'));
+const Credentials = lazy(() => import('./components/premium/Credentials'));
+const NeuralTimeline = lazy(() => import('./components/premium/NeuralTimeline'));
+const Contact = lazy(() => import('./components/premium/Contact'));
+const Footer = lazy(() => import('./components/premium/Footer'));
 
 // Premium Effects
 import GlowingOrbs from './components/premium/GlowingOrbs';
 import PremiumCursor from './components/premium/PremiumCursor';
-const AmbientParticles = React.lazy(() => import('./components/premium/AmbientParticles'));
+const AmbientParticles = lazy(() => import('./components/premium/AmbientParticles'));
 
 // Loader
 import Loader from './components/ui/Loader';
@@ -77,15 +79,21 @@ export default function App() {
       {/* Main Content */}
       <main className="relative z-10">
         <Hero />
-        <ProjectGallery />
-        <About />
-        <Expertise />
-        <NeuralTimeline />
-        <Contact />
+
+        {/* Lazy load below-the-fold content */}
+        <Suspense fallback={<div className="h-screen flex items-center justify-center"><div className="w-8 h-8 border-2 border-[var(--color-accent)] border-t-transparent rounded-full animate-spin"></div></div>}>
+          <ProjectGallery />
+          <About />
+          <Expertise />
+          <NeuralTimeline />
+          <Contact />
+        </Suspense>
       </main>
 
       {/* Footer */}
-      <Footer />
+      <Suspense fallback={null}>
+        <Footer />
+      </Suspense>
 
       {/* AI Chatbot */}
       <AIChatbot />

@@ -44,7 +44,7 @@ export default function HeroBackground() {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolling(true);
-      
+
       // Clear previous timeout
       if (scrollTimeoutRef.current) {
         clearTimeout(scrollTimeoutRef.current);
@@ -67,52 +67,50 @@ export default function HeroBackground() {
   }, []);
 
   useEffect(() => {
-    if (!splineLoaded) return;
-
     const canvas = canvasRef.current;
     if (!canvas) return;
 
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    // Set canvas size
-    const setCanvasSize = () => {
+    // Set canvas size and draw static noise once
+    const drawStaticNoise = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-    };
-    setCanvasSize();
-    
-    const handleResize = () => setCanvasSize();
-    window.addEventListener('resize', handleResize);
 
-    let animationFrameId;
-
-    const draw = () => {
       const w = canvas.width;
       const h = canvas.height;
       const imageData = ctx.createImageData(w, h);
       const buffer = new Uint32Array(imageData.data.buffer);
 
       for (let i = 0; i < buffer.length; i++) {
+        // Less dense noise for better aesthetics
         buffer[i] = Math.random() < 0.5 ? 0xff000000 : 0xffffffff;
       }
 
       ctx.putImageData(imageData, 0, 0);
-      animationFrameId = requestAnimationFrame(draw);
     };
 
-    draw();
+    drawStaticNoise();
+
+    // Only redraw on resize (much cheaper than requestAnimationFrame)
+    let resizeTimeout;
+    const handleResize = () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(drawStaticNoise, 200);
+    };
+
+    window.addEventListener('resize', handleResize);
 
     return () => {
-      cancelAnimationFrame(animationFrameId);
       window.removeEventListener('resize', handleResize);
     };
-  }, [splineLoaded]);
+  }, []);
 
   return (
     <>
       {/* Spline particles embed - Paused on scroll, hidden when not in view */}
-      <iframe 
+      <iframe
         ref={iframeRef}
         frameBorder='0'
         className="absolute inset-0 w-full h-full transition-opacity duration-200"
@@ -124,14 +122,14 @@ export default function HeroBackground() {
         }}
         title="Spline Particles"
       />
-      
+
       {/* Animated grain texture overlay */}
       <canvas
         ref={canvasRef}
         className="absolute inset-0 pointer-events-none opacity-30 mix-blend-soft-light"
         style={{ zIndex: 2 }}
       />
-      
+
       {/* Diagonal light ray gradient */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -141,7 +139,7 @@ export default function HeroBackground() {
           zIndex: 1
         }}
       />
-      
+
       {/* Gold/warm tint overlay */}
       <div
         aria-hidden="true"
