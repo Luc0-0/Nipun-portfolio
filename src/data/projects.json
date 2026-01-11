@@ -115,7 +115,7 @@
     "repoUrl": "https://github.com/Luc0-0/Nipun-portfolio",
     "liveUrl": "https://www.nipun.space",
     "source": "github",
-    "lastUpdated": "2025-12-28T02:20:33Z",
+    "lastUpdated": "2026-01-08T10:52:25Z",
     "stars": 2
   },
   {
@@ -236,6 +236,21 @@
     "stars": 1
   },
   {
+    "id": "fake-news-classification-nlp",
+    "name": "Fake News Classification Nlp",
+    "category": "learning",
+    "description": "Standardized binary classification pipeline comparing Logistic Regression and Linear SVM (~87% acc) using TF-IDF features for interpretable fake news detection.",
+    "tech": [
+      "Jupyter Notebook",
+      "Python"
+    ],
+    "repoUrl": "https://github.com/Luc0-0/fake-news-classification-nlp",
+    "liveUrl": null,
+    "source": "github",
+    "lastUpdated": "2026-01-05T15:03:06Z",
+    "stars": 0
+  },
+  {
     "id": "learning-nlp-from-scratch",
     "name": "Learning Nlp From Scratch",
     "category": "learning",
@@ -247,7 +262,7 @@
     "repoUrl": "https://github.com/Luc0-0/learning-nlp-from-scratch",
     "liveUrl": null,
     "source": "github",
-    "lastUpdated": "2025-12-23T09:01:10Z",
+    "lastUpdated": "2026-01-05T12:16:31Z",
     "stars": 0
   },
   {
