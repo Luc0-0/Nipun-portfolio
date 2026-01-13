@@ -1,10 +1,12 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { useParams } from "react-router-dom";
 import Navigation from "../components/premium/Navigation";
 import Footer from "../components/premium/Footer";
 
-const PROJECTS = [
+// --- DATA DEFINITIONS ---
+
+const SIGNATURE_PROJECTS_DATA = [
   {
     id: 1,
     title: "Samarth",
@@ -44,25 +46,6 @@ const PROJECTS = [
     codeUrl: "https://github.com/Luc0-0/Smart-notes-by-Nipun",
   },
   {
-    id: 5,
-    title: "Fake News Classifier",
-    subtitle: "Classical NLP & Interpretation | 2025",
-    summary:
-      "Interpretable fake news detection pipeline using classical NLP techniques (TF-IDF, SVM) to establish strong baselines.",
-    problem:
-      "Complex black-box models often lack interpretability. It is critical to establish strong, transparent baselines to understand fundamental linguistic distinctions between fake and factual news.",
-    approach:
-      "Built a transparent pipeline using NLTK/spaCy for stemming and stopword removal. Extracted TF-IDF features and benchmarked Logistic Regression against Linear SVM (SGDClassifier). Focused on feature interpretability over raw complexity.",
-    outcome:
-      "Linear SVM achieved ~87% test accuracy, outperforming Logistic Regression (83%). Proved that interpretable linear models remain highly effective for sparse text classification tasks.",
-    tags: ["NLP", "Linear SVM", "TF-IDF", "Python"],
-    stack: ["Python", "Scikit-learn", "NLTK", "spaCy", "Pandas", "Matplotlib"],
-    year: "2025",
-    category: "AI/ML Engineering",
-    liveUrl: null,
-    codeUrl: "https://github.com/Luc0-0/fake-news-classification-nlp",
-  },
-  {
     id: 3,
     title: "Task Manager Pro",
     subtitle: "Full-Stack | 2024",
@@ -82,128 +65,99 @@ const PROJECTS = [
     codeUrl: "https://github.com/Luc0-0/Task-manager-pro",
   },
   {
-    id: 4,
-    title: "Portfolio Platform",
-    subtitle: "Web Development | 2024–2025",
+    id: 6,
+    title: "Fake News Classifier",
+    subtitle: "Production-Adjacent NLP Baseline | 2025",
     summary:
-      "High-Performance Developer Portfolio. React 19 SPA with 3D visuals, AI chatbot, and live GitHub integration.",
+      "Interpretable fake news detection pipeline using classical NLP techniques (TF-IDF, SVM) to establish strong baselines.",
     problem:
-      "Portfolio sites lack technical demonstration of capabilities. Static content doesn't showcase engineering depth. No interactive way to explore projects and technical stack.",
+      "Complex black-box models often lack interpretability. It is critical to establish strong, transparent baselines to understand fundamental linguistic distinctions between fake and factual news.",
     approach:
-      "Built React SPA with Three.js for 3D visualization. Integrated Gemini AI for technical Q&A chatbot. Implemented GitHub API sync for live project updates. Optimized with code splitting and lazy loading.",
+      "Built a transparent pipeline using NLTK/spaCy for stemming and stopword removal. Extracted TF-IDF features and benchmarked Logistic Regression against Linear SVM (SGDClassifier). Focused on feature interpretability over raw complexity.",
     outcome:
-      "Lighthouse score: 98/100. First Contentful Paint under 1.2s. 3D rendering at 60fps. AI chatbot handles 500+ queries with high accuracy.",
-    tags: ["React", "Three.js", "Gemini AI", "Tailwind", "Vite"],
-    stack: [
-      "React",
-      "Three.js",
-      "Framer Motion",
-      "Gemini AI",
-      "Tailwind",
-      "Vite",
-    ],
-    year: "2024-2025",
-    category: "Web Development",
-    liveUrl: "https://www.nipun.space",
-    codeUrl: "https://github.com/Luc0-0/Nipun-portfolio",
+      "Linear SVM achieved ~87% test accuracy, outperforming Logistic Regression (83%). Proved that interpretable linear models remain highly effective for sparse text classification tasks.",
+    tags: ["NLP", "Linear SVM", "TF-IDF", "Python"],
+    stack: ["Python", "Scikit-learn", "NLTK", "spaCy", "Pandas", "Matplotlib"],
+    year: "2025",
+    category: "AI/ML Engineering",
+    liveUrl: null,
+    codeUrl: "https://github.com/Luc0-0/fake-news-classification-nlp",
+  }
+];
+
+// Combine all AI/NLP projects (Mini formatting)
+const AI_NLP_PROJECTS_LIST = [
+  {
+    title: "Fake News Classifier",
+    description: "Standardized binary classification pipeline comparing Logistic Regression and Linear SVM.",
+    repo: "https://github.com/Luc0-0/fake-news-classification-nlp",
+    tags: ["NLP", "SVM", "Interpretability"],
+  },
+  {
+    title: "NeuroFlow",
+    description: "ML experimentation suite and model tracking",
+    repo: "https://github.com/Luc0-0/NeuroFlow",
+    tags: ["ML", "Experimentation", "Python"],
+  },
+  {
+    title: "Embeddings Project",
+    description: "Working with word and sentence embeddings",
+    repo: "https://github.com/Luc0-0/oaqjp-final-project-emb-ai",
+    tags: ["Embeddings", "NLP", "Vector DB"],
+  },
+  {
+    title: "IBM-GPT TTS/STT",
+    description: "Text-to-speech and speech-to-text integration",
+    repo: "https://github.com/Luc0-0/IBM-GPT-TTS-STT",
+    tags: ["NLP", "Audio", "IBM Watson"],
+  },
+  {
+    title: "AI Audio Analyzer",
+    description: "Audio processing and analysis with ML models",
+    repo: "https://github.com/Luc0-0/AI-Audio-Analyzer",
+    tags: ["Audio", "ML", "Signal Processing"],
+  },
+  {
+    title: "Azure AI Image Analysis",
+    description: "Image analysis using Azure Cognitive Services",
+    repo: "https://github.com/Luc0-0/Azure-AI-Image-Analysis",
+    tags: ["Azure", "Computer Vision", "Cloud"],
+  },
+  {
+    title: "Azure Business Card Analyzer",
+    description: "Business card data extraction using Azure AI",
+    repo: "https://github.com/Luc0-0/Azure-Business-Card-Analyzer",
+    tags: ["Azure", "OCR", "Document AI"],
+  },
+  {
+    title: "Final AI Speech Synthesis",
+    description: "Advanced speech synthesis using neural networks",
+    repo: "https://github.com/Luc0-0/Final-AI-Speech-Synthesis",
+    tags: ["TTS", "Neural Networks", "Audio"],
+  },
+  {
+    title: "Image Classification (Cats/Dogs)",
+    description: "CNN-based image classification model",
+    repo: "https://github.com/Luc0-0/Image-Classification-CatsVsDogs",
+    tags: ["Computer Vision", "CNN", "PyTorch"],
+  }
+];
+
+const LEARNING_PROJECTS_LIST = [
+  {
+    title: "Luc0-0 (GitHub Profile)",
+    description: "Personal learning laboratory and daily progress tracking. A living repository of continuous experimentation.",
+    repo: "https://github.com/Luc0-0/Luc0-0",
+    tags: ["Learning", "Documentation", "Daily Commits"],
+  },
+  {
+    title: "Learning NLP From Scratch",
+    description: "A comprehensive collection of NLP implementations built from the ground up. Includes Bag of Words, TF-IDF, LSA, and Topic Modeling with clear, step-by-step Jupyter notebooks.",
+    repo: "https://github.com/Luc0-0/learning-nlp-from-scratch",
+    tags: ["NLP", "Jupyter Notebooks", "Fundamentals"],
   },
 ];
 
-// Mini Projects / Supporting Work
-const MINI_PROJECTS = [
-  {
-    category: "AI / ML Experiments",
-    projects: [
-      {
-        title: "NeuroFlow",
-        description: "ML experimentation suite and model tracking",
-        repo: "https://github.com/Luc0-0/NeuroFlow",
-        tags: ["ML", "Experimentation", "Python"],
-      },
-      {
-        title: "IBM-GPT TTS/STT",
-        description: "Text-to-speech and speech-to-text integration",
-        repo: "https://github.com/Luc0-0/IBM-GPT-TTS-STT",
-        tags: ["NLP", "Audio", "IBM Watson"],
-      },
-      {
-        title: "AI Audio Analyzer",
-        description: "Audio processing and analysis with ML models",
-        repo: "https://github.com/Luc0-0/AI-Audio-Analyzer",
-        tags: ["Audio", "ML", "Signal Processing"],
-      },
-      {
-        title: "Final AI Speech Synthesis",
-        description: "Advanced speech synthesis using neural networks",
-        repo: "https://github.com/Luc0-0/Final-AI-Speech-Synthesis",
-        tags: ["TTS", "Neural Networks", "Audio"],
-      },
-      {
-        title: "Image Classification (Cats/Dogs)",
-        description: "CNN-based image classification model",
-        repo: "https://github.com/Luc0-0/Image-Classification-CatsVsDogs",
-        tags: ["Computer Vision", "CNN", "PyTorch"],
-      },
-      {
-        title: "Embeddings Project",
-        description: "Working with word and sentence embeddings",
-        repo: "https://github.com/Luc0-0/oaqjp-final-project-emb-ai",
-        tags: ["Embeddings", "NLP", "Vector DB"],
-      },
-    ],
-  },
-  {
-    category: "Web Tools & Utilities",
-    projects: [
-      {
-        title: "SmartTimer",
-        description: "Intelligent timer application with productivity features",
-        repo: "https://github.com/Luc0-0/SmartTimer",
-        tags: ["React", "Utilities", "Productivity"],
-      },
-      {
-        title: "Flashcard Generator",
-        description: "AI-powered flashcard creation tool",
-        repo: "https://github.com/Luc0-0/Flashcard-Generator",
-        tags: ["React", "Learning", "AI"],
-      },
-      {
-        title: "CodeCraftHub",
-        description: "Code snippet organization and sharing platform",
-        repo: "https://github.com/Luc0-0/CodeCraftHub",
-        tags: ["Web App", "Full-Stack", "Code Management"],
-      },
-    ],
-  },
-  {
-    category: "Azure AI & Cloud",
-    projects: [
-      {
-        title: "Azure AI Image Analysis",
-        description: "Image analysis using Azure Cognitive Services",
-        repo: "https://github.com/Luc0-0/Azure-AI-Image-Analysis",
-        tags: ["Azure", "Computer Vision", "Cloud"],
-      },
-      {
-        title: "Azure Business Card Analyzer",
-        description: "Business card data extraction using Azure AI",
-        repo: "https://github.com/Luc0-0/Azure-Business-Card-Analyzer",
-        tags: ["Azure", "OCR", "Document AI"],
-      },
-    ],
-  },
-  {
-    category: "Learning & Practice",
-    projects: [
-      {
-        title: "GitHub Profile",
-        description: "Personal GitHub profile and learning repository",
-        repo: "https://github.com/Luc0-0/Luc0-0",
-        tags: ["Profile", "Documentation", "Learning"],
-      },
-    ],
-  },
-];
 
 function MiniProjectCard({ project }) {
   return (
@@ -215,14 +169,14 @@ function MiniProjectCard({ project }) {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       whileHover={{ scale: 1.02 }}
-      className="glass-card p-4 md:p-6 group hover:border-[var(--color-accent)]/30 transition-all block"
+      className="glass-card p-4 md:p-6 group hover:border-[var(--color-accent)]/30 transition-all block h-full flex flex-col"
     >
       <div className="flex items-start justify-between gap-3 mb-3">
         <div className="flex-1">
           <h4 className="text-heading-md text-heading text-[var(--color-text-primary)] group-hover:text-[var(--color-accent)] transition-colors">
             {project.title}
           </h4>
-          <p className="text-sm text-[var(--color-text-secondary)] mt-2">
+          <p className="text-sm text-[var(--color-text-secondary)] mt-2 line-clamp-2">
             {project.description}
           </p>
         </div>
@@ -234,7 +188,7 @@ function MiniProjectCard({ project }) {
           <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
         </svg>
       </div>
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-2 mt-auto pt-4">
         {project.tags.map((tag) => (
           <span
             key={tag}
@@ -356,11 +310,16 @@ function ProjectCard({ project, index }) {
   );
 }
 
+const TABS = [
+  { id: 'signature', label: 'Signature Projects' },
+  { id: 'ai-nlp', label: 'AI / NLP Systems' },
+  { id: 'learning', label: 'Learning & Labs' }
+];
+
 export default function WorkPage() {
   const { projectId } = useParams();
-  const [showMiniProjects, setShowMiniProjects] = React.useState(false);
+  const [activeTab, setActiveTab] = useState('signature');
   const sectionRef = useRef(null);
-  const miniProjectsRef = useRef(null);
   const projectRefs = useRef({});
   const isInView = useInView(sectionRef, { once: true });
 
@@ -399,20 +358,93 @@ export default function WorkPage() {
               </p>
             </motion.div>
 
-            {/* Signature Projects */}
-            <div className="mb-20">
-              <span className="text-caption text-[var(--color-accent)] mb-4 block tracking-widest">
-                SIGNATURE PROJECTS
-              </span>
-              {PROJECTS.map((project, index) => (
-                <div key={project.id} ref={(el) => projectRefs.current[project.title.toLowerCase().replace(/\s+/g, '')] = el}>
-                  <ProjectCard project={project} index={index} />
-                </div>
+            {/* Tab Navigation */}
+            <div className="flex flex-wrap gap-4 mb-16 border-b border-[var(--color-border)] pb-1">
+              {TABS.map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`px-6 py-3 text-sm font-medium tracking-wide transition-all relative ${activeTab === tab.id
+                    ? 'text-[var(--color-accent)]'
+                    : 'text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)]'
+                    }`}
+                >
+                  {tab.label}
+                  {activeTab === tab.id && (
+                    <motion.div
+                      layoutId="activeTab"
+                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-[var(--color-accent)]"
+                      initial={false}
+                      transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                    />
+                  )}
+                </button>
               ))}
             </div>
 
-            {/* Writing & Technical Content */}
-            <div className="mb-20">
+            {/* Content Display */}
+            <div className="min-h-[500px]">
+
+              {/* 1. Signature Projects View */}
+              {activeTab === 'signature' && (
+                <motion.div
+                  key="signature"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 20 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  {SIGNATURE_PROJECTS_DATA.map((project, index) => (
+                    <div key={project.id} ref={(el) => projectRefs.current[project.title.toLowerCase().replace(/\s+/g, '')] = el}>
+                      <ProjectCard project={project} index={index} />
+                    </div>
+                  ))}
+                </motion.div>
+              )}
+
+              {/* 2. AI / NLP Systems View */}
+              {activeTab === 'ai-nlp' && (
+                <motion.div
+                  key="ai-nlp"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 20 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  <p className="text-body-lg text-[var(--color-text-secondary)] mb-10 max-w-3xl">
+                    Applied ML, NLP pipelines, and deeper technical experiments. Focus on technical depth, embeddings, and architecture.
+                  </p>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {AI_NLP_PROJECTS_LIST.map((project, index) => (
+                      <MiniProjectCard key={index} project={project} />
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+
+              {/* 3. Learning & Labs View */}
+              {activeTab === 'learning' && (
+                <motion.div
+                  key="learning"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 20 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  <p className="text-body-lg text-[var(--color-text-secondary)] mb-10 max-w-3xl">
+                    Continuous learning and system-level experimentation. Tracking daily progress and concept exploration.
+                  </p>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {LEARNING_PROJECTS_LIST.map((project, index) => (
+                      <MiniProjectCard key={index} project={project} />
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+            </div>
+
+            {/* Writing & Technical Content (Persistent at bottom) */}
+            <div className="mt-20 pt-16 border-t border-[var(--color-border)]">
               <span className="text-caption text-[var(--color-accent)] mb-4 block tracking-widest">
                 WRITING & TECHNICAL CONTENT
               </span>
@@ -478,79 +510,6 @@ export default function WorkPage() {
               </motion.article>
             </div>
 
-            {/* Mini Projects Toggle Button */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="mb-12"
-            >
-              <button
-                onClick={() => setShowMiniProjects(!showMiniProjects)}
-                className="btn-primary inline-flex items-center gap-3"
-              >
-                <span>
-                  {showMiniProjects ? "Hide" : "Show"} Supporting Projects &
-                  Experiments
-                </span>
-                <motion.div
-                  animate={{ rotate: showMiniProjects ? 180 : 0 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <svg
-                    className="w-5 h-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 14l-7 7m0 0l-7-7m7 7V3"
-                    />
-                  </svg>
-                </motion.div>
-              </button>
-            </motion.div>
-
-            {/* Mini Projects Section */}
-            <motion.div
-              ref={miniProjectsRef}
-              initial={{ opacity: 0, height: 0 }}
-              animate={
-                showMiniProjects
-                  ? { opacity: 1, height: "auto" }
-                  : { opacity: 0, height: 0 }
-              }
-              transition={{ duration: 0.3 }}
-              className="overflow-hidden"
-            >
-              <div className="mb-12">
-                <span className="text-caption text-[var(--color-accent)] mb-4 block tracking-widest">
-                  ADDITIONAL WORK
-                </span>
-                <p className="text-body-lg text-[var(--color-text-secondary)] max-w-3xl mb-12">
-                  Additional projects, experiments, tools, and learning
-                  repositories showcasing depth across multiple domains. Each
-                  demonstrates specific skills and technical exploration.
-                </p>
-
-                {/* Mini Projects by Category */}
-                {MINI_PROJECTS.map((categoryGroup, groupIndex) => (
-                  <div key={groupIndex} className="mb-12">
-                    <h3 className="text-heading-lg text-heading text-[var(--color-text-primary)] mb-6 pb-3 border-b border-[var(--color-border)]">
-                      {categoryGroup.category}
-                    </h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      {categoryGroup.projects.map((project, projectIndex) => (
-                        <MiniProjectCard key={projectIndex} project={project} />
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
           </div>
         </section>
       </main>
