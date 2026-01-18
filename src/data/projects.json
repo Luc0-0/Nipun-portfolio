@@ -75,6 +75,20 @@
     "stars": 1
   },
   {
+    "id": "bertqa-bot",
+    "name": "BertQA BOT",
+    "category": "ai-systems",
+    "description": "No description provided.",
+    "tech": [
+      "Jupyter Notebook"
+    ],
+    "repoUrl": "https://github.com/Luc0-0/BertQA-BOT",
+    "liveUrl": null,
+    "source": "github",
+    "lastUpdated": "2026-01-14T12:17:48Z",
+    "stars": 0
+  },
+  {
     "id": "neuroflow",
     "name": "NeuroFlow",
     "category": "libraries",
@@ -115,7 +129,7 @@
     "repoUrl": "https://github.com/Luc0-0/Nipun-portfolio",
     "liveUrl": "https://www.nipun.space",
     "source": "github",
-    "lastUpdated": "2026-01-08T10:52:25Z",
+    "lastUpdated": "2026-01-13T09:33:41Z",
     "stars": 2
   },
   {
