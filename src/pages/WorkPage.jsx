@@ -23,7 +23,7 @@ const SIGNATURE_PROJECTS_DATA = [
     stack: ["Python", "FastAPI", "Embeddings", "React", "RAG", "PostgreSQL"],
     year: "2024-2025",
     category: "AI/ML Engineering",
-    liveUrl: null,
+    liveUrl: "https://samarth-two.vercel.app/",
     codeUrl: "https://github.com/Luc0-0/Samarth",
   },
   {
@@ -42,27 +42,27 @@ const SIGNATURE_PROJECTS_DATA = [
     stack: ["React", "FastAPI", "Embeddings", "Transformers", "MongoDB"],
     year: "2024",
     category: "AI/ML Engineering",
-    liveUrl: null,
+    liveUrl: "https://6000-firebase-studio-1755792191232.cluster-y3k7ko3fang56qzieg3trwgyfg.cloudworkstations.dev/",
     codeUrl: "https://github.com/Luc0-0/Smart-notes-by-Nipun",
   },
   {
-    id: 3,
-    title: "Task Manager Pro",
-    subtitle: "Full-Stack | 2024",
+    id: 7,
+    title: "XLNet Emotion Classifier",
+    subtitle: "Transformer Fine-Tuning & Evaluation | 2025",
     summary:
-      "Production Task Management System. Full-stack MERN application supporting tasks, metrics, authentication, and collaborative workflows.",
+      "Emotion classification system built by fine-tuning a pretrained XLNet model, with emphasis on training diagnostics, evaluation clarity, and reproducible experimentation.",
     problem:
-      "Existing task management tools lack real-time synchronization and robust authentication. Teams require instant updates without page refreshes. Security vulnerabilities in session management create risks.",
+      "Emotion classification requires understanding nuanced linguistic context beyond surface-level word frequencies. Classical models struggle with long-range dependencies and contextual meaning across sentences.",
     approach:
-      "Built MERN stack application with JWT authentication and refresh token rotation. Implemented WebSocket connections for real-time updates. Designed RESTful API with rate limiting and input validation.",
+      "Fine-tuned XLNet (xlnet-base-cased) for multi-class emotion classification using a supervised dataset. Implemented a clean training pipeline with Hugging Face Transformers, including tokenization, dataset construction, and Trainer-based optimization. Tracked training and validation loss over epochs and evaluated performance using confusion matrices to analyze class-level behavior.",
     outcome:
-      "Supports 1000+ concurrent users. Real-time updates with under 100ms latency. Zero-downtime deployment on Vercel. 99.9% uptime over 6 months.",
-    tags: ["React", "Node.js", "Express", "MongoDB", "JWT"],
-    stack: ["React", "Node.js", "Express", "MongoDB", "Socket.io", "JWT"],
-    year: "2024",
-    category: "Web Development",
-    liveUrl: "https://task-manager-pro-are3-drab.vercel.app",
-    codeUrl: "https://github.com/Luc0-0/Task-manager-pro",
+      "Model learned stable emotion representations with clear convergence during training. Confusion matrix analysis revealed strong performance on dominant emotional classes and highlighted specific inter-class confusions, enabling targeted error analysis. Demonstrated the effectiveness of transformer-based models for contextual emotion understanding compared to classical NLP baselines.",
+    tags: ["NLP", "XLNet", "Transformers", "Python", "PyTorch"],
+    stack: ["Python", "PyTorch", "Transformers (Hugging Face)", "XLNet", "Scikit-learn", "Matplotlib / Seaborn"],
+    year: "2025",
+    category: "AI/ML Engineering",
+    liveUrl: null,
+    codeUrl: "https://github.com/Luc0-0/xlnet-emotion-classifier",
   },
   {
     id: 6,
@@ -82,16 +82,43 @@ const SIGNATURE_PROJECTS_DATA = [
     category: "AI/ML Engineering",
     liveUrl: null,
     codeUrl: "https://github.com/Luc0-0/fake-news-classification-nlp",
+  },
+  {
+    id: 3,
+    title: "Task Manager Pro",
+    subtitle: "Full-Stack | 2024",
+    summary:
+      "Production Task Management System. Full-stack MERN application supporting tasks, metrics, authentication, and collaborative workflows.",
+    problem:
+      "Existing task management tools lack real-time synchronization and robust authentication. Teams require instant updates without page refreshes. Security vulnerabilities in session management create risks.",
+    approach:
+      "Built MERN stack application with JWT authentication and refresh token rotation. Implemented WebSocket connections for real-time updates. Designed RESTful API with rate limiting and input validation.",
+    outcome:
+      "Supports 1000+ concurrent users. Real-time updates with under 100ms latency. Zero-downtime deployment on Vercel. 99.9% uptime over 6 months.",
+    tags: ["React", "Node.js", "Express", "MongoDB", "JWT"],
+    stack: ["React", "Node.js", "Express", "MongoDB", "Socket.io", "JWT"],
+    year: "2024",
+    category: "Web Development",
+    liveUrl: "https://task-manager-pro-are3-drab.vercel.app",
+    codeUrl: "https://github.com/Luc0-0/Task-manager-pro",
   }
 ];
 
 // Combine all AI/NLP projects (Mini formatting)
 const AI_NLP_PROJECTS_LIST = [
   {
+    title: "XLNet Emotion Classifier",
+    description: "Fine-tuned XLNet for emotion classification (87% acc).",
+    repo: "https://github.com/Luc0-0/xlnet-emotion-classifier",
+    tags: ["NLP", "Transformers", "XLNet"],
+    highlight: true,
+  },
+  {
     title: "Fake News Classifier",
     description: "Standardized binary classification pipeline comparing Logistic Regression and Linear SVM.",
     repo: "https://github.com/Luc0-0/fake-news-classification-nlp",
     tags: ["NLP", "SVM", "Interpretability"],
+    highlight: true,
   },
   {
     title: "NeuroFlow",
@@ -169,7 +196,10 @@ function MiniProjectCard({ project }) {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       whileHover={{ scale: 1.02 }}
-      className="glass-card p-4 md:p-6 group hover:border-[var(--color-accent)]/30 transition-all block h-full flex flex-col"
+      className={`glass-card p-4 md:p-6 group transition-all block h-full flex flex-col ${project.highlight
+        ? 'border-amber-400/50 shadow-[0_0_15px_rgba(251,191,36,0.3)] hover:border-amber-400/80'
+        : 'hover:border-[var(--color-accent)]/30'
+        }`}
     >
       <div className="flex items-start justify-between gap-3 mb-3">
         <div className="flex-1">
@@ -331,6 +361,11 @@ export default function WorkPage() {
       }, 100);
     }
   }, [projectId]);
+
+  // Scroll to top on mount
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>

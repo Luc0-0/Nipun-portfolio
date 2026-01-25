@@ -43,14 +43,14 @@ const getCustomImage = (repoName, category) => {
 // Categorized project groups
 const featuredProjects = [
   {
-    id: 1,
-    title: "Task Manager Pro",
-    description: "Task manager I built to learn full-stack dev. Has user auth, real-time updates, and works pretty smoothly. React frontend, Node backend, MongoDB for data. Deployed on Vercel.",
-    image: "https://images-platform.99static.com/jBf5a8whJMMbR3S1BcujgHrDDt4=/500x500/top/smart/99designs-contests-attachments/20/20314/attachment_20314019",
-    video: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=300&fit=crop",
-    tags: ["React", "Node.js", "MongoDB", "Authentication", "Responsive Design"],
-    demoUrl: "https://task-manager-pro-are3-drab.vercel.app",
-    codeUrl: "https://github.com/Luc0-0/Task-manager-pro",
+    id: 3,
+    title: "Samarth - Data Science Platform",
+    description: "Data science platform I'm working on. Has analytics, visualizations, and some ML features. Still adding more tools but the core stuff works well.",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop",
+    video: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop",
+    tags: ["Data Science", "Analytics", "Machine Learning", "Visualization", "Python"],
+    demoUrl: "https://samarth-two.vercel.app/",
+    codeUrl: "https://github.com/Luc0-0/samarth",
     featured: true
   },
   {
@@ -60,19 +60,30 @@ const featuredProjects = [
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop",
     video: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop",
     tags: ["React", "Firebase", "Cloud Storage", "Real-time Sync"],
-    demoUrl: "https://elevated-notes--smart-notes-luc-edition.asia-east1.hosted.app/",
+    demoUrl: "https://6000-firebase-studio-1755792191232.cluster-y3k7ko3fang56qzieg3trwgyfg.cloudworkstations.dev/",
     codeUrl: "https://github.com/Luc0-0/Smart-notes-by-Nipun",
     featured: true
   },
   {
-    id: 3,
-    title: "Samarth - Data Science Platform",
-    description: "Data science platform I'm working on. Has analytics, visualizations, and some ML features. Still adding more tools but the core stuff works well.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop",
-    video: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop",
-    tags: ["Data Science", "Analytics", "Machine Learning", "Visualization", "Python"],
-    demoUrl: "https://samarth-two.vercel.app",
-    codeUrl: "https://github.com/Luc0-0/samarth",
+    id: 112,
+    title: "XLNet Emotion Classifier",
+    description: "Fine-tuned XLNet for emotion classification. Achieved 87% accuracy with detailed training diagnostics and confusion matrix analysis.",
+    image: "/images/Signature Project/Xlnet-emotion-classifier.png",
+    video: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=400&h=300&fit=crop",
+    tags: ["XLNet", "Transformers", "NLP", "PyTorch"],
+    demoUrl: "#",
+    codeUrl: "https://github.com/Luc0-0/xlnet-emotion-classifier",
+    featured: true
+  },
+  {
+    id: 1,
+    title: "Task Manager Pro",
+    description: "Task manager I built to learn full-stack dev. Has user auth, real-time updates, and works pretty smoothly. React frontend, Node backend, MongoDB for data. Deployed on Vercel.",
+    image: "https://images-platform.99static.com/jBf5a8whJMMbR3S1BcujgHrDDt4=/500x500/top/smart/99designs-contests-attachments/20/20314/attachment_20314019",
+    video: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=300&fit=crop",
+    tags: ["React", "Node.js", "MongoDB", "Authentication", "Responsive Design"],
+    demoUrl: "https://task-manager-pro-are3-drab.vercel.app",
+    codeUrl: "https://github.com/Luc0-0/Task-manager-pro",
     featured: true
   }
 ];
