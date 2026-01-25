@@ -129,7 +129,11 @@
     "repoUrl": "https://github.com/Luc0-0/Nipun-portfolio",
     "liveUrl": "https://www.nipun.space",
     "source": "github",
+<<<<<<< HEAD
     "lastUpdated": "2026-01-25T02:24:10Z",
+=======
+    "lastUpdated": "2026-01-18T02:20:56Z",
+>>>>>>> 0aed02bbb8730ac619235913416077f2d600a1b8
     "stars": 2
   },
   {
@@ -301,7 +305,11 @@
     "id": "xlnet-emotion-classifier",
     "name": "Xlnet Emotion Classifier",
     "category": "learning",
+<<<<<<< HEAD
     "description": "Fine-tuned XLNet for emotion classification. Achieved 87% accuracy with detailed training diagnostics and confusion matrix analysis.",
+=======
+    "description": "An XLNet-based emotion classification pipeline with structured preprocessing, fine-tuning, and evaluation on multi-class emotion data.",
+>>>>>>> 0aed02bbb8730ac619235913416077f2d600a1b8
     "tech": [
       "Jupyter Notebook"
     ],
