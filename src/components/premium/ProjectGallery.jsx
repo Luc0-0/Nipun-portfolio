@@ -9,7 +9,7 @@ const FEATURED_PROJECTS = [
     description: "Indian Government Data Q/A System. Web platform that retrieves, cleans, and structures domain information from Indian government datasets. Supports natural-language Q/A using embeddings and retrieval pipelines.",
     image: "/images/Signature Project/Samarth.png",
     tags: ["NLP", "FastAPI", "Embeddings", "RAG", "React"],
-    liveUrl: null,
+    liveUrl: "https://samarth-two.vercel.app/",
     codeUrl: "https://github.com/Luc0-0/Samarth",
     year: "2024-2025",
     category: "AI/ML"
@@ -21,9 +21,21 @@ const FEATURED_PROJECTS = [
     description: "Intelligent Note System with Summaries & Semantic Search. Modern note-taking application with AI-driven summaries, rewrite tools, key-point extraction, and semantic search backed by embeddings and transformers.",
     image: "/images/Signature Project/Elevated Notes.png",
     tags: ["React", "FastAPI", "Embeddings", "Transformers", "AI"],
-    liveUrl: null,
+    liveUrl: "https://6000-firebase-studio-1755792191232.cluster-y3k7ko3fang56qzieg3trwgyfg.cloudworkstations.dev/",
     codeUrl: "https://github.com/Luc0-0/Smart-notes-by-Nipun",
     year: "2024",
+    category: "AI/ML"
+  },
+  {
+    id: 7,
+    title: "XLNet Emotion Classifier",
+    subtitle: "AI Research | 2025",
+    description: "Fine-tuned XLNet for emotion classification. Achieved 87% accuracy with detailed training diagnostics and confusion matrix analysis.",
+    image: "/images/Signature Project/Xlnet-emotion-classifier.png",
+    tags: ["XLNet", "Transformers", "NLP", "PyTorch"],
+    liveUrl: null,
+    codeUrl: "https://github.com/Luc0-0/xlnet-emotion-classifier",
+    year: "2025",
     category: "AI/ML"
   },
   {

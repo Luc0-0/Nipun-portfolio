@@ -75,6 +75,20 @@
     "stars": 1
   },
   {
+    "id": "bertqa-bot",
+    "name": "BertQA BOT",
+    "category": "ai-systems",
+    "description": "No description provided.",
+    "tech": [
+      "Jupyter Notebook"
+    ],
+    "repoUrl": "https://github.com/Luc0-0/BertQA-BOT",
+    "liveUrl": null,
+    "source": "github",
+    "lastUpdated": "2026-01-14T12:17:48Z",
+    "stars": 0
+  },
+  {
     "id": "neuroflow",
     "name": "NeuroFlow",
     "category": "libraries",
@@ -115,7 +129,7 @@
     "repoUrl": "https://github.com/Luc0-0/Nipun-portfolio",
     "liveUrl": "https://www.nipun.space",
     "source": "github",
-    "lastUpdated": "2026-01-08T10:52:25Z",
+    "lastUpdated": "2026-01-25T02:24:10Z",
     "stars": 2
   },
   {
@@ -220,6 +234,21 @@
     "stars": 1
   },
   {
+    "id": "learning-nlp-from-scratch",
+    "name": "Learning Nlp From Scratch",
+    "category": "learning",
+    "description": "A comprehensive collection of NLP implementations built from the ground up. Includes Bag of Words, TF-IDF, LSA, and Topic Modeling with clear, step-by-step Jupyter notebooks.",
+    "tech": [
+      "Jupyter Notebook",
+      "Python"
+    ],
+    "repoUrl": "https://github.com/Luc0-0/learning-nlp-from-scratch",
+    "liveUrl": null,
+    "source": "github",
+    "lastUpdated": "2026-01-19T06:14:36Z",
+    "stars": 1
+  },
+  {
     "id": "task-manager-pro",
     "name": "Task Manager Pro",
     "category": "learning",
@@ -251,21 +280,6 @@
     "stars": 0
   },
   {
-    "id": "learning-nlp-from-scratch",
-    "name": "Learning Nlp From Scratch",
-    "category": "learning",
-    "description": "A comprehensive collection of NLP implementations built from the ground up. Includes Bag of Words, TF-IDF, LSA, and Topic Modeling with clear, step-by-step Jupyter notebooks.",
-    "tech": [
-      "Jupyter Notebook",
-      "Python"
-    ],
-    "repoUrl": "https://github.com/Luc0-0/learning-nlp-from-scratch",
-    "liveUrl": null,
-    "source": "github",
-    "lastUpdated": "2026-01-05T12:16:31Z",
-    "stars": 0
-  },
-  {
     "id": "studypath",
     "name": "StudyPath",
     "category": "learning",
@@ -281,6 +295,20 @@
     "liveUrl": null,
     "source": "github",
     "lastUpdated": "2025-12-07T11:39:36Z",
+    "stars": 0
+  },
+  {
+    "id": "xlnet-emotion-classifier",
+    "name": "Xlnet Emotion Classifier",
+    "category": "learning",
+    "description": "Fine-tuned XLNet for emotion classification. Achieved 87% accuracy with detailed training diagnostics and confusion matrix analysis.",
+    "tech": [
+      "Jupyter Notebook"
+    ],
+    "repoUrl": "https://github.com/Luc0-0/xlnet-emotion-classifier",
+    "liveUrl": null,
+    "source": "github",
+    "lastUpdated": "2026-01-24T19:16:20Z",
     "stars": 0
   }
 ]
