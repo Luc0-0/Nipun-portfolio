@@ -129,7 +129,7 @@
     "repoUrl": "https://github.com/Luc0-0/Nipun-portfolio",
     "liveUrl": "https://www.nipun.space",
     "source": "github",
-    "lastUpdated": "2026-01-13T09:33:41Z",
+    "lastUpdated": "2026-01-18T02:20:56Z",
     "stars": 2
   },
   {
@@ -234,6 +234,21 @@
     "stars": 1
   },
   {
+    "id": "learning-nlp-from-scratch",
+    "name": "Learning Nlp From Scratch",
+    "category": "learning",
+    "description": "A comprehensive collection of NLP implementations built from the ground up. Includes Bag of Words, TF-IDF, LSA, and Topic Modeling with clear, step-by-step Jupyter notebooks.",
+    "tech": [
+      "Jupyter Notebook",
+      "Python"
+    ],
+    "repoUrl": "https://github.com/Luc0-0/learning-nlp-from-scratch",
+    "liveUrl": null,
+    "source": "github",
+    "lastUpdated": "2026-01-19T06:14:36Z",
+    "stars": 1
+  },
+  {
     "id": "task-manager-pro",
     "name": "Task Manager Pro",
     "category": "learning",
@@ -265,21 +280,6 @@
     "stars": 0
   },
   {
-    "id": "learning-nlp-from-scratch",
-    "name": "Learning Nlp From Scratch",
-    "category": "learning",
-    "description": "A comprehensive collection of NLP implementations built from the ground up. Includes Bag of Words, TF-IDF, LSA, and Topic Modeling with clear, step-by-step Jupyter notebooks.",
-    "tech": [
-      "Jupyter Notebook",
-      "Python"
-    ],
-    "repoUrl": "https://github.com/Luc0-0/learning-nlp-from-scratch",
-    "liveUrl": null,
-    "source": "github",
-    "lastUpdated": "2026-01-05T12:16:31Z",
-    "stars": 0
-  },
-  {
     "id": "studypath",
     "name": "StudyPath",
     "category": "learning",
@@ -295,6 +295,20 @@
     "liveUrl": null,
     "source": "github",
     "lastUpdated": "2025-12-07T11:39:36Z",
+    "stars": 0
+  },
+  {
+    "id": "xlnet-emotion-classifier",
+    "name": "Xlnet Emotion Classifier",
+    "category": "learning",
+    "description": "An XLNet-based emotion classification pipeline with structured preprocessing, fine-tuning, and evaluation on multi-class emotion data.",
+    "tech": [
+      "Jupyter Notebook"
+    ],
+    "repoUrl": "https://github.com/Luc0-0/xlnet-emotion-classifier",
+    "liveUrl": null,
+    "source": "github",
+    "lastUpdated": "2026-01-24T19:16:20Z",
     "stars": 0
   }
 ]
