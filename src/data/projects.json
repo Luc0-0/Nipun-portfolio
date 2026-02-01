@@ -27,7 +27,7 @@
     "repoUrl": "https://github.com/Luc0-0/Smart-notes-by-Nipun",
     "liveUrl": "https://elevated-notes--smart-notes-luc-edition.asia-east1.hosted.app/",
     "source": "github",
-    "lastUpdated": "2025-12-03T10:42:20Z",
+    "lastUpdated": "2026-01-25T08:36:08Z",
     "stars": 1
   },
   {
@@ -73,6 +73,20 @@
     "source": "github",
     "lastUpdated": "2025-12-03T10:42:25Z",
     "stars": 1
+  },
+  {
+    "id": "animated_banner",
+    "name": "Animated_banner",
+    "category": "ai-systems",
+    "description": "Animated banner for my github profile",
+    "tech": [
+      "CSS"
+    ],
+    "repoUrl": "https://github.com/Luc0-0/animated_banner",
+    "liveUrl": null,
+    "source": "github",
+    "lastUpdated": "2026-01-25T16:46:25Z",
+    "stars": 0
   },
   {
     "id": "bertqa-bot",
@@ -129,7 +143,7 @@
     "repoUrl": "https://github.com/Luc0-0/Nipun-portfolio",
     "liveUrl": "https://www.nipun.space",
     "source": "github",
-    "lastUpdated": "2026-01-25T02:24:10Z",
+    "lastUpdated": "2026-01-25T08:46:56Z",
     "stars": 2
   },
   {
