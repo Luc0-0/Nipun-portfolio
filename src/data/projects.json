@@ -11,8 +11,8 @@
     "repoUrl": "https://github.com/Luc0-0/Samarth",
     "liveUrl": "https://samarth-two.vercel.app",
     "source": "github",
-    "lastUpdated": "2025-12-03T10:42:17Z",
-    "stars": 1
+    "lastUpdated": "2026-02-01T16:14:30Z",
+    "stars": 2
   },
   {
     "id": "smart-notes-by-nipun",
@@ -27,8 +27,8 @@
     "repoUrl": "https://github.com/Luc0-0/Smart-notes-by-Nipun",
     "liveUrl": "https://elevated-notes--smart-notes-luc-edition.asia-east1.hosted.app/",
     "source": "github",
-    "lastUpdated": "2026-01-25T08:36:08Z",
-    "stars": 1
+    "lastUpdated": "2026-02-01T16:14:18Z",
+    "stars": 2
   },
   {
     "id": "ai-audio-analyzer",
@@ -41,8 +41,22 @@
     "repoUrl": "https://github.com/Luc0-0/AI-audio-analyzer",
     "liveUrl": null,
     "source": "github",
-    "lastUpdated": "2025-12-03T10:42:24Z",
-    "stars": 1
+    "lastUpdated": "2026-02-01T16:14:32Z",
+    "stars": 2
+  },
+  {
+    "id": "animated_banner",
+    "name": "Animated_banner",
+    "category": "ai-systems",
+    "description": "Animated banner for my github profile",
+    "tech": [
+      "CSS"
+    ],
+    "repoUrl": "https://github.com/Luc0-0/animated_banner",
+    "liveUrl": null,
+    "source": "github",
+    "lastUpdated": "2026-02-02T16:48:13Z",
+    "stars": 2
   },
   {
     "id": "ibm-chatbot-ai",
@@ -56,8 +70,8 @@
     "repoUrl": "https://github.com/Luc0-0/IBM-Chatbot-AI",
     "liveUrl": null,
     "source": "github",
-    "lastUpdated": "2025-12-03T10:42:26Z",
-    "stars": 1
+    "lastUpdated": "2026-02-01T16:14:37Z",
+    "stars": 2
   },
   {
     "id": "ibm-gpt-tss-and-stt",
@@ -71,22 +85,8 @@
     "repoUrl": "https://github.com/Luc0-0/IBM-GPT-tss-and-stt",
     "liveUrl": null,
     "source": "github",
-    "lastUpdated": "2025-12-03T10:42:25Z",
-    "stars": 1
-  },
-  {
-    "id": "animated_banner",
-    "name": "Animated_banner",
-    "category": "ai-systems",
-    "description": "Animated banner for my github profile",
-    "tech": [
-      "CSS"
-    ],
-    "repoUrl": "https://github.com/Luc0-0/animated_banner",
-    "liveUrl": null,
-    "source": "github",
-    "lastUpdated": "2026-01-25T16:46:25Z",
-    "stars": 0
+    "lastUpdated": "2026-02-01T16:14:38Z",
+    "stars": 2
   },
   {
     "id": "bertqa-bot",
@@ -99,8 +99,8 @@
     "repoUrl": "https://github.com/Luc0-0/BertQA-BOT",
     "liveUrl": null,
     "source": "github",
-    "lastUpdated": "2026-01-14T12:17:48Z",
-    "stars": 0
+    "lastUpdated": "2026-02-01T16:14:22Z",
+    "stars": 1
   },
   {
     "id": "neuroflow",
@@ -113,8 +113,8 @@
     "repoUrl": "https://github.com/Luc0-0/NeuroFlow",
     "liveUrl": null,
     "source": "github",
-    "lastUpdated": "2025-12-23T14:05:17Z",
-    "stars": 1
+    "lastUpdated": "2026-02-01T16:14:24Z",
+    "stars": 2
   },
   {
     "id": "smarttimer",
@@ -127,8 +127,8 @@
     "repoUrl": "https://github.com/Luc0-0/smarttimer",
     "liveUrl": null,
     "source": "github",
-    "lastUpdated": "2025-12-03T10:42:14Z",
-    "stars": 1
+    "lastUpdated": "2026-02-01T16:14:27Z",
+    "stars": 2
   },
   {
     "id": "nipun-portfolio",
@@ -143,8 +143,8 @@
     "repoUrl": "https://github.com/Luc0-0/Nipun-portfolio",
     "liveUrl": "https://www.nipun.space",
     "source": "github",
-    "lastUpdated": "2026-01-25T08:46:56Z",
-    "stars": 2
+    "lastUpdated": "2026-02-01T17:04:58Z",
+    "stars": 3
   },
   {
     "id": "azure-ai-image-analysis",
@@ -157,8 +157,8 @@
     "repoUrl": "https://github.com/Luc0-0/Azure-Ai-image-analysis",
     "liveUrl": null,
     "source": "github",
-    "lastUpdated": "2025-12-03T10:42:32Z",
-    "stars": 1
+    "lastUpdated": "2026-02-01T16:14:45Z",
+    "stars": 2
   },
   {
     "id": "azure-business-card-analyzer",
@@ -171,8 +171,8 @@
     "repoUrl": "https://github.com/Luc0-0/Azure-Business-card-analyzer",
     "liveUrl": null,
     "source": "github",
-    "lastUpdated": "2025-12-03T10:42:30Z",
-    "stars": 1
+    "lastUpdated": "2026-02-01T16:14:43Z",
+    "stars": 2
   },
   {
     "id": "blip-auto-image-captioning",
@@ -185,8 +185,8 @@
     "repoUrl": "https://github.com/Luc0-0/BLIP-auto-image-captioning",
     "liveUrl": null,
     "source": "github",
-    "lastUpdated": "2025-12-03T10:42:28Z",
-    "stars": 1
+    "lastUpdated": "2026-02-01T16:14:40Z",
+    "stars": 2
   },
   {
     "id": "codecrafthub",
@@ -199,8 +199,8 @@
     "repoUrl": "https://github.com/Luc0-0/CodeCraftHub",
     "liveUrl": null,
     "source": "github",
-    "lastUpdated": "2025-12-03T10:42:22Z",
-    "stars": 1
+    "lastUpdated": "2026-02-01T16:14:31Z",
+    "stars": 2
   },
   {
     "id": "final-ai-speech-synthesis",
@@ -216,8 +216,8 @@
     "repoUrl": "https://github.com/Luc0-0/Final-Ai-Speech-Synthesis",
     "liveUrl": null,
     "source": "github",
-    "lastUpdated": "2025-12-03T10:42:29Z",
-    "stars": 1
+    "lastUpdated": "2026-02-01T16:14:42Z",
+    "stars": 2
   },
   {
     "id": "flashcard-generator",
@@ -230,8 +230,8 @@
     "repoUrl": "https://github.com/Luc0-0/flashcard-generator",
     "liveUrl": null,
     "source": "github",
-    "lastUpdated": "2025-12-03T10:42:35Z",
-    "stars": 1
+    "lastUpdated": "2026-02-01T16:14:48Z",
+    "stars": 2
   },
   {
     "id": "image-classification-cat-dog",
@@ -244,8 +244,8 @@
     "repoUrl": "https://github.com/Luc0-0/Image-classification-cat-dog",
     "liveUrl": null,
     "source": "github",
-    "lastUpdated": "2025-12-03T10:42:31Z",
-    "stars": 1
+    "lastUpdated": "2026-02-01T16:14:44Z",
+    "stars": 2
   },
   {
     "id": "learning-nlp-from-scratch",
@@ -259,8 +259,8 @@
     "repoUrl": "https://github.com/Luc0-0/learning-nlp-from-scratch",
     "liveUrl": null,
     "source": "github",
-    "lastUpdated": "2026-01-19T06:14:36Z",
-    "stars": 1
+    "lastUpdated": "2026-02-01T16:14:21Z",
+    "stars": 2
   },
   {
     "id": "task-manager-pro",
@@ -275,8 +275,22 @@
     "repoUrl": "https://github.com/Luc0-0/Task-manager-pro",
     "liveUrl": "https://task-manager-pro-beta.vercel.app",
     "source": "github",
-    "lastUpdated": "2025-12-03T10:42:16Z",
-    "stars": 1
+    "lastUpdated": "2026-02-01T16:14:28Z",
+    "stars": 2
+  },
+  {
+    "id": "xlnet-emotion-classifier",
+    "name": "Xlnet Emotion Classifier",
+    "category": "learning",
+    "description": "Fine-tuned XLNet for emotion classification. Achieved 87% accuracy with detailed training diagnostics and confusion matrix analysis.",
+    "tech": [
+      "Jupyter Notebook"
+    ],
+    "repoUrl": "https://github.com/Luc0-0/xlnet-emotion-classifier",
+    "liveUrl": null,
+    "source": "github",
+    "lastUpdated": "2026-02-02T16:48:09Z",
+    "stars": 2
   },
   {
     "id": "fake-news-classification-nlp",
@@ -290,8 +304,8 @@
     "repoUrl": "https://github.com/Luc0-0/fake-news-classification-nlp",
     "liveUrl": null,
     "source": "github",
-    "lastUpdated": "2026-01-05T15:03:06Z",
-    "stars": 0
+    "lastUpdated": "2026-02-01T16:14:24Z",
+    "stars": 1
   },
   {
     "id": "studypath",
@@ -308,21 +322,7 @@
     "repoUrl": "https://github.com/Luc0-0/StudyPath",
     "liveUrl": null,
     "source": "github",
-    "lastUpdated": "2025-12-07T11:39:36Z",
-    "stars": 0
-  },
-  {
-    "id": "xlnet-emotion-classifier",
-    "name": "Xlnet Emotion Classifier",
-    "category": "learning",
-    "description": "Fine-tuned XLNet for emotion classification. Achieved 87% accuracy with detailed training diagnostics and confusion matrix analysis.",
-    "tech": [
-      "Jupyter Notebook"
-    ],
-    "repoUrl": "https://github.com/Luc0-0/xlnet-emotion-classifier",
-    "liveUrl": null,
-    "source": "github",
-    "lastUpdated": "2026-01-24T19:16:20Z",
-    "stars": 0
+    "lastUpdated": "2026-02-01T16:14:26Z",
+    "stars": 1
   }
 ]
