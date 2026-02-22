@@ -103,6 +103,20 @@
     "stars": 1
   },
   {
+    "id": "serenity-multi-modal-mental-assistant-system",
+    "name": "Serenity Multi Modal Mental Assistant System",
+    "category": "ai-systems",
+    "description": "Mental health platform. Features local LLM integration (Ollama), real-time mood analysis, and guided meditation. Stack: Python, React, and Docker",
+    "tech": [
+      "Python"
+    ],
+    "repoUrl": "https://github.com/Luc0-0/Serenity-Multi-Modal-Mental-Assistant-System",
+    "liveUrl": null,
+    "source": "github",
+    "lastUpdated": "2026-02-21T12:32:41Z",
+    "stars": 0
+  },
+  {
     "id": "neuroflow",
     "name": "NeuroFlow",
     "category": "libraries",
@@ -143,7 +157,7 @@
     "repoUrl": "https://github.com/Luc0-0/Nipun-portfolio",
     "liveUrl": "https://www.nipun.space",
     "source": "github",
-    "lastUpdated": "2026-02-10T08:45:25Z",
+    "lastUpdated": "2026-02-15T02:45:37Z",
     "stars": 3
   },
   {
