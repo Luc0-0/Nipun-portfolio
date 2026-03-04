@@ -2,7 +2,6 @@ import React, { Suspense } from 'react'
 import ReactDOM from 'react-dom/client'
 import { HashRouter as Router, Routes, Route } from 'react-router-dom'
 import { ThemeProvider } from './contexts/ThemeContext'
-// useTheme hook imported in components from './contexts/useTheme'
 import ErrorBoundary from './components/ErrorBoundary'
 import App from './App.jsx'
 import WorkPage from './pages/WorkPage'
@@ -13,6 +12,7 @@ import ContactPage from './pages/ContactPage'
 import LabPage from './pages/LabPage'
 import AchievementsPage from './pages/AchievementsPage'
 import OpenSourcePage from './pages/OpenSourcePage'
+import SerenityPage from './pages/SerenityPage'
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -31,6 +31,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <Route path="/timeline" element={<TimelineResumePage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/lab" element={<Suspense fallback={<div className="w-full h-screen bg-black" />}><LabPage /></Suspense>} />
+            <Route path="/serenity" element={<SerenityPage />} />
           </Routes>
         </Router>
       </ThemeProvider>
