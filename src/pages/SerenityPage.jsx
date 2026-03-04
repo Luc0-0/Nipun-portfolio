@@ -649,7 +649,7 @@ export default function SerenityPage() {
                 }}
               >
                 <motion.img
-                  src="/docs/serenity-dark-01-architecture.svg"
+                  src="/docs/serenity-01-architecture.svg"
                   alt="Serenity System Architecture"
                   className="w-full display-block"
                   loading="lazy"
@@ -898,7 +898,7 @@ export default function SerenityPage() {
                 }}
               >
                 <motion.img
-                  src="/docs/serenity-dark-02-chat-flow.svg"
+                  src="/docs/serenity-02-chat-flow.svg"
                   alt="Chat Message Flow"
                   className="w-full display-block"
                   loading="lazy"
@@ -988,7 +988,7 @@ export default function SerenityPage() {
                 }}
               >
                 <motion.img
-                  src="/docs/serenity-dark-05-feature-status.svg"
+                  src="/docs/serenity-05-feature-status.svg"
                   alt="Feature Status"
                   className="w-full display-block"
                   loading="lazy"
