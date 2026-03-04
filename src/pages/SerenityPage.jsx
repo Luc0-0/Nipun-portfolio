@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Navigation from "../components/premium/Navigation";
 import Footer from "../components/premium/Footer";
 import { useSEOMeta } from "../hooks/useSEOMeta";
+import { ExpandableImage } from "../components/ImageModal";
 
 const fadeInUpVariants = {
   hidden: { opacity: 0, y: 24 },
@@ -709,13 +710,10 @@ export default function SerenityPage() {
                   transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
                 }}
               >
-                <motion.img
+                <ExpandableImage
                   src="/docs/serenity-01-architecture.svg"
                   alt="Serenity System Architecture"
-                  className="w-full display-block"
-                  loading="lazy"
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                  className="w-full"
                 />
               </motion.div>
             </RevealSection>
@@ -958,13 +956,10 @@ export default function SerenityPage() {
                   transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
                 }}
               >
-                <motion.img
+                <ExpandableImage
                   src="/docs/serenity-02-chat-flow.svg"
                   alt="Chat Message Flow"
-                  className="w-full display-block"
-                  loading="lazy"
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                  className="w-full"
                 />
               </motion.div>
             </RevealSection>
@@ -1048,13 +1043,10 @@ export default function SerenityPage() {
                   transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
                 }}
               >
-                <motion.img
+                <ExpandableImage
                   src="/docs/serenity-05-feature-status.svg"
                   alt="Feature Status"
-                  className="w-full display-block"
-                  loading="lazy"
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                  className="w-full"
                 />
               </motion.div>
             </RevealSection>
