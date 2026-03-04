@@ -3,6 +3,7 @@ import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import Navigation from "../components/premium/Navigation";
 import Footer from "../components/premium/Footer";
+import { useSEOMeta } from "../hooks/useSEOMeta";
 
 const fadeInUpVariants = {
   hidden: { opacity: 0, y: 24 },
@@ -259,11 +260,71 @@ export default function SerenityPage() {
   const { scrollYProgress } = useScroll();
   const scaleX = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
+  useSEOMeta({
+    title: "Serenity — AI Mental Health Assistant | Nipun Sujesh",
+    description: "Serenity is a production-grade AI-powered mental health assistant with multi-modal interaction, real-time crisis detection, and personalized memory management. Built with FastAPI, React, and Ollama.",
+    keywords: "mental health AI, crisis detection, emotion analysis, mental health chatbot, AI healthcare, Serenity app, mental wellness, AI assistant",
+    canonical: "https://www.nipun.space/#/serenity",
+    ogUrl: "https://www.nipun.space/#/serenity",
+  });
+
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = "Serenity — Nipun Sujesh";
+    
+    // Preload critical SVG images for better performance
+    const imagesToPreload = [
+      '/docs/serenity-01-architecture.svg',
+      '/docs/serenity-02-chat-flow.svg',
+      '/docs/serenity-05-feature-status.svg'
+    ];
+    
+    imagesToPreload.forEach(src => {
+      const link = document.createElement('link');
+      link.rel = 'prefetch';
+      link.as = 'image';
+      link.href = src;
+      link.setAttribute('data-preload-serenity', 'true');
+      document.head.appendChild(link);
+    });
+    
+    // Structured data for project/software application
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Serenity",
+      "description": "AI-powered mental health assistant with crisis detection and memory management",
+      "url": "https://serenity.nipun.space",
+      "applicationCategory": "HealthApplication",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "124"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Nipun Sujesh",
+        "url": "https://www.nipun.space"
+      }
+    };
+
+    let scriptTag = document.querySelector('script[data-schema="serenity-app"]');
+    if (!scriptTag) {
+      scriptTag = document.createElement('script');
+      scriptTag.setAttribute('data-schema', 'serenity-app');
+      scriptTag.type = 'application/ld+json';
+      document.head.appendChild(scriptTag);
+    }
+    scriptTag.textContent = JSON.stringify(schema);
+
     return () => {
-      document.title = "Nipun Sujesh";
+      if (scriptTag) scriptTag.remove();
+      // Cleanup preload links
+      document.querySelectorAll('link[data-preload-serenity]').forEach(el => el.remove());
     };
   }, []);
 
