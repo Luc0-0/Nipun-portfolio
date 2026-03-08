@@ -108,12 +108,15 @@
     "category": "ai-systems",
     "description": "Mental health platform. Features local LLM integration (Ollama), real-time mood analysis, and guided meditation. Stack: Python, React, and Docker",
     "tech": [
-      "Python"
+      "JavaScript",
+      "React",
+      "Python",
+      "FastAPI"
     ],
     "repoUrl": "https://github.com/Luc0-0/Serenity-Multi-Modal-Mental-Assistant-System",
-    "liveUrl": "https://serenity-multi-modal-mental-assista.vercel.app",
+    "liveUrl": "https://serenity.nipun.space",
     "source": "github",
-    "lastUpdated": "2026-02-28T17:38:42Z",
+    "lastUpdated": "2026-03-06T07:05:07Z",
     "stars": 1
   },
   {
@@ -157,7 +160,7 @@
     "repoUrl": "https://github.com/Luc0-0/Nipun-portfolio",
     "liveUrl": "https://www.nipun.space",
     "source": "github",
-    "lastUpdated": "2026-02-22T02:40:55Z",
+    "lastUpdated": "2026-03-04T11:22:00Z",
     "stars": 3
   },
   {
