@@ -4,6 +4,7 @@ import { HashRouter as Router, Routes, Route } from 'react-router-dom'
 import { ThemeProvider } from './contexts/ThemeContext'
 import ErrorBoundary from './components/ErrorBoundary'
 import App from './App.jsx'
+import { preventAutoFocus } from './utils/focusManager'
 import WorkPage from './pages/WorkPage'
 import WritingPage from './pages/WritingPage'
 import AboutPage from './pages/AboutPage'
@@ -14,6 +15,9 @@ import AchievementsPage from './pages/AchievementsPage'
 import OpenSourcePage from './pages/OpenSourcePage'
 import SerenityPage from './pages/SerenityPage'
 import './index.css'
+
+// Prevent auto-focus on page load
+preventAutoFocus();
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

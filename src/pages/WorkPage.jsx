@@ -8,6 +8,25 @@ import Footer from "../components/premium/Footer";
 
 const SIGNATURE_PROJECTS_DATA = [
   {
+    id: 0,
+    title: "Serenity",
+    subtitle: "AI Mental Health Assistant | BTech Capstone | 2025",
+    summary:
+      "Production-grade AI-powered mental health assistant with multi-modal interaction, real-time crisis detection, and personalized memory management. Deployed and live.",
+    problem:
+      "Mental health support is critical but expensive and limited. Existing chatbots lack contextual memory, crisis awareness, and emotional understanding. No accessible 24/7 mental health companion exists that combines real-time safety detection with personalized conversation.",
+    approach:
+      "Built full-stack system with FastAPI backend using multi-tier memory architecture (short-term, semantic, episodic, long-term). Implemented real-time crisis detection pipeline with sentiment + intent analysis. Integrated Ollama Cloud LLM with SSE for streaming responses. React frontend with smooth typewriter effects and responsive design. PostgreSQL with async SQLAlchemy for production-ready data handling.",
+    outcome:
+      "Live deployment at serenity.nipun.space. 12-step message processing pipeline with sub-100ms latency. Accurate crisis detection with 4-tier memory system. Demonstrates production ML architecture combining real-time safety, personalization, and scalability.",
+    tags: ["AI/ML", "Mental Health", "Full-Stack", "Crisis Detection", "FastAPI", "React"],
+    stack: ["Python", "FastAPI", "React 19", "PostgreSQL", "Ollama", "Transformers", "Docker", "Vercel", "Railway"],
+    year: "2024-2025",
+    category: "AI/ML Engineering",
+    liveUrl: "https://serenity.nipun.space",
+    codeUrl: "https://github.com/Luc0-0/Serenity-Multi-Modal-Mental-Assistant-System",
+  },
+  {
     id: 1,
     title: "Samarth",
     subtitle: "AI + Gov Data | 2024–2025",
