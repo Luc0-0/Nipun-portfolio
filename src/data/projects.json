@@ -89,20 +89,6 @@
     "stars": 2
   },
   {
-    "id": "bertqa-bot",
-    "name": "BertQA BOT",
-    "category": "ai-systems",
-    "description": "No description provided.",
-    "tech": [
-      "Jupyter Notebook"
-    ],
-    "repoUrl": "https://github.com/Luc0-0/BertQA-BOT",
-    "liveUrl": null,
-    "source": "github",
-    "lastUpdated": "2026-02-01T16:14:22Z",
-    "stars": 1
-  },
-  {
     "id": "serenity-multi-modal-mental-assistant-system",
     "name": "Serenity Multi Modal Mental Assistant System",
     "category": "ai-systems",
@@ -116,7 +102,21 @@
     "repoUrl": "https://github.com/Luc0-0/Serenity-Multi-Modal-Mental-Assistant-System",
     "liveUrl": "https://serenity.nipun.space",
     "source": "github",
-    "lastUpdated": "2026-03-06T07:05:07Z",
+    "lastUpdated": "2026-03-14T17:07:38Z",
+    "stars": 2
+  },
+  {
+    "id": "bertqa-bot",
+    "name": "BertQA BOT",
+    "category": "ai-systems",
+    "description": "No description provided.",
+    "tech": [
+      "Jupyter Notebook"
+    ],
+    "repoUrl": "https://github.com/Luc0-0/BertQA-BOT",
+    "liveUrl": null,
+    "source": "github",
+    "lastUpdated": "2026-02-01T16:14:22Z",
     "stars": 1
   },
   {
@@ -160,7 +160,7 @@
     "repoUrl": "https://github.com/Luc0-0/Nipun-portfolio",
     "liveUrl": "https://www.nipun.space",
     "source": "github",
-    "lastUpdated": "2026-03-04T11:22:00Z",
+    "lastUpdated": "2026-03-10T11:04:36Z",
     "stars": 3
   },
   {
