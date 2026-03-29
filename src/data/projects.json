@@ -31,6 +31,37 @@
     "stars": 2
   },
   {
+    "id": "godprofile",
+    "name": "GodProfile",
+    "category": "ai-systems",
+    "description": "The ultimate AI Agent skillset. An official MCP Server packed with 16 world-class tools to autonomously convert standard markdown into animated, glassmorphic GitHub Profile masterpieces",
+    "tech": [
+      "Python"
+    ],
+    "repoUrl": "https://github.com/Luc0-0/GodProfile",
+    "liveUrl": null,
+    "source": "github",
+    "lastUpdated": "2026-03-27T15:11:46Z",
+    "stars": 9
+  },
+  {
+    "id": "serenity-multi-modal-mental-assistant-system",
+    "name": "Serenity Multi Modal Mental Assistant System",
+    "category": "ai-systems",
+    "description": "Mental health platform. Features local LLM integration (Ollama), real-time mood analysis, and guided meditation. Stack: Python, React, and Docker",
+    "tech": [
+      "JavaScript",
+      "React",
+      "Python",
+      "FastAPI"
+    ],
+    "repoUrl": "https://github.com/Luc0-0/Serenity-Multi-Modal-Mental-Assistant-System",
+    "liveUrl": "https://serenity.nipun.space",
+    "source": "github",
+    "lastUpdated": "2026-03-26T15:56:32Z",
+    "stars": 4
+  },
+  {
     "id": "ai-audio-analyzer",
     "name": "AI Audio Analyzer",
     "category": "ai-systems",
@@ -89,23 +120,6 @@
     "stars": 2
   },
   {
-    "id": "serenity-multi-modal-mental-assistant-system",
-    "name": "Serenity Multi Modal Mental Assistant System",
-    "category": "ai-systems",
-    "description": "Mental health platform. Features local LLM integration (Ollama), real-time mood analysis, and guided meditation. Stack: Python, React, and Docker",
-    "tech": [
-      "JavaScript",
-      "React",
-      "Python",
-      "FastAPI"
-    ],
-    "repoUrl": "https://github.com/Luc0-0/Serenity-Multi-Modal-Mental-Assistant-System",
-    "liveUrl": "https://serenity.nipun.space",
-    "source": "github",
-    "lastUpdated": "2026-03-21T16:15:58Z",
-    "stars": 2
-  },
-  {
     "id": "bertqa-bot",
     "name": "BertQA BOT",
     "category": "ai-systems",
@@ -160,7 +174,7 @@
     "repoUrl": "https://github.com/Luc0-0/Nipun-portfolio",
     "liveUrl": "https://www.nipun.space",
     "source": "github",
-    "lastUpdated": "2026-03-15T02:52:34Z",
+    "lastUpdated": "2026-03-22T02:44:22Z",
     "stars": 3
   },
   {
