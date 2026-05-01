@@ -527,3 +527,56 @@ textarea:focus-visible {
 .image-premium:hover img {
   transform: scale(1.05);
 }
+
+/* ============================================
+   HERO ENHANCEMENTS
+   ============================================ */
+
+/* Subtle dot grid — structured, tech-forward feel */
+.hero-dot-grid {
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.065) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+.light .hero-dot-grid {
+  background-image: radial-gradient(circle, rgba(43, 38, 32, 0.07) 1px, transparent 1px);
+}
+
+/* Aurora gradient layers */
+@keyframes aurora-shift-1 {
+  0%   { transform: scale(1) translate(0, 0); }
+  100% { transform: scale(1.12) translate(3%, -4%); }
+}
+
+@keyframes aurora-shift-2 {
+  0%   { transform: scale(1.06) translate(0, 0); }
+  100% { transform: scale(0.94) translate(-4%, 3%); }
+}
+
+.aurora-layer-1 {
+  background:
+    radial-gradient(ellipse 70% 55% at 18% 38%, rgba(99, 60, 220, 0.07) 0%, transparent 68%),
+    radial-gradient(ellipse 55% 70% at 84% 62%, rgba(20, 184, 160, 0.05) 0%, transparent 70%);
+  animation: aurora-shift-1 18s ease-in-out infinite alternate;
+}
+
+.aurora-layer-2 {
+  background:
+    radial-gradient(ellipse 80% 40% at 72% 14%, rgba(212, 168, 83, 0.06) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 60% at 8% 80%, rgba(180, 60, 120, 0.04) 0%, transparent 70%);
+  animation: aurora-shift-2 22s ease-in-out infinite alternate;
+}
+
+/* Skills marquee ticker */
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  animation: marquee-scroll 32s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}

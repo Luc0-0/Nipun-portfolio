@@ -1,165 +1,321 @@
-import React, { useRef, useCallback, memo } from "react";
-import { motion } from "framer-motion";
+import React, { useRef, useCallback, memo, useEffect, useState, useMemo } from "react";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 import HeroBackground from "./HeroBackground";
 import HeroSpotlight from "./HeroSpotlight";
 
-// Animation variants for reusability and maintainability
-const fadeInUpVariants = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 1.2, ease: "easeInOut" },
-};
+// ─── Scramble Text Hook ───────────────────────────────────────────────────────
+const SCRAMBLE_CHARS = "!<>-_\\/[]{}=+*^?#@$%&";
 
-const fadeInVariants = {
-  initial: { opacity: 0 },
-  animate: { opacity: 1 },
-  transition: { duration: 1.2, ease: "easeInOut" },
-};
+function useScrambleText(text, startDelay = 900) {
+  const [display, setDisplay] = useState(text);
 
-const scaleInVariants = {
-  initial: { opacity: 0, scale: 0.95 },
-  animate: { opacity: 1, scale: 1 },
-  transition: { duration: 1.2, ease: "easeInOut" },
-};
+  useEffect(() => {
+    let intervalId;
+    const totalFrames = 28;
+    let frame = 0;
 
-// Constants for better maintainability
+    const timeoutId = setTimeout(() => {
+      intervalId = setInterval(() => {
+        frame++;
+        const settled = Math.floor((frame / totalFrames) * text.length);
+        setDisplay(
+          text
+            .split("")
+            .map((char, i) => {
+              if (char === " ") return " ";
+              if (i < settled) return char;
+              return SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
+            })
+            .join("")
+        );
+        if (frame >= totalFrames) {
+          clearInterval(intervalId);
+          setDisplay(text);
+        }
+      }, 48);
+    }, startDelay);
+
+    return () => {
+      clearTimeout(timeoutId);
+      if (intervalId) clearInterval(intervalId);
+    };
+  }, [text, startDelay]);
+
+  return display;
+}
+
+// ─── Count-Up Hook ────────────────────────────────────────────────────────────
+function useCountUp(end, duration = 1800, delay = 0, shouldStart = false) {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!shouldStart) return;
+    let rafId;
+
+    const timer = setTimeout(() => {
+      let startTime = null;
+      const animate = (timestamp) => {
+        if (!startTime) startTime = timestamp;
+        const progress = Math.min((timestamp - startTime) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        setCount(Math.round(eased * end));
+        if (progress < 1) rafId = requestAnimationFrame(animate);
+      };
+      rafId = requestAnimationFrame(animate);
+    }, delay);
+
+    return () => {
+      clearTimeout(timer);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
+  }, [shouldStart, end, duration, delay]);
+
+  return count;
+}
+
+// ─── Magnetic Button ──────────────────────────────────────────────────────────
+function MagneticButton({ children, className, onClick, href }) {
+  const ref = useRef(null);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const springX = useSpring(x, { stiffness: 350, damping: 20 });
+  const springY = useSpring(y, { stiffness: 350, damping: 20 });
+
+  const handleMouseMove = useCallback(
+    (e) => {
+      const rect = ref.current?.getBoundingClientRect();
+      if (!rect) return;
+      x.set((e.clientX - (rect.left + rect.width / 2)) * 0.28);
+      y.set((e.clientY - (rect.top + rect.height / 2)) * 0.28);
+    },
+    [x, y]
+  );
+
+  const handleMouseLeave = useCallback(() => {
+    x.set(0);
+    y.set(0);
+  }, [x, y]);
+
+  if (href) {
+    return (
+      <motion.a
+        ref={ref}
+        href={href}
+        className={className}
+        style={{ x: springX, y: springY }}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        whileTap={{ scale: 0.96 }}
+      >
+        {children}
+      </motion.a>
+    );
+  }
+
+  return (
+    <motion.button
+      ref={ref}
+      onClick={onClick}
+      className={className}
+      style={{ x: springX, y: springY }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      whileTap={{ scale: 0.96 }}
+    >
+      {children}
+    </motion.button>
+  );
+}
+
+// ─── Constants ────────────────────────────────────────────────────────────────
 const RESUME_PATH = "/images/NIPUN SUJESH_compressed.pdf";
 const RESUME_FILENAME = "Nipun_Sujesh_Resume.pdf";
-const ANIMATION_DELAYS = {
-  name: 0.3,
-  title: 0.5,
-  description: 0.7,
-  proof: 0.9,
-  buttons: 1.1,
-  stats: 1.3,
-  portrait: 0.4,
-  badge: 1.5,
-  scrollIndicator: 1.5,
-};
 
-/**
- * Hero component - Premium landing section with animated content
- * Displays personal introduction, stats, and call-to-action buttons
- */
+const SKILLS = [
+  "Python",
+  "LangChain",
+  "RAG Pipelines",
+  "FastAPI",
+  "React",
+  "PyTorch",
+  "OpenAI API",
+  "Three.js",
+  "GSAP",
+  "Docker",
+  "NLP",
+  "LLMs",
+  "Hugging Face",
+  "PostgreSQL",
+  "Node.js",
+];
+
+const FLOATING_BADGES = [
+  {
+    label: "NLP / LLMs",
+    sub: "Expert",
+    pos: "absolute -left-3 top-10",
+    delay: 1.7,
+    floatY: -7,
+    floatDuration: 3.4,
+  },
+  {
+    label: "RAG Pipelines",
+    sub: "Builder",
+    pos: "absolute -left-3 bottom-28",
+    delay: 1.9,
+    floatY: 7,
+    floatDuration: 3.8,
+  },
+];
+
+const NAME_CHARS = "Nipun Sujesh".split("");
+
+// ─── Hero Component ───────────────────────────────────────────────────────────
 const Hero = memo(() => {
-  const containerRef = useRef(null);
+  const [statsStarted, setStatsStarted] = useState(false);
 
-  // Memoized download handler for performance
+  const scrambledTitle = useScrambleText("AI Engineer", 1100);
+  const cgpaRaw = useCountUp(80, 1800, 0, statsStarted);
+  const projects = useCountUp(10, 1600, 80, statsStarted);
+  const certs = useCountUp(8, 1400, 160, statsStarted);
+
+  // Start count-up timed to match when stats section fades in (delay 1.65s)
+  useEffect(() => {
+    const t = setTimeout(() => setStatsStarted(true), 1650);
+    return () => clearTimeout(t);
+  }, []);
+
   const handleResumeDownload = useCallback(() => {
     try {
       const link = document.createElement("a");
       link.href = RESUME_PATH;
       link.download = RESUME_FILENAME;
       link.click();
-    } catch (error) {
-      console.error("Failed to download resume:", error);
-      // Fallback: open in new tab
+    } catch {
       window.open(RESUME_PATH, "_blank");
     }
   }, []);
 
+  const marqueeItems = useMemo(() => [...SKILLS, ...SKILLS], []);
+
   return (
     <section
-      ref={containerRef}
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
       style={{ position: "relative", backgroundColor: "#0a0a0a", zIndex: 0 }}
     >
-      {/* Grain texture overlay */}
+      {/* Layered background */}
       <HeroBackground />
+      <div className="hero-dot-grid absolute inset-0 pointer-events-none" style={{ zIndex: 1 }} />
+      <div className="aurora-layer-1 absolute inset-0 pointer-events-none" style={{ zIndex: 1 }} />
+      <div className="aurora-layer-2 absolute inset-0 pointer-events-none" style={{ zIndex: 1 }} />
 
-      {/* Main Content */}
-      <div className="section-container relative z-10 py-32">
+      {/* Main content */}
+      <div className="section-container relative py-32" style={{ zIndex: 10 }}>
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-          {/* Left: Text Content */}
-          <div className="order-2 lg:order-1">
-            {/* Name - Single Line */}
-            <motion.h1
-              {...fadeInUpVariants}
-              transition={{
-                ...fadeInUpVariants.transition,
-                delay: ANIMATION_DELAYS.name,
-              }}
-              className="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-[var(--color-text-primary)] mb-6 whitespace-nowrap"
-            >
-              Nipun Sujesh
-            </motion.h1>
 
-            {/* Title */}
-            <motion.p
-              {...fadeInUpVariants}
-              transition={{
-                ...fadeInUpVariants.transition,
-                delay: ANIMATION_DELAYS.title,
-              }}
-              className="text-heading-lg text-[var(--color-accent)] mb-8"
+          {/* ── Left column ── */}
+          <div className="order-2 lg:order-1">
+
+            {/* Available pill */}
+            <motion.div
+              initial={{ opacity: 0, y: -12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--color-border)] bg-[var(--color-accent-muted)] mb-8"
             >
-              AI Engineer
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-400" />
+              </span>
+              <span className="text-xs font-medium tracking-wider uppercase text-[var(--color-text-secondary)]">
+                Open to Opportunities
+              </span>
+            </motion.div>
+
+            {/* Split-letter name reveal */}
+            <div className="overflow-hidden mb-6">
+              <h1
+                className="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-[var(--color-text-primary)] whitespace-nowrap flex"
+                aria-label="Nipun Sujesh"
+              >
+                {NAME_CHARS.map((char, i) => (
+                  <motion.span
+                    key={i}
+                    initial={{ y: 80, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{
+                      duration: 0.65,
+                      delay: 0.35 + i * 0.04,
+                      ease: [0.22, 1, 0.36, 1],
+                    }}
+                    style={{
+                      display: "inline-block",
+                      minWidth: char === " " ? "0.3em" : undefined,
+                    }}
+                  >
+                    {char}
+                  </motion.span>
+                ))}
+              </h1>
+            </div>
+
+            {/* Scramble title */}
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.65 }}
+              className="font-mono text-xl md:text-2xl tracking-widest text-[var(--color-accent)] mb-8"
+            >
+              {scrambledTitle}
             </motion.p>
 
             {/* Description */}
             <motion.p
-              {...fadeInUpVariants}
-              transition={{
-                ...fadeInUpVariants.transition,
-                delay: ANIMATION_DELAYS.description,
-              }}
-              className="text-body-lg text-[var(--color-text-secondary)] max-w-2xl mb-6 leading-relaxed text-justify"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.85, ease: [0.22, 1, 0.36, 1] }}
+              className="text-body-lg text-[var(--color-text-secondary)] max-w-xl mb-6 leading-relaxed"
             >
               Delivering reliable AI systems with clean data flows, optimized
               inference, and maintainable full-stack integrations. Skilled in
               NLP, LLMs, RAG pipelines, and scalable deployments.
             </motion.p>
 
-            {/* Proof Statements */}
+            {/* Proof points */}
             <motion.div
-              {...fadeInUpVariants}
-              transition={{
-                ...fadeInUpVariants.transition,
-                delay: ANIMATION_DELAYS.proof,
-              }}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1.0, ease: [0.22, 1, 0.36, 1] }}
               className="space-y-2 mb-10"
             >
-              <p className="text-sm text-[var(--color-text-muted)]">
-                • 10+ production-ready projects
-              </p>
-              <p className="text-sm text-[var(--color-text-muted)]">
-                • 8.0 CGPA • IBM Certified AI Developer
-              </p>
-              <p className="text-sm text-[var(--color-text-muted)]">
-                • Building applied AI systems with practical constraints
-              </p>
+              {[
+                "10+ production-ready projects",
+                "8.0 CGPA  ·  IBM Certified AI Developer",
+                "Building applied AI systems with practical constraints",
+              ].map((text, i) => (
+                <p
+                  key={i}
+                  className="text-sm text-[var(--color-text-muted)] flex items-center gap-2"
+                >
+                  <span className="w-1 h-1 rounded-full bg-[var(--color-accent)] flex-shrink-0" />
+                  {text}
+                </p>
+              ))}
             </motion.div>
 
-            {/* CTA Buttons */}
+            {/* Magnetic CTA buttons */}
             <motion.div
-              {...fadeInUpVariants}
-              transition={{
-                ...fadeInUpVariants.transition,
-                delay: ANIMATION_DELAYS.buttons,
-              }}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1.15, ease: [0.22, 1, 0.36, 1] }}
               className="flex flex-wrap gap-4"
             >
-              <motion.a
-                href="#/work"
-                className="btn-primary"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
+              <MagneticButton href="#/work" className="btn-primary">
                 <span>View Work</span>
-              </motion.a>
+              </MagneticButton>
 
-              <motion.button
-                onClick={handleResumeDownload}
-                className="btn-secondary"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
+              <MagneticButton onClick={handleResumeDownload} className="btn-secondary">
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -168,155 +324,147 @@ const Hero = memo(() => {
                   />
                 </svg>
                 <span>Resume</span>
-              </motion.button>
+              </MagneticButton>
             </motion.div>
 
-            {/* Lab Hint with Underline Glow & Text Highlight */}
+            {/* Skills marquee ticker */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.35, duration: 0.8 }}
+              className="relative mt-8 overflow-hidden"
+              style={{
+                maskImage:
+                  "linear-gradient(to right, transparent, black 14%, black 86%, transparent)",
+                WebkitMaskImage:
+                  "linear-gradient(to right, transparent, black 14%, black 86%, transparent)",
+              }}
+            >
+              <div className="marquee-track flex gap-8 w-max py-2">
+                {marqueeItems.map((skill, i) => (
+                  <span
+                    key={i}
+                    className="text-xs font-mono tracking-widest text-[var(--color-text-muted)] uppercase whitespace-nowrap inline-flex items-center gap-2"
+                  >
+                    <span className="text-[var(--color-accent)] opacity-50">◆</span>
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Lab hint */}
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: ANIMATION_DELAYS.buttons + 0.2, duration: 0.8 }}
-              className="inline-block mt-8"
+              transition={{ delay: 1.5, duration: 0.8 }}
+              className="inline-block mt-6"
             >
               <motion.a
                 href="#/lab"
-                className="inline-flex items-center gap-2 text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent)] transition-colors group relative"
+                className="inline-flex items-center gap-2 text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent)] transition-colors relative"
               >
                 <motion.span
-                  animate={{
-                    opacity: [0.6, 1, 0.6],
-                    scale: [1, 1.05, 1]
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                  className="w-2 h-2 rounded-full bg-[var(--color-accent)] relative z-10"
+                  animate={{ opacity: [0.6, 1, 0.6], scale: [1, 1.05, 1] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  className="w-2 h-2 rounded-full bg-[var(--color-accent)]"
                 />
-                
-                <span className="tracking-wide relative z-10">Explore 3D Systems Lab</span>
-
-                {/* Underline with glow */}
+                <span className="tracking-wide">Explore 3D Systems Lab</span>
                 <motion.div
-                  className="absolute bottom-0 left-0 right-0 h-0.5 rounded-full bg-gradient-to-r from-transparent via-[var(--color-accent)] to-transparent"
-                  animate={{
-                    scaleX: [0, 1, 0],
-                    opacity: [0, 1, 0]
-                  }}
-                  transition={{
-                    duration: 2.5,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                  style={{ 
-                    boxShadow: "0 0 8px rgba(212, 168, 83, 0.6)",
-                    transformOrigin: "left"
+                  className="absolute bottom-0 left-0 right-0 h-px rounded-full bg-gradient-to-r from-transparent via-[var(--color-accent)] to-transparent"
+                  animate={{ scaleX: [0, 1, 0], opacity: [0, 1, 0] }}
+                  transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                  style={{
+                    boxShadow: "0 0 8px rgba(212,168,83,0.6)",
+                    transformOrigin: "left",
                   }}
                 />
-
-                <motion.svg
-                  className="w-4 h-4 relative z-10"
+                <svg
+                  className="w-4 h-4 flex-shrink-0"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
-                  whileHover={{
-                    x: 4
-                  }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 300,
-                    damping: 20
-                  }}
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </motion.svg>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
               </motion.a>
             </motion.div>
 
-            {/* Quick Stats */}
+            {/* Count-up stats */}
             <motion.div
-              {...fadeInVariants}
-              transition={{
-                ...fadeInVariants.transition,
-                delay: ANIMATION_DELAYS.stats,
-              }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 1.65 }}
               className="flex gap-8 mt-12 pt-8 border-t border-[var(--color-border)]"
             >
               <div>
-                <div className="text-2xl font-display font-medium text-[var(--color-text-primary)]">
-                  8.0
+                <div className="text-2xl font-display font-medium text-[var(--color-text-primary)] tabular-nums">
+                  {(cgpaRaw / 10).toFixed(1)}
                 </div>
-                <div className="text-sm text-[var(--color-text-muted)]">
-                  CGPA
-                </div>
+                <div className="text-sm text-[var(--color-text-muted)]">CGPA</div>
               </div>
               <div>
-                <div className="text-2xl font-display font-medium text-[var(--color-text-primary)]">
-                  10+
+                <div className="text-2xl font-display font-medium text-[var(--color-text-primary)] tabular-nums">
+                  {projects}+
                 </div>
-                <div className="text-sm text-[var(--color-text-muted)]">
-                  Projects
-                </div>
+                <div className="text-sm text-[var(--color-text-muted)]">Projects</div>
               </div>
               <div>
-                <div className="text-2xl font-display font-medium text-[var(--color-text-primary)]">
-                  8
+                <div className="text-2xl font-display font-medium text-[var(--color-text-primary)] tabular-nums">
+                  {certs}
                 </div>
-                <div className="text-sm text-[var(--color-text-muted)]">
-                  Certifications
-                </div>
+                <div className="text-sm text-[var(--color-text-muted)]">Certifications</div>
               </div>
             </motion.div>
           </div>
 
-          {/* Right: Portrait */}
+          {/* ── Right column — portrait ── */}
           <motion.div
-            {...scaleInVariants}
-            transition={{
-              ...scaleInVariants.transition,
-              delay: ANIMATION_DELAYS.portrait,
-            }}
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1.0, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
             className="order-1 lg:order-2 flex justify-center lg:justify-start lg:pl-48"
           >
             <div className="relative">
-              {/* Premium Spotlight Effect */}
               <HeroSpotlight />
 
-              {/* Decorative Frame */}
+              {/* Decorative frames */}
               <div className="absolute -inset-4 border border-[var(--color-accent)]/20 rounded-2xl" />
               <div className="absolute -inset-8 border border-[var(--color-border)] rounded-3xl" />
-
-              {/* Glow Effect */}
               <div className="absolute -inset-12 bg-[var(--color-accent)]/5 rounded-full blur-3xl" />
 
-              {/* Image Container */}
+              {/* Portrait — clip-path curtain reveal */}
               <div className="relative w-72 h-96 md:w-80 md:h-[420px] lg:w-96 lg:h-[500px] rounded-xl overflow-hidden bg-[var(--color-bg-tertiary)]">
-                <img
+                <motion.img
                   src="/images/Model.jpg"
                   alt="Nipun Sujesh - AI Engineer"
-                  className="w-full h-full object-cover object-top"
+                  className="w-full h-full object-cover"
                   style={{ objectPosition: "center 20%" }}
+                  initial={{ clipPath: "inset(0 0 100% 0)" }}
+                  animate={{ clipPath: "inset(0 0 0% 0)" }}
+                  transition={{
+                    duration: 1.1,
+                    delay: 0.7,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
                   onError={(e) => {
-                    e.target.src = "/images/Nipun.webp"; // Fallback image
-                    e.target.alt = "Fallback portrait";
+                    e.target.src = "/images/Nipun.webp";
                   }}
                   loading="lazy"
                 />
-
-                {/* Subtle Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg-primary)]/40 via-transparent to-transparent" />
               </div>
 
-              {/* Floating Badge */}
+              {/* IBM Certified badge */}
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{
-                  duration: 1.2,
-                  delay: ANIMATION_DELAYS.badge,
-                  ease: "easeInOut",
-                }}
+                transition={{ duration: 1.0, delay: 1.8, ease: [0.22, 1, 0.36, 1] }}
                 className="absolute -right-4 bottom-20 glass-card px-4 py-3"
               >
                 <div className="flex items-center gap-3">
@@ -330,9 +478,7 @@ const Hero = memo(() => {
                     </svg>
                   </div>
                   <div>
-                    <div className="text-xs text-[var(--color-text-muted)]">
-                      IBM Certified
-                    </div>
+                    <div className="text-xs text-[var(--color-text-muted)]">IBM Certified</div>
                     <div className="text-sm font-medium text-[var(--color-text-primary)]">
                       AI Developer
                     </div>
@@ -340,7 +486,36 @@ const Hero = memo(() => {
                 </div>
               </motion.div>
 
-              {/* Corner Accent */}
+              {/* Floating skill badges — desktop only */}
+              {FLOATING_BADGES.map(({ label, sub, pos, delay, floatY, floatDuration }) => (
+                <motion.div
+                  key={label}
+                  initial={{ opacity: 0, scale: 0.85, x: -10 }}
+                  animate={{ opacity: 1, scale: 1, x: 0 }}
+                  transition={{ duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] }}
+                  className={`${pos} glass-card px-3 py-2 hidden lg:block`}
+                >
+                  <motion.div
+                    animate={{ y: [0, floatY, 0] }}
+                    transition={{
+                      duration: floatDuration,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                    className="flex items-center gap-2"
+                  >
+                    <div className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)] flex-shrink-0" />
+                    <div>
+                      <div className="text-xs font-medium text-[var(--color-text-primary)] whitespace-nowrap">
+                        {label}
+                      </div>
+                      <div className="text-[10px] text-[var(--color-text-muted)]">{sub}</div>
+                    </div>
+                  </motion.div>
+                </motion.div>
+              ))}
+
+              {/* Corner accents */}
               <div className="absolute -top-2 -left-2 w-8 h-8 border-l-2 border-t-2 border-[var(--color-accent)]/50 rounded-tl-lg" />
               <div className="absolute -bottom-2 -right-2 w-8 h-8 border-r-2 border-b-2 border-[var(--color-accent)]/50 rounded-br-lg" />
             </div>
@@ -348,11 +523,11 @@ const Hero = memo(() => {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: ANIMATION_DELAYS.scrollIndicator }}
+        transition={{ delay: 2.1 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
       >
         <motion.div
@@ -368,12 +543,11 @@ const Hero = memo(() => {
         </motion.div>
       </motion.div>
 
-      {/* Spline Watermark Cover */}
+      {/* Spline watermark cover */}
       <div className="absolute bottom-8 right-8 w-24 h-8 bg-gradient-to-r from-transparent via-[var(--color-bg-primary)] to-[var(--color-bg-primary)] pointer-events-none z-20" />
     </section>
   );
 });
 
 Hero.displayName = "Hero";
-
 export default Hero;
