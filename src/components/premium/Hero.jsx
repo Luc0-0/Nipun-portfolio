@@ -428,7 +428,7 @@ const Hero = memo(() => {
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1.0, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="order-1 lg:order-2 flex justify-center lg:justify-start lg:pl-48"
+            className="order-1 lg:order-2 flex justify-center lg:justify-start lg:pl-48 lg:-mt-20"
           >
             <div className="relative">
               <HeroSpotlight />
