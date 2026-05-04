@@ -117,8 +117,9 @@ export default function HeroBackground() {
         style={{
           border: 'none',
           overflow: 'hidden',
+          zIndex: 0,
           opacity: isScrolling || !isInView ? 0 : 1,
-          pointerEvents: isScrolling || !isInView ? 'none' : 'auto'
+          pointerEvents: 'none',
         }}
         title="Spline Particles"
       />

@@ -128,7 +128,7 @@ function MagneticButton({ children, className, onClick, href }) {
 }
 
 // ─── Constants ────────────────────────────────────────────────────────────────
-const RESUME_PATH = "/images/NIPUN SUJESH_compressed.pdf";
+const RESUME_PATH = "/images/Nipun_Sujesh_Resume-1 (4).pdf";
 const RESUME_FILENAME = "Nipun_Sujesh_Resume.pdf";
 
 const SKILLS = [
@@ -200,7 +200,7 @@ const Hero = memo(() => {
 
   return (
     <section
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-start justify-center overflow-x-hidden"
       style={{ position: "relative", backgroundColor: "#0a0a0a", zIndex: 0 }}
     >
       {/* Layered background */}
@@ -210,18 +210,18 @@ const Hero = memo(() => {
       <div className="aurora-layer-2 absolute inset-0 pointer-events-none" style={{ zIndex: 1 }} />
 
       {/* Main content */}
-      <div className="section-container relative py-32" style={{ zIndex: 10 }}>
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+      <div className="section-container relative pt-24 pb-12 sm:pt-28 sm:pb-16 lg:py-32 w-full" style={{ zIndex: 10 }}>
+        <div className="grid lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-24 items-start">
 
           {/* ── Left column ── */}
-          <div className="order-2 lg:order-1">
+          <div className="order-1 lg:order-1 text-center lg:text-left">
 
             {/* Available pill */}
             <motion.div
               initial={{ opacity: 0, y: -12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--color-border)] bg-[var(--color-accent-muted)] mb-8"
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--color-border)] bg-[var(--color-accent-muted)] mb-6 lg:mb-8"
             >
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
@@ -235,7 +235,7 @@ const Hero = memo(() => {
             {/* Split-letter name reveal */}
             <div className="overflow-hidden mb-6">
               <h1
-                className="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-[var(--color-text-primary)] whitespace-nowrap flex"
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold text-[var(--color-text-primary)] flex flex-wrap justify-center lg:justify-start"
                 aria-label="Nipun Sujesh"
               >
                 {NAME_CHARS.map((char, i) => (
@@ -264,7 +264,7 @@ const Hero = memo(() => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.65 }}
-              className="font-mono text-xl md:text-2xl tracking-widest text-[var(--color-accent)] mb-8"
+              className="font-mono text-lg sm:text-xl md:text-2xl tracking-widest text-[var(--color-accent)] mb-6 lg:mb-8"
             >
               {scrambledTitle}
             </motion.p>
@@ -274,7 +274,7 @@ const Hero = memo(() => {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.85, ease: [0.22, 1, 0.36, 1] }}
-              className="text-body-lg text-[var(--color-text-secondary)] max-w-xl mb-6 leading-relaxed"
+              className="text-body-lg text-[var(--color-text-secondary)] max-w-xl mb-6 leading-relaxed mx-auto lg:mx-0"
             >
               Delivering reliable AI systems with clean data flows, optimized
               inference, and maintainable full-stack integrations. Skilled in
@@ -286,7 +286,7 @@ const Hero = memo(() => {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.0, ease: [0.22, 1, 0.36, 1] }}
-              className="space-y-2 mb-10"
+              className="space-y-2 mb-8 lg:mb-10"
             >
               {[
                 "10+ production-ready projects",
@@ -295,7 +295,7 @@ const Hero = memo(() => {
               ].map((text, i) => (
                 <p
                   key={i}
-                  className="text-sm text-[var(--color-text-muted)] flex items-center gap-2"
+                  className="text-sm text-[var(--color-text-muted)] flex items-center gap-2 justify-center lg:justify-start"
                 >
                   <span className="w-1 h-1 rounded-full bg-[var(--color-accent)] flex-shrink-0" />
                   {text}
@@ -308,7 +308,7 @@ const Hero = memo(() => {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.15, ease: [0.22, 1, 0.36, 1] }}
-              className="flex flex-wrap gap-4"
+              className="flex flex-wrap gap-4 justify-center lg:justify-start"
             >
               <MagneticButton href="#/work" className="btn-primary">
                 <span>View Work</span>
@@ -358,7 +358,7 @@ const Hero = memo(() => {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.5, duration: 0.8 }}
-              className="inline-block mt-6"
+              className="flex justify-center lg:justify-start mt-6"
             >
               <motion.a
                 href="#/lab"
@@ -400,7 +400,7 @@ const Hero = memo(() => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 1.65 }}
-              className="flex gap-8 mt-12 pt-8 border-t border-[var(--color-border)]"
+              className="flex gap-8 mt-6 lg:mt-12 pt-6 lg:pt-8 border-t border-[var(--color-border)] justify-center lg:justify-start"
             >
               <div>
                 <div className="text-2xl font-display font-medium text-[var(--color-text-primary)] tabular-nums">
@@ -428,18 +428,18 @@ const Hero = memo(() => {
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1.0, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="order-1 lg:order-2 flex justify-center lg:justify-start lg:pl-48"
+            className="order-2 lg:order-2 flex justify-center lg:justify-end self-start pt-0 lg:pt-4"
           >
             <div className="relative">
               <HeroSpotlight />
 
-              {/* Decorative frames */}
-              <div className="absolute -inset-4 border border-[var(--color-accent)]/20 rounded-2xl" />
-              <div className="absolute -inset-8 border border-[var(--color-border)] rounded-3xl" />
-              <div className="absolute -inset-12 bg-[var(--color-accent)]/5 rounded-full blur-3xl" />
+              {/* Decorative frames — desktop only to avoid mobile overflow */}
+              <div className="hidden sm:block absolute -inset-4 border border-[var(--color-accent)]/20 rounded-2xl" />
+              <div className="hidden sm:block absolute -inset-8 border border-[var(--color-border)] rounded-3xl" />
+              <div className="hidden sm:block absolute -inset-12 bg-[var(--color-accent)]/5 rounded-full blur-3xl" />
 
               {/* Portrait — clip-path curtain reveal */}
-              <div className="relative w-72 h-96 md:w-80 md:h-[420px] lg:w-96 lg:h-[500px] rounded-xl overflow-hidden bg-[var(--color-bg-tertiary)]">
+              <div className="relative w-44 h-56 sm:w-56 sm:h-72 md:w-80 md:h-[420px] lg:w-96 lg:h-[500px] rounded-xl overflow-hidden bg-[var(--color-bg-tertiary)]">
                 <motion.img
                   src="/images/Model.jpg"
                   alt="Nipun Sujesh - AI Engineer"
@@ -465,7 +465,7 @@ const Hero = memo(() => {
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 1.0, delay: 1.8, ease: [0.22, 1, 0.36, 1] }}
-                className="absolute -right-4 bottom-20 glass-card px-4 py-3"
+                className="absolute -right-2 sm:-right-4 bottom-16 sm:bottom-20 glass-card px-3 sm:px-4 py-2 sm:py-3"
               >
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-lg bg-[var(--color-accent)]/10 flex items-center justify-center">
