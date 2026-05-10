@@ -189,7 +189,7 @@
     "repoUrl": "https://github.com/Luc0-0/Nipun-portfolio",
     "liveUrl": "https://www.nipun.space",
     "source": "github",
-    "lastUpdated": "2026-05-01T14:22:32Z",
+    "lastUpdated": "2026-05-04T06:44:30Z",
     "stars": 3
   },
   {
@@ -370,5 +370,19 @@
     "source": "github",
     "lastUpdated": "2026-02-01T16:14:26Z",
     "stars": 1
+  },
+  {
+    "id": "indian-fintech-icons",
+    "name": "Indian Fintech Icons",
+    "category": "learning",
+    "description": "No description provided.",
+    "tech": [
+      "HTML"
+    ],
+    "repoUrl": "https://github.com/Luc0-0/indian-fintech-icons",
+    "liveUrl": null,
+    "source": "github",
+    "lastUpdated": "2026-05-04T14:26:38Z",
+    "stars": 0
   }
 ]
