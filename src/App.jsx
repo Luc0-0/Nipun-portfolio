@@ -3,6 +3,7 @@ import React, { useEffect, Suspense, useState, lazy } from 'react';
 import Navigation from './components/premium/Navigation';
 import Hero from './components/premium/Hero';
 import CapstoneFeature from './components/premium/CapstoneFeature';
+import UniVerseFeature from './components/premium/UniVerseFeature';
 
 const ProjectGallery = lazy(() => import('./components/premium/ProjectGallery'));
 const About = lazy(() => import('./components/premium/About'));
@@ -57,6 +58,7 @@ export default function App() {
 
       <main className="relative z-10">
         <Hero />
+        <UniVerseFeature />
         <CapstoneFeature />
 
         <Suspense fallback={<div className="h-screen flex items-center justify-center"><div className="w-8 h-8 border-2 border-[var(--color-accent)] border-t-transparent rounded-full animate-spin"></div></div>}>

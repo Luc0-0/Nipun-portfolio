@@ -77,6 +77,15 @@ const timelineData = [
   },
   {
     year: '2026',
+    title: 'AI Workflow Automation Intern — Impress.AI',
+    description: 'Joined Impress.AI (May 2026) as an AI Workflow Automation / Product Ops Intern - Building AI-driven recruitment automation workflows and supporting product operations',
+    type: 'experience',
+    icon: '✦',
+    color: 'from-rose-400 to-orange-500',
+    glow: '#FF6B6B'
+  },
+  {
+    year: '2026',
     title: 'Expected Graduation',
     description: 'Graduating with BTech AI-DS (Current CGPA: 8.0) - Ready to launch into the AI industry',
     type: 'future',

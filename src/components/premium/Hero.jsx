@@ -128,7 +128,7 @@ function MagneticButton({ children, className, onClick, href }) {
 }
 
 // ─── Constants ────────────────────────────────────────────────────────────────
-const RESUME_PATH = "/images/Nipun_Sujesh_Resume-1 (4).pdf";
+const RESUME_PATH = "/images/Nipun_Sujesh_Resume.pdf";
 const RESUME_FILENAME = "Nipun_Sujesh_Resume.pdf";
 
 const SKILLS = [
@@ -200,8 +200,8 @@ const Hero = memo(() => {
 
   return (
     <section
-      className="relative min-h-screen flex items-start justify-center overflow-x-hidden"
-      style={{ position: "relative", backgroundColor: "#0a0a0a", zIndex: 0 }}
+      className="hero-force-dark relative min-h-screen flex items-start justify-center overflow-x-hidden"
+      style={{ position: "relative", backgroundColor: "var(--color-bg-primary)", zIndex: 0 }}
     >
       {/* Layered background */}
       <HeroBackground />
@@ -214,7 +214,10 @@ const Hero = memo(() => {
         <div className="grid lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-24 items-start">
 
           {/* ── Left column ── */}
-          <div className="order-1 lg:order-1 text-center lg:text-left">
+          {/* min-w-0: stop the skills marquee (w-max) from blowing the grid
+              track to max-content width on mobile, which pushed the centered
+              hero content off-screen. */}
+          <div className="order-1 lg:order-1 min-w-0 text-center lg:text-left">
 
             {/* Available pill */}
             <motion.div
@@ -428,7 +431,7 @@ const Hero = memo(() => {
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1.0, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="order-2 lg:order-2 flex justify-center lg:justify-end self-start pt-0 lg:pt-4"
+            className="order-2 lg:order-2 min-w-0 flex justify-center lg:justify-end self-start pt-0 lg:pt-4"
           >
             <div className="relative">
               <HeroSpotlight />

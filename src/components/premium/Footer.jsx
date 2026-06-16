@@ -46,7 +46,7 @@ export default function Footer() {
             
             {/* Resume Download */}
             <motion.a
-              href="/images/NIPUN SUJESH_compressed.pdf"
+              href="/images/Nipun_Sujesh_Resume.pdf"
               download="Nipun_Sujesh_Resume.pdf"
               className="inline-flex items-center gap-2 text-sm text-[var(--color-accent)] hover:text-[var(--color-text-primary)] transition-colors"
               whileHover={{ x: 5 }}

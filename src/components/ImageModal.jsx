@@ -47,15 +47,15 @@ export const ImageModal = ({ isOpen, src, alt, onClose }) => {
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-4xl max-h-[90vh] flex flex-col"
+            className="relative w-full max-w-4xl flex flex-col items-center"
           >
             {/* Image container */}
-            <div className="bg-[var(--color-bg-elevated)] rounded-lg overflow-hidden border border-[var(--color-border)] flex-1 flex items-center justify-center relative group">
+            <div className="bg-[var(--color-bg-elevated)] rounded-lg overflow-hidden border border-[var(--color-border)] flex items-center justify-center relative group max-w-full">
               <img
                 ref={imageRef}
                 src={src}
                 alt={alt}
-                className="w-full h-full object-contain"
+                className="block w-auto max-w-full max-h-[85vh] object-contain"
               />
 
               {/* Fullscreen button in corner */}

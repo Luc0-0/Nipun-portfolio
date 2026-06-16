@@ -66,6 +66,24 @@
     --grain-opacity: 0.06;
   }
 
+  /* Hero is always a dark, cinematic section (dark particle bg) — force the
+     dark palette locally so text stays visible even when the site is in light
+     or space theme. Fixes invisible hero text on light-mode phones. */
+  .hero-force-dark {
+    --color-bg-primary: #0a0a0b;
+    --color-bg-secondary: #121214;
+    --color-bg-tertiary: #1a1a1d;
+    --color-bg-elevated: #2d2d32;
+    --color-text-primary: #fafafa;
+    --color-text-secondary: #a3a3a3;
+    --color-text-muted: #737373;
+    --color-accent: #d4a853;
+    --color-accent-hover: #c4993d;
+    --color-accent-muted: rgba(212, 168, 83, 0.15);
+    --color-border: rgba(255, 255, 255, 0.08);
+    --color-border-hover: rgba(255, 255, 255, 0.15);
+  }
+
   html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
