@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Income Playbook India 2026 &mdash; Complete 3-Phase Roadmap</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { line-height: 1.5; -webkit-text-size-adjust: 100%; }
+  body {
+    background-color: #0b0810;
+    color: #ece6e9;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+  a { color: inherit; text-decoration: none; }
+  ul { list-style: none; }
+  img { max-width: 100%; display: block; }
+
+  .container { max-width: 72rem; margin: 0 auto; padding: 0 1.5rem; }
+  .container-lg { max-width: 64rem; margin: 0 auto; padding: 0 1.5rem; }
+  .container-md { max-width: 56rem; margin: 0 auto; padding: 0 1.5rem; }
+  .container-sm { max-width: 48rem; margin: 0 auto; padding: 0 1.5rem; }
+
+  .section { padding: 4rem 1.5rem; border-top: 1px solid rgba(236,230,233,0.1); }
+  .section-hero { padding: 4rem 1.5rem; }
+
+  .serif { font-family: 'Cormorant Garamond', serif; }
+
+  .display {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 6vw, 3.75rem);
+    font-weight: 300;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+  }
+  .display em { font-style: italic; color: #f1be6a; }
+
+  .h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    font-weight: 300;
+    color: #ffffff;
+  }
+  .h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    font-weight: 400;
+    color: #ffffff;
+  }
+
+  .body-lg { font-size: 1.1rem; line-height: 1.7; color: rgba(236,230,233,0.65); }
+  .body-sm { font-size: 0.875rem; color: rgba(236,230,233,0.45); }
+
+  .label {
+    font-size: 0.68rem;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #f1be6a;
+  }
+  .gold { color: #f1be6a; }
+  .muted { color: rgba(236,230,233,0.4); }
+
+  .badge {
+    display: inline-block;
+    padding: 0.35rem 1rem;
+    border: 1px solid rgba(241,190,106,0.3);
+    border-radius: 9999px;
+    font-size: 0.68rem;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #f1be6a;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: #f1be6a;
+    color: #0b0810;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background 0.25s, transform 0.25s;
+    border: none;
+  }
+  .btn-primary:hover { background: rgba(241,190,106,0.88); transform: scale(1.03); }
+
+  /* Hero */
+  .hero { display: flex; flex-direction: column; gap: 3rem; align-items: center; }
+  .hero-text { flex: 1; display: flex; flex-direction: column; gap: 1.75rem; }
+  .hero-img-wrap { flex-shrink: 0; width: 100%; max-width: 28rem; position: relative; }
+  .hero-img-glow {
+    position: absolute; inset: -1rem;
+    background: linear-gradient(135deg, rgba(241,190,106,0.16), transparent);
+    border-radius: 1rem; filter: blur(40px);
+  }
+  .hero-img-wrap img {
+    position: relative;
+    border-radius: 1rem;
+    border: 1px solid rgba(236,230,233,0.1);
+    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.55);
+    width: 100%;
+  }
+
+  /* Cards */
+  .card {
+    background: rgba(236,230,233,0.04);
+    border: 1px solid rgba(236,230,233,0.1);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    transition: border-color 0.3s;
+  }
+  .card:hover { border-color: rgba(241,190,106,0.3); }
+
+  .card-gold {
+    background: rgba(241,190,106,0.04);
+    border: 1px solid rgba(241,190,106,0.2);
+    border-radius: 1rem;
+    padding: 2rem;
+  }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+  .grid-4 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+
+  /* Phases */
+  .phase { display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: 2.5rem; }
+  .phase-num {
+    flex-shrink: 0;
+    width: 5rem; height: 5rem;
+    border-radius: 0.75rem;
+    background: rgba(241,190,106,0.08);
+    border: 1px solid rgba(241,190,106,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem; color: #f1be6a; font-weight: 300;
+  }
+  .phase-tag {
+    font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: #f1be6a; background: rgba(241,190,106,0.1);
+    padding: 0.25rem 0.75rem; border-radius: 9999px; display: inline-block;
+  }
+  .phase-target {
+    display: inline-block;
+    background: #0b0810;
+    border: 1px solid rgba(241,190,106,0.3);
+    border-radius: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    margin-top: 0.75rem;
+  }
+  .phase-connector {
+    display: none;
+    width: 2px; height: 2.5rem;
+    background: linear-gradient(to bottom, rgba(241,190,106,0.3), transparent);
+    margin-left: 2.4rem; margin-bottom: 0.5rem;
+  }
+
+  .banner {
+    background: linear-gradient(to right, rgba(241,190,106,0.08), rgba(241,190,106,0.03));
+    border: 1px solid rgba(241,190,106,0.2);
+    border-radius: 1rem; padding: 2rem;
+    display: flex; flex-direction: column; gap: 1rem; align-items: flex-start;
+  }
+
+  footer {
+    padding: 2.5rem 1.5rem;
+    border-top: 1px solid rgba(236,230,233,0.08);
+    display: flex; flex-direction: column; gap: 0.5rem;
+    align-items: center; text-align: center;
+    font-size: 0.8rem; letter-spacing: 0.07em;
+    color: rgba(236,230,233,0.28);
+  }
+  footer a { color: rgba(241,190,106,0.5); transition: color 0.2s; }
+  footer a:hover { color: #f1be6a; }
+
+  @media (min-width: 768px) {
+    .section { padding: 5rem 3rem; }
+    .section-hero { padding: 5rem 3rem; }
+    .hero { flex-direction: row; align-items: center; gap: 4rem; }
+    .hero-img-wrap { max-width: 26rem; }
+    .grid-2 { grid-template-columns: repeat(2, 1fr); }
+    .phase { flex-direction: row; gap: 2rem; }
+    .phase-connector { display: block; }
+    .banner { flex-direction: row; align-items: center; gap: 1.5rem; }
+    footer { flex-direction: row; justify-content: space-between; text-align: left; }
+  }
+  @media (min-width: 1024px) {
+    .section { padding: 5rem 6rem; }
+    .section-hero { padding: 5rem 6rem; }
+    .grid-4 { grid-template-columns: repeat(4, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="section-hero">
+  <div class="container">
+    <div class="hero">
+      <div class="hero-text">
+        <span class="badge">Built for India &middot; 2026</span>
+        <h1 class="display">
+          AI Income Playbook India 2026 &mdash; <em>Complete 3-Phase Roadmap</em>
+        </h1>
+        <p class="body-lg">
+          Research-backed, India-specific AI income roadmap. 3&nbsp;phases, 6&nbsp;months, zero audience required. Every stat sourced from verified 2025&ndash;26 data.
+        </p>
+        <div style="display:flex;flex-direction:column;gap:0.75rem;align-items:flex-start;">
+          <a href="https://nipunsujesh.gumroad.com/l/xvxuwv?wanted=true" class="btn-primary">
+            Get the Playbook &mdash; &#8377;499
+          </a>
+          <span class="body-sm">30-day refund &middot; No questions asked</span>
+        </div>
+      </div>
+      <div class="hero-img-wrap">
+        <div class="hero-img-glow"></div>
+        <img
+          src="https://public-files.gumroad.com/7ezu427oatryxafgb6l53jcketpp"
+          alt="AI Income Playbook India 2026 cover"
+          loading="lazy"
+        >
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="section">
+  <div class="container-md" style="text-align:center;">
+    <h2 class="h2" style="margin-bottom:2rem;">Most AI income guides weren&rsquo;t written for you.</h2>
+    <div style="display:flex;flex-direction:column;gap:1rem;max-width:42rem;margin:0 auto;">
+      <p class="body-lg">They were written for someone in the US. Someone with social media reach. Someone who already has 10,000 followers.</p>
+      <p class="serif" style="font-size:1.3rem;font-style:italic;color:#f1be6a;font-weight:300;">This one wasn&rsquo;t.</p>
+      <p class="body-lg">Every strategy, income figure, platform stat, and tax rule was researched specifically for <strong style="color:#fff;font-weight:400;">Indian builders in 2026</strong> &mdash; pulled from official platform reports, verified against Indian payment infrastructure, and mapped to Indian tax law.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DIFFERENTIATORS -->
+<section class="section" style="border-top:none;padding-top:0;">
+  <div class="container-lg">
+    <h2 class="h2" style="text-align:center;margin-bottom:3rem;">Why This Is Different</h2>
+    <div class="grid-2">
+      <div class="card">
+        <div class="label" style="margin-bottom:0.75rem;">&rarr; Fiverr Data</div>
+        <p style="color:rgba(236,230,233,0.65);font-weight:300;font-size:0.95rem;">Gig categories sourced from the official <strong style="color:#fff;font-weight:400;">Fiverr 2025 Business Trends Index</strong></p>
+      </div>
+      <div class="card">
+        <div class="label" style="margin-bottom:0.75rem;">&rarr; KDP Income</div>
+        <p style="color:rgba(236,230,233,0.65);font-weight:300;font-size:0.95rem;">Income data from <strong style="color:#fff;font-weight:400;">verified India-specific reports</strong> (October 2025)</p>
+      </div>
+      <div class="card">
+        <div class="label" style="margin-bottom:0.75rem;">&rarr; Ghostwriting Pricing</div>
+        <p style="color:rgba(236,230,233,0.65);font-weight:300;font-size:0.95rem;">Retainer pricing from <strong style="color:#fff;font-weight:400;">Windmill Growth 2026</strong> and <strong style="color:#fff;font-weight:400;">Unkoa 2026</strong></p>
+      </div>
+      <div class="card">
+        <div class="label" style="margin-bottom:0.75rem;">&rarr; AI Automation Demand</div>
+        <p style="color:rgba(236,230,233,0.65);font-weight:300;font-size:0.95rem;">n8n automation from <strong style="color:#fff;font-weight:400;">Fiverr Spring BTI 2025</strong> &mdash; AI agents <strong style="color:#fff;font-weight:400;">+18,347%</strong> search growth</p>
+      </div>
+      <div class="card">
+        <div class="label" style="margin-bottom:0.75rem;">&rarr; India Tax Setup</div>
+        <p style="color:rgba(236,230,233,0.65);font-weight:300;font-size:0.95rem;">Full walkthrough &mdash; <strong style="color:#fff;font-weight:400;">Section&nbsp;44ADA, TDS&nbsp;194J, Payoneer&nbsp;+&nbsp;IndusInd Bank, FIRC documents</strong></p>
+      </div>
+      <div class="card">
+        <div class="label" style="margin-bottom:0.75rem;">&rarr; Reality Checks</div>
+        <p style="color:rgba(236,230,233,0.65);font-weight:300;font-size:0.95rem;"><strong style="color:#fff;font-weight:400;">4 verified reality checks</strong> that will save you 3 months of wasted effort</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 PHASES -->
+<section class="section">
+  <div class="container-lg">
+    <h2 class="h2" style="text-align:center;margin-bottom:0.75rem;">The 3-Phase Roadmap</h2>
+    <p class="body-sm" style="text-align:center;margin-bottom:4rem;letter-spacing:0.05em;">From zero to &#8377;55,000/month in 6 months</p>
+
+    <div class="phase-connector"></div>
+    <div class="phase">
+      <div class="phase-num">1</div>
+      <div style="flex:1;">
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:1rem;margin-bottom:0.9rem;">
+          <h3 class="h3">The Proof Engine</h3>
+          <span class="phase-tag">Month 1&ndash;2</span>
+        </div>
+        <p class="body-lg">You use platforms with built-in buyer traffic &mdash; Fiverr, Gumroad, Amazon KDP. No cold outreach until you have proof. Realistic first payment: Week 2&ndash;3.</p>
+        <div class="phase-target">
+          <span class="muted" style="font-size:0.75rem;letter-spacing:0.07em;">Target:</span>
+          <span class="serif gold" style="font-size:1.15rem;font-weight:600;margin-left:0.5rem;">&#8377;5,000&ndash;10,000/month</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase-connector"></div>
+    <div class="phase">
+      <div class="phase-num">2</div>
+      <div style="flex:1;">
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:1rem;margin-bottom:0.9rem;">
+          <h3 class="h3">Stack &amp; Systemize</h3>
+          <span class="phase-tag">Month 3&ndash;4</span>
+        </div>
+        <p class="body-lg">You add n8n automation services and LinkedIn ghostwriting retainers. Two high-value streams with documented India-specific income data. Phase&nbsp;1 now runs on 45&nbsp;minutes/day.</p>
+        <div class="phase-target">
+          <span class="muted" style="font-size:0.75rem;letter-spacing:0.07em;">Target:</span>
+          <span class="serif gold" style="font-size:1.15rem;font-weight:600;margin-left:0.5rem;">&#8377;15,000&ndash;28,000/month</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase-connector"></div>
+    <div class="phase" style="margin-bottom:0;">
+      <div class="phase-num">3</div>
+      <div style="flex:1;">
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:1rem;margin-bottom:0.9rem;">
+          <h3 class="h3">Compound</h3>
+          <span class="phase-tag">Month 5&ndash;6</span>
+        </div>
+        <p class="body-lg">Micro-SaaS built from your own freelance workflow. Affiliate income layered into everything you already do. Every stream running simultaneously.</p>
+        <div class="phase-target">
+          <span class="muted" style="font-size:0.75rem;letter-spacing:0.07em;">Target:</span>
+          <span class="serif gold" style="font-size:1.15rem;font-weight:600;margin-left:0.5rem;">&#8377;35,000&ndash;55,000/month</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOR / NOT FOR -->
+<section class="section">
+  <div class="container-lg">
+    <h2 class="h2" style="text-align:center;margin-bottom:3rem;">Is This For You?</h2>
+    <div class="grid-2">
+      <div class="card-gold">
+        <h3 class="h3 gold" style="margin-bottom:1.5rem;">Who This Is For</h3>
+        <ul style="display:flex;flex-direction:column;gap:0.85rem;color:rgba(236,230,233,0.65);font-size:0.95rem;">
+          <li style="display:flex;gap:0.75rem;align-items:flex-start;"><span class="gold" style="flex-shrink:0;">&mdash;</span><span>Students and freshers in India</span></li>
+          <li style="display:flex;gap:0.75rem;align-items:flex-start;"><span class="gold" style="flex-shrink:0;">&mdash;</span><span>1&ndash;2 hours/day available</span></li>
+          <li style="display:flex;gap:0.75rem;align-items:flex-start;"><span class="gold" style="flex-shrink:0;">&mdash;</span><span>Access to AI tools</span></li>
+          <li style="display:flex;gap:0.75rem;align-items:flex-start;"><span class="gold" style="flex-shrink:0;">&mdash;</span><span>Zero existing audience, network, or clients</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 class="h3" style="margin-bottom:1.5rem;">Who This Is NOT For</h3>
+        <div style="display:flex;flex-direction:column;gap:0.85rem;color:rgba(236,230,233,0.55);font-size:0.95rem;">
+          <p>Anyone expecting income in 48 hours.</p>
+          <p>The first Fiverr order realistically takes 2&ndash;4 weeks. This playbook is honest about that upfront.</p>
+          <p style="color:rgba(241,190,106,0.65);font-size:0.85rem;margin-top:0.75rem;">No recycled Western templates. No vague &ldquo;build your audience first&rdquo; advice.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU GET -->
+<section class="section">
+  <div class="container-md" style="text-align:center;">
+    <h2 class="h2" style="margin-bottom:3rem;">What You Get</h2>
+    <div class="grid-4">
+      <div class="card" style="text-align:center;">
+        <div style="font-size:1.8rem;margin-bottom:0.75rem;">&#128230;</div>
+        <p class="serif" style="color:#fff;font-size:1rem;margin-bottom:0.4rem;">Single HTML File</p>
+        <p class="body-sm">.zip containing one research-backed file</p>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div style="font-size:1.8rem;margin-bottom:0.75rem;">&#128244;</div>
+        <p class="serif" style="color:#fff;font-size:1rem;margin-bottom:0.4rem;">Works Offline</p>
+        <p class="body-sm">No login. No subscription. No internet needed.</p>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div style="font-size:1.8rem;margin-bottom:0.75rem;">&#128205;</div>
+        <p class="serif" style="color:#fff;font-size:1rem;margin-bottom:0.4rem;">India-Specific</p>
+        <p class="body-sm">Payments, tax, platforms, and income figures</p>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div style="font-size:1.8rem;margin-bottom:0.75rem;">&#128683;</div>
+        <p class="serif" style="color:#fff;font-size:1rem;margin-bottom:0.4rem;">No Upsell</p>
+        <p class="body-sm">Nothing hiding behind a paywall</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMING SOON -->
+<section class="section" style="border-top:none;padding-top:0;">
+  <div class="container-md">
+    <div class="banner">
+      <div style="font-size:2rem;flex-shrink:0;">&#128284;</div>
+      <div>
+        <h3 class="h3" style="margin-bottom:0.5rem;">Product 2 Dropping Soon</h3>
+        <p class="body-lg" style="font-size:0.95rem;">Phase 1 Execution Plan with hour-by-hour Day 1 breakdown, exact Fiverr gig copy, mock portfolio templates, and full Payoneer walkthrough.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="section" style="text-align:center;">
+  <div class="container-sm">
+    <h2 class="h2" style="margin-bottom:1rem;">Start Building Your AI Income Today</h2>
+    <p class="body-lg" style="max-width:36rem;margin:0 auto 2.5rem;">One playbook. Every stat verified. Every strategy mapped to Indian infrastructure. Zero fluff.</p>
+    <a href="https://nipunsujesh.gumroad.com/l/xvxuwv?wanted=true" class="btn-primary" style="font-size:1.2rem;padding:1.1rem 2.5rem;">
+      Get the Playbook &mdash; &#8377;499
+    </a>
+    <p style="color:rgba(236,230,233,0.25);font-size:0.78rem;letter-spacing:0.08em;margin-top:1.25rem;">30-day refund policy. No questions asked.</p>
+  </div>
+</section>
+
+<footer>
+  <p>Built by Nipun Sujesh &middot; <a href="https://nipun.space">nipun.space</a></p>
+  <p>&copy; 2026 &middot; All rights reserved</p>
+</footer>
+
+</body>
+</html>

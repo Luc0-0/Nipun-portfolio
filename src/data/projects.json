@@ -1,0 +1,388 @@
+[
+  {
+    "id": "samarth",
+    "name": "Samarth",
+    "category": "production",
+    "description": "🌾 Intelligent Q&A system for Indian agriculture data - Live data.gov.in API integration with natural language processing. Production-ready deployment.",
+    "tech": [
+      "Python",
+      "FastAPI"
+    ],
+    "repoUrl": "https://github.com/Luc0-0/Samarth",
+    "liveUrl": "https://samarth-two.vercel.app",
+    "source": "github",
+    "lastUpdated": "2026-02-01T16:14:30Z",
+    "stars": 2
+  },
+  {
+    "id": "smart-notes-by-nipun",
+    "name": "Smart Notes By Nipun",
+    "category": "production",
+    "description": "Smart Notes by Nipun Sujesh",
+    "tech": [
+      "TypeScript",
+      "React",
+      "Tailwind"
+    ],
+    "repoUrl": "https://github.com/Luc0-0/Smart-notes-by-Nipun",
+    "liveUrl": "https://elevated-notes--smart-notes-luc-edition.asia-east1.hosted.app/",
+    "source": "github",
+    "lastUpdated": "2026-02-01T16:14:18Z",
+    "stars": 2
+  },
+  {
+    "id": "pragati",
+    "name": "Pragati",
+    "category": "production",
+    "description": "Self-assembling health intelligence system - MCP tools generated at runtime from live database schema | Google ADK + AlloyDB + Gemini",
+    "tech": [
+      "Python",
+      "FastAPI"
+    ],
+    "repoUrl": "https://github.com/Luc0-0/pragati",
+    "liveUrl": "https://pragati-366193575719.us-central1.run.app",
+    "source": "github",
+    "lastUpdated": "2026-04-09T08:25:29Z",
+    "stars": 0
+  },
+  {
+    "id": "godprofile",
+    "name": "GodProfile",
+    "category": "ai-systems",
+    "description": "The ultimate AI Agent skillset. An official MCP Server packed with 16 world-class tools to autonomously convert standard markdown into animated, glassmorphic GitHub Profile masterpieces",
+    "tech": [
+      "Python"
+    ],
+    "repoUrl": "https://github.com/Luc0-0/GodProfile",
+    "liveUrl": null,
+    "source": "github",
+    "lastUpdated": "2026-05-14T05:08:55Z",
+    "stars": 10
+  },
+  {
+    "id": "serenity-multi-modal-mental-assistant-system",
+    "name": "Serenity Multi Modal Mental Assistant System",
+    "category": "ai-systems",
+    "description": "Mental health platform. Features local LLM integration (Ollama), real-time mood analysis, and guided meditation. Stack: Python, React, and Docker",
+    "tech": [
+      "JavaScript",
+      "React",
+      "Python",
+      "FastAPI"
+    ],
+    "repoUrl": "https://github.com/Luc0-0/Serenity-Multi-Modal-Mental-Assistant-System",
+    "liveUrl": "https://serenity.nipun.space",
+    "source": "github",
+    "lastUpdated": "2026-04-29T03:39:15Z",
+    "stars": 5
+  },
+  {
+    "id": "ai-audio-analyzer",
+    "name": "AI Audio Analyzer",
+    "category": "ai-systems",
+    "description": "No description provided.",
+    "tech": [
+      "Python"
+    ],
+    "repoUrl": "https://github.com/Luc0-0/AI-audio-analyzer",
+    "liveUrl": null,
+    "source": "github",
+    "lastUpdated": "2026-02-01T16:14:32Z",
+    "stars": 2
+  },
+  {
+    "id": "animated_banner",
+    "name": "Animated_banner",
+    "category": "ai-systems",
+    "description": "Animated banner for my github profile",
+    "tech": [
+      "CSS"
+    ],
+    "repoUrl": "https://github.com/Luc0-0/animated_banner",
+    "liveUrl": null,
+    "source": "github",
+    "lastUpdated": "2026-02-02T16:48:13Z",
+    "stars": 2
+  },
+  {
+    "id": "ibm-chatbot-ai",
+    "name": "IBM Chatbot AI",
+    "category": "ai-systems",
+    "description": "No description provided.",
+    "tech": [
+      "CSS",
+      "Python"
+    ],
+    "repoUrl": "https://github.com/Luc0-0/IBM-Chatbot-AI",
+    "liveUrl": null,
+    "source": "github",
+    "lastUpdated": "2026-02-01T16:14:37Z",
+    "stars": 2
+  },
+  {
+    "id": "ibm-gpt-tss-and-stt",
+    "name": "IBM GPT Tss And Stt",
+    "category": "ai-systems",
+    "description": "IBM AI STT/TSS and GPT integrated Voice Assistance.",
+    "tech": [
+      "JavaScript",
+      "Python"
+    ],
+    "repoUrl": "https://github.com/Luc0-0/IBM-GPT-tss-and-stt",
+    "liveUrl": null,
+    "source": "github",
+    "lastUpdated": "2026-02-01T16:14:38Z",
+    "stars": 2
+  },
+  {
+    "id": "bertqa-bot",
+    "name": "BertQA BOT",
+    "category": "ai-systems",
+    "description": "No description provided.",
+    "tech": [
+      "Jupyter Notebook"
+    ],
+    "repoUrl": "https://github.com/Luc0-0/BertQA-BOT",
+    "liveUrl": null,
+    "source": "github",
+    "lastUpdated": "2026-02-01T16:14:22Z",
+    "stars": 1
+  },
+  {
+    "id": "neuroflow",
+    "name": "NeuroFlow",
+    "category": "libraries",
+    "description": "Simple library that tries to visualize simple python functions (On work Just rough idea)",
+    "tech": [
+      "Python"
+    ],
+    "repoUrl": "https://github.com/Luc0-0/NeuroFlow",
+    "liveUrl": null,
+    "source": "github",
+    "lastUpdated": "2026-02-01T16:14:24Z",
+    "stars": 2
+  },
+  {
+    "id": "smarttimer",
+    "name": "Smarttimer",
+    "category": "libraries",
+    "description": "Tiny, friendly timing utilities for Python code blocks and functions.  A zero-dependency Python package that makes performance measurement effortless. Time code blocks with context managers, benchmark functions with decorators, compare multiple implementations, and profile memory usage - all with clean, readable output.",
+    "tech": [
+      "Python"
+    ],
+    "repoUrl": "https://github.com/Luc0-0/smarttimer",
+    "liveUrl": null,
+    "source": "github",
+    "lastUpdated": "2026-02-01T16:14:27Z",
+    "stars": 2
+  },
+  {
+    "id": "nipun-portfolio",
+    "name": "Nipun Portfolio",
+    "category": "learning",
+    "description": "Nipun_Sujesh Ai&DS Portfolio",
+    "tech": [
+      "JavaScript",
+      "React",
+      "Three.js"
+    ],
+    "repoUrl": "https://github.com/Luc0-0/Nipun-portfolio",
+    "liveUrl": "https://www.nipun.space",
+    "source": "github",
+    "lastUpdated": "2026-06-16T13:07:56Z",
+    "stars": 3
+  },
+  {
+    "id": "azure-ai-image-analysis",
+    "name": "Azure Ai Image Analysis",
+    "category": "learning",
+    "description": "No description provided.",
+    "tech": [
+      "Python"
+    ],
+    "repoUrl": "https://github.com/Luc0-0/Azure-Ai-image-analysis",
+    "liveUrl": null,
+    "source": "github",
+    "lastUpdated": "2026-02-01T16:14:45Z",
+    "stars": 2
+  },
+  {
+    "id": "azure-business-card-analyzer",
+    "name": "Azure Business Card Analyzer",
+    "category": "learning",
+    "description": "No description provided.",
+    "tech": [
+      "Python"
+    ],
+    "repoUrl": "https://github.com/Luc0-0/Azure-Business-card-analyzer",
+    "liveUrl": null,
+    "source": "github",
+    "lastUpdated": "2026-02-01T16:14:43Z",
+    "stars": 2
+  },
+  {
+    "id": "blip-auto-image-captioning",
+    "name": "BLIP Auto Image Captioning",
+    "category": "learning",
+    "description": "An Auto-Image-Captioning that uses BLIP (Can generate captions for all the images withing a website url parser)",
+    "tech": [
+      "Python"
+    ],
+    "repoUrl": "https://github.com/Luc0-0/BLIP-auto-image-captioning",
+    "liveUrl": null,
+    "source": "github",
+    "lastUpdated": "2026-02-01T16:14:40Z",
+    "stars": 2
+  },
+  {
+    "id": "codecrafthub",
+    "name": "CodeCraftHub",
+    "category": "learning",
+    "description": "No description provided.",
+    "tech": [
+      "JavaScript"
+    ],
+    "repoUrl": "https://github.com/Luc0-0/CodeCraftHub",
+    "liveUrl": null,
+    "source": "github",
+    "lastUpdated": "2026-02-01T16:14:31Z",
+    "stars": 2
+  },
+  {
+    "id": "final-ai-speech-synthesis",
+    "name": "Final Ai Speech Synthesis",
+    "category": "learning",
+    "description": "No description provided.",
+    "tech": [
+      "JavaScript",
+      "React",
+      "Python",
+      "FastAPI"
+    ],
+    "repoUrl": "https://github.com/Luc0-0/Final-Ai-Speech-Synthesis",
+    "liveUrl": null,
+    "source": "github",
+    "lastUpdated": "2026-02-01T16:14:42Z",
+    "stars": 2
+  },
+  {
+    "id": "flashcard-generator",
+    "name": "Flashcard Generator",
+    "category": "learning",
+    "description": "No description provided.",
+    "tech": [
+      "Python"
+    ],
+    "repoUrl": "https://github.com/Luc0-0/flashcard-generator",
+    "liveUrl": null,
+    "source": "github",
+    "lastUpdated": "2026-02-25T11:40:00Z",
+    "stars": 2
+  },
+  {
+    "id": "image-classification-cat-dog",
+    "name": "Image Classification Cat Dog",
+    "category": "learning",
+    "description": "No description provided.",
+    "tech": [
+      "Python"
+    ],
+    "repoUrl": "https://github.com/Luc0-0/Image-classification-cat-dog",
+    "liveUrl": null,
+    "source": "github",
+    "lastUpdated": "2026-02-01T16:14:44Z",
+    "stars": 2
+  },
+  {
+    "id": "learning-nlp-from-scratch",
+    "name": "Learning Nlp From Scratch",
+    "category": "learning",
+    "description": "A comprehensive collection of NLP implementations built from the ground up. Includes Bag of Words, TF-IDF, LSA, and Topic Modeling with clear, step-by-step Jupyter notebooks.",
+    "tech": [
+      "Jupyter Notebook",
+      "Python"
+    ],
+    "repoUrl": "https://github.com/Luc0-0/learning-nlp-from-scratch",
+    "liveUrl": null,
+    "source": "github",
+    "lastUpdated": "2026-02-01T16:14:21Z",
+    "stars": 2
+  },
+  {
+    "id": "task-manager-pro",
+    "name": "Task Manager Pro",
+    "category": "learning",
+    "description": "No description provided.",
+    "tech": [
+      "JavaScript",
+      "React",
+      "Tailwind"
+    ],
+    "repoUrl": "https://github.com/Luc0-0/Task-manager-pro",
+    "liveUrl": "https://task-manager-pro-beta.vercel.app",
+    "source": "github",
+    "lastUpdated": "2026-02-01T16:14:28Z",
+    "stars": 2
+  },
+  {
+    "id": "xlnet-emotion-classifier",
+    "name": "Xlnet Emotion Classifier",
+    "category": "learning",
+    "description": "Fine-tuned XLNet for emotion classification. Achieved 87% accuracy with detailed training diagnostics and confusion matrix analysis.",
+    "tech": [
+      "Jupyter Notebook"
+    ],
+    "repoUrl": "https://github.com/Luc0-0/xlnet-emotion-classifier",
+    "liveUrl": null,
+    "source": "github",
+    "lastUpdated": "2026-02-02T16:48:09Z",
+    "stars": 2
+  },
+  {
+    "id": "fake-news-classification-nlp",
+    "name": "Fake News Classification Nlp",
+    "category": "learning",
+    "description": "Standardized binary classification pipeline comparing Logistic Regression and Linear SVM (~87% acc) using TF-IDF features for interpretable fake news detection.",
+    "tech": [
+      "Jupyter Notebook",
+      "Python"
+    ],
+    "repoUrl": "https://github.com/Luc0-0/fake-news-classification-nlp",
+    "liveUrl": null,
+    "source": "github",
+    "lastUpdated": "2026-02-01T16:14:24Z",
+    "stars": 1
+  },
+  {
+    "id": "studypath",
+    "name": "StudyPath",
+    "category": "learning",
+    "description": "Full-stack application that generates milestone-based learning paths and visualizes them through an interactive graph interface.",
+    "tech": [
+      "JavaScript",
+      "React",
+      "Tailwind",
+      "Python",
+      "FastAPI"
+    ],
+    "repoUrl": "https://github.com/Luc0-0/StudyPath",
+    "liveUrl": null,
+    "source": "github",
+    "lastUpdated": "2026-02-01T16:14:26Z",
+    "stars": 1
+  },
+  {
+    "id": "indian-fintech-icons",
+    "name": "Indian Fintech Icons",
+    "category": "learning",
+    "description": "No description provided.",
+    "tech": [
+      "HTML"
+    ],
+    "repoUrl": "https://github.com/Luc0-0/indian-fintech-icons",
+    "liveUrl": null,
+    "source": "github",
+    "lastUpdated": "2026-05-04T14:26:38Z",
+    "stars": 0
+  }
+]
