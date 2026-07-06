@@ -120,15 +120,7 @@ export async function retrieve(question, route = "/", k = 5) {
 
 export async function askStream(question, route, onToken) {
   const chunks = await retrieve(question, route, 5);
-  const call = (method) =>
-    fetch("/api/ask", { method, headers: { "Content-Type": "application/json" }, body: JSON.stringify({ question, chunks }) });
-  let res;
-  try {
-    res = await call("QUERY");
-    if (res.status === 405 || res.status === 501) res = await call("POST");
-  } catch {
-    res = await call("POST");
-  }
+  const res = await fetch("/api/ask", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ question, chunks }) });
   if (!res.ok) {
     const e = await res.json().catch(() => ({}));
     throw new Error(e.error || "assistant unavailable");
