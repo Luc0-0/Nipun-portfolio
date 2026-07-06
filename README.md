@@ -1,24 +1,26 @@
 # Nipun Sujesh — Portfolio
 
-A personal space (live at [nipun.space](https://nipun.space)) where I experiment with 3D web experiences, AI integrations, and data-driven projects. Built to be a living showcase that stays in sync with my work.
+Terminal-themed portfolio, live at [nipun.space](https://nipun.space). React 19 + Vite, one red accent, command-bar navigation, sounds, and an ASCII-fluid about page.
 
-### The Experience
-*   **Solar Lab**: An interactive 3D planetary system built with Three.js for navigating through my journey.
-*   **AI Chat**: A custom Gemini-powered assistant that can walk you through my projects and technical background.
-*   **GitHub Sync**: Fully automated project discovery that updates the portfolio the moment I push code.
-*   **Technical Writing**: A collection of blogs and notes covering Machine Learning and AI.
+## LucBot v1
 
-### Tech Stack
-React 19, Three.js (Fiber/Drei), Framer Motion, GSAP, Google Gemini API, and Firebase.
+The resident daemon in the command bar. Type a question (no `/`) and it answers from the site's own content:
 
-### Running it locally
+- Hybrid retrieval: hand-rolled BM25 + Gemini embeddings, merged with reciprocal rank fusion, page-aware boosts
+- Serves answers via a Vercel function speaking the HTTP QUERY method (RFC 10008) with POST fallback, streaming from gpt-oss on Ollama Cloud
+- Function-calling: suggests pages as clickable buttons, never navigates without consent
+- Voice input via the Web Speech API
+- Answers only from indexed site data; refuses instead of inventing
+
+## Running locally
+
 ```bash
 git clone https://github.com/Luc0-0/Nipun-portfolio.git
-cd Nipun-portfolio
-npm install
-npm run dev
+cd Nipun-portfolio && npm install
+# .env: OLLAMA_API_KEY, GEMINI_API_KEY, OLLAMA_MODEL, VITE_WEB3FORMS_KEY
+node scripts/dev-api.mjs   # terminal 1 — LucBot API
+npm run dev                # terminal 2
 ```
-*Note: To use the AI chatbot, you'll need to add a `VITE_GEMINI_API_KEY` to your `.env.local` file.*
 
 ---
 [Live Site](https://www.nipun.space) · [LinkedIn](https://linkedin.com/in/nipun-sujesh) · [GitHub](https://github.com/Luc0-0) · [Email](mailto:nipunsujesh28@gmail.com)

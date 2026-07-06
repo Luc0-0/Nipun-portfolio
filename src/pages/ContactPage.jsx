@@ -32,7 +32,7 @@ function Field({ label, error, children }) {
   );
 }
 
-const inputCls = "w-full rounded-sm border bg-transparent px-3 py-2.5 font-mono text-sm outline-none transition-colors duration-200 placeholder:italic placeholder:text-[#3d3934] focus:border-[rgba(255,51,36,0.7)]";
+const inputCls = "w-full rounded-sm border bg-transparent px-3 py-2.5 font-mono text-base outline-none transition-colors duration-200 placeholder:italic placeholder:text-[#3d3934] focus:border-[rgba(255,51,36,0.7)] sm:text-sm";
 const inputStyle = { borderColor: "rgba(236,232,227,0.14)", color: TEXT, caretColor: RED, backgroundColor: "rgba(8,8,8,0.5)" };
 
 export default function ContactPage() {

@@ -80,8 +80,8 @@ function ThemeRing({ reduce }) {
     );
   return (
     <div>
-      <div className="relative h-[340px] w-full overflow-hidden" style={{ perspective: "1200px" }}>
-        <div className="absolute left-1/2 top-1/2 h-0 w-0" style={{ transform: "rotateX(-4deg)", transformStyle: "preserve-3d" }}>
+      <div className="relative h-[300px] w-full overflow-hidden [--ringscale:0.78] sm:h-[340px] sm:[--ringscale:1]" style={{ perspective: "1200px" }}>
+        <div className="absolute left-1/2 top-1/2 h-0 w-0" style={{ transform: "rotateX(-4deg) scale(var(--ringscale))", transformStyle: "preserve-3d" }}>
           <div className="ring-spin h-0 w-0" style={{ transformStyle: "preserve-3d" }}>
             {THEMES.map((t, i) => (
               <div
@@ -179,7 +179,7 @@ const TEMPLATES = {
 };
 const TVALUES = Object.values(TEMPLATES);
 
-const inputCls = "w-full rounded-sm border bg-transparent px-3 py-2.5 font-mono text-sm outline-none transition-colors duration-200 placeholder:italic placeholder:text-[#3d3934] focus:border-[rgba(255,51,36,0.7)]";
+const inputCls = "w-full rounded-sm border bg-transparent px-3 py-2.5 font-mono text-base outline-none transition-colors duration-200 placeholder:italic placeholder:text-[#3d3934] focus:border-[rgba(255,51,36,0.7)] sm:text-sm";
 const inputStyle = { borderColor: "rgba(236,232,227,0.14)", color: TEXT, caretColor: RED, backgroundColor: "rgba(8,8,8,0.5)" };
 
 function ServicePanel({ s, idx, flip, reduce, onHire }) {

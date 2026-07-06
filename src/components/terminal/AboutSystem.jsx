@@ -69,7 +69,7 @@ function Processes() {
       <h2 className="mb-4 text-xs tracking-[0.18em]" style={{ color: RED }}>
         RUNNING PROCESSES <span style={{ color: DIM }}>( what i'm working on )</span>
       </h2>
-      <div className="grid grid-cols-[3rem_1fr_5.5rem_5rem_3rem] gap-x-3 border-b pb-1.5 text-[10px] tracking-wide sm:grid-cols-[3.5rem_1fr_6rem_6rem_8rem]" style={{ borderColor: "rgba(236,232,227,0.12)", color: DIM }}>
+      <div className="grid grid-cols-[2.5rem_1fr_4.5rem_2.5rem] gap-x-3 border-b pb-1.5 text-[10px] tracking-wide sm:grid-cols-[3.5rem_1fr_6rem_6rem_8rem]" style={{ borderColor: "rgba(236,232,227,0.12)", color: DIM }}>
         <span>PID</span>
         <span>PROCESS</span>
         <span className="hidden sm:block">TAG</span>
@@ -83,7 +83,7 @@ function Processes() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.4, ease: EASE, delay: i * 0.03 }}
-          className="grid grid-cols-[3rem_1fr_5.5rem_5rem_3rem] items-center gap-x-3 border-b py-2 text-xs sm:grid-cols-[3.5rem_1fr_6rem_6rem_8rem]"
+          className="grid grid-cols-[2.5rem_1fr_4.5rem_2.5rem] items-center gap-x-3 border-b py-2 text-xs sm:grid-cols-[3.5rem_1fr_6rem_6rem_8rem]"
           style={{ borderColor: "rgba(236,232,227,0.05)", color: p.run ? TEXT : DIM }}
         >
           <span className="tabular-nums" style={{ color: RED }}>{p.pid}</span>

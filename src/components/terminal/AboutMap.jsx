@@ -38,7 +38,7 @@ function BranchPanel({ b, hovered, setHovered, onClick }) {
   const active = hovered === b.id;
   return (
     <div
-      className={`w-[208px] rounded-md border p-3 transition-colors duration-200 ${b.link ? "cursor-pointer" : ""}`}
+      className={`w-full rounded-md border p-3 transition-colors duration-200 lg:w-[208px] ${b.link ? "cursor-pointer" : ""}`}
       style={{ borderColor: active ? RED_HI : "rgba(221,35,22,0.4)", backgroundColor: active ? "rgba(28,8,6,0.92)" : "rgba(8,8,8,0.85)", boxShadow: active ? "0 0 26px rgba(221,35,22,0.3)" : "none" }}
       onClick={onClick}
       onPointerEnter={() => {

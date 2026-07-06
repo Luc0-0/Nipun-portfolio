@@ -290,7 +290,7 @@ export default function SkillsPage() {
                         x={lx}
                         y={ly}
                         textAnchor={anchor(c.mid)}
-                        fontSize="13"
+                        fontSize="14.5"
                         letterSpacing="2"
                         fill={on ? RED_HI : dimmed ? FAINT : BODY}
                         style={{ fontFamily: "'JetBrains Mono', monospace", transition: "fill 0.2s" }}

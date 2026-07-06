@@ -102,7 +102,7 @@ export default function TerminalShell({ path = "~/", subtitle, quiet = false, ch
             }}
             onMouseEnter={hoverTick}
             aria-label="Go back"
-            className="grid h-6 w-6 cursor-pointer place-items-center rounded-sm border transition-colors duration-200 hover:border-[rgba(221,35,22,0.7)]"
+            className="grid h-8 w-8 cursor-pointer place-items-center rounded-sm border transition-colors duration-200 hover:border-[rgba(221,35,22,0.7)] sm:h-6 sm:w-6"
             style={{ borderColor: "rgba(236,232,227,0.14)", color: "#b9b3ac" }}
           >
             <ArrowLeft size={13} />
@@ -114,7 +114,7 @@ export default function TerminalShell({ path = "~/", subtitle, quiet = false, ch
             }}
             onMouseEnter={hoverTick}
             aria-label="Go home"
-            className="mr-1 grid h-6 w-6 cursor-pointer place-items-center rounded-sm border transition-colors duration-200 hover:border-[rgba(221,35,22,0.7)]"
+            className="mr-1 grid h-8 w-8 cursor-pointer place-items-center rounded-sm border transition-colors duration-200 hover:border-[rgba(221,35,22,0.7)] sm:h-6 sm:w-6"
             style={{ borderColor: "rgba(236,232,227,0.14)", color: "#b9b3ac" }}
           >
             <House size={13} />
