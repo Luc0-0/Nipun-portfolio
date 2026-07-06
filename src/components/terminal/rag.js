@@ -122,6 +122,7 @@ export async function askStream(question, route, onToken) {
   const chunks = await retrieve(question, route, 5);
   const res = await fetch("/api/ask", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ question, chunks }) });
   if (!res.ok) {
+    if (res.status === 403) throw new Error("the firewall wants a fresh handshake. reload the page and ask again.");
     const e = await res.json().catch(() => ({}));
     throw new Error(e.error || "assistant unavailable");
   }
