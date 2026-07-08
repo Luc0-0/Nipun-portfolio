@@ -69,6 +69,40 @@ writeFileSync("public/rag/chunks.json", JSON.stringify(chunks));
 const kb = Math.round(JSON.stringify(chunks).length / 1024);
 console.log(`${chunks.length} chunks, ${kb}KB -> public/rag/chunks.json`);
 
+const ORIGIN = "https://www.nipun.space";
+const today = new Date().toISOString().slice(0, 10);
+const ROUTES = [
+  ["/", 1.0], ["/work", 0.9], ["/services", 0.9], ["/about", 0.8], ["/skills", 0.8],
+  ["/achievements", 0.7], ["/writing", 0.7], ["/opensource", 0.6], ["/contact", 0.7], ["/map", 0.5],
+  ...Object.keys(PROJECT_DETAILS).map((s) => [`/work/${s}`, 0.7]),
+  ...POSTS.map((p) => [`/writing/${p.slug}`, 0.6]),
+];
+const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${ROUTES.map(
+  ([u, pr]) => `  <url><loc>${ORIGIN}${u}</loc><lastmod>${today}</lastmod><priority>${pr.toFixed(1)}</priority></url>`
+).join("\n")}\n</urlset>\n`;
+writeFileSync("public/sitemap.xml", sitemap);
+
+const llms = `# Nipun Sujesh — nipun.space
+
+> Terminal-themed portfolio of Nipun Sujesh, an AI engineer from Kerala, India. Final-year B.E. in AI & Data Science (GPA 8.24/10, graduating 2026). AI Workflow Automation Engineer Intern at impress.ai. Builds production AI end to end: RAG pipelines, agentic systems (Google ADK, MCP), and full-stack applications. The site includes LucBot, a retrieval-augmented assistant that answers questions about him from this same content.
+
+## Key facts
+${FACTS.map((f) => `- ${f.title}: ${f.text}`).join("\n")}
+
+## Projects
+${Object.entries(PROJECT_DETAILS).map(([s, p]) => `- [${p.title}](${ORIGIN}/work/${s}): ${p.tag}, ${p.year}`).join("\n")}
+
+## Writing
+${POSTS.map((p) => `- [${p.title}](${ORIGIN}/writing/${p.slug}): ${p.summary}`).join("\n")}
+
+## Contact
+- Email: nipunsujesh28@gmail.com
+- GitHub: https://github.com/Luc0-0
+- LinkedIn: https://linkedin.com/in/nipun-sujesh
+`;
+writeFileSync("public/llms.txt", llms);
+console.log(`sitemap: ${ROUTES.length} urls · llms.txt: ${Math.round(llms.length / 1024)}KB`);
+
 const GKEY = process.env.GEMINI_API_KEY;
 const EMODEL = "gemini-embedding-001";
 const DIM = 256;

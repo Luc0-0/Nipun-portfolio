@@ -1,0 +1,43 @@
+# Nipun Sujesh — nipun.space
+
+> Terminal-themed portfolio of Nipun Sujesh, an AI engineer from Kerala, India. Final-year B.E. in AI & Data Science (GPA 8.24/10, graduating 2026). AI Workflow Automation Engineer Intern at impress.ai. Builds production AI end to end: RAG pipelines, agentic systems (Google ADK, MCP), and full-stack applications. The site includes LucBot, a retrieval-augmented assistant that answers questions about him from this same content.
+
+## Key facts
+- Who is Nipun: Nipun Sujesh is an AI engineer and builder from Kerala, India. Final-year B.E. student in Artificial Intelligence and Data Science at Kathir College of Engineering (Anna University), GPA 8.24/10, graduating 2026. He builds AI products end to end: models, backends, and interfaces. Currently building Uni-Verse and working as an AI Workflow Automation Engineer Intern at impress.ai. Portfolio: nipun.space.
+- Current focus: Most of Nipun's time goes to building Uni-Verse, an honest, on-the-record platform for college life in India. He also works at impress.ai on LLM and RAG powered workflow automation, and ships side projects constantly. He is open to Generative AI Engineer roles for 2026.
+- Experience at impress.ai: AI Workflow Automation Engineer Intern at impress.ai since May 2026. Built and deployed company-wide workflow automation powered by LLM-driven RAG pipelines, developed reusable AI skills for internal teams, and is engineering a candidate recommendation system using high-dimensional embeddings with similarity-based pooling and ranking. Ships through a three-branch deployment flow using Claude workflows, Google Apps Script, and the Slack API.
+- Experience at Amypo: Full-Stack Developer Intern (MERN) at Amypo Technologies from June to September 2025. Built responsive web application features end to end with MongoDB, Express, React, and Node in an Agile sprint team, and designed REST APIs connecting React frontends to MongoDB.
+- Education timeline: 10th grade at Kendriya Vidyalaya Delhi (2021). Started Python there in 2022. 12th grade Science at Kendriya Vidyalaya Kannur (2022). Enrolled in B.E. AI & Data Science at Kathir College of Engineering in 2022, expected graduation 2026 with GPA 8.24/10.
+- Achievements: Selected for Google Gen AI Academy APAC Cohort 1 (Jan to Apr 2026), where he built PRAGATI for the Academy hackathon. Research paper on Serenity submitted to ICRAIA 2025. 15+ shipped projects across AI agents, computer vision, NLP and RAG. Maths Olympiad Delhi Zonal 2nd place in school.
+- Certifications: IBM AI Developer Professional Certificate (10-course specialization, 2025), Microsoft Azure AI Fundamentals, Python for Data Science AI & Development (IBM), and Generative AI Prompt Engineering (IBM).
+- Skills overview: Strongest areas: Generative AI and LLMs, RAG and vector search, agentic AI with Google ADK and MCP, prompt engineering, NLP and fine-tuning with PyTorch and Hugging Face, computer vision with YOLOv8. Languages: Python (Pandas, NumPy, Scikit-learn), JavaScript, SQL. Backend: FastAPI, Flask, Node/Express, REST APIs, webhooks, Google Apps Script. Frontend: React 19, Next.js, Three.js, Vite. Data: PostgreSQL with pgvector, AlloyDB, MongoDB, Supabase, Firestore. Cloud: Google Cloud (Cloud Run, Vertex AI), Docker, Vercel, Railway, Render, Azure.
+- Services Nipun offers: Nipun takes select freelance projects alongside final year: 1) Web development, sites designed and built end to end with React, Next.js and Three.js. 2) Custom AI applications, full-stack AI products with fine-tuning, evals and deployment. 3) RAG chatbots and workflow automation: chatbots trained on a business's website and documents that cite sources and hand off to a human when unsure, plus agents wired into existing tools. Each project is scoped and quoted individually via the services page brief form.
+- Contact Nipun: Email nipunsujesh28@gmail.com. GitHub github.com/Luc0-0. LinkedIn linkedin.com/in/nipun-sujesh. Based in Kerala, India (IST +5:30). The contact page has a form that goes straight to his inbox, and his resume PDF is downloadable from the site.
+- Uni-Verse: Uni-Verse is the platform Nipun is currently building: an honest, on-the-record record of what India's colleges are actually like, written by verified students. Like Glassdoor but for campuses. The core rule is anonymous but verified: students prove they study there, then their identity is locked away. It has a Verity Score (0 to 1000) that colleges can only earn, not buy. Currently at the landing page and waitlist stage at uni-verse.co.in, collecting the first thousand Founding Voices; the full platform is in active development.
+- Flagship build: Serenity is Nipun's most complete production build to date: a full-stack multimodal AI mental-health assistant with authentication, a four-tier memory system, a fine-tuned XLM-RoBERTa emotion classifier at 81.3% accuracy, 95% safety recall on crisis detection, and a research paper submitted to ICRAIA 2025. Deployed and live at serenity.nipun.space. When judging his deepest or most impressive shipped work, Serenity is the flagship; Uni-Verse is the most ambitious but is still early-stage.
+- About this website: This portfolio, nipun.os, is a terminal-themed site designed and coded by Nipun with React 19, Vite, Tailwind, Framer Motion and Three.js. Navigation works through the command bar at the bottom: type / for commands, or just type a question to ask LucBot, the site's assistant. LucBot answers using hybrid retrieval (BM25 plus embeddings) over the site's own content through a serverless proxy speaking the new HTTP QUERY method (RFC 10008) with POST fallback, and can suggest pages with clickable buttons.
+
+## Projects
+- [Serenity](https://www.nipun.space/work/serenity): PRODUCTION, 2025
+- [Pragati](https://www.nipun.space/work/pragati): PRODUCTION, 2026
+- [Guardia](https://www.nipun.space/work/guardia): PRODUCTION, 2026
+- [Samarth](https://www.nipun.space/work/samarth): PRODUCTION, 2025
+- [GodProfile](https://www.nipun.space/work/godprofile): BUILT, 2026
+- [Smart Notes](https://www.nipun.space/work/smart-notes): BUILT, 2026
+- [StudyPath](https://www.nipun.space/work/studypath): BUILT, 2025
+- [Task Manager Pro](https://www.nipun.space/work/task-manager-pro): BUILT, 2025
+- [XLNet Emotion](https://www.nipun.space/work/xlnet-emotion): BUILT, 2026
+- [Fake News Classifier](https://www.nipun.space/work/fake-news-classifier): BUILT, 2026
+- [Uni-Verse](https://www.nipun.space/work/uni-verse): CURRENT, 2026
+
+## Writing
+- [Giving an AI assistant a memory that doesn't rot](https://www.nipun.space/writing/four-tier-memory): Serenity's four-tier memory system, and why a single vector store is not memory.
+- [Why I'm building Uni-Verse](https://www.nipun.space/writing/why-uni-verse): India picks colleges off ads and paid rankings. I'm building the honest record instead.
+- [Agents that build their own tools](https://www.nipun.space/writing/agents-that-build-their-own-tools): PRAGATI introspects a database at runtime and assembles its own MCP tools. Zero hardcoded tools.
+- [What RAG looks like once it has a job](https://www.nipun.space/writing/rag-with-a-job): Demo RAG and production RAG are different animals. Notes from building automation that people rely on.
+- [MCP quietly became the plug](https://www.nipun.space/writing/mcp-became-the-plug): The Model Context Protocol won by being boring. That's usually how standards win.
+
+## Contact
+- Email: nipunsujesh28@gmail.com
+- GitHub: https://github.com/Luc0-0
+- LinkedIn: https://linkedin.com/in/nipun-sujesh

@@ -1,6 +1,7 @@
 import React, { memo, useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { blip } from "./sound";
+import { useSEO } from "./useSEO";
 import PixelTitle from "./PixelTitle";
 import BootSequence from "./BootSequence";
 
@@ -127,6 +128,7 @@ const TerminalHero = memo(() => {
   const reduce = useReducedMotion();
   const time = useClock();
   const gridRef = useRef(null);
+  useSEO();
 
   const onPointerMove = (e) => {
     if (reduce) return;

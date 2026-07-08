@@ -3,6 +3,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft, House } from "@phosphor-icons/react";
 import { hoverTick, back as backSnd, blip } from "./sound";
+import { useSEO } from "./useSEO";
 
 const EASE = [0.23, 1, 0.32, 1];
 const RED = "#dd2316";
@@ -25,6 +26,7 @@ export default function TerminalShell({ path = "~/", subtitle, quiet = false, ch
   const time = useClock();
   const navigate = useNavigate();
   const gridRef = useRef(null);
+  useSEO();
 
   const onPointerMove = (e) => {
     if (reduce) return;
