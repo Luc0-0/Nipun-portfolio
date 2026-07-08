@@ -12,7 +12,7 @@ export const COMMANDS = [
   { cmd: "/resume", desc: "download the PDF", download: true },
   { cmd: "/contact", desc: "email · github · linkedin", to: "/contact" },
   { cmd: "/uni-verse", desc: "the platform I'm building", external: "https://uni-verse.co.in" },
-  { cmd: "/help", desc: "list everything", help: true },
+  { cmd: "/map", desc: "the site blueprint", to: "/map" },
 ];
 
 export const RESUME_PATH = "/images/Nipun_Sujesh_Resume.pdf";
