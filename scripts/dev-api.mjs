@@ -2,6 +2,7 @@ import "dotenv/config";
 import { createServer } from "http";
 import handler from "../api/ask.js";
 import scores from "../api/scores.js";
+import predict from "../api/predict.js";
 
 const wrap = (res) => {
   res.status = (c) => {
@@ -18,6 +19,9 @@ const wrap = (res) => {
 createServer((req, res) => {
   if (req.url.startsWith("/api/scores")) {
     return Promise.resolve(scores(req, wrap(res))).catch(() => wrap(res).status(500).json({ error: "dev" }));
+  }
+  if (req.url.startsWith("/api/predict")) {
+    return Promise.resolve(predict(req, wrap(res))).catch(() => wrap(res).status(500).json({ error: "dev" }));
   }
   if (!req.url.startsWith("/api/ask")) {
     res.statusCode = 404;

@@ -151,6 +151,95 @@ function Goal({ side, pulsing }) {
   );
 }
 
+function PredictBar({ m, demo }) {
+  const [c, setC] = useState(null);
+  const [mine, setMine] = useState(null);
+  const id = demo ? "demo" : m.id;
+
+  useEffect(() => {
+    if (!id) return undefined;
+    try {
+      setMine(localStorage.getItem(`pred:${id}`));
+    } catch {
+      /* */
+    }
+    if (demo) {
+      setC({ h: 61, a: 39 });
+      return undefined;
+    }
+    let alive = true;
+    const load = async () => {
+      if (document.hidden) return;
+      try {
+        const r = await fetch(`/api/predict?id=${id}`);
+        if (!r.ok || r.status === 204) return;
+        const j = await r.json();
+        if (alive) setC(j);
+      } catch {
+        /* hide */
+      }
+    };
+    load();
+    const t = setInterval(load, 60000);
+    return () => {
+      alive = false;
+      clearInterval(t);
+    };
+  }, [id, demo]);
+
+  if (!id || !c) return null;
+  const total = (c.h || 0) + (c.a || 0);
+  const ph = total ? Math.round((c.h / total) * 100) : 50;
+
+  const vote = async (side) => {
+    blip(600, 0.05, 0.04);
+    setMine(side);
+    try {
+      localStorage.setItem(`pred:${id}`, side);
+    } catch {
+      /* */
+    }
+    if (demo) {
+      setC((v) => ({ ...v, [side]: (v[side] || 0) + 1 }));
+      return;
+    }
+    try {
+      const r = await fetch("/api/predict", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id, side }) });
+      if (r.ok && r.status !== 204) setC(await r.json());
+    } catch {
+      /* keep local */
+    }
+  };
+
+  return (
+    <div className="hidden w-44 self-center overflow-hidden border-l pb-1 pl-4 md:block" style={{ borderColor: BORDER_RED }}>
+      <p className="text-[9px] tracking-widest" style={{ color: RED }}>WHO TAKES IT?</p>
+      {mine ? (
+        <div className="mt-1.5">
+          <div className="flex h-[6px] w-full overflow-hidden rounded-sm" style={{ background: "rgba(236,232,227,0.08)" }}>
+            <span className="h-full transition-[width] duration-700 ease-out" style={{ width: `${ph}%`, background: RED }} />
+            <span className="h-full flex-1 transition-[width] duration-700 ease-out" style={{ background: "rgba(236,232,227,0.28)" }} />
+          </div>
+          <div className="mt-1 flex justify-between text-[10px] tabular-nums" style={{ color: SECOND }}>
+            <span style={{ color: mine === "h" ? RED : SECOND }}>{m.home} {ph}%{mine === "h" ? "·you" : ""}</span>
+            <span style={{ color: mine === "a" ? "#ece8e3" : SECOND }}>{100 - ph}% {m.away}{mine === "a" ? "·you" : ""}</span>
+          </div>
+          <p className="mt-0.5 text-[9px]" style={{ color: DIM }}>{total} vote{total === 1 ? "" : "s"}</p>
+        </div>
+      ) : (
+        <div className="mt-1.5 flex items-center gap-2 text-[10px]">
+          <button onClick={() => vote("h")} className="cursor-pointer rounded-sm border px-2 py-0.5 transition-colors duration-150 hover:border-[rgba(255,51,36,0.7)] hover:text-[#ff3324]" style={{ borderColor: BORDER_RED, color: SECOND }}>
+            {m.home}
+          </button>
+          <button onClick={() => vote("a")} className="cursor-pointer rounded-sm border px-2 py-0.5 transition-colors duration-150 hover:border-[rgba(255,51,36,0.7)] hover:text-[#ff3324]" style={{ borderColor: BORDER_RED, color: SECOND }}>
+            {m.away}
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function Ticker({ m }) {
   const [i, setI] = useState(0);
   const items = [];
@@ -253,6 +342,7 @@ function LiveScore() {
   };
 
   if (!m) return null;
+  const demo = new URLSearchParams(window.location.search).has("demo");
   const when = new Date(m.utcDate).toLocaleString("en-IN", { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit", hour12: false, timeZone: "Asia/Kolkata" });
 
   return (
@@ -295,6 +385,7 @@ function LiveScore() {
       )}
       </div>
       <Ticker m={m} />
+      <PredictBar m={m} demo={demo} />
     </div>
   );
 }

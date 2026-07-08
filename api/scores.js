@@ -21,6 +21,7 @@ export default async function handler(req, res) {
     let body = null;
     if (pick) {
       body = {
+        id: pick.id || null,
         live: !!live,
         comp: pick.competition?.code || pick.competition?.name || "",
         home: pick.homeTeam?.tla || pick.homeTeam?.shortName || "?",
