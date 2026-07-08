@@ -91,7 +91,7 @@ export default function OpenSourcePage() {
           </div>
 
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2 pb-12 font-mono text-xs" style={{ color: DIM }}>
-            <span>project source lives with each project → <a href="#/work" className="border-b border-transparent transition-colors duration-200 hover:border-[rgba(221,35,22,0.6)] hover:text-[#ece8e3]" style={{ color: BODY }}>~/work</a></span>
+            <span>project source lives with each project → <a href="/work" className="border-b border-transparent transition-colors duration-200 hover:border-[rgba(221,35,22,0.6)] hover:text-[#ece8e3]" style={{ color: BODY }}>~/work</a></span>
             <a href="https://github.com/Luc0-0" target="_blank" rel="noreferrer" onMouseEnter={hoverTick} className="group inline-flex items-center gap-2">
               <GithubLogo size={14} style={{ color: RED }} />
               <span className="border-b border-transparent transition-colors duration-200 group-hover:border-[rgba(221,35,22,0.6)] group-hover:text-[#ece8e3]">everything else on github</span>
