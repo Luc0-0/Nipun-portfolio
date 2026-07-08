@@ -115,6 +115,190 @@ function NetSparkline() {
   );
 }
 
+function Goal({ side, pulsing }) {
+  const B = "rgba(221,35,22,0.9)";
+  const D = "rgba(221,35,22,0.32)";
+  return (
+    <svg
+      width="76"
+      height="72"
+      viewBox="0 0 76 72"
+      aria-hidden="true"
+      className={pulsing ? "net-pulse" : ""}
+      style={{ transform: `scaleX(${side === "r" ? -1 : 1})`, "--mir": side === "r" ? -1 : 1, "--netdir": "-2px" }}
+    >
+      <g fill="none">
+        {/* A=near post base, B=near post top, A2/B2=far post (into screen), T/T2=net top-back, C/C2=net bottom-back */}
+        <line x1="58" y1="62" x2="24" y2="54" stroke={D} strokeWidth="0.9" />
+        <line x1="41" y1="18" x2="24" y2="54" stroke={D} strokeWidth="0.9" />
+        <line x1="55" y1="6" x2="38" y2="42" stroke={D} strokeWidth="0.9" />
+        <line x1="41" y1="18" x2="55" y2="6" stroke={D} strokeWidth="0.9" />
+        <line x1="24" y1="54" x2="38" y2="42" stroke={D} strokeWidth="0.9" />
+        <line x1="58" y1="22" x2="41" y2="18" stroke={D} strokeWidth="0.9" />
+        <line x1="72" y1="10" x2="55" y2="6" stroke={D} strokeWidth="0.9" />
+        {[0.33, 0.66].map((t) => (
+          <line key={`m${t}`} x1={58 + (41 - 58) * t} y1={22 + (18 - 22) * t} x2={58 + (24 - 58) * t} y2={62 + (54 - 62) * t} stroke={D} strokeWidth="0.5" />
+        ))}
+        {[0.33, 0.66].map((t) => (
+          <line key={`t${t}`} x1={58 + (72 - 58) * t} y1={22 + (10 - 22) * t} x2={41 + (55 - 41) * t} y2={18 + (6 - 18) * t} stroke={D} strokeWidth="0.5" />
+        ))}
+        <line x1="58" y1="62" x2="72" y2="50" stroke={D} strokeWidth="0.8" />
+        <line x1="58" y1="62" x2="58" y2="22" stroke={B} strokeWidth="2.2" />
+        <line x1="72" y1="50" x2="72" y2="10" stroke={B} strokeWidth="1.6" />
+        <line x1="58" y1="22" x2="72" y2="10" stroke={B} strokeWidth="2" />
+      </g>
+    </svg>
+  );
+}
+
+function Ticker({ m }) {
+  const [i, setI] = useState(0);
+  const items = [];
+  if (m.goals?.length) {
+    for (const g of [...m.goals].reverse()) items.push(`⚽ ${g.m != null ? g.m + "'" : ""} ${g.p} (${g.side === "h" ? m.home : m.away})`);
+  }
+  if (m.stage) items.push(m.stage.toLowerCase().replace(/_/g, " "));
+  if (m.matchday) items.push(`matchday ${m.matchday}`);
+  if (m.venue) items.push(m.venue.toLowerCase());
+  if (!m.live) items.push("kickoff " + new Date(m.utcDate).toLocaleString("en-IN", { hour: "2-digit", minute: "2-digit", hour12: false, timeZone: "Asia/Kolkata" }) + " IST");
+  useEffect(() => {
+    if (items.length < 2) return undefined;
+    const id = setInterval(() => setI((v) => v + 1), 4200);
+    return () => clearInterval(id);
+  }, [items.length]);
+  if (!items.length) return null;
+  const cur = items[i % items.length];
+  return (
+    <div className="hidden w-40 self-center overflow-hidden border-l pb-1 pl-4 md:block" style={{ borderColor: BORDER_RED }}>
+      <p className="text-[9px] tracking-widest" style={{ color: RED }}>MATCH FEED</p>
+      <motion.p
+        key={cur}
+        initial={{ opacity: 0, rotateX: 80 }}
+        animate={{ opacity: 1, rotateX: 0 }}
+        transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+        className="mt-1 truncate text-[11px]"
+        style={{ color: SECOND, transformOrigin: "bottom" }}
+        title={cur}
+      >
+        {cur}
+      </motion.p>
+    </div>
+  );
+}
+
+function LiveScore() {
+  const [m, setM] = useState(null);
+  const [kick, setKick] = useState(null);
+  const [, forceTick] = useState(0);
+  const kickN = useRef(0);
+  const prev = useRef(null);
+  const fetchedAt = useRef(0);
+
+  useEffect(() => {
+    const id = setInterval(() => forceTick((v) => v + 1), 30000);
+    return () => clearInterval(id);
+  }, []);
+
+  useEffect(() => {
+    if (new URLSearchParams(window.location.search).has("demo")) {
+      const base = { live: true, comp: "WC", home: "FRA", away: "MAR", status: "IN_PLAY", utcDate: new Date().toISOString(), goals: [] };
+      const steps = [
+        [0, { hs: 0, as: 0, minute: 12 }, null],
+        [4000, { hs: 1, as: 0, minute: 14, goals: [{ m: 14, p: "Mbappé", side: "h" }] }, "r"],
+        [10000, { hs: 1, as: 1, minute: 31, goals: [{ m: 31, p: "Hakimi", side: "a" }] }, "l"],
+        [16000, { hs: 2, as: 1, minute: 52, goals: [{ m: 52, p: "Dembélé", side: "h" }] }, "r"],
+        [21000, { hs: 2, as: 2, minute: 67, goals: [{ m: 67, p: "En-Nesyri", side: "a" }] }, "l"],
+        [27000, { hs: 3, as: 2, minute: 89, goals: [{ m: 89, p: "Mbappé", side: "h" }] }, "r"],
+      ];
+      let acc = [];
+      const timers = steps.map(([t, s, side]) =>
+        setTimeout(() => {
+          acc = [...acc, ...(s.goals || [])];
+          setM({ ...base, ...s, goals: acc });
+          if (side) fire(side);
+        }, t)
+      );
+      return () => timers.forEach(clearTimeout);
+    }
+    let alive = true;
+    const load = async () => {
+      if (document.hidden) return;
+      try {
+        const r = await fetch("/api/scores");
+        if (!r.ok || r.status === 204) return;
+        const j = await r.json();
+        if (!alive || !j) return;
+        if (prev.current && j.live) {
+          if ((j.hs ?? 0) > (prev.current.hs ?? 0)) fire("r");
+          else if ((j.as ?? 0) > (prev.current.as ?? 0)) fire("l");
+        }
+        prev.current = j;
+        fetchedAt.current = Date.now();
+        setM(j);
+      } catch {
+        /* hide */
+      }
+    };
+    load();
+    const id = setInterval(load, 60000);
+    return () => {
+      alive = false;
+      clearInterval(id);
+    };
+  }, []);
+
+  const fire = (side) => {
+    kickN.current += 1;
+    setKick({ side, n: kickN.current });
+  };
+
+  if (!m) return null;
+  const when = new Date(m.utcDate).toLocaleString("en-IN", { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit", hour12: false, timeZone: "Asia/Kolkata" });
+
+  return (
+    <div className="mt-6 inline-flex items-end gap-4" style={{ opacity: 0.85 }}>
+      <div className="relative inline-flex items-end gap-4">
+      <Goal side="l" pulsing={kick && kick.side === "l"} key={`gl-${kick?.side === "l" ? kick.n : 0}`} />
+      <div className="min-w-[170px] pb-3 text-center">
+        <p className="mb-1 flex items-center justify-center gap-2 text-[10px] tracking-widest" style={{ color: RED }}>
+          {m.live ? "LIVE" : "NEXT"} // {m.comp || "FOOTBALL"}
+          {m.live && <span className="term-pulse">●</span>}
+        </p>
+        {m.live ? (
+          <p className="text-base tabular-nums" style={{ color: TEXT }}>
+            {m.home} <span style={{ color: RED }}>{m.hs ?? 0} — {m.as ?? 0}</span> {m.away}
+            {m.status === "PAUSED" ? (
+              <span className="ml-2 text-[11px]" style={{ color: SECOND }}>HT</span>
+            ) : (
+              m.minute != null && (
+                <span className="ml-2 text-[11px]" style={{ color: SECOND }}>
+                  {Math.min(Number(m.minute) + (fetchedAt.current ? Math.floor((Date.now() - fetchedAt.current) / 60000) : 0), 90)}'
+                </span>
+              )
+            )}
+          </p>
+        ) : (
+          <>
+            <p className="text-sm" style={{ color: TEXT }}>{m.home} <span style={{ color: RED }}>vs</span> {m.away}</p>
+            <p className="mt-0.5 text-[11px]" style={{ color: SECOND }}>{when} IST</p>
+          </>
+        )}
+      </div>
+      <Goal side="r" pulsing={kick && kick.side === "r"} key={`gr-${kick?.side === "r" ? kick.n : 0}`} />
+      {kick && (
+        <span
+          key={`ball-${kick.n}`}
+          aria-hidden="true"
+          className={`absolute left-1/2 h-2.5 w-2.5 rounded-full ${kick.side === "l" ? "kick-l" : "kick-r"}`}
+          style={{ bottom: 14, marginLeft: -5, background: "#ece8e3", boxShadow: `0 0 8px rgba(221,35,22,0.8), inset -1px -1px 0 rgba(221,35,22,0.6)`, opacity: 0 }}
+        />
+      )}
+      </div>
+      <Ticker m={m} />
+    </div>
+  );
+}
+
 function useClock() {
   const [now, setNow] = useState(() => new Date());
   useEffect(() => {
@@ -257,6 +441,10 @@ const TerminalHero = memo(() => {
                 </div>
               </div>
             ))}
+          </motion.div>
+
+          <motion.div {...rise(0.6)}>
+            <LiveScore />
           </motion.div>
         </div>
 

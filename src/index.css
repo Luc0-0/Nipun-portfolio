@@ -18,6 +18,28 @@
 @keyframes ring-spin { from { transform: rotateY(0deg); } to { transform: rotateY(-360deg); } }
 .ring-spin { animation: ring-spin 28s linear infinite; }
 .ring-spin:hover { animation-play-state: paused; }
+@keyframes kick-l {
+  0% { transform: translate(0, 0) scale(1); opacity: 0; }
+  8% { opacity: 1; }
+  55% { transform: translate(-96px, -30px) scale(0.92); }
+  82% { transform: translate(-136px, -10px) scale(0.82); opacity: 1; }
+  100% { transform: translate(-148px, -4px) scale(0.7); opacity: 0; }
+}
+@keyframes kick-r {
+  0% { transform: translate(0, 0) scale(1); opacity: 0; }
+  8% { opacity: 1; }
+  55% { transform: translate(96px, -30px) scale(0.92); }
+  82% { transform: translate(136px, -10px) scale(0.82); opacity: 1; }
+  100% { transform: translate(148px, -4px) scale(0.7); opacity: 0; }
+}
+.kick-l { animation: kick-l 1.15s cubic-bezier(0.3, 0, 0.55, 1) forwards; }
+.kick-r { animation: kick-r 1.15s cubic-bezier(0.3, 0, 0.55, 1) forwards; }
+@keyframes net-pulse {
+  0%, 100% { filter: none; transform: scaleX(var(--mir, 1)); }
+  40% { filter: brightness(2); transform: scaleX(var(--mir, 1)) translateX(var(--netdir, -2px)); }
+}
+.net-pulse { animation: net-pulse 0.5s ease-out 0.95s; }
+@media (prefers-reduced-motion: reduce) { .kick-l, .kick-r, .net-pulse { animation: none; opacity: 0; } }
 @keyframes rainbow-slide { 0% { background-position: 0% 50%; } 100% { background-position: 300% 50%; } }
 .cmd-rainbow {
   background: linear-gradient(90deg, #ff3324, #ffb347, #7ee787, #58c4dd, #b78cff, #ff5c9e, #ff3324);
