@@ -6,7 +6,7 @@ const RED = "#dd2316";
 const TEXT = "#ece8e3";
 const SECOND = "#8a857f";
 const DIM = "#4f4a45";
-const BOOT_TEST = true; // TODO testing: replay boot every reload; set false to boot once per tab session
+const BOOT_TEST = false; // boot once per tab session
 
 function signalBooted() {
   if (typeof window === "undefined") return;

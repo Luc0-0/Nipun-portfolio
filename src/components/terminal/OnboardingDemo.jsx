@@ -8,7 +8,7 @@ const DIM = "#5a544e";
 const BORDER_RED = "rgba(221,35,22,0.35)";
 const EASE = [0.23, 1, 0.32, 1];
 const CSS_EASE = "cubic-bezier(0.23,1,0.32,1)";
-const TOUR_TEST = true; // TODO testing: show tour every reload; set false to persist-dismiss
+const TOUR_TEST = false; // show tour once, then persist-dismiss
 const KEY = "nipun.tour.v1";
 
 const ROWS = ["work", "about", "skills", "contact"];
