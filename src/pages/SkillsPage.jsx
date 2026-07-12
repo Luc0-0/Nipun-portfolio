@@ -245,7 +245,7 @@ export default function SkillsPage() {
                   key={c.key}
                   onClick={() => pick(c.key)}
                   onMouseEnter={hoverTick}
-                  className="cursor-pointer rounded-sm border px-3 py-1.5 font-mono text-[11px] tracking-[0.12em] transition-colors duration-200"
+                  className="cursor-pointer rounded-sm border px-3.5 py-2 font-mono text-[11px] tracking-[0.12em] transition-colors duration-200 sm:px-3 sm:py-1.5"
                   style={{
                     borderColor: on ? RED_HI : "rgba(236,232,227,0.16)",
                     color: on ? RED_HI : BODY,
@@ -293,6 +293,7 @@ export default function SkillsPage() {
                         fontSize="14.5"
                         letterSpacing="2"
                         fill={on ? RED_HI : dimmed ? FAINT : BODY}
+                        className="hidden sm:inline"
                         style={{ fontFamily: "'JetBrains Mono', monospace", transition: "fill 0.2s" }}
                       >
                         {c.label}

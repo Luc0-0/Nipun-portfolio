@@ -731,3 +731,24 @@ textarea:focus-visible {
 .marquee-track:hover {
   animation-play-state: paused;
 }
+
+* { -webkit-tap-highlight-color: transparent; }
+button, a, [role="button"] { touch-action: manipulation; }
+
+@keyframes cmd-pop {
+  0% { box-shadow: 0 0 14px rgba(221,35,22,0.08); }
+  22% { box-shadow: 0 0 0 4px rgba(221,35,22,0.24), 0 0 30px rgba(221,35,22,0.38); }
+  100% { box-shadow: 0 0 14px rgba(221,35,22,0.08); }
+}
+.cmd-pop { animation: cmd-pop 0.95s ease-out; }
+
+@keyframes scroll-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+.scroll-bob { animation: scroll-bob 1.5s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .cmd-pop { animation: none; }
+  .scroll-bob { animation: none; }
+}

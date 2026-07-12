@@ -331,7 +331,7 @@ export default function ServicesPage() {
                     if (c.k !== "all") setService(c.k);
                   }}
                   onMouseEnter={hoverTick}
-                  className="cursor-pointer rounded-sm border px-3 py-1.5 font-mono text-[11px] tracking-[0.12em] transition-all duration-200 active:scale-[0.96]"
+                  className="cursor-pointer rounded-sm border px-3.5 py-2 font-mono text-[11px] tracking-[0.12em] transition-all duration-200 active:scale-[0.96] sm:px-3 sm:py-1.5"
                   style={{ borderColor: on ? RED_HI : "rgba(236,232,227,0.16)", color: on ? RED_HI : BODY, backgroundColor: on ? "rgba(28,8,6,0.7)" : "rgba(8,8,8,0.4)", boxShadow: on ? "0 0 16px rgba(221,35,22,0.25)" : "none" }}
                 >
                   {c.l}
@@ -383,7 +383,7 @@ export default function ServicesPage() {
                           setService(s.key);
                         }}
                         onMouseEnter={hoverTick}
-                        className="cursor-pointer rounded-sm border px-3 py-1.5 font-mono text-[11px] transition-colors duration-200"
+                        className="cursor-pointer rounded-sm border px-3.5 py-2 font-mono text-[11px] transition-colors duration-200 sm:px-3 sm:py-1.5"
                         style={{ borderColor: on ? RED_HI : "rgba(236,232,227,0.16)", color: on ? RED_HI : BODY, backgroundColor: on ? "rgba(28,8,6,0.7)" : "transparent" }}
                       >
                         {s.title}

@@ -58,11 +58,11 @@ export default function TerminalShell({ path = "~/", subtitle, quiet = false, ch
           backgroundSize: quiet ? "24px 24px, 24px 24px, 8px 8px, 8px 8px" : "24px 24px, 24px 24px, 8px 8px, 8px 8px, 2px 2px",
         }}
       />
-      {/* Cursor-reactive grid */}
+      {/* Cursor-reactive grid (desktop only; useless + too bright on touch) */}
       <div
         ref={gridRef}
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 z-20"
+        className="pointer-events-none absolute inset-0 z-20 hidden sm:block"
         style={{
           backgroundImage:
             "linear-gradient(rgba(221,35,22,0.55) 1px, transparent 1px), linear-gradient(90deg, rgba(221,35,22,0.55) 1px, transparent 1px)",
