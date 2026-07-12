@@ -6,6 +6,17 @@ const RED = "#dd2316";
 const TEXT = "#ece8e3";
 const SECOND = "#8a857f";
 const DIM = "#4f4a45";
+const BOOT_TEST = true; // TODO testing: replay boot every reload; set false to boot once per tab session
+
+function signalBooted() {
+  if (typeof window === "undefined") return;
+  window.__nipunBooted = true;
+  try {
+    window.dispatchEvent(new Event("nipun:booted"));
+  } catch {
+    /* ignore */
+  }
+}
 
 const LINES = [
   { t: "[ ok ]", m: "kernel", ms: 4 },
@@ -47,6 +58,7 @@ function MsCounter({ target }) {
 export default function BootSequence() {
   const reduce = useReducedMotion();
   const [show, setShow] = useState(() => {
+    if (BOOT_TEST) return true;
     try {
       return sessionStorage.getItem("nipun.booted") !== "1";
     } catch {
@@ -65,8 +77,14 @@ export default function BootSequence() {
     } catch {
       /* ignore */
     }
+    signalBooted();
     setShow(false);
   };
+
+  useEffect(() => {
+    if (!show) signalBooted();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     if (!show) return undefined;
@@ -81,10 +99,10 @@ export default function BootSequence() {
           if (n >= LINES.length) clearInterval(li);
           return n;
         }),
-      380
+      230
     );
-    const pi = setInterval(() => setPct((p) => Math.min(100, p + 3)), 90);
-    const end = setTimeout(finish, 4200);
+    const pi = setInterval(() => setPct((p) => Math.min(100, p + 6)), 48);
+    const end = setTimeout(finish, 2050);
     const skip = () => finish();
     window.addEventListener("keydown", skip);
     window.addEventListener("pointerdown", skip);

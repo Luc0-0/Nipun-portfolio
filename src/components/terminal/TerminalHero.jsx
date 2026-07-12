@@ -346,10 +346,10 @@ function LiveScore() {
   const when = new Date(m.utcDate).toLocaleString("en-IN", { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit", hour12: false, timeZone: "Asia/Kolkata" });
 
   return (
-    <div className="mt-6 inline-flex items-end gap-4" style={{ opacity: 0.85 }}>
-      <div className="relative inline-flex items-end gap-4">
+    <div className="mt-6 inline-flex items-end gap-2 sm:gap-4" style={{ opacity: 0.85 }}>
+      <div className="relative inline-flex items-end gap-2 sm:gap-4">
       <Goal side="l" pulsing={kick && kick.side === "l"} key={`gl-${kick?.side === "l" ? kick.n : 0}`} />
-      <div className="min-w-[170px] pb-3 text-center">
+      <div className="min-w-[146px] pb-3 text-center sm:min-w-[170px]">
         <p className="mb-1 flex items-center justify-center gap-2 text-[10px] tracking-widest" style={{ color: RED }}>
           {m.live ? "LIVE" : "NEXT"} // {m.comp || "FOOTBALL"}
           {m.live && <span className="term-pulse">●</span>}
@@ -444,11 +444,11 @@ const TerminalHero = memo(() => {
         }}
       />
 
-      {/* Cursor-reactive grid */}
+      {/* Cursor-reactive grid (desktop only; useless + too bright on touch) */}
       <div
         ref={gridRef}
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 z-20"
+        className="pointer-events-none absolute inset-0 z-20 hidden sm:block"
         style={{
           backgroundImage:
             "linear-gradient(rgba(221,35,22,0.55) 1px, transparent 1px), linear-gradient(90deg, rgba(221,35,22,0.55) 1px, transparent 1px)",
@@ -477,7 +477,7 @@ const TerminalHero = memo(() => {
       <motion.header
         {...rise(0.04)}
         className="absolute inset-x-0 top-0 z-50 flex items-center justify-between px-4 py-2.5 text-[11px] sm:px-6"
-        style={{ color: "#ffffff", textShadow: "0 1px 3px rgba(0,0,0,0.95)", background: "linear-gradient(180deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 55%, transparent 100%)" }}
+        style={{ color: "#ffffff", textShadow: "0 1px 2px rgba(0,0,0,1), 0 0 6px rgba(0,0,0,0.9)", background: "transparent" }}
       >
         <span className="flex items-center gap-2">
           <span style={{ color: RED }}>✶</span>
@@ -533,10 +533,6 @@ const TerminalHero = memo(() => {
               </div>
             ))}
           </motion.div>
-
-          <motion.div {...rise(0.6)}>
-            <LiveScore />
-          </motion.div>
         </div>
 
         {/* RIGHT — portrait (upper) + widgets (lower) */}
@@ -547,7 +543,7 @@ const TerminalHero = memo(() => {
               alt="Nipun Sujesh"
               className="absolute inset-0 h-full w-full object-cover object-center"
               style={{
-                transform: "scale(1.06)",
+                transform: "scale(1.06) translateY(4%)",
                 maskImage: "radial-gradient(ellipse 80% 84% at 60% 42%, #000 46%, transparent 84%)",
                 WebkitMaskImage: "radial-gradient(ellipse 80% 84% at 60% 42%, #000 46%, transparent 84%)",
               }}
