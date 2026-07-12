@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="24" viewBox="0 0 1280 24" font-family="ui-monospace, monospace">
+  <text x="0" y="16" font-size="16" font-weight="bold" fill="#dd2316">&gt;</text>
+  <line x1="26" y1="12" x2="1220" y2="12" stroke="#dd2316" stroke-width="1.4" stroke-dasharray="10 8" opacity="0.55">
+    <animate attributeName="stroke-dashoffset" values="0;-36" dur="1.4s" repeatCount="indefinite"/>
+  </line>
+  <circle cx="1234" cy="12" r="3" fill="#dd2316"/>
+  <text x="1246" y="17" font-size="12" fill="#4f4a45">//</text>
+</svg>
