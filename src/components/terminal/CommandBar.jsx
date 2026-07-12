@@ -18,6 +18,15 @@ const HILITE = "rgba(221,35,22,0.12)";
 
 const SAFE_PAGES = new Set(["/", "/work", "/work/serenity", "/work/pragati", "/work/guardia", "/work/samarth", "/work/uni-verse", "/work/godprofile", "/about", "/skills", "/services", "/achievements", "/writing", "/opensource", "/contact", "resume"]);
 
+const NAV = [
+  { label: "work", to: "/work" },
+  { label: "about", to: "/about" },
+  { label: "skills", to: "/skills" },
+  { label: "services", to: "/services" },
+  { label: "writing", to: "/writing" },
+  { label: "contact", to: "/contact" },
+];
+
 function parseAnswer(raw) {
   const navs = [];
   const addNav = (page, label) => {
@@ -96,6 +105,11 @@ export default function CommandBar() {
   const [ask, setAsk] = useState(null);
   const askRun = useRef(0);
   const [listening, setListening] = useState(false);
+  const [focused, setFocused] = useState(false);
+  const [pop, setPop] = useState(false);
+  const [placeholder] = useState(() =>
+    typeof window !== "undefined" && window.matchMedia("(max-width: 639px)").matches ? "ask LucBot · / for commands" : "type / for commands · or ask LucBot anything"
+  );
   const recRef = useRef(null);
   const SR = typeof window !== "undefined" && (window.SpeechRecognition || window.webkitSpeechRecognition);
 
@@ -127,6 +141,14 @@ export default function CommandBar() {
     mark(location.pathname);
   }, [location.pathname, mark]);
 
+  // pop the bar on non-home routes so people learn navigation lives here
+  useEffect(() => {
+    if (location.pathname === "/") return undefined;
+    setPop(true);
+    const t = setTimeout(() => setPop(false), 950);
+    return () => clearTimeout(t);
+  }, [location.pathname]);
+
   useEffect(() => {
     const onKey = (e) => {
       if (e.key !== "/" || e.metaKey || e.ctrlKey || e.altKey) return;
@@ -150,6 +172,14 @@ export default function CommandBar() {
     }, 1000);
     return () => clearInterval(id);
   }, []);
+
+  const openBar = () => {
+    if (!value) {
+      setValue("/");
+      setSel(0);
+    }
+    inputRef.current?.focus();
+  };
 
   const query = value.trim().toLowerCase();
   const isCmd = query.startsWith("/");
@@ -299,7 +329,7 @@ export default function CommandBar() {
                       setSel(i);
                     }}
                     onClick={() => run(c)}
-                    className="flex w-full items-center gap-2.5 py-[6px] pl-2 pr-3 text-left text-[11px] sm:text-[13px]"
+                    className="flex w-full items-center gap-2.5 py-2.5 pl-2 pr-3 text-left text-[12px] sm:py-[6px] sm:text-[13px]"
                     style={{ backgroundColor: active ? HILITE : "transparent" }}
                   >
                     <span style={{ width: 3, alignSelf: "stretch", backgroundColor: active ? RED : "transparent" }} />
@@ -319,10 +349,28 @@ export default function CommandBar() {
                 );
               })
             )}
+            <div className="flex items-center gap-2 border-t px-3 py-1.5 text-[10.5px]" style={{ borderColor: BORDER, color: DIM }}>
+              <span style={{ color: SECOND }}>↑↓</span> move
+              <span style={{ color: SECOND }}>↵</span> open
+              <span className="ml-auto">clear <kbd className="rounded border px-1" style={{ borderColor: BORDER_RED, color: RED }}>/</kbd> and type to ask about me</span>
+            </div>
           </div>
         ) : ask ? (
           <div className="overflow-hidden rounded-md border px-4 py-3" style={{ borderColor: BORDER_RED, borderStyle: "dashed", backgroundColor: BG }}>
-            <p className="mb-2 text-[13px]" style={{ color: RED }}>&gt; {ask.q}</p>
+            <div className="mb-2 flex items-start justify-between gap-3">
+              <p className="min-w-0 flex-1 text-[13px]" style={{ color: RED }}>&gt; {ask.q}</p>
+              <button
+                onClick={() => {
+                  askRun.current++;
+                  setAsk(null);
+                }}
+                aria-label="Clear answer"
+                className="grid h-7 w-7 shrink-0 cursor-pointer place-items-center rounded-sm border text-[12px] sm:hidden"
+                style={{ borderColor: "rgba(236,232,227,0.2)", color: SECOND }}
+              >
+                ✕
+              </button>
+            </div>
             <p className="max-h-48 overflow-y-auto whitespace-pre-wrap text-[13px] leading-relaxed [&::-webkit-scrollbar]:hidden" style={{ color: ask.status === "error" ? "#c56b60" : "#c9c4bd" }}>
               {ask.status === "thinking" ? "retrieving…" : parseAnswer(ask.text).display || (parseAnswer(ask.text).navs.length ? "on it. one click away." : "")}
               {(ask.status === "thinking" || ask.status === "streaming") && <span className="term-caret" style={{ color: RED }}>▌</span>}
@@ -363,12 +411,46 @@ export default function CommandBar() {
                   from {s.page}
                 </button>
               ))}
-              <span className="ml-auto">esc to clear · answers from site data only</span>
+              <span className="ml-auto"><span className="hidden sm:inline">esc to clear · </span>answers from site data only</span>
             </div>
           </div>
         ) : (
           <ThinkingLine />
         )}
+      </div>
+
+      {/* mobile destination strip (desktop uses the side wheel) */}
+      <div
+        className="flex items-center gap-1.5 border-t px-4 py-1.5 sm:px-6 lg:hidden"
+        style={{ borderColor: BORDER, backgroundColor: "rgba(0,0,0,0.82)", backdropFilter: "blur(6px)" }}
+      >
+        <span className="hidden shrink-0 items-center gap-1 text-[12px] sm:flex" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+          <span style={{ color: RED }}>❯</span>
+          <span style={{ color: DIM }}>cd&nbsp;~/</span>
+        </span>
+        <div className="flex flex-1 items-center gap-1 overflow-x-auto [&::-webkit-scrollbar]:hidden" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+          {NAV.map((n) => {
+            const active = location.pathname === n.to || location.pathname.startsWith(n.to + "/");
+            return (
+              <button
+                key={n.to}
+                onClick={() => {
+                  confirm();
+                  navigate(n.to);
+                }}
+                onMouseEnter={() => blip()}
+                className="shrink-0 rounded px-2.5 py-1 text-[12px] transition-colors duration-150"
+                style={{ color: active ? RED : SECOND, backgroundColor: active ? HILITE : "transparent" }}
+              >
+                {n.label}
+                {active && <span style={{ color: RED }}> ●</span>}
+              </button>
+            );
+          })}
+        </div>
+        <span className="ml-1 hidden shrink-0 text-[10px] sm:inline" style={{ color: DIM }}>
+          or type <span style={{ color: RED }}>/</span> for all
+        </span>
       </div>
 
       {/* pinned input bar */}
@@ -379,20 +461,42 @@ export default function CommandBar() {
         className="flex items-center justify-between gap-4 border-t px-4 py-2.5 text-[11px] sm:px-6"
         style={{ borderColor: BORDER, color: SECOND, backgroundColor: "rgba(0,0,0,0.82)", backdropFilter: "blur(6px)" }}
       >
-        <span className="flex min-w-0 flex-1 items-center gap-2 text-sm">
+        <div
+          onClick={openBar}
+          className={`flex min-w-0 flex-1 cursor-text items-center gap-2 rounded-md border px-3 py-2 text-sm transition-all duration-200 ${pop && !focused ? "cmd-pop" : ""}`}
+          style={{
+            borderColor: focused ? RED : "rgba(221,35,22,0.5)",
+            backgroundColor: focused ? "rgba(221,35,22,0.06)" : "rgba(221,35,22,0.03)",
+            boxShadow: focused ? "0 0 0 3px rgba(221,35,22,0.14)" : "0 0 14px rgba(221,35,22,0.08)",
+          }}
+        >
           <span ref={tickRef} style={{ color: RED, display: "inline-block", transition: "transform 0.08s ease-out" }}>❯</span>
           <input
             ref={inputRef}
             value={value}
             onChange={onChange}
             onKeyDown={onKeyDown}
-            placeholder="type / for commands · or ask LucBot anything"
+            onFocus={() => {
+              setFocused(true);
+              if (!value) {
+                setValue("/");
+                setSel(0);
+              }
+            }}
+            onBlur={() => setFocused(false)}
+            placeholder={placeholder}
             aria-label="terminal command input"
             spellCheck={false}
             autoComplete="off"
             className="min-w-0 flex-1 bg-transparent text-base outline-none placeholder:text-[#c56b60] focus:outline-none focus-visible:outline-none sm:text-sm"
             style={{ color: "#d6d2cc", caretColor: RED }}
           />
+          {!value && !focused && (
+            <span className="hidden shrink-0 items-center gap-1.5 sm:flex" aria-hidden="true">
+              <kbd className="term-pulse rounded border px-1.5 py-[1px] text-[12px] leading-none" style={{ borderColor: "rgba(221,35,22,0.45)", color: RED }}>/</kbd>
+              <span className="text-[11px]" style={{ color: DIM }}>to start</span>
+            </span>
+          )}
           {SR && (
             <button
               onClick={toggleMic}
@@ -406,7 +510,7 @@ export default function CommandBar() {
               </svg>
             </button>
           )}
-        </span>
+        </div>
         <span className="hidden items-center gap-3 sm:flex">
           <span>{path}</span>
           <span style={{ color: DIM }}>|</span>
