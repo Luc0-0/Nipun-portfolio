@@ -4,6 +4,9 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import ErrorBoundary from './components/ErrorBoundary'
 import TerminalHero from './components/terminal/TerminalHero'
 import CommandBar from './components/terminal/CommandBar'
+import VerticalNav from './components/terminal/VerticalNav'
+import OnboardingDemo from './components/terminal/OnboardingDemo'
+import ScrollProgress from './components/terminal/ScrollProgress'
 import { preventAutoFocus } from './utils/focusManager'
 import ProjectsPage from './components/terminal/ProjectsPage'
 import ProjectDetail from './components/terminal/ProjectDetail'
@@ -43,7 +46,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="/map" element={<MapPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
+        <VerticalNav />
+        <ScrollProgress />
         <CommandBar />
+        <OnboardingDemo />
       </Router>
     </ErrorBoundary>
   </React.StrictMode>
