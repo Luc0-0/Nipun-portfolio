@@ -9,7 +9,7 @@ const BORDER_RED = "rgba(221,35,22,0.35)";
 const EASE = [0.23, 1, 0.32, 1];
 const CSS_EASE = "cubic-bezier(0.23,1,0.32,1)";
 const TOUR_TEST = false; // show tour once, then persist-dismiss
-const KEY = "nipun.tour.v1";
+const KEY = "nipun.tour.v2";
 
 const ROWS = ["work", "about", "skills", "contact"];
 const ROW_TOP = [10, 40, 70, 100]; // internal to the menu panel
@@ -270,7 +270,7 @@ export default function OnboardingDemo() {
             </div>
 
             <p className="mt-4 text-[13px] leading-relaxed" style={{ color: "#c9c4bd" }}>
-              This bar at the bottom is your controller. Press <kbd className="rounded border px-1 text-[11px]" style={{ borderColor: BORDER_RED, color: RED }}>/</kbd> or click it to open the menu and jump to any page, or just ask a question about my work. The wheel in the center switches pages too.
+              This bar at the bottom is your controller. Tap it (or press <kbd className="rounded border px-1 text-[11px]" style={{ borderColor: BORDER_RED, color: RED }}>/</kbd>) to open the menu and jump to any page, or just ask a question about my work.
             </p>
 
             <div className="mt-4 flex items-center justify-between">
