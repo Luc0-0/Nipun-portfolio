@@ -78,7 +78,7 @@ export default function TerminalShell({ path = "~/", subtitle, quiet = false, ch
           src="/images/overlay.png"
           alt=""
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 z-10 h-full w-full object-cover"
+          className="pointer-events-none absolute inset-0 z-10 hidden h-full w-full object-cover sm:block"
           style={{ mixBlendMode: "screen", opacity: 0.3, filter: "blur(1.2px)" }}
         />
       )}

@@ -464,7 +464,7 @@ const TerminalHero = memo(() => {
         src="/images/overlay.png"
         alt=""
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 z-10 h-full w-full object-cover"
+        className="pointer-events-none absolute inset-0 z-10 hidden h-full w-full object-cover sm:block"
         style={{ mixBlendMode: "screen", opacity: 0.55 }}
       />
       <div
@@ -494,18 +494,34 @@ const TerminalHero = memo(() => {
         </span>
       </motion.header>
 
+      {/* mobile-only portrait fills the lower half (desktop uses the right column) */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-[56%] lg:hidden">
+        <img
+          src="/images/nipun.png"
+          alt=""
+          className="h-full w-full object-cover"
+          style={{
+            objectPosition: "50% 26%",
+            transform: "scale(1.05)",
+            opacity: 0.9,
+            maskImage: "linear-gradient(180deg, transparent 0%, #000 24%, #000 84%, transparent 100%)",
+            WebkitMaskImage: "linear-gradient(180deg, transparent 0%, #000 24%, #000 84%, transparent 100%)",
+          }}
+        />
+      </div>
+
       {/* ── Main two-column body ── */}
       <div className="relative z-30 grid min-h-0 flex-1 grid-cols-1 lg:grid-cols-[58%_42%]">
         {/* LEFT */}
         <div className="flex min-h-0 flex-col justify-start px-4 pb-16 pt-14 sm:px-8 sm:pt-16 lg:border-r" style={{ borderColor: BORDER }}>
           <div className="shrink-0">
             <motion.div {...rise(0.14)} className="select-none">
-              <PixelTitle lines={["NIPUN", "SUJESH"]} fill={RED} shadow={RED_DEEP} style={{ width: "clamp(210px, 33vw, 480px)", height: "auto" }} />
+              <PixelTitle lines={["NIPUN", "SUJESH"]} fill={RED} shadow={RED_DEEP} style={{ width: "clamp(280px, 33vw, 480px)", height: "auto" }} />
             </motion.div>
 
             <motion.div {...rise(0.4)} className="mt-10 flex items-start gap-2">
               <span style={{ color: RED }}>›</span>
-              <div className="max-w-[52ch] text-[13px] leading-relaxed sm:text-[15px]">
+              <div className="max-w-[34ch] text-[13px] leading-relaxed sm:max-w-[52ch] sm:text-[15px]">
                 <p style={{ color: TEXT }}>AI engineer building production AI systems and the full-stack around them.</p>
                 <p className="mt-1.5" style={{ color: SECOND }}>
                   Currently building <UniVerseTag />, an on-the-record platform for college life.
